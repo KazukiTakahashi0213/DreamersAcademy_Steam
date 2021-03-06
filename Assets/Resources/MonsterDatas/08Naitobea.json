@@ -1,0 +1,16 @@
+﻿{
+		"monsterName_":						"ナイトベア",
+
+		"tribesHitPoint_":				"160",
+		"tribesAttack_":					"180",
+		"tribesDefense_":					"140",
+		"tribesSpecialAttack_":		"50",
+		"tribesSpecialDefense_":	"50",
+		"tribesSpeed_":						"20",
+
+		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"firstElement_":					"6",
+		"secondElement_":					"0",
+
+		"texName_":						  	"Naitobea"
+}

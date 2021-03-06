@@ -1,0 +1,16 @@
+﻿{
+		"monsterName_":						"マイコン",
+
+		"tribesHitPoint_":				"120",
+		"tribesAttack_":					"50",
+		"tribesDefense_":					"70",
+		"tribesSpecialAttack_":		"160",
+		"tribesSpecialDefense_":	"130",
+		"tribesSpeed_":						"70",
+
+		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"firstElement_":					"2",
+		"secondElement_":					"0",
+
+		"texName_":								"Maikon"
+}

@@ -1,0 +1,16 @@
+﻿{
+		"monsterName_":						"バウポリス",
+
+		"tribesHitPoint_":				"120",
+		"tribesAttack_":					"130",
+		"tribesDefense_":					"90",
+		"tribesSpecialAttack_":		"80",
+		"tribesSpecialDefense_":	"90",
+		"tribesSpeed_":						"90",
+
+		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"firstElement_":					"3",
+		"secondElement_":					"0",
+
+		"texName_":								"Bauporisu"
+}

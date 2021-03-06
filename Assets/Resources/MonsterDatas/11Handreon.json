@@ -1,0 +1,16 @@
+﻿{
+		"monsterName_":						"ハンドレオン",
+
+		"tribesHitPoint_":				"100",
+		"tribesAttack_":					"160",
+		"tribesDefense_":					"100",
+		"tribesSpecialAttack_":		"50",
+		"tribesSpecialDefense_":	"70",
+		"tribesSpeed_":						"120",
+
+		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"firstElement_":					"2",
+		"secondElement_":					"0",
+
+		"texName_":						  	"Handreon"
+}

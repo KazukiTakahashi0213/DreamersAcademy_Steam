@@ -1,0 +1,16 @@
+﻿{
+		"monsterName_":						"ーー",
+
+		"tribesHitPoint_":				"1",
+		"tribesAttack_":					"1",
+		"tribesDefense_":					"1",
+		"tribesSpecialAttack_":		"1",
+		"tribesSpecialDefense_":	"1",
+		"tribesSpeed_":						"1",
+
+		"//ElementType": ["None","Normal","Fire","Water","Tree"],
+		"firstElement_":					"1",
+		"secondElement_":					"0",
+
+		"texName_":						  	"None"
+}

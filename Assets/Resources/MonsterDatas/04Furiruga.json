@@ -1,0 +1,16 @@
+﻿{
+		"monsterName_":						"フリルガ",
+
+		"tribesHitPoint_":				"80",
+		"tribesAttack_":					"50",
+		"tribesDefense_":					"90",
+		"tribesSpecialAttack_":		"170",
+		"tribesSpecialDefense_":	"90",
+		"tribesSpeed_":						"120",
+
+		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"firstElement_":					"5",
+		"secondElement_":					"4",
+
+		"texName_":						  	"Furiruga"
+}

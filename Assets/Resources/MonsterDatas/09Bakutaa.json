@@ -1,0 +1,16 @@
+﻿{
+		"monsterName_":						"バクター",
+
+		"tribesHitPoint_":				"150",
+		"tribesAttack_":					"50",
+		"tribesDefense_":					"150",
+		"tribesSpecialAttack_":		"50",
+		"tribesSpecialDefense_":	"150",
+		"tribesSpeed_":						"50",
+
+		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"firstElement_":					"7",
+		"secondElement_":					"0",
+
+		"texName_":						  	"Bakutaa"
+}

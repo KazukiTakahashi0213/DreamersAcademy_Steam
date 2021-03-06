@@ -1,0 +1,39 @@
+﻿{
+		"skillNname_":										"だいほうこう",
+		
+		"effectValue_":										"100",
+		"optionEffectTriggerRateValue_":	"100",
+		"hitRateValue_":									"80",
+		"upDpValue_":											"8",
+
+		"playPoint_":											"20",
+
+		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"elementType_":										"1",
+
+		"//EffectType": ["None","Attack","Support"],
+		"//EffectAttackType": ["None","Normal","Special"],
+		"effectType_":										["1","2"],
+		"triggerPriority_":								"0",
+		"criticalParameterRank_":					"0",
+
+		"effectName_":										"TaiatariEffect",
+		
+		"//AddParameterRank": ["None","Attack","Defense","SpecialAttack","SpecialDefense","Speed","AvoidRate","HitRate"],
+		"addPlayerParameterRanks_": [
+			{"addParameterRank_": "0", "value_": "0"}
+		],
+		"addEnemyParameterRanks_": [
+			{"addParameterRank_": "0", "value_": "0"}
+		],
+
+		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],
+		"addPlayerAbnormals_": [
+			{"addAbnormal_": "0"}
+		],
+		"addEnemyAbnormals_": [
+			{"addAbnormal_": "0"}
+		],
+
+		"effectInfo_": "とくしゅで　こうげきする"
+}

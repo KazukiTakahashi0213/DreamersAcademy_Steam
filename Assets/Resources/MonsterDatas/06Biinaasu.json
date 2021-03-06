@@ -1,0 +1,16 @@
+﻿{
+		"monsterName_":						"ビーナース",
+
+		"tribesHitPoint_":				"95",
+		"tribesAttack_":					"160",
+		"tribesDefense_":					"75",
+		"tribesSpecialAttack_":		"50",
+		"tribesSpecialDefense_":	"70",
+		"tribesSpeed_":						"140",
+
+		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"firstElement_":					"5",
+		"secondElement_":					"0",
+
+		"texName_":						  	"Biinaasu"
+}
