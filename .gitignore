@@ -1,0 +1,75 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+[Ll]ibrary/
+sysinfo.txt
+*.apk
+*.ipa
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+[Ee]xported[Oo]bj/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+.vs
+.localhistory
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+[Tt]humbs.db
+
+# ==================== #
+# MS Office Temp Files #
+# ==================== #
+~$*.doc*
+~$*.xls*
+*.xlk
+~$*.ppt*
+
+# ==================== #
+# Unneeded GAF Files   #
+# ==================== #
+Assets/GAF.meta
+Assets/GAF
+
+# ==================== #
+# Local AssetBundle    #
+# ==================== #
+AssetBundles/
+
+# ==================== #
+# Fabric Files         #
+# ==================== #
+/Assets/Fabric/DependencyGraph.json
+/Assets/Fabric/DependencyGraph.json.meta
+
+# ==================== #
+# Engineer Material   #
+# ==================== #
+/Assets/Engineer/Material/DistortMat.mat
+/Assets/Engineer/Material/DistortMat.mat.meta
+/Assets/StreamingAssets/crashlytics-build.properties
+/Assets/StreamingAssets/crashlytics-build.properties.meta
+
+# ==================== #
+# contents Files       #
+# ==================== #
+/Assets/Contents
+/Assets/Contents.meta
