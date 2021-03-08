@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterMenuSceneSkillActionCommandExecuteSwap : BMonsterMenuSceneSkillActionCommandExecuteState {
 	public override void Execute(MonsterMenuManager monsterMenuManager) {
 		//入れ替え状態に変更
-		monsterMenuManager.swapSelectNumber_ = monsterMenuManager.GetSkillCommandParts().GetSelectNumber();
+		monsterMenuManager.swapSelectNumber_ = monsterMenuManager.GetSkillCommandParts().SelectNumber();
 		monsterMenuManager.swapActive_ = true;
 
 		//技の画像の色の変更

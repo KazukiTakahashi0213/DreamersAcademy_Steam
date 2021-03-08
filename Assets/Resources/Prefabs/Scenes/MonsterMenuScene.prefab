@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 4358742440098113242}
   - component: {fileID: 1346422817456464198}
   m_Layer: 5
-  m_Name: CommandText2
+  m_Name: CommandText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7831052604576106572}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -314,7 +314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3000\u308F\u3056\uFF13"
+  m_Text: "\u3000\u308F\u3056\uFF12"
 --- !u!1 &3509723307171869432
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 7616250782739256662}
   - component: {fileID: 5970345148749926808}
   m_Layer: 5
-  m_Name: CommandText1
+  m_Name: CommandText2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -678,7 +678,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7831052604576106572}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -725,7 +725,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3000\u308F\u3056\uFF12"
+  m_Text: "\u3000\u308F\u3056\uFF13"
 --- !u!1 &4977001591652836003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1638,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3744902944421420378, guid: 8986af8b58f01e742ab07d792e891202,
         type: 3}
+      propertyPath: commandNumberWidth_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744902944421420378, guid: 8986af8b58f01e742ab07d792e891202,
+        type: 3}
       propertyPath: commandWindowTexts_.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1645,12 +1650,12 @@ PrefabInstance:
         type: 3}
       propertyPath: commandWindowTexts_.Array.data[1]
       value: 
-      objectReference: {fileID: 5970345148749926808}
+      objectReference: {fileID: 1346422817456464198}
     - target: {fileID: 3744902944421420378, guid: 8986af8b58f01e742ab07d792e891202,
         type: 3}
       propertyPath: commandWindowTexts_.Array.data[2]
       value: 
-      objectReference: {fileID: 1346422817456464198}
+      objectReference: {fileID: 5970345148749926808}
     - target: {fileID: 3744902944421420378, guid: 8986af8b58f01e742ab07d792e891202,
         type: 3}
       propertyPath: commandWindowTexts_.Array.data[3]

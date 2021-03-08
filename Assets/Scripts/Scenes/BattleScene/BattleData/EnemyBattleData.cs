@@ -83,7 +83,7 @@ public class EnemyBattleData : TrainerBattleData {
 		AllEventManager.GetInstance().AllUpdateEventExecute(0.2f);
 
 		//文字列の処理
-		AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetEventText(), "あいての　" + monsterDatas_[0].uniqueName_ + "は　たおれた！");
+		AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetNovelWindowEventText(), "あいての　" + monsterDatas_[0].uniqueName_ + "は　たおれた！");
 		AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 		AllEventManager.GetInstance().AllUpdateEventExecute(manager.GetEventContextUpdateTime());
 
@@ -97,7 +97,7 @@ public class EnemyBattleData : TrainerBattleData {
 
 			//文字列の処理
 			AllEventManager.GetInstance().EventTextSet(
-				manager.GetNovelWindowParts().GetEventText()
+				manager.GetNovelWindowParts().GetNovelWindowEventText()
 				, EnemyTrainerData.GetInstance().job() + "の　" + EnemyTrainerData.GetInstance().name() + "\n"
 				+ "との　しょうぶに　かった！");
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
@@ -145,18 +145,12 @@ public class EnemyBattleData : TrainerBattleData {
 				{
 					int simillarResult = PlayerBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(monsterDatas_[i].tribesData_.firstElement_);
 
-					if (simillarResult == 0) typeSimillarResult[i] += 3;
-					else if (simillarResult == 1) typeSimillarResult[i] += 1;
-					else if (simillarResult == 2) typeSimillarResult[i] += 0;
-					else if (simillarResult == 3) typeSimillarResult[i] += 2;
+					typeSimillarResult[i] += simillarResult;
 				}
 				{
 					int simillarResult = PlayerBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(monsterDatas_[i].tribesData_.secondElement_);
 
-					if (simillarResult == 0) typeSimillarResult[i] += 3;
-					else if (simillarResult == 1) typeSimillarResult[i] += 1;
-					else if (simillarResult == 2) typeSimillarResult[i] += 0;
-					else if (simillarResult == 3) typeSimillarResult[i] += 2;
+					typeSimillarResult[i] += simillarResult;
 				}
 			}
 		}
@@ -173,7 +167,7 @@ public class EnemyBattleData : TrainerBattleData {
 
 		//文字列の処理
 		AllEventManager.GetInstance().EventTextSet(
-			manager.GetNovelWindowParts().GetEventText(), EnemyTrainerData.GetInstance().name() + "は\n" 
+			manager.GetNovelWindowParts().GetNovelWindowEventText(), EnemyTrainerData.GetInstance().name() + "は\n" 
 			+ monsterDatas_[0].uniqueName_ + "を　くりだした！"
 			);
 		AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
@@ -262,7 +256,7 @@ public class EnemyBattleData : TrainerBattleData {
 			//先頭のパラメーターをリセット
 			monsterDatas_[0].battleData_.RankReset();
 
-			AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetEventText(), EnemyTrainerData.GetInstance().name() + "は\n"
+			AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetNovelWindowEventText(), EnemyTrainerData.GetInstance().name() + "は\n"
 				+ monsterDatas_[0].uniqueName_ + "を　ひっこめた！");
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(manager.GetEventContextUpdateTime());
@@ -285,7 +279,7 @@ public class EnemyBattleData : TrainerBattleData {
 			monsterDatas_[0] = monsterDatas_[changeMonsterNumber_];
 			monsterDatas_[changeMonsterNumber_] = temp;
 
-			AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetEventText(), EnemyTrainerData.GetInstance().name() + "は\n"
+			AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetNovelWindowEventText(), EnemyTrainerData.GetInstance().name() + "は\n"
 				+ md.uniqueName_ + "を　くりだした！");
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(manager.GetEventContextUpdateTime());

@@ -34,20 +34,19 @@ public class AttackCommandSelectProcess : IProcessState {
 
 				AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
-				AllEventManager.GetInstance().UpdateGameObjectSet(mgr.GetCursorParts().GetEventGameObject());
-				AllEventManager.GetInstance().UpdateGameObjectSet(mgr.GetNovelWindowParts().GetCommandParts().GetEventGameObject());
+				AllEventManager.GetInstance().UpdateGameObjectSet(mgr.GetCommandCommandParts().GetEventGameObject());
 				AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
 
 				//dpが100以上だったら
 				if (PlayerBattleData.GetInstance().dreamPoint_ >= 100) {
-					AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText()
+					AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText()
 						, "ゆめたちが　\n"
 						+ "きょうめいしている・・・");
 					AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 					AllEventManager.GetInstance().AllUpdateEventExecute();
 				}
 				else {
-					AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), PlayerBattleData.GetInstance().GetMonsterDatas(0).uniqueName_ + "は　どうする？");
+					AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), PlayerBattleData.GetInstance().GetMonsterDatas(0).uniqueName_ + "は　どうする？");
 					AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 					AllEventManager.GetInstance().AllUpdateEventExecute();
 				}
@@ -88,24 +87,59 @@ public class AttackCommandSelectProcess : IProcessState {
 		}
 
 		if (allSceneMgr.inputProvider_.UpSelect()) {
-			mgr.nowAttackCommandState_ = mgr.nowAttackCommandState_.UpSelect(mgr);
-			if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
+			//選択肢が動かせたら
+			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectUp(new Vector3(0, 0.83f, 0))) {
+				//SE
+				mgr.GetInputSoundProvider().UpSelect();
+
+				mgr.AttackCommandSkillInfoTextSet(mgr.GetAttackCommandParts().GetCommandParts().SelectNumber());
+
+				//どくのダメージ処理
+				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+			}
 		}
 		else if (allSceneMgr.inputProvider_.DownSelect()) {
-			mgr.nowAttackCommandState_ = mgr.nowAttackCommandState_.DownSelect(mgr);
-			if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
+			//選択肢が動かせたら
+			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectDown(new Vector3(0, -0.83f, 0))) {
+				//SE
+				mgr.GetInputSoundProvider().DownSelect();
+
+				mgr.AttackCommandSkillInfoTextSet(mgr.GetAttackCommandParts().GetCommandParts().SelectNumber());
+
+				//どくのダメージ処理
+				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+			}
 		}
 		else if (allSceneMgr.inputProvider_.RightSelect()) {
-			mgr.nowAttackCommandState_ = mgr.nowAttackCommandState_.RightSelect(mgr);
-			if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
+			//選択肢が動かせたら
+			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectRight(new Vector3(5.56f, 0, 0))) {
+				//SE
+				mgr.GetInputSoundProvider().RightSelect();
+
+				mgr.AttackCommandSkillInfoTextSet(mgr.GetAttackCommandParts().GetCommandParts().SelectNumber());
+
+				//どくのダメージ処理
+				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+			}
 		}
 		else if (allSceneMgr.inputProvider_.LeftSelect()) {
-			mgr.nowAttackCommandState_ = mgr.nowAttackCommandState_.LeftSelect(mgr);
-			if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
+			//選択肢が動かせたら
+			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectLeft(new Vector3(-5.56f, 0, 0))) {
+				//SE
+				mgr.GetInputSoundProvider().LeftSelect();
+
+				mgr.AttackCommandSkillInfoTextSet(mgr.GetAttackCommandParts().GetCommandParts().SelectNumber());
+
+				//どくのダメージ処理
+				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+			}
 		}
 		else if (allSceneMgr.inputProvider_.SelectEnter()) {
+			mgr.playerSelectSkillNumber_ = mgr.GetAttackCommandParts().GetCommandParts().SelectNumber();
+
 			ISkillData playerSkillData = PlayerBattleData.GetInstance().GetMonsterDatas(0).GetSkillDatas(mgr.playerSelectSkillNumber_);
 
+			//プレイポイントがあって、スキルがNoneでなかったら
 			if (playerSkillData.nowPlayPoint_ > 0
 				&& playerSkillData.skillNumber_ != (int)SkillDataNumber.None) {
 				//SE
@@ -131,7 +165,7 @@ public class AttackCommandSelectProcess : IProcessState {
 				//イベントの最後
 				AllEventManager.GetInstance().EventFinishSet();
 
-				return mgr.nowAttackCommandState_.Execute(mgr);
+				return mgr.nowProcessState().NextProcess();
 			}
 		}
 		else if (allSceneMgr.inputProvider_.SelectBack()) {
@@ -141,13 +175,17 @@ public class AttackCommandSelectProcess : IProcessState {
 				allSceneMgr.inputProvider_ = new KeyBoardNormalTriggerInputProvider();
 			}
 
-			mgr.ChangeUiCommand();
+			mgr.InactiveUiAttackCommand();
+			mgr.ActiveUiCommand();
 
 			return mgr.nowProcessState().BackProcess();
 		}
 		else if (allSceneMgr.inputProvider_.SelectNovelWindowActive()) {
 			mgr.GetNovelWindowPartsActiveState().state_ = mgr.GetNovelWindowPartsActiveState().Next(mgr);
 		}
+
+		//どくで倒れたら
+		if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
 
 		return this;
 	}

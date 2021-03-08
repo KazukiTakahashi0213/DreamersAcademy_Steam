@@ -49,7 +49,7 @@ public class EndingManager : MonoBehaviour, ISceneManager {
 
 		{
 			//文字列の設定
-			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetEventText(), "Thank You For Playing!");
+			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetNovelWindowEventText(), "Thank You For Playing!");
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(4.0f);
 		}

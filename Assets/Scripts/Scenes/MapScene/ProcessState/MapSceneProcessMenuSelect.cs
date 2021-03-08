@@ -15,20 +15,20 @@ public class MapSceneProcessMenuSelect : BMapSceneProcessState {
 
 		if (sceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
-			if (mapManager.GetCommandParts().CommandSelect(-1, new Vector3(0, 0.55f, 0))) {
+			if (mapManager.GetCommandParts().CommandSelectUp(new Vector3(0, 0.55f, 0))) {
 				//SE
 				mapManager.GetInputSoundProvider().UpSelect();
 
-				commandSelectProvider_.state_ = (MapSceneMenuSelectCommandSelect)mapManager.GetCommandParts().GetSelectNumber();
+				commandSelectProvider_.state_ = (MapSceneMenuSelectCommandSelect)mapManager.GetCommandParts().SelectNumber();
 			}
 		}
 		else if (sceneMgr.inputProvider_.DownSelect()) {
 			//選択肢が動かせたら
-			if (mapManager.GetCommandParts().CommandSelect(1, new Vector3(0, -0.55f, 0))) {
+			if (mapManager.GetCommandParts().CommandSelectDown(new Vector3(0, -0.55f, 0))) {
 				//SE
 				mapManager.GetInputSoundProvider().DownSelect();
 
-				commandSelectProvider_.state_ = (MapSceneMenuSelectCommandSelect)mapManager.GetCommandParts().GetSelectNumber();
+				commandSelectProvider_.state_ = (MapSceneMenuSelectCommandSelect)mapManager.GetCommandParts().SelectNumber();
 			}
 		}
 		else if (sceneMgr.inputProvider_.RightSelect()) {

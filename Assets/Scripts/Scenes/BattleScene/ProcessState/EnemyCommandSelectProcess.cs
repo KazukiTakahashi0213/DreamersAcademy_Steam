@@ -35,18 +35,12 @@ public class EnemyCommandSelectProcess : IProcessState {
 					{
 						int simillarResult = PlayerBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(EnemyBattleData.GetInstance().GetMonsterDatas(i).tribesData_.firstElement_);
 
-						if (simillarResult == 0) typeSimillarResult[i] += 3;
-						else if (simillarResult == 1) typeSimillarResult[i] += 1;
-						else if (simillarResult == 2) typeSimillarResult[i] += 0;
-						else if (simillarResult == 3) typeSimillarResult[i] += 2;
+						typeSimillarResult[i] += simillarResult;
 					}
 					{
 						int simillarResult = PlayerBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(EnemyBattleData.GetInstance().GetMonsterDatas(i).tribesData_.secondElement_);
 
-						if (simillarResult == 0) typeSimillarResult[i] += 3;
-						else if (simillarResult == 1) typeSimillarResult[i] += 1;
-						else if (simillarResult == 2) typeSimillarResult[i] += 0;
-						else if (simillarResult == 3) typeSimillarResult[i] += 2;
+						typeSimillarResult[i] += simillarResult;
 					}
 				}
 			}
@@ -65,10 +59,9 @@ public class EnemyCommandSelectProcess : IProcessState {
 			//気まぐれで変化
 			//2/10の確立
 			if (AllSceneManager.GetInstance().GetRandom().Next(0, 10) < 2) {
-				EnemyBattleData.GetInstance().changeMonsterNumber_ = AllSceneManager.GetInstance().GetRandom().Next(0, EnemyBattleData.GetInstance().GetHaveMonsterSize());
+				EnemyBattleData.GetInstance().changeMonsterNumber_ = AllSceneManager.GetInstance().GetRandom().Next(1, EnemyBattleData.GetInstance().GetHaveMonsterSize());
 
-				if (EnemyBattleData.GetInstance().changeMonsterNumber_ > 0
-					&& EnemyBattleData.GetInstance().GetMonsterDatas(EnemyBattleData.GetInstance().changeMonsterNumber_).battleActive_
+				if (EnemyBattleData.GetInstance().GetMonsterDatas(EnemyBattleData.GetInstance().changeMonsterNumber_).battleActive_
 					&& EnemyBattleData.GetInstance().GetMonsterDatas(EnemyBattleData.GetInstance().changeMonsterNumber_).tribesData_.monsterNumber_ != (int)MonsterTribesDataNumber.None) {
 					EnemyBattleData.GetInstance().changeMonsterActive_ = true;
 				}

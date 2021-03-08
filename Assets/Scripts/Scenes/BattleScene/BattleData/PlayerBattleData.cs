@@ -73,7 +73,7 @@ public class PlayerBattleData : TrainerBattleData {
 		AllEventManager.GetInstance().AllUpdateEventExecute(0.2f);
 
 		//文字列の処理
-		AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetEventText(), monsterDatas_[0].uniqueName_ + "は　たおれた！");
+		AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetNovelWindowEventText(), monsterDatas_[0].uniqueName_ + "は　たおれた！");
 		AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 		AllEventManager.GetInstance().AllUpdateEventExecute(manager.GetEventContextUpdateTime());
 
@@ -87,7 +87,7 @@ public class PlayerBattleData : TrainerBattleData {
 
 			//文字列の処理
 			AllEventManager.GetInstance().EventTextSet(
-				manager.GetNovelWindowParts().GetEventText()
+				manager.GetNovelWindowParts().GetNovelWindowEventText()
 				, EnemyTrainerData.GetInstance().job() + "の　" + EnemyTrainerData.GetInstance().name() + "\n"
 				+ "との　しょうぶに　まけた");
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
@@ -145,7 +145,7 @@ public class PlayerBattleData : TrainerBattleData {
 
 			//先頭がダウンしていなかったら
 			if (monsterDatas_[0].battleActive_ == true) {
-				AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetEventText(), monsterDatas_[0].uniqueName_ + "\n"
+				AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetNovelWindowEventText(), monsterDatas_[0].uniqueName_ + "\n"
 					+ "もどれ！");
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(manager.GetEventContextUpdateTime());
@@ -164,7 +164,7 @@ public class PlayerBattleData : TrainerBattleData {
 
 			AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
 
-			AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetEventText(), "ゆけ！　" + md.uniqueName_ + "！");
+			AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetNovelWindowEventText(), "ゆけ！　" + md.uniqueName_ + "！");
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(manager.GetEventContextUpdateTime());
 
@@ -220,27 +220,18 @@ public class PlayerBattleData : TrainerBattleData {
 			AllEventManager.GetInstance().AllUpdateEventExecute();
 
 			//技をTextに反映
-			for (int i = 0; i < 4; ++i) {
-				AllEventManager.GetInstance().EventTextSet(manager.GetNovelWindowParts().GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i), "　" + t13.Utility.StringFullSpaceBackTamp(md.GetSkillDatas(i).skillName_, 7));
+			for(int i = 0;i < manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTextsCount(); ++i) {
+				manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).text = "　" + t13.Utility.StringFullSpaceBackTamp(md.GetSkillDatas(i).skillName_, 7);
 			}
-			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
 
 			//文字の色の変更
-			for (int i = 0; i < 4; ++i) {
-				if (EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarChecker(md.GetSkillDatas(i).elementType_) > 1.0f) {
-					manager.GetNovelWindowParts().GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i).GetText().color = new Color32(207, 52, 112, 255);
-				}
-				else if (EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarChecker(md.GetSkillDatas(i).elementType_) < 1.0f
-					&& EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarChecker(md.GetSkillDatas(i).elementType_) > 0) {
-					manager.GetNovelWindowParts().GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i).GetText().color = new Color32(52, 130, 207, 255);
-				}
-				else if (EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarChecker(md.GetSkillDatas(i).elementType_) < 0.1f) {
-					manager.GetNovelWindowParts().GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i).GetText().color = new Color32(195, 195, 195, 255);
-				}
-				else {
-					manager.GetNovelWindowParts().GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i).GetText().color = new Color32(50, 50, 50, 255);
-				}
+			for (int i = 0; i < manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTextsCount(); ++i) {
+				int simillarResult = EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(md.GetSkillDatas(i).elementType_);
+
+				if (simillarResult == 0) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(195, 195, 195, 255);
+				else if (simillarResult == 1) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(52, 130, 207, 255);
+				else if (simillarResult == 2) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(50, 50, 50, 255);
+				else if (simillarResult == 3) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(207, 52, 112, 255);
 			}
 
 			//状態異常の反映

@@ -15,8 +15,6 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 		//初期Stateを設定
 		nowProcessState_ = new OpeningProcess();
-		nowCommandState_ = new CommandAttack();
-		nowAttackCommandState_ = new AttackCommand0();
 
 		//エネミー、プレイヤーの位置の初期化
 		playerParts_.transform.localPosition = new Vector3(13.0f, -1.4f, 5);
@@ -38,13 +36,11 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		sleepScreenParts_.GetEventScreenSprite().GetSpriteRenderer().color = new Color(sleepScreenParts_.GetEventScreenSprite().GetSpriteRenderer().color.r, sleepScreenParts_.GetEventScreenSprite().GetSpriteRenderer().color.g, sleepScreenParts_.GetEventScreenSprite().GetSpriteRenderer().color.b, 0);
 
 		//コマンドパーツの初期化
-		novelWindowParts_.GetCommandParts().gameObject.SetActive(false);
-		novelWindowParts_.GetAttackCommandParts().gameObject.SetActive(false);
-		novelWindowParts_.GetNovelWindowText().text = "";
-		novelWindowParts_.GetCommandParts().GetCommandWindowTexts(1).color = new Color32(50, 50, 50, 255);
+		InactiveUiCommand();
+		InactiveUiAttackCommand();
 
-		//カーソルの初期化
-		cursorParts_.gameObject.SetActive(false);
+		//ゆめの文字の色の変更
+		commandCommandParts_.GetCommandWindowTexts(1).color = new Color32(50, 50, 50, 255);
 
 		//プレイヤー、エネミーの画像の設定
 		playerParts_.GetEventSprite().GetSpriteRenderer().sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics("Player/PlayerMonsterSet0");
@@ -75,24 +71,18 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			playerStatusInfoParts_.MonsterStatusInfoSet(md);
 
 			//技をTextに反映
-			for (int i = 0; i < 4; ++i) {
-				novelWindowParts_.GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i).GetText().text = "　" + t13.Utility.StringFullSpaceBackTamp(md.GetSkillDatas(i).skillName_, 7);
+			for (int i = 0; i < attackCommandParts_.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
+				attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).text = "　" + t13.Utility.StringFullSpaceBackTamp(md.GetSkillDatas(i).skillName_, 7);
 			}
+
 			//文字の色の変更
-			for(int i = 0;i < 4; ++i) {
-				if (EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarChecker(md.GetSkillDatas(i).elementType_) > 1.0f) {
-					novelWindowParts_.GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i).GetText().color = new Color32(207, 52, 112, 255);
-				}
-				else if (EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarChecker(md.GetSkillDatas(i).elementType_) < 1.0f
-					&& EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarChecker(md.GetSkillDatas(i).elementType_) > 0) {
-					novelWindowParts_.GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i).GetText().color = new Color32(52, 130, 207, 255);
-				}
-				else if (EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarChecker(md.GetSkillDatas(i).elementType_) < 0.1f) {
-					novelWindowParts_.GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i).GetText().color = new Color32(195, 195, 195, 255);
-				}
-				else {
-					novelWindowParts_.GetAttackCommandParts().GetSkillParts().GetSkillEventTexts(i).GetText().color = new Color32(50, 50, 50, 255);
-				}
+			for (int i = 0; i < attackCommandParts_.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
+				int simillarResult = EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(md.GetSkillDatas(i).elementType_);
+
+				if (simillarResult == 0) attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).color = new Color32(195, 195, 195, 255);
+				else if (simillarResult == 1) attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).color = new Color32(52, 130, 207, 255);
+				else if (simillarResult == 2) attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).color = new Color32(50, 50, 50, 255);
+				else if (simillarResult == 3) attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).color = new Color32(207, 52, 112, 255);
 			}
 		}
 
@@ -120,8 +110,9 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	private const int POISON_DAMAGE = 5;
 	private bool poisonMonsterDown_ = false;
 
-	[SerializeField] private CursorParts cursorParts_ = null;
 	[SerializeField] private NovelWindowParts novelWindowParts_ = null;
+	[SerializeField] private CommandParts commandCommandParts_ = null;
+	[SerializeField] private AttackCommandParts attackCommandParts_ = null;
 	[SerializeField] private MonsterParts playerMonsterParts_ = null;
 	[SerializeField] private MonsterParts enemyMonsterParts_ = null;
 	[SerializeField] private PlayerParts playerParts_ = null;
@@ -138,8 +129,6 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	[SerializeField] private EventSpriteRenderer dreamEffectScreenEventSprite_ = null;
 	[SerializeField] private DreamEffectParts dreamEffectParts_ = null;
 
-	public HpGaugeParts GetEnemyMonsterHpGauge() { return enemyStatusInfoParts_.GetFrameParts().GetHpGaugeParts(); }
-	public HpGaugeParts GetPlayerMonsterHpGauge() { return playerStatusInfoParts_.GetFrameParts().GetHpGaugeParts(); }
 	public MonsterParts GetEnemyMonsterParts() { return enemyMonsterParts_; }
 	public MonsterParts GetPlayerMonsterParts() { return playerMonsterParts_; }
 	public StatusInfoParts GetPlayerStatusInfoParts() { return playerStatusInfoParts_; }
@@ -147,7 +136,8 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	public EffectParts GetPlayerEffectParts() { return playerEffectParts_; }
 	public EffectParts GetEnemyEffectParts() { return enemyEffectParts_; }
 	public NovelWindowParts GetNovelWindowParts() { return novelWindowParts_; }
-	public CursorParts GetCursorParts() { return cursorParts_; }
+	public CommandParts GetCommandCommandParts() { return commandCommandParts_; }
+	public AttackCommandParts GetAttackCommandParts() { return attackCommandParts_; }
 	public AudioParts GetPlayerAudioParts() { return playerAudioParts_; }
 	public AudioParts GetEnemyAudioParts() { return enemyAudioParts_; }
 	public PlayerParts GetPlayerParts() { return playerParts_; }
@@ -163,67 +153,15 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 		string playPointContext = t13.Utility.HarfSizeForFullSize(md.GetSkillDatas(number).nowPlayPoint_.ToString()) + "／" + t13.Utility.HarfSizeForFullSize(md.GetSkillDatas(number).playPoint_.ToString());
 
-		novelWindowParts_.GetAttackCommandParts().GetSkillInfoParts().GetCommandWindowText().text =
+		attackCommandParts_.GetSkillInfoParts().GetCommandWindowText().text =
 			"PP　　　　" + playPointContext + "\n"
 			+ "わざタイプ／" + md.GetSkillDatas(number).elementType_.GetName();
 	}
 
-	public void ChangeUiAttackCommand() {
-		novelWindowParts_.GetCommandParts().gameObject.SetActive(false);
-		novelWindowParts_.GetNovelWindowText().gameObject.SetActive(false);
-
-		novelWindowParts_.GetAttackCommandParts().gameObject.SetActive(true);
-
-		t13.UnityUtil.ObjectPosMove(cursorParts_.gameObject, new Vector3(-8.4f, -3.25f, -4));
-
-		AttackCommandSkillInfoTextSet(0);
-		playerSelectSkillNumber_ = 0;
-
-		nowAttackCommandState_ = new AttackCommand0();
-	}
-	public void ChangeUiCommand() {
-		novelWindowParts_.GetAttackCommandParts().gameObject.SetActive(false);
-
-		novelWindowParts_.GetCommandParts().gameObject.SetActive(true);
-		novelWindowParts_.GetNovelWindowText().gameObject.SetActive(true);
-
-		t13.UnityUtil.ObjectPosMove(cursorParts_.gameObject, new Vector3(1.7f, -3.25f, -4));
-
-		nowCommandState_ = new CommandAttack();
-
-		//dpが100以上だったら
-		if (PlayerBattleData.GetInstance().dreamPoint_ >= 100) {
-			novelWindowParts_.GetNovelWindowText().text = 
-				"ゆめたちが　\n"
-				+ "きょうめいしている・・・";
-		}
-		else {
-			string playerFirstMonsterName = PlayerBattleData.GetInstance().GetMonsterDatas(0).tribesData_.monsterName_;
-			string context_ = playerFirstMonsterName + "は　どうする？";
-			novelWindowParts_.GetNovelWindowText().text = context_;
-		}
-	}
-	public void InactiveUiAttackCommand() {
-		novelWindowParts_.GetNovelWindowText().text = "　";
-
-		novelWindowParts_.GetAttackCommandParts().gameObject.SetActive(false);
-		cursorParts_.gameObject.SetActive(false);
-
-		novelWindowParts_.GetNovelWindowText().gameObject.SetActive(true);
-	}
-	public void InactiveUiCommand() {
-		novelWindowParts_.GetNovelWindowText().text = "　";
-
-		novelWindowParts_.GetCommandParts().gameObject.SetActive(false);
-		cursorParts_.gameObject.SetActive(false);
-	}
 	public void ActiveUiCommand() {
-		novelWindowParts_.GetCommandParts().gameObject.SetActive(true);
-		cursorParts_.gameObject.SetActive(true);
+		commandCommandParts_.gameObject.SetActive(true);
 
-		t13.UnityUtil.ObjectPosMove(cursorParts_.gameObject, new Vector3(1.7f, -3.25f, -4));
-
-		nowCommandState_ = new CommandAttack();
+		commandCommandParts_.SelectReset(new Vector3(-3.35f, 0.43f, -4));
 
 		//dpが100以上だったら
 		if (PlayerBattleData.GetInstance().dreamPoint_ >= 100) {
@@ -236,6 +174,25 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			string context_ = playerFirstMonsterName + "は　どうする？";
 			novelWindowParts_.GetNovelWindowText().text = context_;
 		}
+	}
+	public void ActiveUiAttackCommand() {
+		attackCommandParts_.gameObject.SetActive(true);
+
+		attackCommandParts_.GetCommandParts().SelectReset(new Vector3(1.66f, -2.17f, -4.0f));
+
+		AttackCommandSkillInfoTextSet(0);
+
+		playerSelectSkillNumber_ = 0;
+	}
+	public void InactiveUiCommand() {
+		novelWindowParts_.GetNovelWindowText().text = "　";
+
+		commandCommandParts_.gameObject.SetActive(false);
+	}
+	public void InactiveUiAttackCommand() {
+		novelWindowParts_.GetNovelWindowText().text = "　";
+
+		attackCommandParts_.gameObject.SetActive(false);
 	}
 
 	public void PoisonDamageProcess(TrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts, MonsterParts monsterParts) {
@@ -346,10 +303,42 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		if (PlayerBattleData.GetInstance().GetMonsterDatas(0).battleData_.firstAbnormalState_.state_ == AbnormalType.Confusion
 			|| PlayerBattleData.GetInstance().GetMonsterDatas(0).battleData_.secondAbnormalState_.state_ == AbnormalType.Confusion) {
 			if (confusionCounter_.measure(Time.deltaTime, CONFUSION_TIME)) {
-				if (playerSelectSkillNumber_ == 0) nowAttackCommandState_ = nowAttackCommandState_.RightSelect(this);
-				else if (playerSelectSkillNumber_ == 1) nowAttackCommandState_ = nowAttackCommandState_.DownSelect(this);
-				else if (playerSelectSkillNumber_ == 2) nowAttackCommandState_ = nowAttackCommandState_.UpSelect(this);
-				else if (playerSelectSkillNumber_ == 3) nowAttackCommandState_ = nowAttackCommandState_.LeftSelect(this);
+				if (attackCommandParts_.GetCommandParts().SelectNumber() == 0) {
+					attackCommandParts_.GetCommandParts().CommandSelectRight(new Vector3(5.56f, 0, 0));
+
+					//SE
+					inputSoundProvider_.RightSelect();
+
+					//どくのダメージ処理
+					PoisonDamageProcess(PlayerBattleData.GetInstance(), playerStatusInfoParts_, playerMonsterParts_);
+				}
+				else if (attackCommandParts_.GetCommandParts().SelectNumber() == 1) {
+					attackCommandParts_.GetCommandParts().CommandSelectDown(new Vector3(0, -0.83f, 0));
+
+					//SE
+					inputSoundProvider_.DownSelect();
+
+					//どくのダメージ処理
+					PoisonDamageProcess(PlayerBattleData.GetInstance(), playerStatusInfoParts_, playerMonsterParts_);
+				}
+				else if (attackCommandParts_.GetCommandParts().SelectNumber() == 2) {
+					attackCommandParts_.GetCommandParts().CommandSelectUp(new Vector3(0, 0.83f, 0));
+
+					//SE
+					inputSoundProvider_.UpSelect();
+
+					//どくのダメージ処理
+					PoisonDamageProcess(PlayerBattleData.GetInstance(), playerStatusInfoParts_, playerMonsterParts_);
+				}
+				else if (attackCommandParts_.GetCommandParts().SelectNumber() == 3) {
+					attackCommandParts_.GetCommandParts().CommandSelectLeft(new Vector3(-5.56f, 0, 0));
+
+					//SE
+					inputSoundProvider_.LeftSelect();
+
+					//どくのダメージ処理
+					PoisonDamageProcess(PlayerBattleData.GetInstance(), playerStatusInfoParts_, playerMonsterParts_);
+				}
 			}
 		}
 	}
@@ -376,7 +365,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 				//メッセージ処理
 				AllEventManager.GetInstance().EventTextSet(
-					novelWindowParts_.GetEventText()
+					novelWindowParts_.GetNovelWindowEventText()
 					, trainerBattleData.GetUniqueTrainerName() + trainerBattleData.GetMonsterDatas(0).uniqueName_ + "の\n"
 					+ "こんらんが　とけた！"
 					);
@@ -389,7 +378,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			else {
 				//メッセージ処理
 				AllEventManager.GetInstance().EventTextSet(
-					novelWindowParts_.GetEventText()
+					novelWindowParts_.GetNovelWindowEventText()
 					, trainerBattleData.GetUniqueTrainerName() + trainerBattleData.GetMonsterDatas(0).uniqueName_ + "は\n"
 					+ "こんらんしている"
 					);
@@ -433,7 +422,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 				//メッセージ処理
 				AllEventManager.GetInstance().EventTextSet(
-					novelWindowParts_.GetEventText()
+					novelWindowParts_.GetNovelWindowEventText()
 					, trainerBattleData.GetUniqueTrainerName() + trainerBattleData.GetMonsterDatas(0).uniqueName_ + "は\n"
 					+ "めをさました！"
 					);
@@ -449,7 +438,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 				//メッセージ処理
 				AllEventManager.GetInstance().EventTextSet(
-					novelWindowParts_.GetEventText()
+					novelWindowParts_.GetNovelWindowEventText()
 					, trainerBattleData.GetUniqueTrainerName() + trainerBattleData.GetMonsterDatas(0).uniqueName_ + "は\n"
 					+ "ねむっている"
 					);
@@ -485,43 +474,12 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 	//ステート
 	private IProcessState nowProcessState_;
-	public ICommandState nowCommandState_ { get; set; }
 	private NovelWindowPartsActiveState novelWindowPartsActiveState_ = new NovelWindowPartsActiveState(NovelWindowPartsActive.Active);
 	private BattleSceneInputSoundProvider inputSoundProvider_ = new BattleSceneInputSoundProvider();
 	public IProcessState nowProcessState() { return nowProcessState_; }
 	public NovelWindowPartsActiveState GetNovelWindowPartsActiveState() { return novelWindowPartsActiveState_; }
 	public BattleSceneInputSoundProvider GetInputSoundProvider() { return inputSoundProvider_; }
 
-	public void CommandUpCursorMove() {
-		t13.UnityUtil.ObjectPosAdd(cursorParts_.gameObject, new Vector3(0, 0.8f, 0));
-	}
-	public void CommandDownCursorMove() {
-		t13.UnityUtil.ObjectPosAdd(cursorParts_.gameObject, new Vector3(0, -0.8f, 0));
-	}
-	public void CommandRightCursorMove() {
-		t13.UnityUtil.ObjectPosAdd(cursorParts_.gameObject, new Vector3(4.1f, 0, 0));
-	}
-	public void CommandLeftCursorMove() {
-		t13.UnityUtil.ObjectPosAdd(cursorParts_.gameObject, new Vector3(-4.1f, 0, 0));
-	}
-
-	public IAttackCommandState nowAttackCommandState_ { get; set; }
-	public void AttackCommandUpCursorMove() {
-		t13.UnityUtil.ObjectPosAdd(cursorParts_.gameObject, new Vector3(0, 0.8f, 0));
-		playerSelectSkillNumber_ -= 2;
-	}
-	public void AttackCommandDownCursorMove() {
-		t13.UnityUtil.ObjectPosAdd(cursorParts_.gameObject, new Vector3(0, -0.8f, 0));
-		playerSelectSkillNumber_ += 2;
-	}
-	public void AttackCommandRightCursorMove() {
-		t13.UnityUtil.ObjectPosAdd(cursorParts_.gameObject, new Vector3(5.6f, 0, 0));
-		playerSelectSkillNumber_ += 1;
-	}
-	public void AttackCommandLeftCursorMove() {
-		t13.UnityUtil.ObjectPosAdd(cursorParts_.gameObject, new Vector3(-5.6f, 0, 0));
-		playerSelectSkillNumber_ -= 1;
-	}
 	public int playerSelectSkillNumber_ { get; set; }
 	public int enemySelectSkillNumber_ { get; set; }
 
@@ -693,7 +651,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
 			string context = enemyTrainerData.job() + "の　" + enemyTrainerData.name() + "が\nしょうぶを　しかけてきた！";
 
-			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetEventText(), context);
+			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetNovelWindowEventText(), context);
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(eventContextUpdateTime_);
 		}
@@ -717,7 +675,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
 			string context = enemyTrainerData.job() + "の　" + enemyTrainerData.name() + "は\n" + enemyFirstMonsterName + "を　くりだした！";
 
-			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetEventText(), context);
+			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetNovelWindowEventText(), context);
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(eventContextUpdateTime_);
 		}
@@ -781,7 +739,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			string playerFirstMonsterName = PlayerBattleData.GetInstance().GetMonsterDatas(0).tribesData_.monsterName_;
 			string context = "ゆけっ！　" + playerFirstMonsterName + "！";
 
-			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetEventText(), context);
+			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetNovelWindowEventText(), context);
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(eventContextUpdateTime_);
 		}
@@ -852,13 +810,12 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			string playerFirstMonsterName = PlayerBattleData.GetInstance().GetMonsterDatas(0).tribesData_.monsterName_;
 			string context = playerFirstMonsterName + "は　どうする？";
 
-			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetEventText(), context);
+			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetNovelWindowEventText(), context);
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute();
 		}
 		//コマンドの選択肢とカーソルの出現
-		AllEventManager.GetInstance().UpdateGameObjectSet(novelWindowParts_.GetCommandParts().GetEventGameObject());
-		AllEventManager.GetInstance().UpdateGameObjectSet(cursorParts_.GetEventGameObject());
+		AllEventManager.GetInstance().UpdateGameObjectSet(commandCommandParts_.GetEventGameObject());
 		AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
 		//イベントの最後
 		AllEventManager.GetInstance().EventFinishSet();

@@ -12,13 +12,13 @@ public class MapSceneProcessTradeMonsterSelect : BMapSceneProcessState {
 
 		if (allSceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
-			if (mapManager.GetTradeMonsterSelectCommandParts().CommandSelect(-1, new Vector3(0, 0.55f, 0))) {
+			if (mapManager.GetTradeMonsterSelectCommandParts().CommandSelectUp(new Vector3(0, 0.55f, 0))) {
 
 			}
 		}
 		else if (allSceneMgr.inputProvider_.DownSelect()) {
 			//選択肢が動かせたら
-			if (mapManager.GetTradeMonsterSelectCommandParts().CommandSelect(1, new Vector3(0, -0.55f, 0))) {
+			if (mapManager.GetTradeMonsterSelectCommandParts().CommandSelectDown(new Vector3(0, -0.55f, 0))) {
 
 			}
 		}
@@ -27,9 +27,9 @@ public class MapSceneProcessTradeMonsterSelect : BMapSceneProcessState {
 		else if (allSceneMgr.inputProvider_.LeftSelect()) {
 		}
 		else if (allSceneMgr.inputProvider_.SelectEnter()) {
-			if (mapManager.GetTradeMonsterSelectCommandParts().GetSelectNumber() != mapManager.GetTradeMonsterSelectCommandParts().GetCommandWindowTextsCount() - 1) {
+			if (mapManager.GetTradeMonsterSelectCommandParts().SelectNumber() != mapManager.GetTradeMonsterSelectCommandParts().GetCommandWindowTextsCount() - 1) {
 				//追加するモンスターのデータ
-				IMonsterData addMonster = EnemyBattleData.GetInstance().GetMonsterDatas(mapManager.GetTradeMonsterSelectCommandParts().GetSelectNumber());
+				IMonsterData addMonster = EnemyBattleData.GetInstance().GetMonsterDatas(mapManager.GetTradeMonsterSelectCommandParts().SelectNumber());
 
 				//モンスターの取得
 				PlayerTrainerData.GetInstance().MonsterAdd(addMonster);

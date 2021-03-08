@@ -26,7 +26,7 @@ public class CommandEventSetProcess : IProcessState {
 			PlayerBattleData.GetInstance().dreamSyncronize_ = false;
 
 			//ゆめの文字色の変更
-			mgr.GetNovelWindowParts().GetCommandParts().GetCommandWindowTexts(1).color = new Color32(50, 50, 50, 255);
+			mgr.GetCommandCommandParts().GetCommandWindowTexts(1).color = new Color32(50, 50, 50, 255);
 
 			//DPの演出のイベント
 			mgr.StatusInfoPartsDPEffectEventSet(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts());
@@ -61,7 +61,7 @@ public class CommandEventSetProcess : IProcessState {
 			string abnormalStateContext = new AddAbnormalTypeState(AddAbnormalType.Hero).AddAbnormalTypeExecute(PlayerBattleData.GetInstance().GetMonsterDatas(0));
 
 			//文字列のイベント
-			AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), abnormalStateContext);
+			AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), abnormalStateContext);
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -113,7 +113,7 @@ public class CommandEventSetProcess : IProcessState {
 			string abnormalStateContext = new AddAbnormalTypeState(AddAbnormalType.Hero).AddAbnormalTypeExecute(EnemyBattleData.GetInstance().GetMonsterDatas(0));
 
 			//文字列のイベント
-			AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), abnormalStateContext);
+			AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), abnormalStateContext);
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -184,7 +184,7 @@ public class CommandEventSetProcess : IProcessState {
 		}
 
 		//白紙に
-		AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), " ");
+		AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), " ");
 		AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 		AllEventManager.GetInstance().AllUpdateEventExecute();
 		//ウェイト
@@ -218,7 +218,7 @@ public class CommandEventSetProcess : IProcessState {
 		string skillUseContext = "あいての　" + attackMonsterData.uniqueName_ + "の\n"
 			+ attackSkillData.skillName_ + "！";
 
-		AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), skillUseContext);
+		AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), skillUseContext);
 		AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 		AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -264,7 +264,7 @@ public class CommandEventSetProcess : IProcessState {
 		string skillUseContext = attackMonsterData.uniqueName_ + "の\n"
 			+ attackSkillData.skillName_ + "！";
 
-		AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), skillUseContext);
+		AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), skillUseContext);
 		AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 		AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -291,7 +291,7 @@ public class CommandEventSetProcess : IProcessState {
 			EnemyBattleData.GetInstance().MonsterDownEventSet(mgr);
 
 			//白紙に
-			AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), " ");
+			AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), " ");
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute();
 
@@ -316,7 +316,7 @@ public class CommandEventSetProcess : IProcessState {
 				string parameterRankContext = attackSkillData.addPlayerParameterRanks_[i].AddParameterExecute(playerMonsterData);
 
 				//文字列のイベント
-				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), parameterRankContext);
+				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), parameterRankContext);
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -337,7 +337,7 @@ public class CommandEventSetProcess : IProcessState {
 				string parameterRankContext = attackSkillData.addEnemyParameterRanks_[i].AddParameterExecute(enemyMonsterData);
 
 				//文字列のイベント
-				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), "あいての　" + parameterRankContext);
+				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), "あいての　" + parameterRankContext);
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -359,7 +359,7 @@ public class CommandEventSetProcess : IProcessState {
 				string parameterRankContext = attackSkillData.addPlayerParameterRanks_[i].AddParameterExecute(enemyMonsterData);
 
 				//文字列のイベント
-				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), "あいての　" + parameterRankContext);
+				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), "あいての　" + parameterRankContext);
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -380,7 +380,7 @@ public class CommandEventSetProcess : IProcessState {
 				string parameterRankContext = attackSkillData.addEnemyParameterRanks_[i].AddParameterExecute(playerMonsterData);
 
 				//文字列のイベント
-				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), parameterRankContext);
+				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), parameterRankContext);
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -403,7 +403,7 @@ public class CommandEventSetProcess : IProcessState {
 				string abnormalStateContext = attackSkillData.addPlayerAbnormalStates_[i].AddAbnormalTypeExecute(playerMonsterData);
 
 				//文字列のイベント
-				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), abnormalStateContext);
+				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), abnormalStateContext);
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -434,7 +434,7 @@ public class CommandEventSetProcess : IProcessState {
 				string abnormalStateContext = attackSkillData.addEnemyAbnormalStates_[i].AddAbnormalTypeExecute(enemyMonsterData);
 
 				//文字列のイベント
-				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), "あいての　" + abnormalStateContext);
+				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), "あいての　" + abnormalStateContext);
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -466,7 +466,7 @@ public class CommandEventSetProcess : IProcessState {
 				string abnormalStateContext = attackSkillData.addPlayerAbnormalStates_[i].AddAbnormalTypeExecute(enemyMonsterData);
 
 				//文字列のイベント
-				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), "あいての　" + abnormalStateContext);
+				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), "あいての　" + abnormalStateContext);
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
@@ -497,7 +497,7 @@ public class CommandEventSetProcess : IProcessState {
 				string abnormalStateContext = attackSkillData.addEnemyAbnormalStates_[i].AddAbnormalTypeExecute(playerMonsterData);
 
 				//文字列のイベント
-				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetEventText(), abnormalStateContext);
+				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), abnormalStateContext);
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 

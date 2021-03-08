@@ -40,15 +40,15 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 					+ "２の..." + "\r\n\r\n"
 					+ "ぽかん！" + "\r\n\r\n"
 					+ playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).uniqueName_ + "は　\r\n"
-					+ playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().GetSelectNumber()).skillName_ + "を忘れて" + "\r\n\r\n"
+					+ playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()).skillName_ + "を忘れて" + "\r\n\r\n"
 					+ MonsterMenuManager.skillTradeSkillData_.skillName_ + "を　覚えた！";
 				List<string> contexts = t13.Utility.ContextSlice(context, "\r\n\r\n");
 
 				//技の反映
-				playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).SkillSet(MonsterMenuManager.skillTradeSkillData_, monsterMenuManager.GetSkillCommandParts().GetSelectNumber());
+				playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).SkillSet(MonsterMenuManager.skillTradeSkillData_, monsterMenuManager.GetSkillCommandParts().SelectNumber());
 
 				//技の情報の反映
-				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(PlayerTrainerData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().GetSelectNumber()));
+				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(PlayerTrainerData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()));
 
 				//モンスターの技の名前の反映
 				for (int i = 0; i < monsterMenuManager.GetSkillCommandParts().GetCommandWindowTextsCount(); ++i) {
@@ -70,7 +70,7 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 
 				for (int i = 0; i < contexts.Count; ++i) {
 					//文字列の処理
-					eventMgr.EventTextSet(monsterMenuManager.GetNovelWindowParts().GetEventText(), contexts[i]);
+					eventMgr.EventTextSet(monsterMenuManager.GetNovelWindowParts().GetNovelWindowEventText(), contexts[i]);
 					eventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 					eventMgr.AllUpdateEventExecute(0.6f);
 
@@ -89,7 +89,7 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 				}
 
 				//ウィンドウの初期化
-				eventMgr.EventTextSet(monsterMenuManager.GetNovelWindowParts().GetEventText(), "");
+				eventMgr.EventTextSet(monsterMenuManager.GetNovelWindowParts().GetNovelWindowEventText(), "");
 				eventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				eventMgr.AllUpdateEventExecute();
 
@@ -106,20 +106,20 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 
 		if (sceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
-			if (monsterMenuManager.GetSkillActionCommandParts().CommandSelect(-1, new Vector3(0, 0.55f, 0))) {
+			if (monsterMenuManager.GetSkillActionCommandParts().CommandSelectUp(new Vector3(0, 0.55f, 0))) {
 				//SE
 				monsterMenuManager.GetInputSoundProvider().UpSelect();
 
-				nowSkillActionCommandExecuteStateProvider_.state_ = (MonsterMenuSceneSkillActionCommandExecute)monsterMenuManager.GetSkillActionCommandParts().GetSelectNumber()+1;
+				nowSkillActionCommandExecuteStateProvider_.state_ = (MonsterMenuSceneSkillActionCommandExecute)monsterMenuManager.GetSkillActionCommandParts().SelectNumber()+1;
 			}
 		}
 		else if (sceneMgr.inputProvider_.DownSelect()) {
 			//選択肢が動かせたら
-			if (monsterMenuManager.GetSkillActionCommandParts().CommandSelect(1, new Vector3(0, -0.55f, 0))) {
+			if (monsterMenuManager.GetSkillActionCommandParts().CommandSelectDown(new Vector3(0, -0.55f, 0))) {
 				//SE
 				monsterMenuManager.GetInputSoundProvider().DownSelect();
 
-				nowSkillActionCommandExecuteStateProvider_.state_ = (MonsterMenuSceneSkillActionCommandExecute)monsterMenuManager.GetSkillActionCommandParts().GetSelectNumber()+1;
+				nowSkillActionCommandExecuteStateProvider_.state_ = (MonsterMenuSceneSkillActionCommandExecute)monsterMenuManager.GetSkillActionCommandParts().SelectNumber()+1;
 			}
 		}
 		else if (sceneMgr.inputProvider_.RightSelect()) {

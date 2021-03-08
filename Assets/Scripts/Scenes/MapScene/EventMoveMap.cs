@@ -71,7 +71,7 @@ public class EventMoveMap : ObjectMoveMap {
 
 		for (int i = 0; i < contexts.Count; ++i) {
 			//文字列の処理
-			allEventMgr.EventTextSet(novelWindowParts.GetEventText(), contexts[i]);
+			allEventMgr.EventTextSet(novelWindowParts.GetNovelWindowEventText(), contexts[i]);
 			allEventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			allEventMgr.AllUpdateEventExecute(0.6f);
 
@@ -93,7 +93,7 @@ public class EventMoveMap : ObjectMoveMap {
 		}
 
 		//ウィンドウの初期化
-		allEventMgr.EventTextSet(novelWindowParts.GetEventText(), "");
+		allEventMgr.EventTextSet(novelWindowParts.GetNovelWindowEventText(), "");
 		allEventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 		allEventMgr.AllUpdateEventExecute();
 

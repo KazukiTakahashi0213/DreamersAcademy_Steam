@@ -13,20 +13,20 @@ public class MonsterMenuSceneNormalProcessMonsterActionSelect : BMonsterMenuScen
 
 		if (sceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
-			if (monsterMenuManager.GetMonsterActionCommandParts().CommandSelect(-1, new Vector3(0, 0.55f, 0))) {
+			if (monsterMenuManager.GetMonsterActionCommandParts().CommandSelectUp(new Vector3(0, 0.55f, 0))) {
 				//SE
 				monsterMenuManager.GetInputSoundProvider().UpSelect();
 
-				nowMonsterActionCommandExecuteStateProvider_.state_ = (MonsterNormalMenuSceneMonsterActionCommandExecute)monsterMenuManager.GetMonsterActionCommandParts().GetSelectNumber()+1;
+				nowMonsterActionCommandExecuteStateProvider_.state_ = (MonsterNormalMenuSceneMonsterActionCommandExecute)monsterMenuManager.GetMonsterActionCommandParts().SelectNumber()+1;
 			}
 		}
 		else if (sceneMgr.inputProvider_.DownSelect()) {
 			//選択肢が動かせたら
-			if (monsterMenuManager.GetMonsterActionCommandParts().CommandSelect(1, new Vector3(0, -0.55f, 0))) {
+			if (monsterMenuManager.GetMonsterActionCommandParts().CommandSelectDown(new Vector3(0, -0.55f, 0))) {
 				//SE
 				monsterMenuManager.GetInputSoundProvider().DownSelect();
 
-				nowMonsterActionCommandExecuteStateProvider_.state_ = (MonsterNormalMenuSceneMonsterActionCommandExecute)monsterMenuManager.GetMonsterActionCommandParts().GetSelectNumber()+1;
+				nowMonsterActionCommandExecuteStateProvider_.state_ = (MonsterNormalMenuSceneMonsterActionCommandExecute)monsterMenuManager.GetMonsterActionCommandParts().SelectNumber()+1;
 			}
 		}
 		else if (sceneMgr.inputProvider_.RightSelect()) {

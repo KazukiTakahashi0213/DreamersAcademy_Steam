@@ -2,42 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommandMonsterTrade : ICommandState {
-	public ICommandState DownSelect(BattleManager mgr) {
-		return this;
-	}
-	public ICommandState LeftSelect(BattleManager mgr) {
-		return this;
-	}
-	public ICommandState RightSelect(BattleManager mgr) {
-		//SE
-		mgr.GetInputSoundProvider().RightSelect();
-
-		//どくのダメージ処理
-		mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
-
-		mgr.CommandRightCursorMove();
-		return new CommandEscape();
-	}
-	public ICommandState UpSelect(BattleManager mgr) {
-		//SE
-		mgr.GetInputSoundProvider().UpSelect();
-
-		//どくのダメージ処理
-		mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
-
-		mgr.CommandUpCursorMove();
-		return new CommandAttack();
-	}
-
-	public IProcessState Execute(BattleManager mgr) {
+public class BattleSceneCommandExecuteMonsterTrade : BBattleSceneCommandExecute {
+	public override IProcessState Execute(BattleManager battleManager) {
 		AllEventManager eventMgr = AllEventManager.GetInstance();
 		AllSceneManager sceneMgr = AllSceneManager.GetInstance();
 
 		//SE
-		mgr.GetInputSoundProvider().SelectEnter();
+		battleManager.GetInputSoundProvider().SelectEnter();
 
-		mgr.InactiveUiCommand();
+		battleManager.InactiveUiCommand();
 
 		sceneMgr.inputProvider_ = new InactiveInputProvider();
 
@@ -54,6 +27,6 @@ public class CommandMonsterTrade : ICommandState {
 		MonsterMenuManager.SetProcessStateProvider(new MonsterMenuSceneBattleProcessStateProvider());
 		eventMgr.SceneChangeEventSet(SceneState.MonsterMenu, SceneChangeMode.Slide);
 
-		return mgr.nowProcessState();
+		return battleManager.nowProcessState();
 	}
 }

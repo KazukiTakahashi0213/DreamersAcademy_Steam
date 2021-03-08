@@ -22,7 +22,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 				--skillSelectNum_;
 
 				//一番上からスクロールさせようとしたら
-				if (bugMenuManager.GetCommandParts().GetSelectNumber() == 0) {
+				if (bugMenuManager.GetCommandParts().SelectNumber() == 0) {
 					//技の名前を更新する
 					for (int i = skillSelectNum_, j = 0; i < skillSelectNum_ + bugMenuManager.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
 						bugMenuManager.GetCommandParts().GetCommandWindowTexts(j).text = "　" + bugMenuManager.GetSkillTradeActiveSkills(i).skillName_;
@@ -43,7 +43,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 				}
 
 				//選択肢の処理
-				bugMenuManager.GetCommandParts().CommandSelect(-1, new Vector3(0, 1.0f, 0));
+				bugMenuManager.GetCommandParts().CommandSelectUp(new Vector3(0, 1.0f, 0));
 
 				//技の情報の反映
 				bugMenuManager.GetInfoFrameParts().SkillInfoReflect(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_));
@@ -58,7 +58,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 				++skillSelectNum_;
 
 				//一番下からスクロールさせようとしたら
-				if (bugMenuManager.GetCommandParts().GetSelectNumber() == bugMenuManager.GetCommandParts().GetCommandWindowTextsCount()-1) {
+				if (bugMenuManager.GetCommandParts().SelectNumber() == bugMenuManager.GetCommandParts().GetCommandWindowTextsCount()-1) {
 					//技の名前を更新する
 					for (int i = skillSelectNum_ - bugMenuManager.GetCommandParts().GetCommandWindowTextsCount() + 1, j = 0; i < skillSelectNum_ + 1; ++i) {
 						bugMenuManager.GetCommandParts().GetCommandWindowTexts(j).text = "　" + bugMenuManager.GetSkillTradeActiveSkills(i).skillName_;
@@ -79,7 +79,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 				}
 
 				//選択肢の処理
-				bugMenuManager.GetCommandParts().CommandSelect(1, new Vector3(0, -1.0f, 0));
+				bugMenuManager.GetCommandParts().CommandSelectDown(new Vector3(0, -1.0f, 0));
 
 				//技の情報の反映
 				bugMenuManager.GetInfoFrameParts().SkillInfoReflect(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_));

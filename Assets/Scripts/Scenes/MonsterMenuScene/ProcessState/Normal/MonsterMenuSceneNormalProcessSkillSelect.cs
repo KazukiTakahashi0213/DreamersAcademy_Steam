@@ -12,59 +12,59 @@ public class MonsterMenuSceneNormalProcessSkillSelect : BMonsterMenuSceneProcess
 
 		if (sceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
-			if (monsterMenuManager.GetSkillCommandParts().CommandSelect(-2, new Vector3(0, 1.72f, 0))) {
+			if (monsterMenuManager.GetSkillCommandParts().CommandSelectUp(new Vector3(0, 1.72f, 0))) {
 				//SE
 				monsterMenuManager.GetInputSoundProvider().UpSelect();
 
 				//技の情報の反映
-				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().GetSelectNumber()));
+				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()));
 			}
 		}
 		else if (sceneMgr.inputProvider_.DownSelect()) {
 			//選択肢が動かせたら
-			if (monsterMenuManager.GetSkillCommandParts().CommandSelect(2, new Vector3(0, -1.72f, 0))) {
+			if (monsterMenuManager.GetSkillCommandParts().CommandSelectDown(new Vector3(0, -1.72f, 0))) {
 				//SE
 				monsterMenuManager.GetInputSoundProvider().DownSelect();
 
 				//技の情報の反映
-				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().GetSelectNumber()));
+				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()));
 			}
 		}
 		else if (sceneMgr.inputProvider_.RightSelect()) {
 			//選択肢が動かせたら
-			if (monsterMenuManager.GetSkillCommandParts().CommandSelect(1, new Vector3(6.08f, 0, 0))) {
+			if (monsterMenuManager.GetSkillCommandParts().CommandSelectRight(new Vector3(6.08f, 0, 0))) {
 				//SE
 				monsterMenuManager.GetInputSoundProvider().RightSelect();
 
 				//技の情報の反映
-				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().GetSelectNumber()));
+				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()));
 			}
 		}
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 			//選択肢が動かせたら
-			if (monsterMenuManager.GetSkillCommandParts().CommandSelect(-1, new Vector3(-6.08f, 0, 0))) {
+			if (monsterMenuManager.GetSkillCommandParts().CommandSelectLeft(new Vector3(-6.08f, 0, 0))) {
 				//SE
 				monsterMenuManager.GetInputSoundProvider().LeftSelect();
 
 				//技の情報の反映
-				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().GetSelectNumber()));
+				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()));
 			}
 		}
 		else if (sceneMgr.inputProvider_.SelectEnter()) {
 			//None以外だったら
-			if (playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().GetSelectNumber()).skillNumber_ != (int)SkillDataNumber.None) {
+			if (playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()).skillNumber_ != (int)SkillDataNumber.None) {
 				//SE
 				monsterMenuManager.GetInputSoundProvider().SelectEnter();
 
 				//スワップ中
 				if (monsterMenuManager.swapActive_) {
 					//スワップ選択中のモンスターと選択中のモンスターが一緒ではなかったら
-					if (monsterMenuManager.swapSelectNumber_ != monsterMenuManager.GetSkillCommandParts().GetSelectNumber()) {
+					if (monsterMenuManager.swapSelectNumber_ != monsterMenuManager.GetSkillCommandParts().SelectNumber()) {
 						//スワップ処理
-						playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).SkillSwap(monsterMenuManager.GetSkillCommandParts().GetSelectNumber(), monsterMenuManager.swapSelectNumber_);
+						playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).SkillSwap(monsterMenuManager.GetSkillCommandParts().SelectNumber(), monsterMenuManager.swapSelectNumber_);
 
 						//技の情報の反映
-						monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(PlayerTrainerData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().GetSelectNumber()));
+						monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(PlayerTrainerData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()));
 
 						//モンスターの技の名前の反映
 						for (int i = 0; i < monsterMenuManager.GetSkillCommandParts().GetCommandWindowTextsCount(); ++i) {

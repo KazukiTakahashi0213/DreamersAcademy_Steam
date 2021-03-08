@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CommandSelectProcess : IProcessState {
+	private BattleSceneCommandExecuteProvider executeProvider_ = new BattleSceneCommandExecuteProvider(BattleSceneCommandExecuteState.Attack);
+
 	public IProcessState BackProcess() {
 		return this;
 	}
@@ -20,6 +22,8 @@ public class CommandSelectProcess : IProcessState {
 
 		//モンスターが交換されていたら
 		if (PlayerBattleData.GetInstance().changeMonsterActive_) {
+			executeProvider_.state_ = BattleSceneCommandExecuteState.Attack;
+
 			//モンスターが変更されていたら
 			if (PlayerBattleData.GetInstance().changeMonsterNumber_ > 0) {
 				//アイドル状態の停止
@@ -53,20 +57,19 @@ public class CommandSelectProcess : IProcessState {
 				eventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
 				eventMgr.AllUpdateEventExecute(0.4f);
 
-				eventMgr.UpdateGameObjectSet(mgr.GetCursorParts().GetEventGameObject());
-				eventMgr.UpdateGameObjectSet(mgr.GetNovelWindowParts().GetCommandParts().GetEventGameObject());
+				eventMgr.UpdateGameObjectSet(mgr.GetCommandCommandParts().GetEventGameObject());
 				eventMgr.UpdateGameObjectsActiveSetExecute(true);
 
 				//dpが100以上だったら
 				if (PlayerBattleData.GetInstance().dreamPoint_ >= 100) {
-					eventMgr.EventTextSet(mgr.GetNovelWindowParts().GetEventText()
+					eventMgr.EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText()
 						, "ゆめたちが　\n"
 						+ "きょうめいしている・・・");
 					eventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 					eventMgr.AllUpdateEventExecute();
 				}
 				else {
-					eventMgr.EventTextSet(mgr.GetNovelWindowParts().GetEventText(), PlayerBattleData.GetInstance().GetMonsterDatas(0).uniqueName_ + "は　どうする？");
+					eventMgr.EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), PlayerBattleData.GetInstance().GetMonsterDatas(0).uniqueName_ + "は　どうする？");
 					eventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 					eventMgr.AllUpdateEventExecute();
 				}
@@ -105,27 +108,62 @@ public class CommandSelectProcess : IProcessState {
 		}
 
 		if (sceneMgr.inputProvider_.UpSelect()) {
-			mgr.nowCommandState_ = mgr.nowCommandState_.UpSelect(mgr);
-			if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
+			//選択肢が動かせたら
+			if (mgr.GetCommandCommandParts().CommandSelectUp(new Vector3(0, 0.78f, 0))) {
+				//SE
+				mgr.GetInputSoundProvider().UpSelect();
+
+				executeProvider_.state_ = (BattleSceneCommandExecuteState)mgr.GetCommandCommandParts().SelectNumber()+1;
+
+				//どくのダメージ処理
+				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+			}
 		}
 		else if (sceneMgr.inputProvider_.DownSelect()) {
-			mgr.nowCommandState_ = mgr.nowCommandState_.DownSelect(mgr);
-			if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
+			//選択肢が動かせたら
+			if (mgr.GetCommandCommandParts().CommandSelectDown(new Vector3(0, -0.78f, 0))) {
+				//SE
+				mgr.GetInputSoundProvider().DownSelect();
+
+				executeProvider_.state_ = (BattleSceneCommandExecuteState)mgr.GetCommandCommandParts().SelectNumber()+1;
+
+				//どくのダメージ処理
+				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+			}
 		}
 		else if (sceneMgr.inputProvider_.RightSelect()) {
-			mgr.nowCommandState_ = mgr.nowCommandState_.RightSelect(mgr);
-			if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
+			//選択肢が動かせたら
+			if (mgr.GetCommandCommandParts().CommandSelectRight(new Vector3(4.0f, 0, 0))) {
+				//SE
+				mgr.GetInputSoundProvider().RightSelect();
+
+				executeProvider_.state_ = (BattleSceneCommandExecuteState)mgr.GetCommandCommandParts().SelectNumber()+1;
+
+				//どくのダメージ処理
+				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+			}
 		}
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
-			mgr.nowCommandState_ = mgr.nowCommandState_.LeftSelect(mgr);
-			if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
+			//選択肢が動かせたら
+			if (mgr.GetCommandCommandParts().CommandSelectLeft(new Vector3(-4.0f, 0, 0))) {
+				//SE
+				mgr.GetInputSoundProvider().LeftSelect();
+
+				executeProvider_.state_ = (BattleSceneCommandExecuteState)mgr.GetCommandCommandParts().SelectNumber()+1;
+
+				//どくのダメージ処理
+				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+			}
 		}
 		else if (sceneMgr.inputProvider_.SelectEnter()) {
-			return mgr.nowCommandState_.Execute(mgr);
+			return executeProvider_.Execute(mgr);
 		}
 		else if (sceneMgr.inputProvider_.SelectNovelWindowActive()) {
 			mgr.GetNovelWindowPartsActiveState().state_ = mgr.GetNovelWindowPartsActiveState().Next(mgr);
 		}
+
+		//どくで倒れたら
+		if (mgr.PoisonDamageDown()) return new CommandEventExecuteProcess();
 
 		return this;
 	}

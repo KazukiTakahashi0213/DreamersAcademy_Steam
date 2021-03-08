@@ -100,21 +100,24 @@ public class MonsterData : IMonsterData {
 	public float ElementSimillarChecker(ElementTypeState checkElementType) {
 		return elementSimillar_[(int)tribesData_.firstElement_.state_, (int)checkElementType.state_] * elementSimillar_[(int)tribesData_.secondElement_.state_, (int)checkElementType.state_];
 	}
+	/// <summary>
+	/// 3:効果抜群 2:効果普通 1:効果今一つ 0:効果無し
+	/// </summary>
 	public int ElementSimillarCheckerForValue(ElementTypeState checkElementType) {
 		float checkResult = ElementSimillarChecker(checkElementType);
 
 		if (checkResult > 1.0f) {
-			return 0;
+			return 3;
 		}
 		else if (checkResult < 1.0f
 			&& checkResult > 0) {
 			return 1;
 		}
 		else if (checkResult < 0.1f) {
-			return 2;
+			return 0;
 		}
 
-		return 3;
+		return 2;
 	}
 
 	//技の習得関係
