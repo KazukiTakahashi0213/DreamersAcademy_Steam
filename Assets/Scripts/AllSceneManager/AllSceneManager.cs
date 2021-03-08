@@ -14,6 +14,12 @@ public enum SceneState {
 	Max
 }
 
+[System.Serializable]
+public class SerializeMonsterData {
+	[SerializeField] public MonsterTribesDataNumber monsterTribesDataNumber_ = MonsterTribesDataNumber.None;
+	[SerializeField] public List<SkillDataNumber> skillDataNumbers_ = new List<SkillDataNumber>();
+}
+
 public class AllSceneManager : MonoBehaviour {
 	//EntryPoint
 	public AllSceneManager() {
@@ -22,6 +28,34 @@ public class AllSceneManager : MonoBehaviour {
 
 	//init
 	void Start() {
+		//プレイヤーのバトルの手持ちの反映
+		for (int i = 0; i < startPlayerMonsterDatas_.Count; ++i) {
+			//モンスターの生成
+			MonsterData monsterData = new MonsterData(new MonsterTribesData(startPlayerMonsterDatas_[i].monsterTribesDataNumber_), 0, 50);
+
+			//技の習得
+			for(int j = 0;j < startPlayerMonsterDatas_[i].skillDataNumbers_.Count; ++j) {
+				monsterData.SkillAdd(new SkillData(startPlayerMonsterDatas_[i].skillDataNumbers_[j]));
+			}
+
+			//モンスターの追加
+			PlayerTrainerData.GetInstance().MonsterAdd(monsterData);
+		}
+
+		//エネミーのバトルの手持ちの反映
+		for (int i = 0; i < startEnemyMonsterDatas_.Count; ++i) {
+			//モンスターの生成
+			MonsterData monsterData = new MonsterData(new MonsterTribesData(startEnemyMonsterDatas_[i].monsterTribesDataNumber_), 0, 50);
+
+			//技の習得
+			for (int j = 0; j < startEnemyMonsterDatas_[i].skillDataNumbers_.Count; ++j) {
+				monsterData.SkillAdd(new SkillData(startEnemyMonsterDatas_[i].skillDataNumbers_[j]));
+			}
+
+			//モンスターの追加
+			EnemyTrainerData.GetInstance().MonsterAdd(monsterData);
+		}
+
 		//各シーンを生成し、非表示にする
 		for (int i = 0; i < (int)SceneState.Max; ++i) {
 			GameObject load = Resources.Load("Prefabs/Scenes/" + sceneStateString[i]) as GameObject;
@@ -57,10 +91,14 @@ public class AllSceneManager : MonoBehaviour {
 		}
 	}
 
-	[SerializeField] AudioParts publicAudioParts_ = null;
-	[SerializeField] ScreenParts publicFrontScreen_ = null;
-	
+	[SerializeField] private AudioParts publicAudioParts_ = null;
+	[SerializeField] private ScreenParts publicFrontScreen_ = null;
+
 	[SerializeField] private SceneState nowSceneState_ = SceneState.Battle;
+
+	[SerializeField, Header("バトルのプレイヤーの手持ちモンスター")] private List<SerializeMonsterData> startPlayerMonsterDatas_ = new List<SerializeMonsterData>();
+
+	[SerializeField, Header("バトルのエネミーの手持ちモンスター")] private List<SerializeMonsterData> startEnemyMonsterDatas_ = new List<SerializeMonsterData>();
 
 	public AudioParts GetPublicAudioParts() { return publicAudioParts_; }
 	public ScreenParts GetPublicFrontScreen() { return publicFrontScreen_; }

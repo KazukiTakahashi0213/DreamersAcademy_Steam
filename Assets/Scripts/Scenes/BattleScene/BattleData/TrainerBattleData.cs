@@ -6,7 +6,7 @@ public class TrainerBattleData {
 	//共通のdp
 	public int dreamPoint_ = 0;
 
-	virtual public void monsterAdd(IMonsterData addMonster) { }
+	virtual public void MonsterAdd(IMonsterData addMonster) { }
 
 	virtual public IMonsterData GetMonsterDatas(int num) { return null; }
 	virtual public int GetMonsterDatasLength() { return -1; }

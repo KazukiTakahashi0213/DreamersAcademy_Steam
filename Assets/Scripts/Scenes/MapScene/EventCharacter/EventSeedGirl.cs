@@ -16,15 +16,10 @@ public class EventSeedGirl : MonoBehaviour {
 	}
 
 	private static void BattleStart(EventMoveMap eventMoveMap, MapManager mapManager) {
-		PlayerBattleData.ReleaseInstance();
-		EnemyBattleData.ReleaseInstance();
-
 		AllEventManager allEventMgr = AllEventManager.GetInstance();
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
@@ -39,7 +34,7 @@ public class EventSeedGirl : MonoBehaviour {
 			md.SkillAdd(new SkillData(SkillDataNumber.Tetunokokoro));
 			md.SkillAdd(new SkillData(SkillDataNumber.Nemurinokiri));
 			//エネミーの手持ちに追加
-			enemyBattleData.monsterAdd(md);
+			enemyTrainerData.MonsterAdd(md);
 		}
 		{
 			//データの生成
@@ -50,7 +45,7 @@ public class EventSeedGirl : MonoBehaviour {
 			md.SkillAdd(new SkillData(SkillDataNumber.Musinokona));
 			md.SkillAdd(new SkillData(SkillDataNumber.Sinkousin));
 			//エネミーの手持ちに追加
-			enemyBattleData.monsterAdd(md);
+			enemyTrainerData.MonsterAdd(md);
 		}
 		{
 			//データの生成
@@ -61,7 +56,7 @@ public class EventSeedGirl : MonoBehaviour {
 			md.SkillAdd(new SkillData(SkillDataNumber.Dokunokiri));
 			md.SkillAdd(new SkillData(SkillDataNumber.Suiryuuuchi));
 			//エネミーの手持ちに追加
-			enemyBattleData.monsterAdd(md);
+			enemyTrainerData.MonsterAdd(md);
 		}
 
 		//エネミーの設定
@@ -80,14 +75,10 @@ public class EventSeedGirl : MonoBehaviour {
 		EventMoveMap.BattleEvent();
 	}
 	private static void BattleVictory(EventMoveMap eventMoveMap, MapManager mapManager) {
-		EnemyBattleData.ReleaseInstance();
-
 		AllEventManager allEventMgr = AllEventManager.GetInstance();
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
@@ -128,7 +119,7 @@ public class EventSeedGirl : MonoBehaviour {
 			md.SkillAdd(new SkillData(SkillDataNumber.Tetunokokoro));
 			md.SkillAdd(new SkillData(SkillDataNumber.Nemurinokiri));
 			//エネミーの手持ちに追加
-			enemyBattleData.monsterAdd(md);
+			enemyTrainerData.MonsterAdd(md);
 		}
 		{
 			//データの生成
@@ -139,7 +130,7 @@ public class EventSeedGirl : MonoBehaviour {
 			md.SkillAdd(new SkillData(SkillDataNumber.Musinokona));
 			md.SkillAdd(new SkillData(SkillDataNumber.Sinkousin));
 			//エネミーの手持ちに追加
-			enemyBattleData.monsterAdd(md);
+			enemyTrainerData.MonsterAdd(md);
 		}
 		{
 			//データの生成
@@ -150,7 +141,7 @@ public class EventSeedGirl : MonoBehaviour {
 			md.SkillAdd(new SkillData(SkillDataNumber.Hyakutonpuresu));
 			md.SkillAdd(new SkillData(SkillDataNumber.Baasutoappu));
 			//エネミーの手持ちに追加
-			enemyBattleData.monsterAdd(md);
+			enemyTrainerData.MonsterAdd(md);
 		}
 
 		//技の取得
@@ -172,8 +163,6 @@ public class EventSeedGirl : MonoBehaviour {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
@@ -222,8 +211,6 @@ public class EventSeedGirl : MonoBehaviour {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
@@ -242,8 +229,6 @@ public class EventSeedGirl : MonoBehaviour {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
@@ -259,8 +244,6 @@ public class EventSeedGirl : MonoBehaviour {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;

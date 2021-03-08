@@ -13,15 +13,10 @@ public class EventSeedFinalDocter : MonoBehaviour {
 	}
 
 	private static void BattleStart(EventMoveMap eventMoveMap, MapManager mapManager) {
-		PlayerBattleData.ReleaseInstance();
-		EnemyBattleData.ReleaseInstance();
-
 		AllEventManager allEventMgr = AllEventManager.GetInstance();
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
@@ -36,7 +31,7 @@ public class EventSeedFinalDocter : MonoBehaviour {
 			md.SkillAdd(new SkillData(SkillDataNumber.Midaresasi));
 			md.SkillAdd(new SkillData(SkillDataNumber.Aiansoodo));
 			//エネミーの手持ちに追加
-			enemyBattleData.monsterAdd(md);
+			enemyTrainerData.MonsterAdd(md);
 		}
 		{
 			//データの生成
@@ -47,7 +42,7 @@ public class EventSeedFinalDocter : MonoBehaviour {
 			md.SkillAdd(new SkillData(SkillDataNumber.Reerugan));
 			md.SkillAdd(new SkillData(SkillDataNumber.Usikoku));
 			//エネミーの手持ちに追加
-			enemyBattleData.monsterAdd(md);
+			enemyTrainerData.MonsterAdd(md);
 		}
 		{
 			//データの生成
@@ -58,7 +53,7 @@ public class EventSeedFinalDocter : MonoBehaviour {
 			md.SkillAdd(new SkillData(SkillDataNumber.Tetunokokoro));
 			md.SkillAdd(new SkillData(SkillDataNumber.Sinkousin));
 			//エネミーの手持ちに追加
-			enemyBattleData.monsterAdd(md);
+			enemyTrainerData.MonsterAdd(md);
 		}
 
 		//エネミーの設定
@@ -82,8 +77,6 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
@@ -127,8 +120,6 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;

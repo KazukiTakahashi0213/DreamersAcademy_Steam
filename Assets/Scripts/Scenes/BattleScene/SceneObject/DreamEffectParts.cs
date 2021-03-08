@@ -67,7 +67,7 @@ public class DreamEffectParts : MonoBehaviour {
 		}
 
 		//ウェイト
-		eventManager.EventWaitSet(1.0f);
+		eventManager.EventWaitSet(0.8f);
 
 		//モンスターの退場
 		eventManager.UpdateGameObjectSet(monsterUpdateObject_, monsterEndPos);

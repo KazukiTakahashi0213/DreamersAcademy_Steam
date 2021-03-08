@@ -29,7 +29,7 @@ public class MapSceneProcessTradeMonsterSelect : BMapSceneProcessState {
 		else if (allSceneMgr.inputProvider_.SelectEnter()) {
 			if (mapManager.GetTradeMonsterSelectCommandParts().SelectNumber() != mapManager.GetTradeMonsterSelectCommandParts().GetCommandWindowTextsCount() - 1) {
 				//追加するモンスターのデータ
-				IMonsterData addMonster = EnemyBattleData.GetInstance().GetMonsterDatas(mapManager.GetTradeMonsterSelectCommandParts().SelectNumber());
+				IMonsterData addMonster = EnemyTrainerData.GetInstance().GetMonsterDatas(mapManager.GetTradeMonsterSelectCommandParts().SelectNumber());
 
 				//モンスターの取得
 				PlayerTrainerData.GetInstance().MonsterAdd(addMonster);
@@ -47,8 +47,8 @@ public class MapSceneProcessTradeMonsterSelect : BMapSceneProcessState {
 				}
 			}
 
-			//エネミーのバトルデータの初期化
-			EnemyBattleData.ReleaseInstance();
+			//エネミーのデータの初期化
+			EnemyTrainerData.ReleaseInstance();
 
 			//選択肢の初期化
 			mapManager.GetTradeMonsterSelectCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));

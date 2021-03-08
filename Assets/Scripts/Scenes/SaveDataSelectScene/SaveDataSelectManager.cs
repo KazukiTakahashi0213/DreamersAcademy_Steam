@@ -66,6 +66,10 @@ public class SaveDataSelectManager : MonoBehaviour, ISceneManager {
 			//SE
 			inputSoundProvider_.SelectEnter();
 
+			//データの初期化
+			PlayerTrainerData.ReleaseInstance();
+			EnemyTrainerData.ReleaseInstance();
+
 			if (_select_num == SELECT_STATUS.START)
 			{
 				Debug.Log("はじめから");

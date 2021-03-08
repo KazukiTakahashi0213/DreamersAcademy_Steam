@@ -136,8 +136,6 @@ public class EventMoveMap : ObjectMoveMap {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
 		EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-		PlayerBattleData playerBattleData = PlayerBattleData.GetInstance();
-		EnemyBattleData enemyBattleData = EnemyBattleData.GetInstance();
 
 		//白
 		allEventMgr.EventSpriteRendererSet(
@@ -197,11 +195,6 @@ public class EventMoveMap : ObjectMoveMap {
 			, new Color(0, 0, 0, 1.0f));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
 		allEventMgr.AllUpdateEventExecute();
-
-		//プレイヤーのモンスター設定
-		playerBattleData.monsterAdd(playerTrainerData.GetMonsterDatas(0));
-		playerBattleData.monsterAdd(playerTrainerData.GetMonsterDatas(1));
-		playerBattleData.monsterAdd(playerTrainerData.GetMonsterDatas(2));
 
 		//シーンの切り替え
 		allEventMgr.SceneChangeEventSet(SceneState.Battle, SceneChangeMode.Slide);

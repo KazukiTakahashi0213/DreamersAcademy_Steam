@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBattleData : TrainerBattleData {
-	public override void monsterAdd(IMonsterData addMonster) {
+	public override void MonsterAdd(IMonsterData addMonster) {
 		if (haveMonsterSize_ == MONSTER_MAX_SIZE) return;
 
 		monsterDatas_[haveMonsterSize_] = addMonster;
@@ -88,7 +88,7 @@ public class PlayerBattleData : TrainerBattleData {
 			//文字列の処理
 			AllEventManager.GetInstance().EventTextSet(
 				manager.GetNovelWindowParts().GetNovelWindowEventText()
-				, EnemyTrainerData.GetInstance().job() + "の　" + EnemyTrainerData.GetInstance().name() + "\n"
+				, EnemyTrainerData.GetInstance().GetJob() + "の　" + EnemyTrainerData.GetInstance().GetName() + "\n"
 				+ "との　しょうぶに　まけた");
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(manager.GetEventContextUpdateTime());
@@ -119,6 +119,11 @@ public class PlayerBattleData : TrainerBattleData {
 			//負けの設定
 			PlayerTrainerData.GetInstance().battleEnd_ = true;
 			PlayerTrainerData.GetInstance().battleResult_ = false;
+
+			//データの初期化
+			PlayerBattleData.ReleaseInstance();
+			EnemyTrainerData.ReleaseInstance();
+			EnemyBattleData.ReleaseInstance();
 
 			return;
 		}

@@ -49,6 +49,11 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 		//エネミーモンスターの読み込み
 		{
+			//エネミーのモンスターの読み込み
+			for(int i = 0;i < EnemyTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
+				EnemyBattleData.GetInstance().MonsterAdd(EnemyTrainerData.GetInstance().GetMonsterDatas(i));
+			}
+
 			//エネミーの先頭のモンスターの取得
 			IMonsterData md = EnemyBattleData.GetInstance().GetMonsterDatas(0);
 
@@ -61,7 +66,12 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 		//プレイヤーモンスターの読み込み
 		{
-			//エネミーの先頭のモンスターの取得
+			//プレイヤーのモンスターの読み込み
+			for (int i = 0; i < PlayerTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
+				PlayerBattleData.GetInstance().MonsterAdd(PlayerTrainerData.GetInstance().GetMonsterDatas(i));
+			}
+
+			//プレイヤーの先頭のモンスターの取得
 			IMonsterData md = PlayerBattleData.GetInstance().GetMonsterDatas(0);
 
 			//画像の設定
@@ -649,7 +659,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		{
 			//文字列の設定
 			EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-			string context = enemyTrainerData.job() + "の　" + enemyTrainerData.name() + "が\nしょうぶを　しかけてきた！";
+			string context = enemyTrainerData.GetJob() + "の　" + enemyTrainerData.GetName() + "が\nしょうぶを　しかけてきた！";
 
 			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetNovelWindowEventText(), context);
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
@@ -673,7 +683,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			//文字列の設定
 			string enemyFirstMonsterName = EnemyBattleData.GetInstance().GetMonsterDatas(0).tribesData_.monsterName_;
 			EnemyTrainerData enemyTrainerData = EnemyTrainerData.GetInstance();
-			string context = enemyTrainerData.job() + "の　" + enemyTrainerData.name() + "は\n" + enemyFirstMonsterName + "を　くりだした！";
+			string context = enemyTrainerData.GetJob() + "の　" + enemyTrainerData.GetName() + "は\n" + enemyFirstMonsterName + "を　くりだした！";
 
 			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetNovelWindowEventText(), context);
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
