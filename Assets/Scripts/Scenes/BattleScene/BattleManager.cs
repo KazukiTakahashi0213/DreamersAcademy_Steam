@@ -493,10 +493,10 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	public int playerSelectSkillNumber_ { get; set; }
 	public int enemySelectSkillNumber_ { get; set; }
 
-	private const float eventContextUpdateTime_ = 0.4f;
-	private const float eventWaitTime_ = 0.8f;
-	public float GetEventContextUpdateTime() { return eventContextUpdateTime_; }
-	public float GetEventWaitTime() { return eventWaitTime_; }
+	[SerializeField] private float eventContextUpdateTime_ = 0.4f;
+	[SerializeField] private float eventWaitTime_ = 0.8f;
+	public float GetEventContextUpdateTime() { return eventContextUpdateTime_ * AllSceneManager.GetInstance().GetBattleEffectSpeed(); }
+	public float GetEventWaitTime() { return eventWaitTime_ * AllSceneManager.GetInstance().GetBattleEffectSpeed(); }
 
 	public void PlayerEnemyStatusInfoPartsDPEffect() {
 		for (int i = 0; i < 2; ++i) {

@@ -226,7 +226,52 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: nowSceneState_
-      value: 0
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
+      propertyPath: battleEffectSpeed_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
+      propertyPath: startEnemyMonsterDatas_.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
+      propertyPath: startPlayerMonsterDatas_.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
+      propertyPath: startEnemyMonsterDatas_.Array.data[0].monsterTribesDataNumber_
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
+      propertyPath: startPlayerMonsterDatas_.Array.data[0].monsterTribesDataNumber_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
+      propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNumbers_.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
+      propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNumbers_.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
+      propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNumbers_.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
+      propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNumbers_.Array.data[0]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7c49514c66393243ac2269e57de50e3, type: 3}

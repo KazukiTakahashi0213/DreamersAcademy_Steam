@@ -93,15 +93,17 @@ public class AllSceneManager : MonoBehaviour {
 
 	[SerializeField] private AudioParts publicAudioParts_ = null;
 	[SerializeField] private ScreenParts publicFrontScreen_ = null;
+	public AudioParts GetPublicAudioParts() { return publicAudioParts_; }
+	public ScreenParts GetPublicFrontScreen() { return publicFrontScreen_; }
 
 	[SerializeField] private SceneState nowSceneState_ = SceneState.Battle;
+
+	[SerializeField, Header("バトルのシーンの演出の速度(０～１)")] private float battleEffectSpeed_ = 1.0f;
+	public float GetBattleEffectSpeed() { return battleEffectSpeed_; }
 
 	[SerializeField, Header("バトルのプレイヤーの手持ちモンスター")] private List<SerializeMonsterData> startPlayerMonsterDatas_ = new List<SerializeMonsterData>();
 
 	[SerializeField, Header("バトルのエネミーの手持ちモンスター")] private List<SerializeMonsterData> startEnemyMonsterDatas_ = new List<SerializeMonsterData>();
-
-	public AudioParts GetPublicAudioParts() { return publicAudioParts_; }
-	public ScreenParts GetPublicFrontScreen() { return publicFrontScreen_; }
 
 	private string[] sceneStateString = new string[(int)SceneState.Max] {
 		"TitleScene",
