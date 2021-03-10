@@ -7,8 +7,6 @@ public enum AddParameterRank {
 	 None
 	,Attack
 	,Defense
-	,SpecialAttack
-	,SpecialDefense
 	,Speed
 	,AvoidRate
 	,HitRate
@@ -49,22 +47,6 @@ public class AddParameterRankState {
 			+ "ぼうぎょが　" + RankStringGenerate(mine.addParameterRank_);
 	}
 
-	//SpecialAttack
-	static private string SpecialAttackAddParameterExecute(AddParameterRankState mine, IMonsterData monsterData) {
-		monsterData.battleData_.SpecialAttackParameterRankAdd(mine.addParameterRank_);
-
-		return monsterData.uniqueName_ + "の\n"
-			+ "とくこうが　" + RankStringGenerate(mine.addParameterRank_);
-	}
-
-	//SpecialDefense
-	static private string SpecialDefenseAddParameterExecute(AddParameterRankState mine, IMonsterData monsterData) {
-		monsterData.battleData_.SpecialDefenseParameterRankAdd(mine.addParameterRank_);
-
-		return monsterData.uniqueName_ + "の\n"
-			+ "とくぼうが　" + RankStringGenerate(mine.addParameterRank_);
-	}
-
 	//Speed
 	static private string SpeedAddParameterExecute(AddParameterRankState mine, IMonsterData monsterData) {
 		monsterData.battleData_.SpeedParameterRankAdd(mine.addParameterRank_);
@@ -94,8 +76,6 @@ public class AddParameterRankState {
 		NoneAddParameterExecute,
 		AttackAddParameterExecute,
 		DefenseAddParameterExecute,
-		SpecialAttackAddParameterExecute,
-		SpecialDefenseAddParameterExecute,
 		SpeedAddParameterExecute,
 		AvoidRateAddParameterExecute,
 		HitRateAddParameterExecute

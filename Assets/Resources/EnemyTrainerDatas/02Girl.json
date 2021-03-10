@@ -1,0 +1,14 @@
+﻿{
+		"trainerName_": "あき",
+		"jobName_":			"アイドル",
+		"texName_":			"Girl",
+		
+		"attackRate_":  "50",
+		"tradeRate_":   "50",
+
+		"monsterDatas_": [
+			{"monsterName_": "バウポリス", "skillNames_": ["ファイアブレード", "すいめんぎり", "グローツリー", "てんへのひかり"]},
+			{"monsterName_": "フリルマ", "skillNames_": ["ファイアブレード", "すいめんぎり", "グローツリー", "てんへのひかり"]},
+			{"monsterName_": "マイコン", "skillNames_": ["ファイアブレード", "すいめんぎり", "グローツリー", "てんへのひかり"]}
+		]
+}

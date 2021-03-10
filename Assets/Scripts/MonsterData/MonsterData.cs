@@ -41,8 +41,6 @@ public class MonsterData : IMonsterData {
 	private int uniqueHitPoint_ = 0;
 	private int uniqueAttack_ = 0;
 	private int uniqueDefense_ = 0;
-	private int uniqueSpecialAttack_ = 0;
-	private int uniqueSpecialDefense_ = 0;
 	private int uniqueSpeed_ = 0;
 
 	//バトルで使用するデータ
@@ -52,8 +50,6 @@ public class MonsterData : IMonsterData {
 	public int RealHitPoint() { return ((tribesData_.tribesHitPoint_ * 2 + (uniqueHitPoint_ / 4)) * level_ / 100) + level_ + 10; }
 	public int RealAttack() { return (int)((tribesData_.tribesAttack_ + (uniqueAttack_ / 4)) * RealPowerUp()); }
 	public int RealDefense() { return (int)((tribesData_.tribesDefense_ + (uniqueDefense_ / 4)) * RealPowerUp()); }
-	public int RealSpecialAttack() { return (int)((tribesData_.tribesSpecialAttack_ + (uniqueSpecialAttack_ / 4)) * RealPowerUp()); }
-	public int RealSpecialDefense() { return (int)((tribesData_.tribesSpecialDefense_ + (uniqueSpecialDefense_ / 4)) * RealPowerUp()); }
 	public int RealSpeed() { return (int)((tribesData_.tribesSpeed_ + (uniqueSpeed_ / 4)) * RealPowerUp()); }
 	private float RealPowerUp() {
 		//もしヒーロー状態だったら
@@ -88,14 +84,12 @@ public class MonsterData : IMonsterData {
 
 	//タイプ相性
 	static private float[,] elementSimillar_ = new float[(int)ElementType.Max, (int)ElementType.Max] {
-		{ 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f },//None
-		{ 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f },//Normal
-		{ 1.0f, 1.0f, 1.0f, 2.0f, 0.5f, 0.5f, 1.0f, 1.0f },//Fire
-		{ 1.0f, 1.0f, 0.5f, 1.0f, 2.0f, 1.0f, 0.5f, 1.0f },//Water
-		{ 1.0f, 1.0f, 2.0f, 0.5f, 1.0f, 2.0f, 1.0f, 1.0f },//Tree
-		{ 1.0f, 1.0f, 2.0f, 1.0f, 0.5f, 1.0f, 2.0f, 1.0f },//Insect
-		{ 1.0f, 1.0f, 2.0f, 1.0f, 0.5f, 0.5f, 0.5f, 1.0f },//Steel
-		{ 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 2.0f },//Ghost
+		  { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f }//None
+		, { 1.0f, 1.0f, 2.0f, 0.5f, 1.0f, 1.0f }//Fire
+		, { 1.0f, 0.5f, 1.0f, 2.0f, 1.0f, 1.0f }//Water
+		, { 1.0f, 2.0f, 0.5f, 1.0f, 1.0f, 1.0f }//Tree
+		, { 1.0f, 1.0f, 1.0f, 1.0f, 0.5f, 2.0f }//Holy
+		, { 1.0f, 1.0f, 1.0f, 1.0f, 2.0f, 0.5f }//Dark
 	};
 	public float ElementSimillarChecker(ElementTypeState checkElementType) {
 		return elementSimillar_[(int)tribesData_.firstElement_.state_, (int)checkElementType.state_] * elementSimillar_[(int)tribesData_.secondElement_.state_, (int)checkElementType.state_];
@@ -165,9 +159,6 @@ public class MonsterData : IMonsterData {
 			if (ea.state_ == EffectAttackType.Normal) {
 				realMonsterAttack = (int)(attackMonster.RealAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
 			}
-			else {
-				realMonsterAttack = (int)(attackMonster.RealSpecialAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
-			}
 		}
 
 		//敵モンスターの最終防御力
@@ -175,9 +166,6 @@ public class MonsterData : IMonsterData {
 		{
 			if (ea.state_ == EffectAttackType.Normal) {
 				realMonsterDefense = (int)(defenseMonster.RealDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
-			}
-			else {
-				realMonsterDefense = (int)(defenseMonster.RealSpecialDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
 			}
 		}
 
@@ -218,9 +206,6 @@ public class MonsterData : IMonsterData {
 			if (ea.state_ == EffectAttackType.Normal) {
 				realMonsterAttack = (int)(attackMonster.RealAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
 			}
-			else {
-				realMonsterAttack = (int)(attackMonster.RealSpecialAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
-			}
 		}
 
 		//敵モンスターの最終防御力
@@ -228,9 +213,6 @@ public class MonsterData : IMonsterData {
 		{
 			if (ea.state_ == EffectAttackType.Normal) {
 				realMonsterDefense = (int)(defenseMonster.RealDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
-			}
-			else {
-				realMonsterDefense = (int)(defenseMonster.RealSpecialDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
 			}
 		}
 

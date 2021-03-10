@@ -21,43 +21,8 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
-		//エネミーのモンスター設定
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Bauporisu), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Faiasoodo));
-			md.SkillAdd(new SkillData(SkillDataNumber.Suiryuuuchi));
-			md.SkillAdd(new SkillData(SkillDataNumber.Midaresasi));
-			md.SkillAdd(new SkillData(SkillDataNumber.Aiansoodo));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Furiruma), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Tainetuhakka));
-			md.SkillAdd(new SkillData(SkillDataNumber.Taihuun));
-			md.SkillAdd(new SkillData(SkillDataNumber.Reerugan));
-			md.SkillAdd(new SkillData(SkillDataNumber.Usikoku));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Bakutaa), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Honoonokiri));
-			md.SkillAdd(new SkillData(SkillDataNumber.Dokunokiri));
-			md.SkillAdd(new SkillData(SkillDataNumber.Tetunokokoro));
-			md.SkillAdd(new SkillData(SkillDataNumber.Sinkousin));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-
 		//エネミーの設定
-		enemyTrainerData.SetTrainerData("はかせ", "ヴィクター", ResourcesGraphicsLoader.GetInstance().GetGraphics("Enemy/FinalVicter"));
+		enemyTrainerData.SetTrainerData(ResourcesEnemyTrainerDatasLoader.GetInstance().GetEnemyTrainerDatas(5));
 
 		//ノベル処理
 		{

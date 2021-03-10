@@ -4,12 +4,10 @@
 		"tribesHitPoint_":				"160",
 		"tribesAttack_":					"180",
 		"tribesDefense_":					"140",
-		"tribesSpecialAttack_":		"50",
-		"tribesSpecialDefense_":	"50",
 		"tribesSpeed_":						"20",
 
-		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
-		"firstElement_":					"6",
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
+		"firstElement_":					"5",
 		"secondElement_":					"0",
 
 		"texName_":						  	"Naitobea"

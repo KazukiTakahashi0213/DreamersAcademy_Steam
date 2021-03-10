@@ -17,7 +17,7 @@ public enum SceneState {
 [System.Serializable]
 public class SerializeMonsterData {
 	[SerializeField] public MonsterTribesDataNumber monsterTribesDataNumber_ = MonsterTribesDataNumber.None;
-	[SerializeField] public List<SkillDataNumber> skillDataNumbers_ = new List<SkillDataNumber>();
+	[SerializeField] public List<string> skillDataNames_ = new List<string>();
 }
 
 public class AllSceneManager : MonoBehaviour {
@@ -34,8 +34,8 @@ public class AllSceneManager : MonoBehaviour {
 			MonsterData monsterData = new MonsterData(new MonsterTribesData(startPlayerMonsterDatas_[i].monsterTribesDataNumber_), 0, 50);
 
 			//技の習得
-			for(int j = 0;j < startPlayerMonsterDatas_[i].skillDataNumbers_.Count; ++j) {
-				monsterData.SkillAdd(new SkillData(startPlayerMonsterDatas_[i].skillDataNumbers_[j]));
+			for(int j = 0;j < startPlayerMonsterDatas_[i].skillDataNames_.Count; ++j) {
+				monsterData.SkillAdd(new SkillData(startPlayerMonsterDatas_[i].skillDataNames_[j]));
 			}
 
 			//モンスターの追加
@@ -48,8 +48,8 @@ public class AllSceneManager : MonoBehaviour {
 			MonsterData monsterData = new MonsterData(new MonsterTribesData(startEnemyMonsterDatas_[i].monsterTribesDataNumber_), 0, 50);
 
 			//技の習得
-			for (int j = 0; j < startEnemyMonsterDatas_[i].skillDataNumbers_.Count; ++j) {
-				monsterData.SkillAdd(new SkillData(startEnemyMonsterDatas_[i].skillDataNumbers_[j]));
+			for (int j = 0; j < startEnemyMonsterDatas_[i].skillDataNames_.Count; ++j) {
+				monsterData.SkillAdd(new SkillData(startEnemyMonsterDatas_[i].skillDataNames_[j]));
 			}
 
 			//モンスターの追加

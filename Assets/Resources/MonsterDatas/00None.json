@@ -4,11 +4,9 @@
 		"tribesHitPoint_":				"1",
 		"tribesAttack_":					"1",
 		"tribesDefense_":					"1",
-		"tribesSpecialAttack_":		"1",
-		"tribesSpecialDefense_":	"1",
 		"tribesSpeed_":						"1",
 
-		"//ElementType": ["None","Normal","Fire","Water","Tree"],
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
 		"firstElement_":					"1",
 		"secondElement_":					"0",
 

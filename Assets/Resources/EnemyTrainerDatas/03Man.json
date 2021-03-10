@@ -1,0 +1,14 @@
+﻿{
+		"trainerName_": "しょうた",
+		"jobName_":			"がくせい",
+		"texName_":			"Man",
+		
+		"attackRate_":  "0",
+		"tradeRate_":   "100",
+
+		"monsterDatas_": [
+			{"monsterName_": "バウポリス", "skillNames_": ["ファイアブレード", "すいめんぎり", "グローツリー", "てんへのひかり"]},
+			{"monsterName_": "フリルマ", "skillNames_": ["ファイアブレード", "すいめんぎり", "グローツリー", "てんへのひかり"]},
+			{"monsterName_": "マイコン", "skillNames_": ["ファイアブレード", "すいめんぎり", "グローツリー", "てんへのひかり"]}
+		]
+}

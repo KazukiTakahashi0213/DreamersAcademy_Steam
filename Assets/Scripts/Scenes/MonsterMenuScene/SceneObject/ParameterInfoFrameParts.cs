@@ -27,8 +27,6 @@ public class ParameterInfoFrameParts : MonoBehaviour {
 		monsterParameterBarsParts_[0].ParameterReflect(referMonsterData.RealHitPoint());
 		monsterParameterBarsParts_[1].ParameterReflect(referMonsterData.RealAttack());
 		monsterParameterBarsParts_[2].ParameterReflect(referMonsterData.RealDefense());
-		monsterParameterBarsParts_[3].ParameterReflect(referMonsterData.RealSpecialAttack());
-		monsterParameterBarsParts_[4].ParameterReflect(referMonsterData.RealSpecialDefense());
 		monsterParameterBarsParts_[5].ParameterReflect(referMonsterData.RealSpeed());
 	}
 }

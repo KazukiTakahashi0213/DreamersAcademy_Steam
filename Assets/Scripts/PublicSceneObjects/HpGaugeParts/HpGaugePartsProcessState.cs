@@ -38,13 +38,7 @@ public class HpGaugePartsProcessState {
 				Text infoText = hpGaugeParts.GetInfoText();
 				IMonsterData monsterData = hpGaugeParts.GetReferMonsterData();
 
-				int result = (int)t13.Utility.ValueForPercentage(
-					1,
-					hpGaugeParts.GetGauge().fillAmount,
-					monsterData.RealHitPoint()
-					);
-
-				infoText.text = t13.Utility.HarfSizeForFullSize(result.ToString()) + "／" + t13.Utility.HarfSizeForFullSize(monsterData.RealHitPoint().ToString());
+				infoText.text = t13.Utility.HarfSizeForFullSize(monsterData.nowHitPoint_.ToString()) + "／" + t13.Utility.HarfSizeForFullSize(monsterData.RealHitPoint().ToString());
 			}
 
 			//緑 51,238,85,255

@@ -4,12 +4,10 @@
 		"tribesHitPoint_":				"150",
 		"tribesAttack_":					"50",
 		"tribesDefense_":					"150",
-		"tribesSpecialAttack_":		"50",
-		"tribesSpecialDefense_":	"150",
 		"tribesSpeed_":						"50",
 
-		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
-		"firstElement_":					"7",
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
+		"firstElement_":					"5",
 		"secondElement_":					"0",
 
 		"texName_":						  	"Bakutaa"

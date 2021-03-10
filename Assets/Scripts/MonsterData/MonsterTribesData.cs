@@ -25,14 +25,34 @@ public class MonsterTribesData : IMonsterTribesData {
 
 		ResourcesMonsterTribesData data = ResourcesMonsterTribesDatasLoader.GetInstance().GetMonsterDatas((int)monsterTribesNumber);
 
-		monsterNumber_ = (int)monsterTribesNumber;
+		monsterNumber_ = data.monsterNumber_;
 		monsterName_ = data.monsterName_;
 
 		tribesHitPoint_ = data.tribesHitPoint_;
 		tribesAttack_ = data.tribesAttack_;
 		tribesDefense_ = data.tribesDefense_;
-		tribesSpecialAttack_ = data.tribesSpecialAttack_;
-		tribesSpecialDefense_ = data.tribesSpecialDefense_;
+		tribesSpeed_ = data.tribesSpeed_;
+
+		firstElement_ = new ElementTypeState((ElementType)data.firstElement_);
+		secondElement_ = new ElementTypeState((ElementType)data.secondElement_);
+
+		frontTex_ = graphicsLoader.GetGraphics("Monster/" + data.texName_ + "/" + data.texName_ + "_Front");
+		backTex_ = graphicsLoader.GetGraphics("Monster/" + data.texName_ + "/" + data.texName_ + "_Back");
+		SDTex_ = graphicsLoader.GetGraphics("Monster/" + data.texName_ + "/" + data.texName_ + "_SD");
+		frontDreamTex_ = graphicsLoader.GetGraphics("Monster/" + data.texName_ + "/" + data.texName_ + "_FrontDream");
+		backDreamTex_ = graphicsLoader.GetGraphics("Monster/" + data.texName_ + "/" + data.texName_ + "_BackDream");
+	}
+	public MonsterTribesData(string monsterTribesName) {
+		ResourcesGraphicsLoader graphicsLoader = ResourcesGraphicsLoader.GetInstance();
+
+		ResourcesMonsterTribesData data = ResourcesMonsterTribesDatasLoader.GetInstance().GetMonsterDatas(monsterTribesName);
+
+		monsterNumber_ = data.monsterNumber_;
+		monsterName_ = data.monsterName_;
+
+		tribesHitPoint_ = data.tribesHitPoint_;
+		tribesAttack_ = data.tribesAttack_;
+		tribesDefense_ = data.tribesDefense_;
 		tribesSpeed_ = data.tribesSpeed_;
 
 		firstElement_ = new ElementTypeState((ElementType)data.firstElement_);
@@ -51,8 +71,6 @@ public class MonsterTribesData : IMonsterTribesData {
 	public int tribesHitPoint_ { get; }
 	public int tribesAttack_ { get; }
 	public int tribesDefense_ { get; }
-	public int tribesSpecialAttack_ { get; }
-	public int tribesSpecialDefense_ { get; }
 	public int tribesSpeed_ { get; }
 
 	public ElementTypeState firstElement_ { get; }

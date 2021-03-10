@@ -22,32 +22,8 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
-		//エネミーのモンスター設定
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Bauporisu), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Totugeki));
-			md.SkillAdd(new SkillData(SkillDataNumber.Suimenngiri));
-			md.SkillAdd(new SkillData(SkillDataNumber.Dokunokiri));
-			md.SkillAdd(new SkillData(SkillDataNumber.Suiryuuuchi));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Furiruma), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Shougekiha));
-			md.SkillAdd(new SkillData(SkillDataNumber.Happabiimu));
-			md.SkillAdd(new SkillData(SkillDataNumber.Honoonokiri));
-			md.SkillAdd(new SkillData(SkillDataNumber.Ibaranotoge));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-
 		//エネミーの設定
-		enemyTrainerData.SetTrainerData("はかせ", "ヴィクター", ResourcesGraphicsLoader.GetInstance().GetGraphics("Enemy/Victer0"));
+		enemyTrainerData.SetTrainerData(ResourcesEnemyTrainerDatasLoader.GetInstance().GetEnemyTrainerDatas(1));
 
 		//1週目だったら
 		if (playerTrainerData.clearTimes_ == 0) {
@@ -55,10 +31,10 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Handreon), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData(SkillDataNumber.Totugeki));
-				md.SkillAdd(new SkillData(SkillDataNumber.Baandoraibu));
-				md.SkillAdd(new SkillData(SkillDataNumber.Faiasoodo));
-				md.SkillAdd(new SkillData(SkillDataNumber.Kenbu));
+				md.SkillAdd(new SkillData("ファイアブレード"));
+				md.SkillAdd(new SkillData("すいめんぎり"));
+				md.SkillAdd(new SkillData("グローツリー"));
+				md.SkillAdd(new SkillData("てんへのひかり"));
 				//プレイヤーの手持ちに追加
 				playerTrainerData.MonsterAdd(md);
 			}
@@ -66,10 +42,10 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Bauporisu), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData(SkillDataNumber.Totugeki));
-				md.SkillAdd(new SkillData(SkillDataNumber.Suimenngiri));
-				md.SkillAdd(new SkillData(SkillDataNumber.Dokunokiri));
-				md.SkillAdd(new SkillData(SkillDataNumber.Suiryuuuchi));
+				md.SkillAdd(new SkillData("ファイアブレード"));
+				md.SkillAdd(new SkillData("すいめんぎり"));
+				md.SkillAdd(new SkillData("グローツリー"));
+				md.SkillAdd(new SkillData("てんへのひかり"));
 				//プレイヤーの手持ちに追加
 				playerTrainerData.MonsterAdd(md);
 			}
@@ -77,10 +53,10 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Furiruma), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData(SkillDataNumber.Shougekiha));
-				md.SkillAdd(new SkillData(SkillDataNumber.Happabiimu));
-				md.SkillAdd(new SkillData(SkillDataNumber.Honoonokiri));
-				md.SkillAdd(new SkillData(SkillDataNumber.Ibaranotoge));
+				md.SkillAdd(new SkillData("ファイアブレード"));
+				md.SkillAdd(new SkillData("すいめんぎり"));
+				md.SkillAdd(new SkillData("グローツリー"));
+				md.SkillAdd(new SkillData("てんへのひかり"));
 				//プレイヤーの手持ちに追加
 				playerTrainerData.MonsterAdd(md);
 			}
@@ -137,14 +113,14 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
 		//技の取得
-		for(int i = 1;i < 29; ++i) {
-			playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
-		}
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)43));
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)44));
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)45));
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)46));
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)48));
+		//for(int i = 1;i < 29; ++i) {
+		//	playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
+		//}
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)43));
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)44));
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)45));
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)46));
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)48));
 
 		//BGMの再生
 		AllSceneManager.GetInstance().GetPublicAudioParts().GetBGMAudioSource().clip = ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Map());
@@ -212,14 +188,14 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
 		//技の取得
-		for (int i = 1; i < 29; ++i) {
-			playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
-		}
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)43));
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)44));
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)45));
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)46));
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)48));
+		//for (int i = 1; i < 29; ++i) {
+		//	playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
+		//}
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)43));
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)44));
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)45));
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)46));
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)48));
 
 		//BGMの再生
 		AllSceneManager.GetInstance().GetPublicAudioParts().GetBGMAudioSource().clip = ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Map());

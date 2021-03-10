@@ -10,8 +10,6 @@ public interface IMonsterBattleData {
 
 	void AttackParameterRankAdd(int value);
 	void DefenseParameterRankAdd(int value);
-	void SpecialAttackParameterRankAdd(int value);
-	void SpecialDefenseParameterRankAdd(int value);
 	void SpeedParameterRankAdd(int value);
 
 	void AvoidRateParameterRankAdd(int value);
@@ -19,8 +17,6 @@ public interface IMonsterBattleData {
 
 	float RealAttackParameterRank();
 	float RealDefenseParameterRank();
-	float RealSpecialAttackParameterRank();
-	float RealSpecialDefenseParameterRank();
 	float RealSpeedParameterRank();
 
 	int GetAvoidRateParameterRank();

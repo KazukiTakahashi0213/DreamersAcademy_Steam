@@ -5,7 +5,6 @@ using UnityEngine;
 public enum EffectAttackType {
 	None,
 	Normal,
-	Special,
 	Max
 }
 

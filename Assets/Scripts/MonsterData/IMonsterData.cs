@@ -17,8 +17,6 @@ public interface IMonsterData {
 	int RealHitPoint();
 	int RealAttack();
 	int RealDefense();
-	int RealSpecialAttack();
-	int RealSpecialDefense();
 	int RealSpeed();
 
 	void SkillAdd(SkillData addSkill);

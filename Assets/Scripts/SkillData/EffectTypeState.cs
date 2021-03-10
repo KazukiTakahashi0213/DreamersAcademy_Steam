@@ -74,6 +74,7 @@ public class EffectTypeState {
 		//ヒットポイントの変動
 		int realDamage = (int)(MonsterData.BattleDamageCalculate(attackMonsterData, defenseMonsterData, attackSkillData) * critical);
 		defenseMonsterData.nowHitPoint_ -= realDamage;
+		if (defenseMonsterData.nowHitPoint_ < 0) defenseMonsterData.nowHitPoint_ = 0;
 
 		//技のアニメーション
 		attackSkillData.EffectAnimetionEventSet(mgr.GetEnemyEffectParts());
@@ -195,6 +196,7 @@ public class EffectTypeState {
 		//ヒットポイントの変動
 		int realDamage = (int)(MonsterData.BattleDamageCalculate(attackMonsterData, defenseMonsterData, attackSkillData) * critical);
 		defenseMonsterData.nowHitPoint_ -= realDamage;
+		if (defenseMonsterData.nowHitPoint_ < 0) defenseMonsterData.nowHitPoint_ = 0;
 
 		//技のアニメーション
 		attackSkillData.EffectAnimetionEventSet(mgr.GetPlayerEffectParts());

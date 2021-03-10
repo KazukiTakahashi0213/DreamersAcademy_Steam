@@ -1,0 +1,12 @@
+﻿{
+		"trainerName_": "None",
+		"jobName_":			"None",
+		"texName_":			"None",
+		
+		"attackRate_":  "50",
+		"tradeRate_":   "50",
+
+		"monsterDatas_": [
+			{"monsterName_": "ーー", "skillNames_": ["None", "None", "None", "None"]}
+		]
+}

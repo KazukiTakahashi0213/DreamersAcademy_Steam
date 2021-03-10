@@ -11,8 +11,6 @@ public interface IMonsterTribesData {
 	int tribesHitPoint_ { get; }
 	int tribesAttack_ { get; }
 	int tribesDefense_ { get; }
-	int tribesSpecialAttack_ { get; }
-	int tribesSpecialDefense_ { get; }
 	int tribesSpeed_ { get; }
 
 	ElementTypeState firstElement_ { get; }

@@ -50,7 +50,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		//エネミーモンスターの読み込み
 		{
 			//エネミーのモンスターの読み込み
-			for(int i = 0;i < EnemyTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
+			for(int i = 0;i < 3; ++i) {
 				EnemyBattleData.GetInstance().MonsterAdd(EnemyTrainerData.GetInstance().GetMonsterDatas(i));
 			}
 
@@ -67,7 +67,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		//プレイヤーモンスターの読み込み
 		{
 			//プレイヤーのモンスターの読み込み
-			for (int i = 0; i < PlayerTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
+			for (int i = 0; i < 3; ++i) {
 				PlayerBattleData.GetInstance().MonsterAdd(PlayerTrainerData.GetInstance().GetMonsterDatas(i));
 			}
 
@@ -213,6 +213,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			|| trainerBattleData.GetMonsterDatas(0).battleData_.secondAbnormalState_.state_ == AbnormalType.Poison) {
 			//ダメージ
 			trainerBattleData.GetMonsterDatas(0).nowHitPoint_ -= POISON_DAMAGE;
+			if (trainerBattleData.GetMonsterDatas(0).nowHitPoint_ < 0) trainerBattleData.GetMonsterDatas(0).nowHitPoint_ = 0;
 
 			//ヒットポイントのゲージの変動
 			float hpGaugeFillAmount = t13.Utility.ValueForPercentage(trainerBattleData.GetMonsterDatas(0).RealHitPoint(), trainerBattleData.GetMonsterDatas(0).nowHitPoint_, 1);
@@ -262,6 +263,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			if (trainerBattleData.GetMonsterDatas(0).battleData_.BurnsCounter()) {
 				//ダメージ
 				trainerBattleData.GetMonsterDatas(0).nowHitPoint_ -= 1;
+				if (trainerBattleData.GetMonsterDatas(0).nowHitPoint_ < 0) trainerBattleData.GetMonsterDatas(0).nowHitPoint_ = 0;
 			}
 
 			//ヒットポイントのゲージの変動

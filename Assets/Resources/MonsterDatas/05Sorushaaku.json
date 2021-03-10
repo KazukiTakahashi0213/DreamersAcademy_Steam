@@ -4,13 +4,11 @@
 		"tribesHitPoint_":				"100",
 		"tribesAttack_":					"160",
 		"tribesDefense_":					"150",
-		"tribesSpecialAttack_":		"50",
-		"tribesSpecialDefense_":	"80",
 		"tribesSpeed_":						"60",
 
-		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
 		"firstElement_":					"3",
-		"secondElement_":					"6",
+		"secondElement_":					"0",
 
 		"texName_":						  	"Sorushaaku"
 }

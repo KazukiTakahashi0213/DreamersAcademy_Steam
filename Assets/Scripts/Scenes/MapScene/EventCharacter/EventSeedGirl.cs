@@ -24,43 +24,8 @@ public class EventSeedGirl : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
-		//エネミーのモンスター設定
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Rabinobia), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Happabureedo));
-			md.SkillAdd(new SkillData(SkillDataNumber.Heddoatakku));
-			md.SkillAdd(new SkillData(SkillDataNumber.Tetunokokoro));
-			md.SkillAdd(new SkillData(SkillDataNumber.Nemurinokiri));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Furiruga), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Happabiimu));
-			md.SkillAdd(new SkillData(SkillDataNumber.Dairinshou));
-			md.SkillAdd(new SkillData(SkillDataNumber.Musinokona));
-			md.SkillAdd(new SkillData(SkillDataNumber.Sinkousin));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Bauporisu), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Totugeki));
-			md.SkillAdd(new SkillData(SkillDataNumber.Suimenngiri));
-			md.SkillAdd(new SkillData(SkillDataNumber.Dokunokiri));
-			md.SkillAdd(new SkillData(SkillDataNumber.Suiryuuuchi));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-
 		//エネミーの設定
-		enemyTrainerData.SetTrainerData("アイドル志望", "あき", ResourcesGraphicsLoader.GetInstance().GetGraphics("Enemy/Girl"));
+		enemyTrainerData.SetTrainerData(ResourcesEnemyTrainerDatasLoader.GetInstance().GetEnemyTrainerDatas(2));
 
 		//ノベル処理
 		{
@@ -109,46 +74,14 @@ public class EventSeedGirl : MonoBehaviour {
 		//クリア階層の増加
 		playerTrainerData.clearMapFloor_ += 1;
 
-		//エネミーのモンスター設定
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Rabinobia), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Happabureedo));
-			md.SkillAdd(new SkillData(SkillDataNumber.Heddoatakku));
-			md.SkillAdd(new SkillData(SkillDataNumber.Tetunokokoro));
-			md.SkillAdd(new SkillData(SkillDataNumber.Nemurinokiri));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Furiruga), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Happabiimu));
-			md.SkillAdd(new SkillData(SkillDataNumber.Dairinshou));
-			md.SkillAdd(new SkillData(SkillDataNumber.Musinokona));
-			md.SkillAdd(new SkillData(SkillDataNumber.Sinkousin));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
-		{
-			//データの生成
-			IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Bauporisu), 0, 50);
-			//技の取得
-			md.SkillAdd(new SkillData(SkillDataNumber.Totugeki));
-			md.SkillAdd(new SkillData(SkillDataNumber.Suimenngiri));
-			md.SkillAdd(new SkillData(SkillDataNumber.Hyakutonpuresu));
-			md.SkillAdd(new SkillData(SkillDataNumber.Baasutoappu));
-			//エネミーの手持ちに追加
-			enemyTrainerData.MonsterAdd(md);
-		}
+		//エネミーの設定
+		enemyTrainerData.SetTrainerData(ResourcesEnemyTrainerDatasLoader.GetInstance().GetEnemyTrainerDatas(2));
 
-		//技の取得
-		for (int i = 29; i < 43; ++i) {
-			playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
-		}
-		playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)47));
+		////技の取得
+		//for (int i = 29; i < 43; ++i) {
+		//	playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
+		//}
+		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)47));
 
 		//ノベル処理
 		{

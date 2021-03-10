@@ -24,55 +24,58 @@ public class EnemyCommandSelectProcess : IProcessState {
 		//思考時間が終わっていたら
 		if (EnemyBattleData.GetInstance().ThinkingTimeEnd() 
 			&& eventEnd_) {
-			//タイプ相性の測定
-			int[] typeSimillarResult = new int[3] { 0, 0, 0 };
-			int[] monsterNumbers = new int[3] { 0, 1, 2 };
+			//エネミーの行動の決定
+			{
+				int randomResult = AllSceneManager.GetInstance().GetRandom().Next(0, 100);
 
-			for (int i = 0; i < EnemyBattleData.GetInstance().GetMonsterDatasLength(); ++i) {
-				//戦えたら、None以外だったら
-				if (EnemyBattleData.GetInstance().GetMonsterDatas(i).battleActive_
-					&& EnemyBattleData.GetInstance().GetMonsterDatas(i).tribesData_.monsterNumber_ != 0) {
-					{
-						int simillarResult = PlayerBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(EnemyBattleData.GetInstance().GetMonsterDatas(i).tribesData_.firstElement_);
-
-						typeSimillarResult[i] += simillarResult;
-					}
-					{
-						int simillarResult = PlayerBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(EnemyBattleData.GetInstance().GetMonsterDatas(i).tribesData_.secondElement_);
-
-						typeSimillarResult[i] += simillarResult;
-					}
-				}
-			}
-
-			//先頭のモンスターの相性が悪かったら
-			if (typeSimillarResult[0] < 4) {
-				t13.Utility.SimpleHiSort2Index(typeSimillarResult, monsterNumbers);
-
-				EnemyBattleData.GetInstance().changeMonsterNumber_ = monsterNumbers[0];
-
-				if (EnemyBattleData.GetInstance().changeMonsterNumber_ > 0) {
-					EnemyBattleData.GetInstance().changeMonsterActive_ = true;
-				}
-			}
-
-			//気まぐれで変化
-			//2/10の確立
-			if (AllSceneManager.GetInstance().GetRandom().Next(0, 10) < 2) {
-				EnemyBattleData.GetInstance().changeMonsterNumber_ = AllSceneManager.GetInstance().GetRandom().Next(1, EnemyBattleData.GetInstance().GetHaveMonsterSize());
-
-				if (EnemyBattleData.GetInstance().GetMonsterDatas(EnemyBattleData.GetInstance().changeMonsterNumber_).battleActive_
-					&& EnemyBattleData.GetInstance().GetMonsterDatas(EnemyBattleData.GetInstance().changeMonsterNumber_).tribesData_.monsterNumber_ != (int)MonsterTribesDataNumber.None) {
-					EnemyBattleData.GetInstance().changeMonsterActive_ = true;
-				}
-				else {
+				if(randomResult < EnemyTrainerData.GetInstance().GetAttackRate()) {
 					EnemyBattleData.GetInstance().changeMonsterActive_ = false;
 				}
+				else if(randomResult < EnemyTrainerData.GetInstance().GetAttackRate() + EnemyTrainerData.GetInstance().GetTradeRate()) {
+					//タイプ相性の測定
+					int[] typeSimillarResult = new int[2] { 0, 0 };
+					int[] monsterNumbers = new int[2] { 1, 2 };
+
+					//先頭以外で測定
+					for (int i = 0; i < EnemyBattleData.GetInstance().GetMonsterDatasLength()-1; ++i) {
+						//戦えたら、None以外だったら
+						if (EnemyBattleData.GetInstance().GetMonsterDatas(i).battleActive_
+							&& EnemyBattleData.GetInstance().GetMonsterDatas(i).tribesData_.monsterNumber_ != 0) {
+							{
+								int simillarResult = PlayerBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(EnemyBattleData.GetInstance().GetMonsterDatas(i).tribesData_.firstElement_);
+
+								typeSimillarResult[i] += simillarResult;
+							}
+							{
+								int simillarResult = PlayerBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(EnemyBattleData.GetInstance().GetMonsterDatas(i).tribesData_.secondElement_);
+
+								typeSimillarResult[i] += simillarResult;
+							}
+						}
+					}
+
+					//タイプ相性が良い順にソート
+					t13.Utility.SimpleHiSort2Index(typeSimillarResult, monsterNumbers);
+
+					//交換するモンスターの選択
+					for (int i = 0; i < monsterNumbers.Length; ++i) {
+						//Noneまたは、戦えなかったら
+						if (EnemyBattleData.GetInstance().GetMonsterDatas(monsterNumbers[i]).tribesData_.monsterNumber_ == (int)MonsterTribesDataNumber.None
+							|| !EnemyBattleData.GetInstance().GetMonsterDatas(monsterNumbers[i]).battleActive_
+							) continue;
+
+						EnemyBattleData.GetInstance().changeMonsterNumber_ = monsterNumbers[i];
+
+						EnemyBattleData.GetInstance().changeMonsterActive_ = true;
+
+						//ループの終了
+						i = monsterNumbers.Length;
+					}
+				}
 			}
 
-			//交換していなかったら
-			if (EnemyBattleData.GetInstance().changeMonsterActive_ == false) {
-
+			//交換をしていなかったら
+			if(!EnemyBattleData.GetInstance().changeMonsterActive_) {
 				//現在、場に出ているモンスターのデータの取得
 				IMonsterData enemyMD = EnemyBattleData.GetInstance().GetMonsterDatas(EnemyBattleData.GetInstance().changeMonsterNumber_);
 				IMonsterData playerMD = PlayerBattleData.GetInstance().GetMonsterDatas(0);

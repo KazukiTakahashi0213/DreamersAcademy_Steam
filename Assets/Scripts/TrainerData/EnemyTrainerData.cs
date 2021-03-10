@@ -3,19 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTrainerData {
-	public void SetTrainerData(string job, string name, Sprite sprite) {
-		job_ = job;
-		name_ = name;
-		sprite_ = sprite;
+	public void SetTrainerData(ResourcesEnemyTrainerData data) {
+		number_ = data.trainerNumber_;
+		name_ = data.trainerName_;
+		job_ = data.jobName_;
+
+		sprite_ = ResourcesGraphicsLoader.GetInstance().GetGraphics("Enemy/" + data.texName_);
+
+		attackRate_ = data.attackRate_;
+		tradeRate_ = data.tradeRate_;
+
+		for(int i = 0;i < data.monsterDatas_.Length; ++i) {
+			MonsterData monsterData = new MonsterData(new MonsterTribesData(data.monsterDatas_[i].monsterName_), 0, 50);
+
+			//技の習得
+			for (int j = 0; j < data.monsterDatas_[i].skillNames_.Length; ++j) {
+				monsterData.SkillAdd(new SkillData(data.monsterDatas_[i].skillNames_[j]));
+			}
+
+			//モンスターの追加
+			MonsterAdd(monsterData);
+		}
 	}
 
-	public string GetJob() { return job_; }
+	public int GetNumber() { return number_; }
 	public string GetName() { return name_; }
+	public string GetJob() { return job_; }
 	public Sprite GetSprite() { return sprite_; }
 
-	private string job_ = " ";
+	private int number_ = 0;
 	private string name_ = " ";
+	private string job_ = " ";
 	private Sprite sprite_ = null;
+
+	public int GetAttackRate() { return attackRate_; }
+	public int GetTradeRate() { return tradeRate_; }
+
+	private int attackRate_ = 50;
+	private int tradeRate_ = 50;
 
 	public void MonsterAdd(IMonsterData addMonster) {
 		if (haveMonsterSize_ == MONSTER_MAX_SIZE) return;

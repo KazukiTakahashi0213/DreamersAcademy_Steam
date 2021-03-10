@@ -1,5 +1,5 @@
 ﻿{
-		"skillNname_":										"None",
+		"skillName_":										"None",
 		
 		"effectValue_":										"0",
 		"optionEffectTriggerRateValue_":	"0",
@@ -8,12 +8,11 @@
 
 		"playPoint_":											"0",
 
-		"//ElementType": ["None","Normal","Fire","Water","Tree","Insect","Steel","Ghost"],
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
 		"elementType_":										"1",
 
 		"//EffectType": ["None","Attack","Support"],
-		"//EffectAttackType": ["None","Normal","Special"],
-		"effectType_":										["1","1"],
+		"effectType_":										"1",
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 

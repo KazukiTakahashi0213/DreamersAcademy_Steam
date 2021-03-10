@@ -14,8 +14,6 @@ public class MonsterBattleData : IMonsterBattleData {
 
 	private int attackParameterRank_ = 0;
 	private int defenseParameterRank_ = 0;
-	private int specialAttackParameterRank_ = 0;
-	private int specialDefenseParameterRank_ = 0;
 	private int speedParameterRank_ = 0;
 
 	private int avoidRateParameterRank_ = 0;
@@ -33,8 +31,6 @@ public class MonsterBattleData : IMonsterBattleData {
 	public void RankReset() {
 		attackParameterRank_ = 0;
 		defenseParameterRank_ = 0;
-		specialAttackParameterRank_ = 0;
-		specialDefenseParameterRank_ = 0;
 		speedParameterRank_ = 0;
 
 		avoidRateParameterRank_ = 0;
@@ -54,20 +50,6 @@ public class MonsterBattleData : IMonsterBattleData {
 			return;
 		}
 		defenseParameterRank_ += value;
-	}
-	public void SpecialAttackParameterRankAdd(int value) {
-		if (specialAttackParameterRank_ + value > RankLimit_) {
-			specialAttackParameterRank_ = RankLimit_;
-			return;
-		}
-		specialAttackParameterRank_ += value;
-	}
-	public void SpecialDefenseParameterRankAdd(int value) {
-		if (specialDefenseParameterRank_ + value > RankLimit_) {
-			specialDefenseParameterRank_ = RankLimit_;
-			return;
-		}
-		specialDefenseParameterRank_ += value;
 	}
 	public void SpeedParameterRankAdd(int value) {
 		if (speedParameterRank_ + value > RankLimit_) {
@@ -107,24 +89,6 @@ public class MonsterBattleData : IMonsterBattleData {
 
 		if (defenseParameterRank_ < 0) denominator -= defenseParameterRank_;
 		else numerator += defenseParameterRank_;
-
-		return numerator / denominator;
-	}
-	public float RealSpecialAttackParameterRank() {
-		//分子,分母
-		float numerator = 2, denominator = 2;
-
-		if (specialAttackParameterRank_ < 0) denominator -= specialAttackParameterRank_;
-		else numerator += specialAttackParameterRank_;
-
-		return numerator / denominator;
-	}
-	public float RealSpecialDefenseParameterRank() {
-		//分子,分母
-		float numerator = 2, denominator = 2;
-
-		if (specialDefenseParameterRank_ < 0) denominator -= specialDefenseParameterRank_;
-		else numerator += specialDefenseParameterRank_;
 
 		return numerator / denominator;
 	}

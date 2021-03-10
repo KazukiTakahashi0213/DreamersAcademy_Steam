@@ -4,13 +4,12 @@ using UnityEngine;
 
 [System.Serializable]
 public class ResourcesMonsterTribesData {
+	public int monsterNumber_;
 	public string monsterName_;
 
 	public int tribesHitPoint_;
 	public int tribesAttack_;
 	public int tribesDefense_;
-	public int tribesSpecialAttack_;
-	public int tribesSpecialDefense_;
 	public int tribesSpeed_;
 
 	public int firstElement_;
@@ -21,6 +20,7 @@ public class ResourcesMonsterTribesData {
 
 public class ResourcesMonsterTribesDatasLoader {
 	List<ResourcesMonsterTribesData> resourcesMonsterTribesDatas = null;
+	List<string> resourcesMonsterTribesDataNames_ = new List<string>();
 
 	public ResourcesMonsterTribesData GetMonsterDatas(int number) {
 		if (resourcesMonsterTribesDatas != null) return resourcesMonsterTribesDatas[number];
@@ -31,10 +31,42 @@ public class ResourcesMonsterTribesDatasLoader {
 
 		for (int i = 0; i < textAssets.Length; ++i) {
 			ResourcesMonsterTribesData data = JsonUtility.FromJson<ResourcesMonsterTribesData>(textAssets[i].ToString());
+			data.monsterNumber_ = i;
 			resourcesMonsterTribesDatas.Add(data);
+			resourcesMonsterTribesDataNames_.Add(data.monsterName_);
 		}
 
 		return resourcesMonsterTribesDatas[number];
+	}
+	public ResourcesMonsterTribesData GetMonsterDatas(string dataName) {
+		if (resourcesMonsterTribesDatas != null) {
+			for (int i = 0; i < resourcesMonsterTribesDataNames_.Count; ++i) {
+				if (resourcesMonsterTribesDataNames_[i] == dataName) {
+					return resourcesMonsterTribesDatas[i];
+				}
+			}
+
+			return null;
+		}
+
+		resourcesMonsterTribesDatas = new List<ResourcesMonsterTribesData>();
+
+		TextAsset[] textAssets = Resources.LoadAll<TextAsset>("MonsterDatas");
+
+		for (int i = 0; i < textAssets.Length; ++i) {
+			ResourcesMonsterTribesData data = JsonUtility.FromJson<ResourcesMonsterTribesData>(textAssets[i].ToString());
+			data.monsterNumber_ = i;
+			resourcesMonsterTribesDatas.Add(data);
+			resourcesMonsterTribesDataNames_.Add(data.monsterName_);
+		}
+
+		for (int i = 0; i < resourcesMonsterTribesDataNames_.Count; ++i) {
+			if (resourcesMonsterTribesDataNames_[i] == dataName) {
+				return resourcesMonsterTribesDatas[i];
+			}
+		}
+
+		return null;
 	}
 
 	//シングルトン

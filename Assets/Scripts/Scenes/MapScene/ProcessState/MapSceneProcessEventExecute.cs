@@ -19,7 +19,7 @@ public class MapSceneProcessEventExecute : BMapSceneProcessState {
 
 					//選択肢の名前の反映
 					for (int i = 0; i < mapManager.GetTradeMonsterSelectCommandParts().GetCommandWindowTextsCount()-1; ++i) {
-						mapManager.GetTradeMonsterSelectCommandParts().GetCommandWindowTexts(i).text = "　" + EnemyBattleData.GetInstance().GetMonsterDatas(i).tribesData_.monsterName_;
+						mapManager.GetTradeMonsterSelectCommandParts().GetCommandWindowTexts(i).text = "　" + EnemyTrainerData.GetInstance().GetMonsterDatas(i).tribesData_.monsterName_;
 					}
 
 					//選択肢の表示
