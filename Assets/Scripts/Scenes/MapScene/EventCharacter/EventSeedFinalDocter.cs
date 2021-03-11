@@ -24,6 +24,9 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		//エネミーの設定
 		enemyTrainerData.SetTrainerData(ResourcesEnemyTrainerDatasLoader.GetInstance().GetEnemyTrainerDatas(5));
 
+		//BGMの停止
+		allEventMgr.BGMAudioVolumeChangeEventSet(0);
+
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("FinalDocter/BattleStart1");
@@ -31,11 +34,12 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		}
 
 		//BGMの再生
-		allEventMgr.BGMAudioClipChangeEventSet(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Dead()));
+		allEventMgr.BGMAudioClipChangeEventSet(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_DeadIntro()));
 		allEventMgr.BGMAudioPlayEventSet();
+		allEventMgr.BGMAudioVolumeChangeEventSet(0.3f);
 
 		//戦闘の処理
-		EventMoveMap.BattleEvent();
+		EventMoveMap.BattleEvent(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Dead()));
 	}
 	private static void BattleVictory(EventMoveMap eventMoveMap, MapManager mapManager) {
 		AllEventManager allEventMgr = AllEventManager.GetInstance();

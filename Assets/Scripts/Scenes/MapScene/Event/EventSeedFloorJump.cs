@@ -20,7 +20,7 @@ public class EventSeedFloorJump : MonoBehaviour {
 
 		playerTrainerData.nowMapFloor_ += 1;
 
-		mapManager.GetPlayerMoveMap().SetStartPos(new Vector3(9, 2, -1));
+		mapManager.GetPlayerMoveMap().SetStartPos(new Vector3(9, 2.2f, -1));
 
 		//フェードアウト
 		allEventMgr.EventSpriteRendererSet(

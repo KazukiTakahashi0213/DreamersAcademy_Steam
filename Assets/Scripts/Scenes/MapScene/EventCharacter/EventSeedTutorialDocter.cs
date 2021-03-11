@@ -31,7 +31,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Handreon), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData("ファイアブレード"));
+				md.SkillAdd(new SkillData("ファイアソード"));
 				md.SkillAdd(new SkillData("すいめんぎり"));
 				md.SkillAdd(new SkillData("グローツリー"));
 				md.SkillAdd(new SkillData("てんへのひかり"));
@@ -42,7 +42,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Bauporisu), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData("ファイアブレード"));
+				md.SkillAdd(new SkillData("ファイアソード"));
 				md.SkillAdd(new SkillData("すいめんぎり"));
 				md.SkillAdd(new SkillData("グローツリー"));
 				md.SkillAdd(new SkillData("てんへのひかり"));
@@ -53,7 +53,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Furiruma), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData("ファイアブレード"));
+				md.SkillAdd(new SkillData("ファイアソード"));
 				md.SkillAdd(new SkillData("すいめんぎり"));
 				md.SkillAdd(new SkillData("グローツリー"));
 				md.SkillAdd(new SkillData("てんへのひかり"));
@@ -97,11 +97,11 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		}
 
 		//BGMの再生
-		allEventMgr.BGMAudioClipChangeEventSet(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Battle()));
+		allEventMgr.BGMAudioClipChangeEventSet(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_BattleIntro()));
 		allEventMgr.BGMAudioPlayEventSet();
 
 		//戦闘の処理
-		EventMoveMap.BattleEvent();
+		EventMoveMap.BattleEvent(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Battle()));
 	}
 	private static void BattleVictory(EventMoveMap eventMoveMap, MapManager mapManager) {
 		AllEventManager allEventMgr = AllEventManager.GetInstance();

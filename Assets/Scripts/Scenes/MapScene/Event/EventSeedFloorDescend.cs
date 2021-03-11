@@ -20,7 +20,7 @@ public class EventSeedFloorDescend : MonoBehaviour {
 
 		playerTrainerData.nowMapFloor_ -= 1;
 
-		mapManager.GetPlayerMoveMap().SetStartPos(new Vector3(9, 9, -1));
+		mapManager.GetPlayerMoveMap().SetStartPos(new Vector3(9, 9.2f, -1));
 
 		//フェードアウト
 		allEventMgr.EventSpriteRendererSet(

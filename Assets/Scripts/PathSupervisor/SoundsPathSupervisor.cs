@@ -24,6 +24,8 @@ public class SoundsPathSupervisor {
 	public string GetPathSelect1() { return "SE/Select1"; }
 	public string GetPathSelect2() { return "SE/Select2"; }
 	public string GetPathSelect3() { return "SE/Select3"; }
+	public string GetPathDreamers_BattleIntro() { return "SE/Dreamers_BattleIntro"; }
+	public string GetPathDreamers_DeadIntro() { return "SE/Dreamers_DeadIntro"; }
 
 	//BGM
 	public string GetPathDreamers_Battle() { return "BGM/BattleScene/Dreamers_Battle"; }

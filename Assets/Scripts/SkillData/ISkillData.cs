@@ -8,11 +8,11 @@ public interface ISkillData {
 
 	float effectValue_ { get; }
 
-	List<AddParameterRankState> addPlayerParameterRanks_ { get; }
-	List<AddParameterRankState> addEnemyParameterRanks_ { get; }
+	List<AddParameterRankState> addSelfParameterRanks_ { get; }
+	List<AddParameterRankState> addOtherParameterRanks_ { get; }
 
-	List<AddAbnormalTypeState> addPlayerAbnormalStates_ { get; }
-	List<AddAbnormalTypeState> addEnemyAbnormalStates_ { get; }
+	List<AddAbnormalTypeState> addSelfAbnormalStates_ { get; }
+	List<AddAbnormalTypeState> addOtherAbnormalStates_ { get; }
 	
 	int optionEffectTriggerRateValue_ { get; }
 	int hitRateValue_ { get; }

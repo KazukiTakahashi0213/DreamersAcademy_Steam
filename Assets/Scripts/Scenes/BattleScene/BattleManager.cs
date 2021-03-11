@@ -205,7 +205,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		attackCommandParts_.gameObject.SetActive(false);
 	}
 
-	public void PoisonDamageProcess(TrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts, MonsterParts monsterParts) {
+	public void PoisonDamageProcess(BTrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts, MonsterParts monsterParts) {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 
 		//どく状態なら
@@ -253,7 +253,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		return poisonMonsterDown_;
 	}
 
-	public bool BurnsDamageProcess(TrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts, MonsterParts monsterParts) {
+	public bool BurnsDamageProcess(BTrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts, MonsterParts monsterParts) {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 
 		//やけど状態なら
@@ -354,7 +354,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			}
 		}
 	}
-	public void ConfusionUseStart(TrainerBattleData trainerBattleData) {
+	public void ConfusionUseStart(BTrainerBattleData trainerBattleData) {
 		//こんらん状態なら
 		if (trainerBattleData.GetMonsterDatas(0).battleData_.firstAbnormalState_.state_ == AbnormalType.Confusion
 			|| trainerBattleData.GetMonsterDatas(0).battleData_.secondAbnormalState_.state_ == AbnormalType.Confusion) {
@@ -362,7 +362,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			trainerBattleData.GetMonsterDatas(0).battleData_.ConfusionTurnSeedCreate();
 		}
 	}
-	public void ConfusionProcessUse(TrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts) {
+	public void ConfusionProcessUse(BTrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts) {
 		//こんらん状態なら
 		if (trainerBattleData.GetMonsterDatas(0).battleData_.firstAbnormalState_.state_ == AbnormalType.Confusion
 			|| trainerBattleData.GetMonsterDatas(0).battleData_.secondAbnormalState_.state_ == AbnormalType.Confusion) {
@@ -403,7 +403,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		}
 	}
 
-	public void SleepUseStart(TrainerBattleData trainerBattleData) {
+	public void SleepUseStart(BTrainerBattleData trainerBattleData) {
 		//ねむり状態なら
 		if (trainerBattleData.GetMonsterDatas(0).battleData_.firstAbnormalState_.state_ == AbnormalType.Sleep
 			|| trainerBattleData.GetMonsterDatas(0).battleData_.secondAbnormalState_.state_ == AbnormalType.Sleep) {
@@ -411,7 +411,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			trainerBattleData.GetMonsterDatas(0).battleData_.SleepTurnSeedCreate();
 		}
 	}
-	public void SleepProcessUse(TrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts) {
+	public void SleepProcessUse(BTrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts) {
 		//ねむり状態なら
 		if (trainerBattleData.GetMonsterDatas(0).battleData_.firstAbnormalState_.state_ == AbnormalType.Sleep
 			|| trainerBattleData.GetMonsterDatas(0).battleData_.secondAbnormalState_.state_ == AbnormalType.Sleep) {
@@ -558,7 +558,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		AllEventManager.GetInstance().AllUpdateEventExecute(1.0f);
 	}
 
-	public void StatusInfoPartsDPEffectEventSet(TrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts) {
+	public void StatusInfoPartsDPEffectEventSet(BTrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts) {
 		for (int i = 0; i < 2; ++i) {
 			//ステータスインフォのDPの点滅演出
 			AllEventManager.GetInstance().UpdateImageSet(

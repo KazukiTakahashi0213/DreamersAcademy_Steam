@@ -32,12 +32,13 @@ public class EventSeedRiva : MonoBehaviour {
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Riva/BattleStart1");
 			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
 		}
+
 		//BGMの再生
-		allEventMgr.BGMAudioClipChangeEventSet(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Battle()));
+		allEventMgr.BGMAudioClipChangeEventSet(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_BattleIntro()));
 		allEventMgr.BGMAudioPlayEventSet();
 
 		//戦闘の処理
-		EventMoveMap.BattleEvent();
+		EventMoveMap.BattleEvent(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Battle()));
 	}
 	private static void BattleVictory(EventMoveMap eventMoveMap, MapManager mapManager) {
 		AllEventManager allEventMgr = AllEventManager.GetInstance();

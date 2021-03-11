@@ -11,11 +11,11 @@ public class SkillData : ISkillData {
 	//EntryPoint
 	public SkillData(SkillDataNumber skillDataNumber) {
 		//初期化
-		addPlayerParameterRanks_ = new List<AddParameterRankState>();
-		addEnemyParameterRanks_ = new List<AddParameterRankState>();
+		addSelfParameterRanks_ = new List<AddParameterRankState>();
+		addOtherParameterRanks_ = new List<AddParameterRankState>();
 
-		addPlayerAbnormalStates_ = new List<AddAbnormalTypeState>();
-		addEnemyAbnormalStates_ = new List<AddAbnormalTypeState>();
+		addSelfAbnormalStates_ = new List<AddAbnormalTypeState>();
+		addOtherAbnormalStates_ = new List<AddAbnormalTypeState>();
 
 		ResourcesSkillData data = ResourcesSkillDatasLoader.GetInstance().GetSkillDatas((int)skillDataNumber);
 
@@ -49,35 +49,35 @@ public class SkillData : ISkillData {
 			effectSound_ = ResourcesSoundsLoader.GetInstance().GetSounds("SE/SkillEffect/" + data.effectName_);
 		}
 
-		for (int i = 0; i < data.addPlayerParameterRanks_.Length; ++i) {
-			addPlayerParameterRanks_.Add(
-				new AddParameterRankState((AddParameterRank)data.addPlayerParameterRanks_[i].addParameterRank_
-				, data.addPlayerParameterRanks_[i].value_
+		for (int i = 0; i < data.addSelfParameterRanks_.Length; ++i) {
+			addSelfParameterRanks_.Add(
+				new AddParameterRankState((AddParameterRank)data.addSelfParameterRanks_[i].addParameterRank_
+				, data.addSelfParameterRanks_[i].value_
 				));
 		}
-		for (int i = 0; i < data.addEnemyParameterRanks_.Length; ++i) {
-			addEnemyParameterRanks_.Add(
-				new AddParameterRankState((AddParameterRank)data.addEnemyParameterRanks_[i].addParameterRank_
-				, data.addEnemyParameterRanks_[i].value_
+		for (int i = 0; i < data.addOtherParameterRanks_.Length; ++i) {
+			addOtherParameterRanks_.Add(
+				new AddParameterRankState((AddParameterRank)data.addOtherParameterRanks_[i].addParameterRank_
+				, data.addOtherParameterRanks_[i].value_
 				));
 		}
 
-		for (int i = 0; i < data.addPlayerAbnormals_.Length; ++i) {
-			addPlayerAbnormalStates_.Add(new AddAbnormalTypeState((AddAbnormalType)data.addPlayerAbnormals_[i].addAbnormal_));
+		for (int i = 0; i < data.addSelfAbnormals_.Length; ++i) {
+			addSelfAbnormalStates_.Add(new AddAbnormalTypeState((AddAbnormalType)data.addSelfAbnormals_[i].addAbnormal_));
 		}
-		for (int i = 0; i < data.addEnemyAbnormals_.Length; ++i) {
-			addEnemyAbnormalStates_.Add(new AddAbnormalTypeState((AddAbnormalType)data.addEnemyAbnormals_[i].addAbnormal_));
+		for (int i = 0; i < data.addOtherAbnormals_.Length; ++i) {
+			addOtherAbnormalStates_.Add(new AddAbnormalTypeState((AddAbnormalType)data.addOtherAbnormals_[i].addAbnormal_));
 		}
 
 		effectInfo_ = data.effectInfo_;
 	}
 	public SkillData(string skillDataName) {
 		//初期化
-		addPlayerParameterRanks_ = new List<AddParameterRankState>();
-		addEnemyParameterRanks_ = new List<AddParameterRankState>();
+		addSelfParameterRanks_ = new List<AddParameterRankState>();
+		addOtherParameterRanks_ = new List<AddParameterRankState>();
 
-		addPlayerAbnormalStates_ = new List<AddAbnormalTypeState>();
-		addEnemyAbnormalStates_ = new List<AddAbnormalTypeState>();
+		addSelfAbnormalStates_ = new List<AddAbnormalTypeState>();
+		addOtherAbnormalStates_ = new List<AddAbnormalTypeState>();
 
 		ResourcesSkillData data = ResourcesSkillDatasLoader.GetInstance().GetSkillDatas(skillDataName);
 
@@ -111,24 +111,24 @@ public class SkillData : ISkillData {
 			effectSound_ = ResourcesSoundsLoader.GetInstance().GetSounds("SE/SkillEffect/" + data.effectName_);
 		}
 
-		for (int i = 0; i < data.addPlayerParameterRanks_.Length; ++i) {
-			addPlayerParameterRanks_.Add(
-				new AddParameterRankState((AddParameterRank)data.addPlayerParameterRanks_[i].addParameterRank_
-				, data.addPlayerParameterRanks_[i].value_
+		for (int i = 0; i < data.addSelfParameterRanks_.Length; ++i) {
+			addSelfParameterRanks_.Add(
+				new AddParameterRankState((AddParameterRank)data.addSelfParameterRanks_[i].addParameterRank_
+				, data.addSelfParameterRanks_[i].value_
 				));
 		}
-		for (int i = 0; i < data.addEnemyParameterRanks_.Length; ++i) {
-			addEnemyParameterRanks_.Add(
-				new AddParameterRankState((AddParameterRank)data.addEnemyParameterRanks_[i].addParameterRank_
-				, data.addEnemyParameterRanks_[i].value_
+		for (int i = 0; i < data.addOtherParameterRanks_.Length; ++i) {
+			addOtherParameterRanks_.Add(
+				new AddParameterRankState((AddParameterRank)data.addOtherParameterRanks_[i].addParameterRank_
+				, data.addOtherParameterRanks_[i].value_
 				));
 		}
 
-		for (int i = 0; i < data.addPlayerAbnormals_.Length; ++i) {
-			addPlayerAbnormalStates_.Add(new AddAbnormalTypeState((AddAbnormalType)data.addPlayerAbnormals_[i].addAbnormal_));
+		for (int i = 0; i < data.addSelfAbnormals_.Length; ++i) {
+			addSelfAbnormalStates_.Add(new AddAbnormalTypeState((AddAbnormalType)data.addSelfAbnormals_[i].addAbnormal_));
 		}
-		for (int i = 0; i < data.addEnemyAbnormals_.Length; ++i) {
-			addEnemyAbnormalStates_.Add(new AddAbnormalTypeState((AddAbnormalType)data.addEnemyAbnormals_[i].addAbnormal_));
+		for (int i = 0; i < data.addOtherAbnormals_.Length; ++i) {
+			addOtherAbnormalStates_.Add(new AddAbnormalTypeState((AddAbnormalType)data.addOtherAbnormals_[i].addAbnormal_));
 		}
 
 		effectInfo_ = data.effectInfo_;
@@ -139,11 +139,11 @@ public class SkillData : ISkillData {
 
 	public float effectValue_ { get; }
 
-	public List<AddParameterRankState> addPlayerParameterRanks_ { get; }
-	public List<AddParameterRankState> addEnemyParameterRanks_ { get; }
+	public List<AddParameterRankState> addSelfParameterRanks_ { get; }
+	public List<AddParameterRankState> addOtherParameterRanks_ { get; }
 
-	public List<AddAbnormalTypeState> addPlayerAbnormalStates_ { get; }
-	public List<AddAbnormalTypeState> addEnemyAbnormalStates_ { get; }
+	public List<AddAbnormalTypeState> addSelfAbnormalStates_ { get; }
+	public List<AddAbnormalTypeState> addOtherAbnormalStates_ { get; }
 
 	public int optionEffectTriggerRateValue_ { get; }
 	public int hitRateValue_ { get; }

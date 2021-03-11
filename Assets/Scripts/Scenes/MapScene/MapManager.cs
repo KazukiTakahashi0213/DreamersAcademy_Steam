@@ -125,7 +125,7 @@ public class MapManager : MonoBehaviour, ISceneManager {
 
 	public void SceneEnd() {
 		//主人公の向きの変更
-		if (playerMoveMap_.GetStartPos().y < 9) {
+		if (playerMoveMap_.GetStartPos().y < 9.2f) {
 			playerMoveMap_.direction = ObjectMoveMap.DIRECTION_STATUS.UP;
 		}
 
@@ -140,7 +140,7 @@ public class MapManager : MonoBehaviour, ISceneManager {
 		}
 		playerMoveMap_.ResetNowPos();
 
-		playerMoveMap_.SetStartPos(new Vector3(9, 2, -1));
+		playerMoveMap_.SetStartPos(new Vector3(9, 2.2f, -1));
 	}
 
 	public GameObject GetGameObject() { return gameObject; }

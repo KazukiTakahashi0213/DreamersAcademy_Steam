@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBattleData : TrainerBattleData {
+public class EnemyBattleData : BTrainerBattleData {
 	public override void MonsterAdd(IMonsterData addMonster) {
 		if (haveMonsterSize_ == MONSTER_MAX_SIZE) return;
 
@@ -28,11 +28,6 @@ public class EnemyBattleData : TrainerBattleData {
 
 	//戦えるモンスターの数
 	private int battleActiveMonsterSize_ = 0;
-
-	//交換するか否かのフラグ
-	public bool changeMonsterActive_ = false;
-	//交換する手持ちの番号
-	public int changeMonsterNumber_ = 0;
 
 	//パワーアップするか否かのフラグ
 	public bool dreamSyncronize_ = false;

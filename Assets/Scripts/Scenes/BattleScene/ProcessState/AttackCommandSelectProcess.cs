@@ -181,7 +181,7 @@ public class AttackCommandSelectProcess : IProcessState {
 			return mgr.nowProcessState().BackProcess();
 		}
 		else if (allSceneMgr.inputProvider_.SelectNovelWindowActive()) {
-			mgr.GetNovelWindowPartsActiveState().state_ = mgr.GetNovelWindowPartsActiveState().Next(mgr);
+
 		}
 
 		//どくで倒れたら

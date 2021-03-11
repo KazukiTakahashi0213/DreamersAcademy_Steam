@@ -51,7 +51,7 @@ public class MapSceneProcessTradeMonsterSelect : BMapSceneProcessState {
 			EnemyTrainerData.ReleaseInstance();
 
 			//選択肢の初期化
-			mapManager.GetTradeMonsterSelectCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
+			mapManager.GetTradeMonsterSelectCommandParts().SelectReset(new Vector3(-0.71f, 0.85f, -4));
 
 			//選択肢の非表示
 			mapManager.GetTradeMonsterSelectCommandParts().gameObject.SetActive(false);

@@ -33,11 +33,11 @@ public class ResourcesSkillData {
 
 	public string effectName_;
 
-	public ResourcesSkillAddParameterRank[] addPlayerParameterRanks_;
-	public ResourcesSkillAddParameterRank[] addEnemyParameterRanks_;
+	public ResourcesSkillAddParameterRank[] addSelfParameterRanks_;
+	public ResourcesSkillAddParameterRank[] addOtherParameterRanks_;
 
-	public ResourcesSkillAddAbnormal[] addPlayerAbnormals_;
-	public ResourcesSkillAddAbnormal[] addEnemyAbnormals_;
+	public ResourcesSkillAddAbnormal[] addSelfAbnormals_;
+	public ResourcesSkillAddAbnormal[] addOtherAbnormals_;
 
 	public string effectInfo_;
 }

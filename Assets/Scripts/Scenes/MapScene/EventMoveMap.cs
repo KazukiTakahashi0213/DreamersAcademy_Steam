@@ -131,7 +131,7 @@ public class EventMoveMap : ObjectMoveMap {
 		}
 	}
 
-	static public void BattleEvent() {
+	static public void BattleEvent(AudioClip battleBGM) {
 		AllEventManager allEventMgr = AllEventManager.GetInstance();
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 		PlayerTrainerData playerTrainerData = PlayerTrainerData.GetInstance();
@@ -151,7 +151,7 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 1.0f));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.3f);
+		allEventMgr.AllUpdateEventExecute(0.4f);
 
 		//非表示
 		allEventMgr.EventSpriteRendererSet(
@@ -159,7 +159,7 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 0));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.2f);
+		allEventMgr.AllUpdateEventExecute(0.3f);
 
 		//表示
 		allEventMgr.EventSpriteRendererSet(
@@ -167,7 +167,7 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 1.0f));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.3f);
+		allEventMgr.AllUpdateEventExecute(0.4f);
 
 		//非表示
 		allEventMgr.EventSpriteRendererSet(
@@ -175,7 +175,7 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 0));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.2f);
+		allEventMgr.AllUpdateEventExecute(0.3f);
 
 		//表示
 		allEventMgr.EventSpriteRendererSet(
@@ -183,10 +183,10 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 1.0f));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.6f);
+		allEventMgr.AllUpdateEventExecute(0.8f);
 
 		//ウェイト
-		allEventMgr.EventWaitSet(0.6f);
+		allEventMgr.EventWaitSet(0.8f);
 
 		//黒
 		allEventMgr.EventSpriteRendererSet(
@@ -195,6 +195,10 @@ public class EventMoveMap : ObjectMoveMap {
 			, new Color(0, 0, 0, 1.0f));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
 		allEventMgr.AllUpdateEventExecute();
+
+		//BGMの再生
+		allEventMgr.BGMAudioClipChangeEventSet(battleBGM);
+		allEventMgr.BGMAudioPlayEventSet();
 
 		//シーンの切り替え
 		allEventMgr.SceneChangeEventSet(SceneState.Battle, SceneChangeMode.Slide);

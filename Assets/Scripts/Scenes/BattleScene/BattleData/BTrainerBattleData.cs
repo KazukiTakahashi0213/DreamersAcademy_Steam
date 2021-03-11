@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainerBattleData {
+public class BTrainerBattleData {
 	//共通のdp
 	public int dreamPoint_ = 0;
+
+	//交換するか否かのフラグ
+	public bool changeMonsterActive_ = false;
+	//交換する手持ちの番号
+	public int changeMonsterNumber_ = 0;
 
 	virtual public void MonsterAdd(IMonsterData addMonster) { }
 

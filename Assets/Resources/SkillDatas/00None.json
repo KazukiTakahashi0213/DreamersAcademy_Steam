@@ -19,18 +19,18 @@
 		"effectName_":										"NoneEffect",
 		
 		"//AddParameterRank": ["None","Attack","Defense","SpecialAttack","SpecialDefense","Speed","AvoidRate","HitRate"],
-		"addPlayerParameterRanks_": [
+		"addSelfParameterRanks_": [
 			{"addParameterRank_": "0", "value_": "0"}
 		],
-		"addEnemyParameterRanks_": [
+		"addOtherParameterRanks_": [
 			{"addParameterRank_": "0", "value_": "0"}
 		],
 
 		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],
-		"addPlayerAbnormals_": [
+		"addSelfAbnormals_": [
 			{"addAbnormal_": "0"}
 		],
-		"addEnemyAbnormals_": [
+		"addOtherAbnormals_": [
 			{"addAbnormal_": "0"}
 		],
 
