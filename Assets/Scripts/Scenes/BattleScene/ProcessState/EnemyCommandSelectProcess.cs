@@ -140,7 +140,7 @@ public class EnemyCommandSelectProcess : IProcessState {
 				}
 
 				//dpが100以上だったら
-				if (EnemyBattleData.GetInstance().dreamPoint_ >= 100) {
+				if (EnemyBattleData.GetInstance().GetDreamPoint() >= 100) {
 					//パワーアップしていなかったら
 					if (!enemyMD.battleData_.HaveAbnormalType(AbnormalType.Hero)) {
 						//パワーアップするか否かのフラグの設定
@@ -151,12 +151,6 @@ public class EnemyCommandSelectProcess : IProcessState {
 				//ppの消費
 				ISkillData enemySkillData = enemyMD.GetSkillDatas(mgr.enemySelectSkillNumber_);
 				enemySkillData.nowPlayPoint_ -= 1;
-
-				//dpが100以下だったら
-				if (EnemyBattleData.GetInstance().dreamPoint_ <= 100) {
-					//dpの変動
-					EnemyBattleData.GetInstance().dreamPoint_ += enemySkillData.upDpValue_;
-				}
 			}
 
 			eventEnd_ = false;

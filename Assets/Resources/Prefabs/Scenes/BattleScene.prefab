@@ -5916,6 +5916,8 @@ MonoBehaviour:
   enemyMagazineParts_: {fileID: 8294643278355010725}
   dreamEffectScreenEventSprite_: {fileID: 5585442858375196754}
   dreamEffectParts_: {fileID: 1453271924720533160}
+  eventContextUpdateTime_: 0.4
+  eventWaitTime_: 0.8
 --- !u!1 &7015411405211440952
 GameObject:
   m_ObjectHideFlags: 0

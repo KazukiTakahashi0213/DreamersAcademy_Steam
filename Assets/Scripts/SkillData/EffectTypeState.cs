@@ -18,12 +18,12 @@ public class EffectTypeState {
 	public EffectType state_;
 
 	//None
-	static private bool NoneExecuteEventSet(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
+	static private bool NoneExecuteEventSet(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
 		return false;
 	}
 
 	//Attack
-	static private bool AttackExecuteEventSet(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
+	static private bool AttackExecuteEventSet(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
 		//ランク補正の計算
 		float monsterHitRateValue = 0;
 		{
@@ -73,6 +73,31 @@ public class EffectTypeState {
 		defenseMonsterData.nowHitPoint_ -= realDamage;
 		if (defenseMonsterData.nowHitPoint_ < 0) defenseMonsterData.nowHitPoint_ = 0;
 
+		//DPの変動
+		//PlayerBattleData.GetInstance().dreamPoint_ += playerSkillData.upDpValue_;
+		int attackElementSimillarRsult = defenseMonsterData.ElementSimillarCheckerForValue(attackSkillData.elementType_);
+		if (attackElementSimillarRsult == 3) {
+			attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBestSimillar());
+		}
+		else if (attackElementSimillarRsult == 2) {
+			attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNormalSimillar());
+		}
+		else if (attackElementSimillarRsult == 1) {
+			attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBadSimillar());
+		}
+		else if (attackElementSimillarRsult == 0) {
+			attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNotSimillar());
+		}
+
+		//ウェイト
+		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
+
+		//DPの演出のイベント
+		mgr.StatusInfoPartsDPEffectEventSet(attackTrainerBattleData, attackStatusInfoParts);
+
+		//ウェイト
+		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
+
 		//技のアニメーション
 		attackSkillData.EffectAnimetionEventSet(defenseEffectParts);
 
@@ -119,35 +144,60 @@ public class EffectTypeState {
 			}
 
 			//効果の説明
-			if (defenseMonsterData.ElementSimillarChecker(attackSkillData.elementType_) > 1.0f) {
+			int defenseElementSimillarResult = defenseMonsterData.ElementSimillarCheckerForValue(attackSkillData.elementType_);
+			if (defenseElementSimillarResult == 3) {
+				//DPの増加
+				defenseTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBestSimillar());
+
+				//文字列の処理
 				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), "こうかは　ばつぐんだ！");
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
+				//ウェイト
 				AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 			}
-			else if (defenseMonsterData.ElementSimillarChecker(attackSkillData.elementType_) < 1.0f
-				&& defenseMonsterData.ElementSimillarChecker(attackSkillData.elementType_) > 0) {
+			else if (defenseElementSimillarResult == 2) {
+				//DPの増加
+				defenseTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNormalSimillar());
+			}
+			else if (defenseElementSimillarResult == 1) {
+				//DPの増加
+				defenseTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBadSimillar());
+
+				//文字列の処理
 				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), "こうかは　いまひとつの　ようだ");
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
+				//ウェイト
 				AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 			}
-			else if (defenseMonsterData.ElementSimillarChecker(attackSkillData.elementType_) < 0.1f) {
+			else if (defenseElementSimillarResult == 0) {
+				//DPの増加
+				defenseTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNotSimillar());
+
+				//文字列の処理
 				AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), "こうかが　ないようだ・・・");
 				AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 				AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
 
+				//ウェイト
 				AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 			}
+
+			//DPの演出のイベント
+			mgr.StatusInfoPartsDPEffectEventSet(defenseTrainerBattleData, defenseStatusInfoParts);
+
+			//ウェイト
+			AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 		}
 
 		return true;
 	}
 
 	//Support
-	static private bool SupportExecuteEventSet(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
+	static private bool SupportExecuteEventSet(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
 		//技のアニメーション
 		attackSkillData.EffectAnimetionEventSet(defenseEffectParts);
 		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
@@ -155,13 +205,13 @@ public class EffectTypeState {
 		return true;
 	}
 
-	private delegate bool ExecuteEventSetFunc(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData);
+	private delegate bool ExecuteEventSetFunc(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData);
 	private ExecuteEventSetFunc[] executePlayerEventSets_ = new ExecuteEventSetFunc[(int)EffectType.Max] {
 		NoneExecuteEventSet,
 		AttackExecuteEventSet,
 		SupportExecuteEventSet
 	};
-	public bool ExecuteEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) { return executePlayerEventSets_[(int)state_](this, mgr, attackTrainerBattleData, defenseEffectParts, defenseMonsterParts, defenseStatusInfoParts, attackMonsterData, attackSkillData, defenseMonsterData); }
+	public bool ExecuteEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) { return executePlayerEventSets_[(int)state_](this, mgr, attackTrainerBattleData, defenseTrainerBattleData, defenseEffectParts, defenseMonsterParts, attackStatusInfoParts, defenseStatusInfoParts, attackMonsterData, attackSkillData, defenseMonsterData); }
 
 	private EffectAttackTypeState effectAttackTypeState_ = new EffectAttackTypeState(EffectAttackType.Normal);
 	public EffectAttackTypeState GetEffectAttackTypeState() { return effectAttackTypeState_; }

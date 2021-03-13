@@ -38,7 +38,7 @@ public class AttackCommandSelectProcess : IProcessState {
 				AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
 
 				//dpが100以上だったら
-				if (PlayerBattleData.GetInstance().dreamPoint_ >= 100) {
+				if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
 					AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText()
 						, "ゆめたちが　\n"
 						+ "きょうめいしている・・・");
@@ -155,12 +155,6 @@ public class AttackCommandSelectProcess : IProcessState {
 
 				//ppの消費
 				playerSkillData.nowPlayPoint_ -= 1;
-
-				//dpが100以下だったら
-				if (PlayerBattleData.GetInstance().dreamPoint_ <= 100) {
-					//dpの変動
-					PlayerBattleData.GetInstance().dreamPoint_ += playerSkillData.upDpValue_;
-				}
 
 				//イベントの最後
 				AllEventManager.GetInstance().EventFinishSet();

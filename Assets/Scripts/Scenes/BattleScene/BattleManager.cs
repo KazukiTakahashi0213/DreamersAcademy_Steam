@@ -50,7 +50,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		//エネミーモンスターの読み込み
 		{
 			//エネミーのモンスターの読み込み
-			for(int i = 0;i < 3; ++i) {
+			for(int i = 0;i < EnemyTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
 				EnemyBattleData.GetInstance().MonsterAdd(EnemyTrainerData.GetInstance().GetMonsterDatas(i));
 			}
 
@@ -67,7 +67,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		//プレイヤーモンスターの読み込み
 		{
 			//プレイヤーのモンスターの読み込み
-			for (int i = 0; i < 3; ++i) {
+			for (int i = 0; i < PlayerTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
 				PlayerBattleData.GetInstance().MonsterAdd(PlayerTrainerData.GetInstance().GetMonsterDatas(i));
 			}
 
@@ -174,7 +174,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		commandCommandParts_.SelectReset(new Vector3(-3.35f, 0.43f, -4));
 
 		//dpが100以上だったら
-		if (PlayerBattleData.GetInstance().dreamPoint_ >= 100) {
+		if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
 			novelWindowParts_.GetNovelWindowText().text =
 				"ゆめたちが　\n"
 				+ "きょうめいしている・・・";
@@ -540,14 +540,14 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		}
 
 		//プレイヤーのステータスインフォのDPの演出
-		float playerEndFillAmount = t13.Utility.ValueForPercentage(100, PlayerBattleData.GetInstance().dreamPoint_, 1);
+		float playerEndFillAmount = t13.Utility.ValueForPercentage(100, PlayerBattleData.GetInstance().GetDreamPoint(), 1);
 		AllEventManager.GetInstance().UpdateImageSet(
 			playerStatusInfoParts_.GetDPGaugeMeterUpdateImage()
 			, new Color32()
 			, playerEndFillAmount
 			);
 		//エネミーのステータスインフォのDPの演出
-		float enemyEndFillAmount = t13.Utility.ValueForPercentage(100, EnemyBattleData.GetInstance().dreamPoint_, 1);
+		float enemyEndFillAmount = t13.Utility.ValueForPercentage(100, EnemyBattleData.GetInstance().GetDreamPoint(), 1);
 		AllEventManager.GetInstance().UpdateImageSet(
 			enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage()
 			, new Color32()
@@ -583,7 +583,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			AllEventManager.GetInstance().EventWaitSet(0.1f);
 		}
 
-		float endFillAmount = t13.Utility.ValueForPercentage(100, trainerBattleData.dreamPoint_, 1);
+		float endFillAmount = t13.Utility.ValueForPercentage(100, trainerBattleData.GetDreamPoint(), 1);
 		AllEventManager.GetInstance().UpdateImageSet(
 			statusInfoParts.GetDPGaugeMeterUpdateImage()
 			, new Color32()

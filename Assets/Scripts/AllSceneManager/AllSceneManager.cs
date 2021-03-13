@@ -102,8 +102,16 @@ public class AllSceneManager : MonoBehaviour {
 	public float GetBattleEffectSpeed() { return battleEffectSpeed_; }
 
 	[SerializeField, Header("バトルのプレイヤーの手持ちモンスター")] private List<SerializeMonsterData> startPlayerMonsterDatas_ = new List<SerializeMonsterData>();
-
 	[SerializeField, Header("バトルのエネミーの手持ちモンスター")] private List<SerializeMonsterData> startEnemyMonsterDatas_ = new List<SerializeMonsterData>();
+
+	[SerializeField, Header("バトルの「効果抜群」のDPの上昇値")] private int upDPValueBestSimillar_ = 0;
+	[SerializeField, Header("バトルの「効果普通」のDPの上昇値")] private int upDPValueNormalSimillar_ = 0;
+	[SerializeField, Header("バトルの「効果今一つ」のDPの上昇値")] private int upDPValueBadSimillar_ = 0;
+	[SerializeField, Header("バトルの「効果無し」のDPの上昇値")] private int upDPValueNotSimillar_ = 0;
+	public int GetUpDPValueBestSimillar() { return upDPValueBestSimillar_; }
+	public int GetUpDPValueNormalSimillar() { return upDPValueNormalSimillar_; }
+	public int GetUpDPValueBadSimillar() { return upDPValueBadSimillar_; }
+	public int GetUpDPValueNotSimillar() { return upDPValueNotSimillar_; }
 
 	private string[] sceneStateString = new string[(int)SceneState.Max] {
 		"TitleScene",

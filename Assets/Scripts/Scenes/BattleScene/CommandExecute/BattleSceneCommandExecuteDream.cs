@@ -8,7 +8,7 @@ public class BattleSceneCommandExecuteDream : BBattleSceneCommandExecute {
 		if (PlayerBattleData.GetInstance().GetMonsterDatas(0).battleData_.HaveAbnormalType(AbnormalType.Hero)) return battleManager.nowProcessState();
 
 		//dpが100以上だったら
-		if (PlayerBattleData.GetInstance().dreamPoint_ >= 100) {
+		if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
 			//SE
 			battleManager.GetInputSoundProvider().SelectEnter();
 

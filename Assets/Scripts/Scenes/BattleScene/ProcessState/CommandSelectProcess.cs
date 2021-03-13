@@ -61,7 +61,7 @@ public class CommandSelectProcess : IProcessState {
 				eventMgr.UpdateGameObjectsActiveSetExecute(true);
 
 				//dpが100以上だったら
-				if (PlayerBattleData.GetInstance().dreamPoint_ >= 100) {
+				if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
 					eventMgr.EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText()
 						, "ゆめたちが　\n"
 						+ "きょうめいしている・・・");

@@ -48,7 +48,7 @@ public class EnemyBattleData : BTrainerBattleData {
 	public override void MonsterDownEventSet(BattleManager manager) {
 		battleActiveMonsterSize_ -= 1;
 
-		dreamPoint_ += 45;
+		//dreamPoint_ += 45;
 
 		//戦闘のモンスターをダウンさせる
 		monsterDatas_[0].battleActive_ = false;
@@ -66,11 +66,11 @@ public class EnemyBattleData : BTrainerBattleData {
 		//ウェイト
 		AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
 
-		//DPの演出のイベント
-		manager.StatusInfoPartsDPEffectEventSet(this, manager.GetEnemyStatusInfoParts());
-
-		//ウェイト
-		AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
+		////DPの演出のイベント
+		//manager.StatusInfoPartsDPEffectEventSet(this, manager.GetEnemyStatusInfoParts());
+		//
+		////ウェイト
+		//AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
 
 		//エネミーのステータスインフォの退場
 		AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetEnemyStatusInfoParts().GetEventGameObject(), new Vector3(-13.5f, manager.GetEnemyStatusInfoParts().transform.position.y, manager.GetEnemyStatusInfoParts().transform.position.z));

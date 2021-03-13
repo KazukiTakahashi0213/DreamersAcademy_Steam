@@ -13,16 +13,16 @@ public class CommandEventSetProcess : IProcessState {
 	}
 
 	public IProcessState Update(BattleManager mgr) {
-		//DPの演出のイベント
-		mgr.PlayerEnemyStatusInfoPartsDPEffect();
-
-		//ウェイト
-		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
+		////DPの演出のイベント
+		//mgr.PlayerEnemyStatusInfoPartsDPEffect();
+		//
+		////ウェイト
+		//AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
 		//パワーアップしていたら
 		if (PlayerBattleData.GetInstance().dreamSyncronize_ == true) {
 			//dpの初期化
-			PlayerBattleData.GetInstance().dreamPoint_ = 0;
+			PlayerBattleData.GetInstance().DreamPointReset();
 			PlayerBattleData.GetInstance().dreamSyncronize_ = false;
 
 			//ゆめの文字色の変更
@@ -81,7 +81,7 @@ public class CommandEventSetProcess : IProcessState {
 		//パワーアップしていたら
 		if (EnemyBattleData.GetInstance().dreamSyncronize_ == true) {
 			//dpの初期化
-			EnemyBattleData.GetInstance().dreamPoint_ = 0;
+			EnemyBattleData.GetInstance().DreamPointReset();
 			EnemyBattleData.GetInstance().dreamSyncronize_ = false;
 
 			//DPの演出のイベント
@@ -336,8 +336,10 @@ public class CommandEventSetProcess : IProcessState {
 		bool skillResult = attackSkillData.effectType_.ExecuteEventSet(
 			mgr
 			, attackTrainerBattleData
+			, defenseTrainerBattleData
 			, defenseEffectParts
 			, defenseMonsterParts
+			, attackStatusInfoParts
 			, defenseStatusInfoParts
 			, attackMonsterData, attackSkillData, defenseMonsterData
 			);
