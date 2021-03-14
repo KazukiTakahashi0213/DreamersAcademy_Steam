@@ -3,7 +3,7 @@
 		
 		"effectValue_":										"70",
 		"optionEffectTriggerRateValue_":	"0",
-		"hitRateValue_":									"100",
+		"successRateValue_":							"100",
 		"upDpValue_":											"10",
 
 		"playPoint_":											"20",
@@ -11,8 +11,8 @@
 		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
 		"elementType_":										"4",
 
-		"//EffectType": ["None","Attack","Support"],
-		"effectType_":										"1",
+		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal"],
+		"effectValueType_":								"2",
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 

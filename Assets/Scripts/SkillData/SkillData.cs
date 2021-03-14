@@ -17,6 +17,8 @@ public class SkillData : ISkillData {
 		addSelfAbnormalStates_ = new List<AddAbnormalTypeState>();
 		addOtherAbnormalStates_ = new List<AddAbnormalTypeState>();
 
+		effectValueType_ = new EffectValueTypeProvider();
+
 		ResourcesSkillData data = ResourcesSkillDatasLoader.GetInstance().GetSkillDatas((int)skillDataNumber);
 
 		skillNumber_ = data.skillNumber_;
@@ -26,14 +28,14 @@ public class SkillData : ISkillData {
 		effectValue_ = data.effectValue_;
 
 		optionEffectTriggerRateValue_ = data.optionEffectTriggerRateValue_;
-		hitRateValue_ = data.hitRateValue_;
+		successRateValue_ = data.successRateValue_;
 		upDpValue_ = data.upDpValue_;
 
 		playPoint_ = data.playPoint_;
 		nowPlayPoint_ = playPoint_;
 
 		elementType_ = new ElementTypeState((ElementType)data.elementType_);
-		effectType_ = new EffectTypeState((EffectType)data.effectType_, EffectAttackType.Normal);
+		effectValueType_.state_ = (EffectValueTypeState)data.effectValueType_;
 
 		triggerPriority_ = data.triggerPriority_;
 		criticalParameterRank_ = data.criticalParameterRank_;
@@ -79,6 +81,8 @@ public class SkillData : ISkillData {
 		addSelfAbnormalStates_ = new List<AddAbnormalTypeState>();
 		addOtherAbnormalStates_ = new List<AddAbnormalTypeState>();
 
+		effectValueType_ = new EffectValueTypeProvider();
+
 		ResourcesSkillData data = ResourcesSkillDatasLoader.GetInstance().GetSkillDatas(skillDataName);
 
 		skillNumber_ = data.skillNumber_;
@@ -88,14 +92,14 @@ public class SkillData : ISkillData {
 		effectValue_ = data.effectValue_;
 
 		optionEffectTriggerRateValue_ = data.optionEffectTriggerRateValue_;
-		hitRateValue_ = data.hitRateValue_;
+		successRateValue_ = data.successRateValue_;
 		upDpValue_ = data.upDpValue_;
 
 		playPoint_ = data.playPoint_;
 		nowPlayPoint_ = playPoint_;
 
 		elementType_ = new ElementTypeState((ElementType)data.elementType_);
-		effectType_ = new EffectTypeState((EffectType)data.effectType_, EffectAttackType.Normal);
+		effectValueType_.state_ = (EffectValueTypeState)data.effectValueType_;
 
 		triggerPriority_ = data.triggerPriority_;
 		criticalParameterRank_ = data.criticalParameterRank_;
@@ -146,14 +150,14 @@ public class SkillData : ISkillData {
 	public List<AddAbnormalTypeState> addOtherAbnormalStates_ { get; }
 
 	public int optionEffectTriggerRateValue_ { get; }
-	public int hitRateValue_ { get; }
+	public int successRateValue_ { get; }
 	public int upDpValue_ { get; }
 
 	public int playPoint_ { get; }
 	public int nowPlayPoint_ { get; set; }
 
 	public ElementTypeState elementType_ { get; }
-	public EffectTypeState effectType_ { get; }
+	public EffectValueTypeProvider effectValueType_ { get; }
 
 	public int triggerPriority_ { get; }
 	public int criticalParameterRank_ { get; }

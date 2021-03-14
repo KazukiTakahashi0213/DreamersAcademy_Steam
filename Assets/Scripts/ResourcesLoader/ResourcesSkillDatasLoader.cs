@@ -20,13 +20,13 @@ public class ResourcesSkillData {
 
 	public float effectValue_;
 	public int optionEffectTriggerRateValue_;
-	public int hitRateValue_;
+	public int successRateValue_;
 	public int upDpValue_;
 
 	public int playPoint_;
 
 	public int elementType_;
-	public int effectType_;
+	public int effectValueType_;
 
 	public int triggerPriority_;
 	public int criticalParameterRank_;

@@ -91,8 +91,8 @@ public class EnemyCommandSelectProcess : IProcessState {
 
 				//攻撃技の威力計算
 				for (int i = 0; i < enemyMD.GetSkillSize(); ++i) {
-					//サポート技だったら処理を飛ばす
-					if (enemyMD.GetSkillDatas(i).effectType_.state_ == EffectType.Support) continue;
+					//HPへのダメージ技以外だったら
+					if (enemyMD.GetSkillDatas(i).effectValueType_.state_ != EffectValueTypeState.HitPointDamage) continue;
 
 					skillDamages[nowEffectAttackSize] = MonsterData.TestDamageCalculate(enemyMD, playerMD, enemyMD.GetSkillDatas(i));
 					skillNumbers[nowEffectAttackSize] = i;

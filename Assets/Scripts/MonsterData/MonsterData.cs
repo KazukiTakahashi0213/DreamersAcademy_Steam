@@ -167,22 +167,24 @@ public class MonsterData : IMonsterData {
 		int realSkillPower = (int)(attackSkill.effectValue_ * (4096 / 4096));
 
 		//物理か特殊か
-		EffectAttackTypeState ea = attackSkill.effectType_.GetEffectAttackTypeState();
+		//EffectAttackTypeState ea = attackSkill.effectValueType_.GetEffectAttackTypeState();
 
 		//モンスターの最終攻撃力
 		int realMonsterAttack = 0;
 		{
-			if (ea.state_ == EffectAttackType.Normal) {
-				realMonsterAttack = (int)(attackMonster.RealAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
-			}
+			//if (ea.state_ == EffectAttackType.Normal) {
+			//	realMonsterAttack = (int)(attackMonster.RealAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
+			//}
+			realMonsterAttack = (int)(attackMonster.RealAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
 		}
 
 		//敵モンスターの最終防御力
 		int realMonsterDefense = 0;
 		{
-			if (ea.state_ == EffectAttackType.Normal) {
-				realMonsterDefense = (int)(defenseMonster.RealDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
-			}
+			//if (ea.state_ == EffectAttackType.Normal) {
+			//	realMonsterDefense = (int)(defenseMonster.RealDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
+			//}
+			realMonsterDefense = (int)(defenseMonster.RealDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
 		}
 
 		//(((レベル×2/5+2)×威力×A/D)/50+2)
@@ -214,22 +216,24 @@ public class MonsterData : IMonsterData {
 		int realSkillPower = (int)(attackSkill.effectValue_ * (4096 / 4096));
 
 		//物理か特殊か
-		EffectAttackTypeState ea = attackSkill.effectType_.GetEffectAttackTypeState();
+		//EffectAttackTypeState ea = attackSkill.effectValueType_.GetEffectAttackTypeState();
 
 		//モンスターの最終攻撃力
 		int realMonsterAttack = 0;
 		{
-			if (ea.state_ == EffectAttackType.Normal) {
-				realMonsterAttack = (int)(attackMonster.RealAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
-			}
+			//if (ea.state_ == EffectAttackType.Normal) {
+			//	realMonsterAttack = (int)(attackMonster.RealAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
+			//}
+			realMonsterAttack = (int)(attackMonster.RealAttack() * attackMonster.battleData_.RealAttackParameterRank() * (4096 / 4096));
 		}
 
 		//敵モンスターの最終防御力
 		int realMonsterDefense = 0;
 		{
-			if (ea.state_ == EffectAttackType.Normal) {
-				realMonsterDefense = (int)(defenseMonster.RealDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
-			}
+			//if (ea.state_ == EffectAttackType.Normal) {
+			//	realMonsterDefense = (int)(defenseMonster.RealDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
+			//}
+			realMonsterDefense = (int)(defenseMonster.RealDefense() * defenseMonster.battleData_.RealDefenseParameterRank() * (4096 / 4096));
 		}
 
 		//(((レベル×2/5+2)×威力×A/D)/50+2)

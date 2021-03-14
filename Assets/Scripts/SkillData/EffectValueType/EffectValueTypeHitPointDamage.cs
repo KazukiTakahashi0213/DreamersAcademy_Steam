@@ -2,28 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EffectType {
-	None,
-	Attack,
-	Support,
-	Max
-}
-
-public class EffectTypeState {
-	public EffectTypeState(EffectType setState, EffectAttackType effectAttackType = EffectAttackType.Normal) {
-		state_ = setState;
-		effectAttackTypeState_.state_ = effectAttackType;
-	}
-
-	public EffectType state_;
-
-	//None
-	static private bool NoneExecuteEventSet(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
-		return false;
-	}
-
-	//Attack
-	static private bool AttackExecuteEventSet(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
+public class EffectValueTypeHitPointDamage : BEffectValueType {
+	public override bool EffectValueEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
 		//ランク補正の計算
 		float monsterHitRateValue = 0;
 		{
@@ -40,12 +20,12 @@ public class EffectTypeState {
 			monsterHitRateValue = numerator / denominator;
 		}
 
-		//攻撃のヒット判定
+		//攻撃の成功判定
 		//技の命中率×命中補正値M×ランク補正
-		bool skillHit = AllSceneManager.GetInstance().GetRandom().Next(0, 100) < (int)(attackSkillData.successRateValue_ * (4096 / 4096) * monsterHitRateValue);
+		bool skillSuccess = AllSceneManager.GetInstance().GetRandom().Next(0, 100) < (int)(attackSkillData.successRateValue_ * (4096 / 4096) * monsterHitRateValue);
 
-		//攻撃がはずれた時の説明
-		if (!skillHit) {
+		//技が失敗した時の説明
+		if (!skillSuccess) {
 			AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), "しかし　" + attackTrainerBattleData.GetUniqueTrainerName() + attackMonsterData.uniqueName_ + "の\nこうげきは　はずれた！");
 			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 			AllEventManager.GetInstance().AllUpdateEventExecute(mgr.GetEventContextUpdateTime());
@@ -69,8 +49,8 @@ public class EffectTypeState {
 		else critical = 1.5f;
 
 		//ヒットポイントの変動
-		int realDamage = (int)(MonsterData.BattleDamageCalculate(attackMonsterData, defenseMonsterData, attackSkillData) * critical);
-		defenseMonsterData.nowHitPoint_ -= realDamage;
+		int realEffectValue = (int)(MonsterData.BattleDamageCalculate(attackMonsterData, defenseMonsterData, attackSkillData) * critical);
+		defenseMonsterData.nowHitPoint_ -= realEffectValue;
 		if (defenseMonsterData.nowHitPoint_ < 0) defenseMonsterData.nowHitPoint_ = 0;
 
 		//DPの変動
@@ -105,7 +85,7 @@ public class EffectTypeState {
 		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
 		//ダメージを受けていたら
-		if (realDamage > 0) {
+		if (realEffectValue > 0) {
 			//ダメージアクション（点滅）
 			defenseMonsterParts.GetEventMonsterSprite().blinkTimeRegulation_ = 0.06f;
 
@@ -195,24 +175,4 @@ public class EffectTypeState {
 
 		return true;
 	}
-
-	//Support
-	static private bool SupportExecuteEventSet(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
-		//技のアニメーション
-		attackSkillData.EffectAnimetionEventSet(defenseEffectParts);
-		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
-
-		return true;
-	}
-
-	private delegate bool ExecuteEventSetFunc(EffectTypeState mine, BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData);
-	private ExecuteEventSetFunc[] executePlayerEventSets_ = new ExecuteEventSetFunc[(int)EffectType.Max] {
-		NoneExecuteEventSet,
-		AttackExecuteEventSet,
-		SupportExecuteEventSet
-	};
-	public bool ExecuteEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) { return executePlayerEventSets_[(int)state_](this, mgr, attackTrainerBattleData, defenseTrainerBattleData, defenseEffectParts, defenseMonsterParts, attackStatusInfoParts, defenseStatusInfoParts, attackMonsterData, attackSkillData, defenseMonsterData); }
-
-	private EffectAttackTypeState effectAttackTypeState_ = new EffectAttackTypeState(EffectAttackType.Normal);
-	public EffectAttackTypeState GetEffectAttackTypeState() { return effectAttackTypeState_; }
 }

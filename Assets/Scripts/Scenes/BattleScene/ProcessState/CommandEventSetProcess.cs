@@ -147,6 +147,7 @@ public class CommandEventSetProcess : IProcessState {
 			//プレイヤーの戦闘処理
 			SkillResultSet(
 				mgr
+				, mgr.GetPlayerEffectParts()
 				, mgr.GetEnemyEffectParts()
 				, mgr.GetEnemyMonsterParts()
 				, mgr.GetPlayerStatusInfoParts()
@@ -158,6 +159,7 @@ public class CommandEventSetProcess : IProcessState {
 			//エネミーの戦闘処理
 			SkillResultSet(
 				mgr
+				, mgr.GetEnemyEffectParts()
 				, mgr.GetPlayerEffectParts()
 				, mgr.GetPlayerMonsterParts()
 				, mgr.GetEnemyStatusInfoParts()
@@ -171,6 +173,7 @@ public class CommandEventSetProcess : IProcessState {
 			//エネミーの戦闘処理
 			SkillResultSet(
 				mgr
+				, mgr.GetEnemyEffectParts()
 				, mgr.GetPlayerEffectParts()
 				, mgr.GetPlayerMonsterParts()
 				, mgr.GetEnemyStatusInfoParts()
@@ -182,6 +185,7 @@ public class CommandEventSetProcess : IProcessState {
 			//プレイヤーの戦闘処理
 			SkillResultSet(
 				mgr
+				, mgr.GetPlayerEffectParts()
 				, mgr.GetEnemyEffectParts()
 				, mgr.GetEnemyMonsterParts()
 				, mgr.GetPlayerStatusInfoParts()
@@ -196,6 +200,7 @@ public class CommandEventSetProcess : IProcessState {
 			//プレイヤーの戦闘処理
 			SkillResultSet(
 				mgr
+				, mgr.GetPlayerEffectParts()
 				, mgr.GetEnemyEffectParts()
 				, mgr.GetEnemyMonsterParts()
 				, mgr.GetPlayerStatusInfoParts()
@@ -207,6 +212,7 @@ public class CommandEventSetProcess : IProcessState {
 			//エネミーの戦闘処理
 			SkillResultSet(
 				mgr
+				, mgr.GetEnemyEffectParts()
 				, mgr.GetPlayerEffectParts()
 				, mgr.GetPlayerMonsterParts()
 				, mgr.GetEnemyStatusInfoParts()
@@ -221,6 +227,7 @@ public class CommandEventSetProcess : IProcessState {
 				//プレイヤーの戦闘処理
 				SkillResultSet(
 					mgr
+					, mgr.GetPlayerEffectParts()
 					, mgr.GetEnemyEffectParts()
 					, mgr.GetEnemyMonsterParts()
 					, mgr.GetPlayerStatusInfoParts()
@@ -232,6 +239,7 @@ public class CommandEventSetProcess : IProcessState {
 				//エネミーの戦闘処理
 				SkillResultSet(
 					mgr
+					, mgr.GetEnemyEffectParts()
 					, mgr.GetPlayerEffectParts()
 					, mgr.GetPlayerMonsterParts()
 					, mgr.GetEnemyStatusInfoParts()
@@ -245,6 +253,7 @@ public class CommandEventSetProcess : IProcessState {
 				//エネミーの戦闘処理
 				SkillResultSet(
 					mgr
+					, mgr.GetEnemyEffectParts()
 					, mgr.GetPlayerEffectParts()
 					, mgr.GetPlayerMonsterParts()
 					, mgr.GetEnemyStatusInfoParts()
@@ -256,6 +265,7 @@ public class CommandEventSetProcess : IProcessState {
 				//プレイヤーの戦闘処理
 				SkillResultSet(
 					mgr
+					, mgr.GetPlayerEffectParts()
 					, mgr.GetEnemyEffectParts()
 					, mgr.GetEnemyMonsterParts()
 					, mgr.GetPlayerStatusInfoParts()
@@ -270,6 +280,7 @@ public class CommandEventSetProcess : IProcessState {
 			//エネミーの戦闘処理
 			SkillResultSet(
 				mgr
+				, mgr.GetEnemyEffectParts()
 				, mgr.GetPlayerEffectParts()
 				, mgr.GetPlayerMonsterParts()
 				, mgr.GetEnemyStatusInfoParts()
@@ -281,6 +292,7 @@ public class CommandEventSetProcess : IProcessState {
 			//プレイヤーの戦闘処理
 			SkillResultSet(
 				mgr
+				, mgr.GetPlayerEffectParts()
 				, mgr.GetEnemyEffectParts()
 				, mgr.GetEnemyMonsterParts()
 				, mgr.GetPlayerStatusInfoParts()
@@ -309,7 +321,7 @@ public class CommandEventSetProcess : IProcessState {
 	}
 
 
-	private void SkillResultSet(BattleManager mgr, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
+	private void SkillResultSet(BattleManager mgr, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
 		//ダウンしていたら
 		if (!attackMonsterData.battleActive_) return;
 
@@ -333,10 +345,11 @@ public class CommandEventSetProcess : IProcessState {
 		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
 		//技のイベントの設定
-		bool skillResult = attackSkillData.effectType_.ExecuteEventSet(
+		bool skillResult = attackSkillData.effectValueType_.EffectValueEventSet(
 			mgr
 			, attackTrainerBattleData
 			, defenseTrainerBattleData
+			, attackEffectParts
 			, defenseEffectParts
 			, defenseMonsterParts
 			, attackStatusInfoParts

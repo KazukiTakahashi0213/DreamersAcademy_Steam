@@ -15,14 +15,14 @@ public interface ISkillData {
 	List<AddAbnormalTypeState> addOtherAbnormalStates_ { get; }
 	
 	int optionEffectTriggerRateValue_ { get; }
-	int hitRateValue_ { get; }
+	int successRateValue_ { get; }
 	int upDpValue_ { get; }
 
 	int playPoint_ { get; }
 	int nowPlayPoint_ { get; set; }
 
 	ElementTypeState elementType_ { get; }
-	EffectTypeState effectType_ { get; }
+	EffectValueTypeProvider effectValueType_ { get; }
 
 	int triggerPriority_ { get; }
 	int criticalParameterRank_ { get; }
