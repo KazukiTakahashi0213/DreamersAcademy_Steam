@@ -12,6 +12,10 @@ public class ResourcesMonsterTribesData {
 	public int tribesDefense_;
 	public int tribesSpeed_;
 
+	public float tribesDreamAttack_;
+	public float tribesDreamDefense_;
+	public float tribesDreamSpeed_;
+
 	public int firstElement_;
 	public int secondElement_;
 

@@ -48,13 +48,29 @@ public class MonsterData : IMonsterData {
 
 	//実数値
 	public int RealHitPoint() { return ((tribesData_.tribesHitPoint_ * 2 + (uniqueHitPoint_ / 4)) * level_ / 100) + level_ + 10; }
-	public int RealAttack() { return (int)((tribesData_.tribesAttack_ + (uniqueAttack_ / 4)) * RealPowerUp()); }
-	public int RealDefense() { return (int)((tribesData_.tribesDefense_ + (uniqueDefense_ / 4)) * RealPowerUp()); }
-	public int RealSpeed() { return (int)((tribesData_.tribesSpeed_ + (uniqueSpeed_ / 4)) * RealPowerUp()); }
-	private float RealPowerUp() {
+	public int RealAttack() { return (int)((tribesData_.tribesAttack_ + (uniqueAttack_ / 4)) * PowerUpAttack()); }
+	public int RealDefense() { return (int)((tribesData_.tribesDefense_ + (uniqueDefense_ / 4)) * PowerUpDefense()); }
+	public int RealSpeed() { return (int)((tribesData_.tribesSpeed_ + (uniqueSpeed_ / 4)) * PowerUpSpeed()); }
+	private float PowerUpAttack() {
 		//もしヒーロー状態だったら
 		if (battleData_.firstAbnormalState_.state_ == AbnormalType.Hero) {
-			return 1.3f;
+			return tribesData_.tribesDreamAttack_;
+		}
+
+		return 1;
+	}
+	private float PowerUpDefense() {
+		//もしヒーロー状態だったら
+		if (battleData_.firstAbnormalState_.state_ == AbnormalType.Hero) {
+			return tribesData_.tribesDreamDefense_;
+		}
+
+		return 1;
+	}
+	private float PowerUpSpeed() {
+		//もしヒーロー状態だったら
+		if (battleData_.firstAbnormalState_.state_ == AbnormalType.Hero) {
+			return tribesData_.tribesDreamSpeed_;
 		}
 
 		return 1;

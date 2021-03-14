@@ -13,6 +13,10 @@ public interface IMonsterTribesData {
 	int tribesDefense_ { get; }
 	int tribesSpeed_ { get; }
 
+	float tribesDreamAttack_ { get; }
+	float tribesDreamDefense_ { get; }
+	float tribesDreamSpeed_ { get; }
+
 	ElementTypeState firstElement_ { get; }
 	ElementTypeState secondElement_ { get; }
 

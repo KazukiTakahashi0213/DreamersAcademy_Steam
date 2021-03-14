@@ -33,6 +33,10 @@ public class MonsterTribesData : IMonsterTribesData {
 		tribesDefense_ = data.tribesDefense_;
 		tribesSpeed_ = data.tribesSpeed_;
 
+		tribesDreamAttack_ = data.tribesDreamAttack_;
+		tribesDreamDefense_ = data.tribesDreamDefense_;
+		tribesDreamSpeed_ = data.tribesDreamSpeed_;
+
 		firstElement_ = new ElementTypeState((ElementType)data.firstElement_);
 		secondElement_ = new ElementTypeState((ElementType)data.secondElement_);
 
@@ -55,6 +59,10 @@ public class MonsterTribesData : IMonsterTribesData {
 		tribesDefense_ = data.tribesDefense_;
 		tribesSpeed_ = data.tribesSpeed_;
 
+		tribesDreamAttack_ = data.tribesDreamAttack_;
+		tribesDreamDefense_ = data.tribesDreamDefense_;
+		tribesDreamSpeed_ = data.tribesDreamSpeed_;
+
 		firstElement_ = new ElementTypeState((ElementType)data.firstElement_);
 		secondElement_ = new ElementTypeState((ElementType)data.secondElement_);
 
@@ -72,6 +80,10 @@ public class MonsterTribesData : IMonsterTribesData {
 	public int tribesAttack_ { get; }
 	public int tribesDefense_ { get; }
 	public int tribesSpeed_ { get; }
+
+	public float tribesDreamAttack_ { get; }
+	public float tribesDreamDefense_ { get; }
+	public float tribesDreamSpeed_ { get; }
 
 	public ElementTypeState firstElement_ { get; }
 	public ElementTypeState secondElement_ { get; }
