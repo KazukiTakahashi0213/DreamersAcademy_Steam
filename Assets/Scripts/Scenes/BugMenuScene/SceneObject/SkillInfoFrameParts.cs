@@ -12,11 +12,11 @@ public class SkillInfoFrameParts : MonoBehaviour{
 	public int GetTextsCount() { return texts_.Count; }
 
 	public void SkillInfoReflect(ISkillData referSkillData) {
-		string playPointContext = t13.Utility.HarfSizeForFullSize(referSkillData.nowPlayPoint_.ToString()) + "／" + t13.Utility.HarfSizeForFullSize(referSkillData.playPoint_.ToString());
+		//string playPointContext = t13.Utility.HarfSizeForFullSize(referSkillData.nowPlayPoint_.ToString()) + "／" + t13.Utility.HarfSizeForFullSize(referSkillData.playPoint_.ToString());
 
 		texts_[0].text =
-			"PP　　　　" + playPointContext + "\n"
-			+ "わざタイプ／" + referSkillData.elementType_.GetName() + "\n"
+			//"PP　　　　" + playPointContext + "\n"
+			"わざタイプ／" + referSkillData.elementType_.GetName() + "\n"
 			+ "いりょく　　" + t13.Utility.HarfSizeForFullSize(referSkillData.effectValue_.ToString()) + "\n"
 			+ "めいちゅう　" + t13.Utility.HarfSizeForFullSize(referSkillData.successRateValue_.ToString()) + "\n"
 			//+ "アップ" + t13.Utility.HarfSizeForFullSize("DP") + "　" + t13.Utility.HarfSizeForFullSize(referSkillData.upDpValue_.ToString())

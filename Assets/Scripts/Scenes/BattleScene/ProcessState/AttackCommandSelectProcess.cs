@@ -139,9 +139,9 @@ public class AttackCommandSelectProcess : IProcessState {
 
 			ISkillData playerSkillData = PlayerBattleData.GetInstance().GetMonsterDatas(0).GetSkillDatas(mgr.playerSelectSkillNumber_);
 
-			//プレイポイントがあって、スキルがNoneでなかったら
-			if (playerSkillData.nowPlayPoint_ > 0
-				&& playerSkillData.skillNumber_ != (int)SkillDataNumber.None) {
+			//スキルがNoneでなかったら
+			if (//playerSkillData.nowPlayPoint_ > 0
+				playerSkillData.skillNumber_ != (int)SkillDataNumber.None) {
 				//SE
 				mgr.GetInputSoundProvider().SelectEnter();
 
@@ -154,7 +154,7 @@ public class AttackCommandSelectProcess : IProcessState {
 				mgr.InactiveUiAttackCommand();
 
 				//ppの消費
-				playerSkillData.nowPlayPoint_ -= 1;
+				//playerSkillData.nowPlayPoint_ -= 1;
 
 				//イベントの最後
 				AllEventManager.GetInstance().EventFinishSet();

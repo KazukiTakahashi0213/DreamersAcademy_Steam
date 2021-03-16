@@ -117,12 +117,14 @@ public class EnemyCommandSelectProcess : IProcessState {
 					}
 				}
 
-				//ppがあれば、一番の火力の高い技を選択
+				//一番の火力の高い技を選択
 				for (int i = 0; i < skillNumbers.Length; ++i) {
-					if (enemyMD.GetSkillDatas(skillNumbers[i]).nowPlayPoint_ > 0) {
-						mgr.enemySelectSkillNumber_ = skillNumbers[i];
-						i = skillNumbers.Length;
-					}
+					//if (enemyMD.GetSkillDatas(skillNumbers[i]).nowPlayPoint_ > 0) {
+					//	mgr.enemySelectSkillNumber_ = skillNumbers[i];
+					//	i = skillNumbers.Length;
+					//}
+					mgr.enemySelectSkillNumber_ = skillNumbers[i];
+					i = skillNumbers.Length;
 				}
 
 				//こんらん状態であれば
@@ -150,7 +152,7 @@ public class EnemyCommandSelectProcess : IProcessState {
 
 				//ppの消費
 				ISkillData enemySkillData = enemyMD.GetSkillDatas(mgr.enemySelectSkillNumber_);
-				enemySkillData.nowPlayPoint_ -= 1;
+				//enemySkillData.nowPlayPoint_ -= 1;
 			}
 
 			eventEnd_ = false;
