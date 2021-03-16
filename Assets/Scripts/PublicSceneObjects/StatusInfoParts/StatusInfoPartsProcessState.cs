@@ -27,8 +27,6 @@ public class StatusInfoPartsProcessState {
 		if(statusInfoParts.GetTimeCounter().measure(Time.deltaTime, statusInfoParts.GetTimeRegulation())) {
 			BaseParts baseParts = statusInfoParts.GetBaseParts();
 			FrameParts frameParts = statusInfoParts.GetFrameParts();
-			AbnormalStateInfoParts firstAbnormalStateInfoParts = statusInfoParts.GetFirstAbnormalStateInfoParts();
-			AbnormalStateInfoParts secondAbnormalStateInfoParts = statusInfoParts.GetSecondAbnormalStateInfoParts();
 
 			baseParts.GetBaseSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetBaseSprite().color)
@@ -81,8 +79,6 @@ public class StatusInfoPartsProcessState {
 		else {
 			BaseParts baseParts = statusInfoParts.GetBaseParts();
 			FrameParts frameParts = statusInfoParts.GetFrameParts();
-			AbnormalStateInfoParts firstAbnormalStateInfoParts = statusInfoParts.GetFirstAbnormalStateInfoParts();
-			AbnormalStateInfoParts secondAbnormalStateInfoParts = statusInfoParts.GetSecondAbnormalStateInfoParts();
 
 			baseParts.GetBaseSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetBaseSprite().color)
@@ -139,8 +135,6 @@ public class StatusInfoPartsProcessState {
 		if (statusInfoParts.GetTimeCounter().measure(Time.deltaTime, statusInfoParts.GetTimeRegulation())) {
 			BaseParts baseParts = statusInfoParts.GetBaseParts();
 			FrameParts frameParts = statusInfoParts.GetFrameParts();
-			AbnormalStateInfoParts firstAbnormalStateInfoParts = statusInfoParts.GetFirstAbnormalStateInfoParts();
-			AbnormalStateInfoParts secondAbnormalStateInfoParts = statusInfoParts.GetSecondAbnormalStateInfoParts();
 
 			baseParts.GetBaseSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetBaseSprite().color)
@@ -193,8 +187,6 @@ public class StatusInfoPartsProcessState {
 		else {
 			BaseParts baseParts = statusInfoParts.GetBaseParts();
 			FrameParts frameParts = statusInfoParts.GetFrameParts();
-			AbnormalStateInfoParts firstAbnormalStateInfoParts = statusInfoParts.GetFirstAbnormalStateInfoParts();
-			AbnormalStateInfoParts secondAbnormalStateInfoParts = statusInfoParts.GetSecondAbnormalStateInfoParts();
 
 			baseParts.GetBaseSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetBaseSprite().color)

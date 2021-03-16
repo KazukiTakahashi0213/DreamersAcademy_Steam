@@ -80,20 +80,8 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			//ステータスインフォに反映
 			playerStatusInfoParts_.MonsterStatusInfoSet(md);
 
-			//技をTextに反映
-			for (int i = 0; i < attackCommandParts_.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
-				attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).text = "　" + t13.Utility.StringFullSpaceBackTamp(md.GetSkillDatas(i).skillName_, 7);
-			}
-
-			//文字の色の変更
-			for (int i = 0; i < attackCommandParts_.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
-				int simillarResult = EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(md.GetSkillDatas(i).elementType_);
-
-				if (simillarResult == 0) attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).color = new Color32(195, 195, 195, 255);
-				else if (simillarResult == 1) attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).color = new Color32(52, 130, 207, 255);
-				else if (simillarResult == 2) attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).color = new Color32(50, 50, 50, 255);
-				else if (simillarResult == 3) attackCommandParts_.GetCommandParts().GetCommandWindowTexts(i).color = new Color32(207, 52, 112, 255);
-			}
+			//攻撃技の反映
+			attackCommandParts_.MonsterDataReflect(md, EnemyBattleData.GetInstance().GetMonsterDatas(0));
 		}
 
 		//イベントのセット
@@ -159,13 +147,20 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	public DreamEffectParts GetDreamEffectParts() { return dreamEffectParts_; }
 
 	public void AttackCommandSkillInfoTextSet(int number) {
-		IMonsterData md = PlayerBattleData.GetInstance().GetMonsterDatas(0);
+		IMonsterData monsterData = PlayerBattleData.GetInstance().GetMonsterDatas(0);
+		IMonsterData enemyMonsterData = EnemyBattleData.GetInstance().GetMonsterDatas(0);
+		string elementSimillarContext = "";
 
-		string playPointContext = t13.Utility.HarfSizeForFullSize(md.GetSkillDatas(number).nowPlayPoint_.ToString()) + "／" + t13.Utility.HarfSizeForFullSize(md.GetSkillDatas(number).playPoint_.ToString());
+		int simillarResult = enemyMonsterData.ElementSimillarCheckerForValue(monsterData.GetSkillDatas(number).elementType_);
+
+		if (simillarResult == 3) elementSimillarContext = "こうかばつぐん！";
+		else if (simillarResult == 2) elementSimillarContext = "いいかんじ！";
+		else if (simillarResult == 1) elementSimillarContext = "いまひとつ...";
+		else if (simillarResult == 0) elementSimillarContext = "こうかなし";
 
 		attackCommandParts_.GetSkillInfoParts().GetCommandWindowText().text =
-			"PP　　　　" + playPointContext + "\n"
-			+ "わざタイプ／" + md.GetSkillDatas(number).elementType_.GetName();
+			"ぞくせい／" + monsterData.GetSkillDatas(number).elementType_.GetName() + "\n"
+			+ elementSimillarContext;
 	}
 
 	public void ActiveUiCommand() {

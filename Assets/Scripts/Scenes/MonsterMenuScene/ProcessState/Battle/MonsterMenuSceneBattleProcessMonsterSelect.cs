@@ -42,6 +42,12 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(0).GetFirstAbnormalStateInfoParts().gameObject.SetActive(false);
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(0).GetSecondAbnormalStateInfoParts().gameObject.SetActive(false);
 
+			//タイプの表示、非表示
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-2).GetFirstElementInfoParts().gameObject.SetActive(true);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-2).GetSecondElementInfoParts().gameObject.SetActive(true);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(0).GetFirstElementInfoParts().gameObject.SetActive(false);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(0).GetSecondElementInfoParts().gameObject.SetActive(false);
+
 			sceneMgr.inputProvider_ = new InactiveInputProvider();
 		}
 		else if (sceneMgr.inputProvider_.DownSelect()) {
@@ -75,6 +81,12 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(1).GetSecondAbnormalStateInfoParts().gameObject.SetActive(true);
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-1).GetFirstAbnormalStateInfoParts().gameObject.SetActive(false);
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-1).GetSecondAbnormalStateInfoParts().gameObject.SetActive(false);
+
+			//タイプの表示、非表示
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(1).GetFirstElementInfoParts().gameObject.SetActive(true);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(1).GetSecondElementInfoParts().gameObject.SetActive(true);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-1).GetFirstElementInfoParts().gameObject.SetActive(false);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-1).GetSecondElementInfoParts().gameObject.SetActive(false);
 
 			sceneMgr.inputProvider_ = new InactiveInputProvider();
 		}

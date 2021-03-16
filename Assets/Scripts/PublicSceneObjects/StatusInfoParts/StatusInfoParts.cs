@@ -51,6 +51,8 @@ public class StatusInfoParts : MonoBehaviour {
 	public BaseParts GetBaseParts() { return baseParts_; }
 	public AbnormalStateInfoParts GetFirstAbnormalStateInfoParts() { return firstAbnormalStateInfoParts_; }
 	public AbnormalStateInfoParts GetSecondAbnormalStateInfoParts() { return secondAbnormalStateInfoParts_; }
+	public ElementInfoParts GetFirstElementInfoParts() { return firstElementInfoParts_; }
+	public ElementInfoParts GetSecondElementInfoParts() { return secondElementInfoParts_; }
 	public UpdateImage GetDPGaugeMeterUpdateImage() { return dpGaugeMeterUpdateImage_; }
 	public UpdateGameObject GetEventGameObject() { return eventGameObject_; }
 	public float GetIdleTimeRegulation() { return idleTimeRegulation_; }

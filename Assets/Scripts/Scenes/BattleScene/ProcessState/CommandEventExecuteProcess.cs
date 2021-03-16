@@ -42,16 +42,9 @@ public class CommandEventExecuteProcess : IProcessState {
 			mgr.ActiveUiCommand();
 			sceneMgr.inputProvider_ = new KeyBoardNormalTriggerInputProvider();
 
-			//文字の色の変更
-			IMonsterData md = PlayerBattleData.GetInstance().GetMonsterDatas(0);
-			for (int i = 0; i < mgr.GetAttackCommandParts().GetCommandParts().GetCommandWindowTextsCount(); ++i) {
-				int simillarResult = EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(md.GetSkillDatas(i).elementType_);
+			//攻撃技の反映
+			mgr.GetAttackCommandParts().MonsterDataReflect(PlayerBattleData.GetInstance().GetMonsterDatas(0), EnemyBattleData.GetInstance().GetMonsterDatas(0));
 
-				if (simillarResult == 0) mgr.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(195, 195, 195, 255);
-				else if (simillarResult == 1) mgr.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(52, 130, 207, 255);
-				else if (simillarResult == 2) mgr.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(50, 50, 50, 255);
-				else if (simillarResult == 3) mgr.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(207, 52, 112, 255);
-			}
 			return mgr.nowProcessState().NextProcess();
 		}
 

@@ -209,20 +209,8 @@ public class PlayerBattleData : BTrainerBattleData {
 			//ステータスインフォへの反映
 			manager.GetEnemyStatusInfoParts().MonsterStatusInfoSetEventSet(md);
 
-			//技をTextに反映
-			for (int i = 0;i < manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTextsCount(); ++i) {
-				manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).text = "　" + t13.Utility.StringFullSpaceBackTamp(md.GetSkillDatas(i).skillName_, 7);
-			}
-
-			//文字の色の変更
-			for (int i = 0; i < manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTextsCount(); ++i) {
-				int simillarResult = EnemyBattleData.GetInstance().GetMonsterDatas(0).ElementSimillarCheckerForValue(md.GetSkillDatas(i).elementType_);
-
-				if (simillarResult == 0) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(195, 195, 195, 255);
-				else if (simillarResult == 1) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(52, 130, 207, 255);
-				else if (simillarResult == 2) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(50, 50, 50, 255);
-				else if (simillarResult == 3) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(207, 52, 112, 255);
-			}
+			//攻撃技の反映
+			manager.GetAttackCommandParts().MonsterDataReflect(md, EnemyBattleData.GetInstance().GetMonsterDatas(0));
 
 			//ねむりの終了処理
 			manager.SleepProcessEnd();

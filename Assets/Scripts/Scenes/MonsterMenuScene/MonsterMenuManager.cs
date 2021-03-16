@@ -41,11 +41,17 @@ public class MonsterMenuManager : MonoBehaviour, ISceneManager {
 			}
 		}
 
-		//状態異常の表示、非表示
+		//状態異常の非表示
 		bulletParts_.GetEventStatusInfosParts(0).GetFirstAbnormalStateInfoParts().gameObject.SetActive(false);
 		bulletParts_.GetEventStatusInfosParts(0).GetSecondAbnormalStateInfoParts().gameObject.SetActive(false);
 		bulletParts_.GetEventStatusInfosParts(bulletParts_.GetEventStatusInfosPartsSize()-1).GetFirstAbnormalStateInfoParts().gameObject.SetActive(false);
 		bulletParts_.GetEventStatusInfosParts(bulletParts_.GetEventStatusInfosPartsSize()-1).GetSecondAbnormalStateInfoParts().gameObject.SetActive(false);
+
+		//タイプの非表示
+		bulletParts_.GetEventStatusInfosParts(0).GetFirstElementInfoParts().gameObject.SetActive(false);
+		bulletParts_.GetEventStatusInfosParts(0).GetSecondElementInfoParts().gameObject.SetActive(false);
+		bulletParts_.GetEventStatusInfosParts(bulletParts_.GetEventStatusInfosPartsSize() - 1).GetFirstElementInfoParts().gameObject.SetActive(false);
+		bulletParts_.GetEventStatusInfosParts(bulletParts_.GetEventStatusInfosPartsSize() - 1).GetSecondElementInfoParts().gameObject.SetActive(false);
 
 		//初期化
 		nowProcessState_.init(this);
