@@ -105,7 +105,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	}
 
 	public void SceneEnd() {
-		PlayerBattleData playerData = PlayerBattleData.GetInstance();
+		PlayerTrainerData playerData = PlayerTrainerData.GetInstance();
 
 		for(int i = 0;i < playerData.GetHaveMonsterSize(); ++i) {
 			playerData.GetMonsterDatas(i).BattleDataReset();

@@ -32,21 +32,21 @@ public class StatusInfoPartsProcessState {
 
 			baseParts.GetBaseSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetBaseSprite().color)
-				, statusInfoParts.GetTimeFlucts(5)
+				, statusInfoParts.GetTimeFlucts(0)
 				, 255
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
 				);
 			baseParts.GetHpLogoText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetHpLogoText().color)
-				, statusInfoParts.GetTimeFlucts(0)
+				, statusInfoParts.GetTimeFlucts(1)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
 				);
-			baseParts.GetInfoEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-				t13.UnityUtil.ColorForColor32(baseParts.GetInfoEventText().GetText().color)
-				, statusInfoParts.GetTimeFlucts(1)
+			baseParts.GetInfoNameEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
+				t13.UnityUtil.ColorForColor32(baseParts.GetInfoNameEventText().GetText().color)
+				, statusInfoParts.GetTimeFlucts(2)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
@@ -54,7 +54,7 @@ public class StatusInfoPartsProcessState {
 
 			frameParts.GetFrameSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(frameParts.GetFrameSprite().color)
-				, statusInfoParts.GetTimeFlucts(2)
+				, statusInfoParts.GetTimeFlucts(4)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
@@ -62,7 +62,7 @@ public class StatusInfoPartsProcessState {
 			if (frameParts.GetHpGaugeParts().GetInfoText() != null) {
 				frameParts.GetHpGaugeParts().GetInfoText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 					t13.UnityUtil.ColorForColor32(frameParts.GetHpGaugeParts().GetInfoText().color)
-					, statusInfoParts.GetTimeFlucts(3)
+					, statusInfoParts.GetTimeFlucts(5)
 					, statusInfoParts.GetEndColor().a
 					, statusInfoParts.GetTimeRegulation()
 					, statusInfoParts.GetTimeRegulation()
@@ -70,7 +70,7 @@ public class StatusInfoPartsProcessState {
 			}
 			frameParts.GetHpGaugeParts().GetGauge().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(frameParts.GetHpGaugeParts().GetGauge().color)
-				, statusInfoParts.GetTimeFlucts(4)
+				, statusInfoParts.GetTimeFlucts(6)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
@@ -86,21 +86,21 @@ public class StatusInfoPartsProcessState {
 
 			baseParts.GetBaseSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetBaseSprite().color)
-				, statusInfoParts.GetTimeFlucts(5)
+				, statusInfoParts.GetTimeFlucts(0)
 				, 255
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
 				);
 			baseParts.GetHpLogoText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetHpLogoText().color)
-				, statusInfoParts.GetTimeFlucts(0)
+				, statusInfoParts.GetTimeFlucts(1)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
 				);
-			baseParts.GetInfoEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-				t13.UnityUtil.ColorForColor32(baseParts.GetInfoEventText().GetText().color)
-				, statusInfoParts.GetTimeFlucts(1)
+			baseParts.GetInfoNameEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
+				t13.UnityUtil.ColorForColor32(baseParts.GetInfoNameEventText().GetText().color)
+				, statusInfoParts.GetTimeFlucts(2)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
@@ -108,7 +108,7 @@ public class StatusInfoPartsProcessState {
 
 			frameParts.GetFrameSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(frameParts.GetFrameSprite().color)
-				, statusInfoParts.GetTimeFlucts(2)
+				, statusInfoParts.GetTimeFlucts(4)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
@@ -116,7 +116,7 @@ public class StatusInfoPartsProcessState {
 			if (frameParts.GetHpGaugeParts().GetInfoText() != null) {
 				frameParts.GetHpGaugeParts().GetInfoText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 					t13.UnityUtil.ColorForColor32(frameParts.GetHpGaugeParts().GetInfoText().color)
-					, statusInfoParts.GetTimeFlucts(3)
+					, statusInfoParts.GetTimeFlucts(5)
 					, statusInfoParts.GetEndColor().a
 					, statusInfoParts.GetTimeCounter().count()
 					, statusInfoParts.GetTimeRegulation()
@@ -124,7 +124,7 @@ public class StatusInfoPartsProcessState {
 			}
 			frameParts.GetHpGaugeParts().GetGauge().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(frameParts.GetHpGaugeParts().GetGauge().color)
-				, statusInfoParts.GetTimeFlucts(4)
+				, statusInfoParts.GetTimeFlucts(6)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
@@ -144,21 +144,21 @@ public class StatusInfoPartsProcessState {
 
 			baseParts.GetBaseSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetBaseSprite().color)
-				, statusInfoParts.GetTimeFlucts(5)
+				, statusInfoParts.GetTimeFlucts(0)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
 				);
 			baseParts.GetHpLogoText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetHpLogoText().color)
-				, statusInfoParts.GetTimeFlucts(0)
+				, statusInfoParts.GetTimeFlucts(1)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
 				);
-			baseParts.GetInfoEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-				t13.UnityUtil.ColorForColor32(baseParts.GetInfoEventText().GetText().color)
-				, statusInfoParts.GetTimeFlucts(1)
+			baseParts.GetInfoNameEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
+				t13.UnityUtil.ColorForColor32(baseParts.GetInfoNameEventText().GetText().color)
+				, statusInfoParts.GetTimeFlucts(2)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
@@ -166,7 +166,7 @@ public class StatusInfoPartsProcessState {
 
 			frameParts.GetFrameSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(frameParts.GetFrameSprite().color)
-				, statusInfoParts.GetTimeFlucts(2)
+				, statusInfoParts.GetTimeFlucts(4)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
@@ -174,7 +174,7 @@ public class StatusInfoPartsProcessState {
 			if (frameParts.GetHpGaugeParts().GetInfoText() != null) {
 				frameParts.GetHpGaugeParts().GetInfoText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 					t13.UnityUtil.ColorForColor32(frameParts.GetHpGaugeParts().GetInfoText().color)
-					, statusInfoParts.GetTimeFlucts(3)
+					, statusInfoParts.GetTimeFlucts(5)
 					, statusInfoParts.GetEndColor().a
 					, statusInfoParts.GetTimeRegulation()
 					, statusInfoParts.GetTimeRegulation()
@@ -182,41 +182,11 @@ public class StatusInfoPartsProcessState {
 			}
 			frameParts.GetHpGaugeParts().GetGauge().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(frameParts.GetHpGaugeParts().GetGauge().color)
-				, statusInfoParts.GetTimeFlucts(4)
+				, statusInfoParts.GetTimeFlucts(6)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeRegulation()
 				, statusInfoParts.GetTimeRegulation()
 				);
-
-			//firstAbnormalStateInfoParts.GetBaseEventSprite().GetSpriteRenderer().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-			//	t13.UnityUtil.ColorForColor32(firstAbnormalStateInfoParts.GetBaseEventSprite().GetSpriteRenderer().color)
-			//	, statusInfoParts.GetTimeFlucts(6)
-			//	, statusInfoParts.GetEndColor().a
-			//	, statusInfoParts.GetTimeRegulation()
-			//	, statusInfoParts.GetTimeRegulation()
-			//	);
-			//firstAbnormalStateInfoParts.GetInfoEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-			//	t13.UnityUtil.ColorForColor32(firstAbnormalStateInfoParts.GetInfoEventText().GetText().color)
-			//	, statusInfoParts.GetTimeFlucts(7)
-			//	, statusInfoParts.GetEndColor().a
-			//	, statusInfoParts.GetTimeRegulation()
-			//	, statusInfoParts.GetTimeRegulation()
-			//	);
-			//
-			//secondAbnormalStateInfoParts.GetBaseEventSprite().GetSpriteRenderer().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-			//	t13.UnityUtil.ColorForColor32(secondAbnormalStateInfoParts.GetBaseEventSprite().GetSpriteRenderer().color)
-			//	, statusInfoParts.GetTimeFlucts(8)
-			//	, statusInfoParts.GetEndColor().a
-			//	, statusInfoParts.GetTimeRegulation()
-			//	, statusInfoParts.GetTimeRegulation()
-			//	);
-			//secondAbnormalStateInfoParts.GetInfoEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-			//	t13.UnityUtil.ColorForColor32(secondAbnormalStateInfoParts.GetInfoEventText().GetText().color)
-			//	, statusInfoParts.GetTimeFlucts(9)
-			//	, statusInfoParts.GetEndColor().a
-			//	, statusInfoParts.GetTimeRegulation()
-			//	, statusInfoParts.GetTimeRegulation()
-			//	);
 
 			return StatusInfoPartsProcess.None;
 		}
@@ -228,21 +198,21 @@ public class StatusInfoPartsProcessState {
 
 			baseParts.GetBaseSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetBaseSprite().color)
-				, statusInfoParts.GetTimeFlucts(5)
+				, statusInfoParts.GetTimeFlucts(0)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
 				);
 			baseParts.GetHpLogoText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(baseParts.GetHpLogoText().color)
-				, statusInfoParts.GetTimeFlucts(0)
+				, statusInfoParts.GetTimeFlucts(1)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
 				);
-			baseParts.GetInfoEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-				t13.UnityUtil.ColorForColor32(baseParts.GetInfoEventText().GetText().color)
-				, statusInfoParts.GetTimeFlucts(1)
+			baseParts.GetInfoNameEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
+				t13.UnityUtil.ColorForColor32(baseParts.GetInfoNameEventText().GetText().color)
+				, statusInfoParts.GetTimeFlucts(2)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
@@ -250,7 +220,7 @@ public class StatusInfoPartsProcessState {
 
 			frameParts.GetFrameSprite().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(frameParts.GetFrameSprite().color)
-				, statusInfoParts.GetTimeFlucts(2)
+				, statusInfoParts.GetTimeFlucts(4)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
@@ -258,7 +228,7 @@ public class StatusInfoPartsProcessState {
 			if (frameParts.GetHpGaugeParts().GetInfoText() != null) {
 				frameParts.GetHpGaugeParts().GetInfoText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 					t13.UnityUtil.ColorForColor32(frameParts.GetHpGaugeParts().GetInfoText().color)
-					, statusInfoParts.GetTimeFlucts(3)
+					, statusInfoParts.GetTimeFlucts(5)
 					, statusInfoParts.GetEndColor().a
 					, statusInfoParts.GetTimeCounter().count()
 					, statusInfoParts.GetTimeRegulation()
@@ -266,41 +236,11 @@ public class StatusInfoPartsProcessState {
 			}
 			frameParts.GetHpGaugeParts().GetGauge().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
 				t13.UnityUtil.ColorForColor32(frameParts.GetHpGaugeParts().GetGauge().color)
-				, statusInfoParts.GetTimeFlucts(4)
+				, statusInfoParts.GetTimeFlucts(6)
 				, statusInfoParts.GetEndColor().a
 				, statusInfoParts.GetTimeCounter().count()
 				, statusInfoParts.GetTimeRegulation()
 				);
-
-			//firstAbnormalStateInfoParts.GetBaseEventSprite().GetSpriteRenderer().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-			//	t13.UnityUtil.ColorForColor32(firstAbnormalStateInfoParts.GetBaseEventSprite().GetSpriteRenderer().color)
-			//	, statusInfoParts.GetTimeFlucts(6)
-			//	, statusInfoParts.GetEndColor().a
-			//	, statusInfoParts.GetTimeCounter().count()
-			//	, statusInfoParts.GetTimeRegulation()
-			//	);
-			//firstAbnormalStateInfoParts.GetInfoEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-			//	t13.UnityUtil.ColorForColor32(firstAbnormalStateInfoParts.GetInfoEventText().GetText().color)
-			//	, statusInfoParts.GetTimeFlucts(7)
-			//	, statusInfoParts.GetEndColor().a
-			//	, statusInfoParts.GetTimeCounter().count()
-			//	, statusInfoParts.GetTimeRegulation()
-			//	);
-			//
-			//secondAbnormalStateInfoParts.GetBaseEventSprite().GetSpriteRenderer().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-			//	t13.UnityUtil.ColorForColor32(secondAbnormalStateInfoParts.GetBaseEventSprite().GetSpriteRenderer().color)
-			//	, statusInfoParts.GetTimeFlucts(8)
-			//	, statusInfoParts.GetEndColor().a
-			//	, statusInfoParts.GetTimeCounter().count()
-			//	, statusInfoParts.GetTimeRegulation()
-			//	);
-			//secondAbnormalStateInfoParts.GetInfoEventText().GetText().color = t13.UnityUtil.Color32InFluctUpdateAlpha(
-			//	t13.UnityUtil.ColorForColor32(secondAbnormalStateInfoParts.GetInfoEventText().GetText().color)
-			//	, statusInfoParts.GetTimeFlucts(9)
-			//	, statusInfoParts.GetEndColor().a
-			//	, statusInfoParts.GetTimeCounter().count()
-			//	, statusInfoParts.GetTimeRegulation()
-			//	);
 		}
 
 		return mine.state_;

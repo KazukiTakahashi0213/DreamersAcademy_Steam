@@ -13,11 +13,8 @@ public class StatusInfoParts : MonoBehaviour {
 	private StatusInfoPartsProcessState processState_ = new StatusInfoPartsProcessState(StatusInfoPartsProcess.None);
 	private IStatusInfoPartsProcessIdleState processIdleState_ = new StatusInfoPartsProcessIdleDown();
 
-	private t13.TimeFluct[] timeFlucts_ = new t13.TimeFluct[10] {
+	private t13.TimeFluct[] timeFlucts_ = new t13.TimeFluct[7] {
 		new t13.TimeFluct()
-		, new t13.TimeFluct()
-		, new t13.TimeFluct()
-		, new t13.TimeFluct()
 		, new t13.TimeFluct()
 		, new t13.TimeFluct()
 		, new t13.TimeFluct()
@@ -34,6 +31,8 @@ public class StatusInfoParts : MonoBehaviour {
 	[SerializeField] BaseParts baseParts_ = null;
 	[SerializeField] AbnormalStateInfoParts firstAbnormalStateInfoParts_ = null;
 	[SerializeField] AbnormalStateInfoParts secondAbnormalStateInfoParts_ = null;
+	[SerializeField] ElementInfoParts firstElementInfoParts_ = null;
+	[SerializeField] ElementInfoParts secondElementInfoParts_ = null;
 	[SerializeField] UpdateImage dpGaugeMeterUpdateImage_ = null;
 	[SerializeField] UpdateGameObject eventGameObject_ = null;
 	[SerializeField] float idleTimeRegulation_ = 0.5f;
@@ -89,15 +88,42 @@ public class StatusInfoParts : MonoBehaviour {
 	}
 
 	public void MonsterStatusInfoSet(IMonsterData monsterData) {
-		//名前とレベルをTextに反映
+		//名前をTextに反映
 		string monsterViewName = t13.Utility.StringFullSpaceBackTamp(monsterData.uniqueName_, 6);
-		baseParts_.GetInfoEventText().GetText().text = monsterViewName + "　　Lｖ" + t13.Utility.HarfSizeForFullSize(monsterData.level_.ToString());
+		baseParts_.GetInfoNameEventText().GetText().text = monsterViewName;
 
 		//HPをTextに反映
 		//HPゲージの調整
 		float hpGaugeFillAmount = t13.Utility.ValueForPercentage(monsterData.RealHitPoint(), monsterData.nowHitPoint_, 1);
 		frameParts_.GetHpGaugeParts().ProcessStateGaugeUpdateExecute(0, t13.TimeFluctProcess.Liner, monsterData, hpGaugeFillAmount);
 
+		//状態異常の反映
 		monsterData.battleData_.AbnormalSetStatusInfoParts(this);
+
+		//タイプの反映
+		firstElementInfoParts_.ElementReflect(monsterData.tribesData_.firstElement_);
+		secondElementInfoParts_.ElementReflect(monsterData.tribesData_.secondElement_);
+	}
+	public void MonsterStatusInfoSetEventSet(IMonsterData monsterData) {
+		//名前をTextに反映
+		string monsterViewName = t13.Utility.StringFullSpaceBackTamp(monsterData.uniqueName_, 6);
+		AllEventManager.GetInstance().EventTextSet(baseParts_.GetInfoNameEventText(), monsterViewName);
+		AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
+		AllEventManager.GetInstance().AllUpdateEventExecute();
+
+		//HPをTextに反映
+		//HPゲージの調整
+		float hpGaugeFillAmount = t13.Utility.ValueForPercentage(monsterData.RealHitPoint(), monsterData.nowHitPoint_, 1);
+		AllEventManager.GetInstance().HpGaugePartsSet(frameParts_.GetHpGaugeParts(), hpGaugeFillAmount, monsterData);
+		AllEventManager.GetInstance().HpGaugePartsUpdateExecuteSet(HpGaugePartsEventManagerExecute.GaugeUpdate);
+		AllEventManager.GetInstance().AllUpdateEventExecute();
+
+		//状態異常の反映
+		monsterData.battleData_.AbnormalSetStatusInfoPartsEventSet(this);
+
+
+		//タイプの反映
+		firstElementInfoParts_.ElementReflectEventSet(monsterData.tribesData_.firstElement_);
+		secondElementInfoParts_.ElementReflectEventSet(monsterData.tribesData_.secondElement_);
 	}
 }

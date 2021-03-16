@@ -206,21 +206,11 @@ public class PlayerBattleData : BTrainerBattleData {
 				AllEventManager.GetInstance().AllUpdateEventExecute();
 			}
 
-			//名前とレベルをTextに反映
-			string monsterViewName = t13.Utility.StringFullSpaceBackTamp(md.uniqueName_, 6);
-			AllEventManager.GetInstance().EventTextSet(manager.GetPlayerStatusInfoParts().GetBaseParts().GetInfoEventText(), monsterViewName + "　　Lｖ" + t13.Utility.HarfSizeForFullSize(md.level_.ToString()));
-			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
-
-			//HPをTextに反映
-			//HPゲージの調整
-			float hpGaugeFillAmount = t13.Utility.ValueForPercentage(md.RealHitPoint(), md.nowHitPoint_, 1);
-			AllEventManager.GetInstance().HpGaugePartsSet(manager.GetPlayerStatusInfoParts().GetFrameParts().GetHpGaugeParts(), hpGaugeFillAmount, md);
-			AllEventManager.GetInstance().HpGaugePartsUpdateExecuteSet(HpGaugePartsEventManagerExecute.GaugeUpdate);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
+			//ステータスインフォへの反映
+			manager.GetEnemyStatusInfoParts().MonsterStatusInfoSetEventSet(md);
 
 			//技をTextに反映
-			for(int i = 0;i < manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTextsCount(); ++i) {
+			for (int i = 0;i < manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTextsCount(); ++i) {
 				manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).text = "　" + t13.Utility.StringFullSpaceBackTamp(md.GetSkillDatas(i).skillName_, 7);
 			}
 
@@ -233,9 +223,6 @@ public class PlayerBattleData : BTrainerBattleData {
 				else if (simillarResult == 2) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(50, 50, 50, 255);
 				else if (simillarResult == 3) manager.GetAttackCommandParts().GetCommandParts().GetCommandWindowTexts(i).color = new Color32(207, 52, 112, 255);
 			}
-
-			//状態異常の反映
-			md.battleData_.AbnormalSetStatusInfoPartsEventSet(manager.GetPlayerStatusInfoParts());
 
 			//ねむりの終了処理
 			manager.SleepProcessEnd();

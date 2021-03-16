@@ -67,7 +67,7 @@ public class ElementTypeState {
 	}
 
 	private string[] names = new string[(int)ElementType.Max] {
-		"None"
+		"ーー"
 		, "ほのお"
 		, "みず"
 		, "くさ"
@@ -75,6 +75,16 @@ public class ElementTypeState {
 		, "やみ"
 	};
 	public string GetName() { return names[(int)state_]; }
+
+	private Color32[] colors_ = new Color32[(int)ElementType.Max] {
+		new Color32(0, 0, 0, 0)
+		, new Color32(255, 66, 66, 255)
+		, new Color32(66, 195, 255, 255)
+		, new Color32(129, 255, 66, 255)
+		, new Color32(255, 255, 209, 255)
+		, new Color32(63, 63, 63, 255)
+	};
+	public Color32 GetColor() { return colors_[(int)state_]; }
 
 	private delegate bool SkillTradeCheckFunc(ElementTypeState mine, ElementType elementType);
 	private SkillTradeCheckFunc[] skillTradeChecks_ = new SkillTradeCheckFunc[(int)ElementType.Max] {

@@ -14,15 +14,15 @@ public class ParameterInfoFrameParts : MonoBehaviour {
 	public Text GetMonsterTypeInfoText() { return monsterTypeInfoText_; }
 
 	public void MonsterDataReflect(IMonsterData referMonsterData) {
-		string typeInfoString = "";
+		string elementInfoString = "";
 		if(referMonsterData.tribesData_.firstElement_.state_ != ElementType.None) {
-			typeInfoString += referMonsterData.tribesData_.firstElement_.GetName();
+			elementInfoString += referMonsterData.tribesData_.firstElement_.GetName();
 		}
 		if (referMonsterData.tribesData_.secondElement_.state_ != ElementType.None) {
-			typeInfoString += " /" + referMonsterData.tribesData_.secondElement_.GetName();
+			elementInfoString += " /" + referMonsterData.tribesData_.secondElement_.GetName();
 		}
 
-		monsterTypeInfoText_.text = "タイプ　" + typeInfoString;
+		monsterTypeInfoText_.text = "タイプ　" + elementInfoString;
 
 		monsterParameterBarsParts_[0].ParameterReflect(referMonsterData.RealHitPoint());
 		monsterParameterBarsParts_[1].ParameterReflect(referMonsterData.RealAttack());

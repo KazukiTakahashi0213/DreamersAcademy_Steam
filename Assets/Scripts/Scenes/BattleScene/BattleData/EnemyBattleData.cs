@@ -209,21 +209,8 @@ public class EnemyBattleData : BTrainerBattleData {
 			AllEventManager.GetInstance().AllUpdateEventExecute();
 		}
 
-		//名前とレベルをTextに反映
-		string monsterViewName = t13.Utility.StringFullSpaceBackTamp(monsterDatas_[0].uniqueName_, 6);
-		AllEventManager.GetInstance().EventTextSet(manager.GetEnemyStatusInfoParts().GetBaseParts().GetInfoEventText(), monsterViewName + "　　Lｖ" + t13.Utility.HarfSizeForFullSize(monsterDatas_[0].level_.ToString()));
-		AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
-		AllEventManager.GetInstance().AllUpdateEventExecute();
-
-		//HPをTextに反映
-		//HPゲージの調整
-		float hpGaugeFillAmount = t13.Utility.ValueForPercentage(monsterDatas_[0].RealHitPoint(), monsterDatas_[0].nowHitPoint_, 1);
-		AllEventManager.GetInstance().HpGaugePartsSet(manager.GetEnemyStatusInfoParts().GetFrameParts().GetHpGaugeParts(), hpGaugeFillAmount, monsterDatas_[0]);
-		AllEventManager.GetInstance().HpGaugePartsUpdateExecuteSet(HpGaugePartsEventManagerExecute.GaugeUpdate);
-		AllEventManager.GetInstance().AllUpdateEventExecute();
-
-		//状態異常の反映
-		monsterDatas_[0].battleData_.AbnormalSetStatusInfoPartsEventSet(manager.GetEnemyStatusInfoParts());
+		//ステータスインフォへの反映
+		manager.GetEnemyStatusInfoParts().MonsterStatusInfoSetEventSet(monsterDatas_[0]);
 
 		//ウェイト
 		AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
@@ -321,21 +308,8 @@ public class EnemyBattleData : BTrainerBattleData {
 				AllEventManager.GetInstance().AllUpdateEventExecute();
 			}
 
-			//名前とレベルをTextに反映
-			string monsterViewName = t13.Utility.StringFullSpaceBackTamp(monsterDatas_[0].uniqueName_, 6);
-			AllEventManager.GetInstance().EventTextSet(manager.GetEnemyStatusInfoParts().GetBaseParts().GetInfoEventText(), monsterViewName + "　　Lｖ" + t13.Utility.HarfSizeForFullSize(monsterDatas_[0].level_.ToString()));
-			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
-
-			//HPをTextに反映
-			//HPゲージの調整
-			float hpGaugeFillAmount = t13.Utility.ValueForPercentage(monsterDatas_[0].RealHitPoint(), monsterDatas_[0].nowHitPoint_, 1);
-			AllEventManager.GetInstance().HpGaugePartsSet(manager.GetEnemyStatusInfoParts().GetFrameParts().GetHpGaugeParts(), hpGaugeFillAmount, monsterDatas_[0]);
-			AllEventManager.GetInstance().HpGaugePartsUpdateExecuteSet(HpGaugePartsEventManagerExecute.GaugeUpdate);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
-
-			//状態異常の反映
-			md.battleData_.AbnormalSetStatusInfoPartsEventSet(manager.GetEnemyStatusInfoParts());
+			//ステータスインフォへの反映
+			manager.GetEnemyStatusInfoParts().MonsterStatusInfoSetEventSet(monsterDatas_[0]);
 
 			//エネミーの表示
 			AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetEnemyMonsterParts().GetEventGameObject());
