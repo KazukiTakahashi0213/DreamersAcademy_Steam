@@ -1,0 +1,38 @@
+﻿{
+		"skillName_":										"ないとわざ",
+		
+		"effectValue_":										"100",
+		"optionEffectTriggerRateValue_":	"100",
+		"successRateValue_":							"100",
+		"upDpValue_":											"10",
+
+		"playPoint_":											"20",
+
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
+		"elementType_":										"2",
+
+		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal"],
+		"effectValueType_":								"2",
+		"triggerPriority_":								"0",
+		"criticalParameterRank_":					"0",
+
+		"effectName_":										"TaiatariEffect",
+		
+		"//AddParameterRank": ["None","Attack","Defense","SpecialAttack","SpecialDefense","Speed","AvoidRate","HitRate"],
+		"addSelfParameterRanks_": [
+			{"addParameterRank_": "2", "value_": "2"}
+		],
+		"addOtherParameterRanks_": [
+			{"addParameterRank_": "0", "value_": "0"}
+		],
+
+		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],
+		"addSelfAbnormals_": [
+			{"addAbnormal_": "0"}
+		],
+		"addOtherAbnormals_": [
+			{"addAbnormal_": "0"}
+		],
+
+		"effectInfo_": "ーー\nーー"
+}

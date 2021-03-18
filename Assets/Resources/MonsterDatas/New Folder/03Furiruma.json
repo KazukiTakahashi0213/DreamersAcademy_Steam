@@ -1,0 +1,18 @@
+﻿{
+		"monsterName_":						"フリルマ",
+
+		"tribesHitPoint_":				"100",
+		"tribesAttack_":					"70",
+		"tribesDefense_":					"105",
+		"tribesSpeed_":						"90",
+
+		"tribesDreamAttack_":			"1.1",
+		"tribesDreamDefense_":		"1.1",
+		"tribesDreamSpeed_":			"1.1",
+
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
+		"firstElement_":					"4",
+		"secondElement_":					"0",
+
+		"texName_":						  	"Furiruma"
+}

@@ -1,0 +1,18 @@
+﻿{
+		"monsterName_":						"ハンドレオン",
+
+		"tribesHitPoint_":				"100",
+		"tribesAttack_":					"160",
+		"tribesDefense_":					"100",
+		"tribesSpeed_":						"120",
+
+		"tribesDreamAttack_":			"1.1",
+		"tribesDreamDefense_":		"1.1",
+		"tribesDreamSpeed_":			"1.1",
+
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
+		"firstElement_":					"2",
+		"secondElement_":					"0",
+
+		"texName_":						  	"Handreon"
+}

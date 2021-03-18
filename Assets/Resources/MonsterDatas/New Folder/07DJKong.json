@@ -1,0 +1,18 @@
+﻿{
+		"monsterName_":						"DJコング",
+
+		"tribesHitPoint_":				"100",
+		"tribesAttack_":					"180",
+		"tribesDefense_":					"100",
+		"tribesSpeed_":						"120",
+
+		"tribesDreamAttack_":			"1.1",
+		"tribesDreamDefense_":		"1.1",
+		"tribesDreamSpeed_":			"1.1",
+
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
+		"firstElement_":					"1",
+		"secondElement_":					"0",
+
+		"texName_":						  	"DJKong"
+}

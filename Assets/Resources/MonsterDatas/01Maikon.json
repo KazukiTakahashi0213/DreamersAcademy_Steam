@@ -1,18 +1,18 @@
 ﻿{
 		"monsterName_":						"マイコン",
 
-		"tribesHitPoint_":				"120",
-		"tribesAttack_":					"50",
-		"tribesDefense_":					"70",
-		"tribesSpeed_":						"70",
+		"tribesHitPoint_":				"140",
+		"tribesAttack_":					"110",
+		"tribesDefense_":					"130",
+		"tribesSpeed_":						"80",
 
-		"tribesDreamAttack_":			"1.1",
-		"tribesDreamDefense_":		"1.1",
-		"tribesDreamSpeed_":			"1.1",
+		"tribesDreamAttack_":			"1.2",
+		"tribesDreamDefense_":		"1.3",
+		"tribesDreamSpeed_":			"1.2",
 
 		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
-		"firstElement_":					"2",
-		"secondElement_":					"5",
+		"firstElement_":					"1",
+		"secondElement_":					"0",
 
 		"texName_":								"Maikon"
 }
