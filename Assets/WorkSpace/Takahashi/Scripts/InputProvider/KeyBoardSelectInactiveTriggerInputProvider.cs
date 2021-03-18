@@ -27,4 +27,16 @@ public class KeyBoardSelectInactiveTriggerInputProvider : IInputProvider {
 	public bool SelectMenu() {
 		return Input.GetKeyDown(KeyCode.Space);
 	}
+	public bool SelectMouseLeftButton() {
+		return false;
+	}
+	public bool SelectMouseRightButton() {
+		return false;
+	}
+	public GameObject[] MouseRayHitGameObjects() {
+		return new GameObject[0];
+	}
+	public float MouseWheelValue() {
+		return 0;
+	}
 }

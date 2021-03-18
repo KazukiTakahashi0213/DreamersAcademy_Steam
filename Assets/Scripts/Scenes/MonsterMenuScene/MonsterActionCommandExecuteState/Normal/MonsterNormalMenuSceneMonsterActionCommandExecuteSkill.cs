@@ -14,6 +14,9 @@ public class MonsterNormalMenuSceneMonsterActionCommandExecuteSkill : BMonsterNo
 		//技の情報の反映
 		monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(PlayerTrainerData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(0));
 
+		//技の選択肢の初期化
+		monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderActive();
+
 		monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(true);
 	}
 }

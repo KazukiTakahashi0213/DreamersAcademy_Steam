@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Map
   - Event
+  - CommandChoice
   layers:
   - Default
   - TransparentFX

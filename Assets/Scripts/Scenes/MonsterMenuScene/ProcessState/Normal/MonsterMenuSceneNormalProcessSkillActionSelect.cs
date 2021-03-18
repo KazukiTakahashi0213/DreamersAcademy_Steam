@@ -52,7 +52,7 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 
 				//モンスターの技の名前の反映
 				for (int i = 0; i < monsterMenuManager.GetSkillCommandParts().GetCommandWindowTextsCount(); ++i) {
-					monsterMenuManager.GetSkillCommandParts().GetCommandWindowTexts(i).text = "　" + playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(i).skillName_;
+					monsterMenuManager.GetSkillCommandParts().CommandWindowChoiceTextChange(i, "　" + playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(i).skillName_);
 				}
 
 				//フェードイン
@@ -104,7 +104,15 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 			return MonsterMenuSceneProcess.SkillTradeEventExecute;
 		}
 
-		if (sceneMgr.inputProvider_.UpSelect()) {
+		//カーソルが動いていたら
+		int commandSelectNumber = monsterMenuManager.GetSkillActionCommandParts().CommandSelectForNumber(new Vector3(), new Vector3(0, 0.55f, 0));
+		if (commandSelectNumber > -1) {
+			//SE
+			monsterMenuManager.GetInputSoundProvider().UpSelect();
+
+			nowSkillActionCommandExecuteStateProvider_.state_ = (MonsterMenuSceneSkillActionCommandExecute)monsterMenuManager.GetSkillActionCommandParts().SelectNumber() + 1;
+		}
+		else if (sceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
 			if (monsterMenuManager.GetSkillActionCommandParts().CommandSelectUp(new Vector3(0, 0.55f, 0))) {
 				//SE
@@ -126,7 +134,8 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 		}
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 		}
-		else if (sceneMgr.inputProvider_.SelectEnter()) {
+		else if (sceneMgr.inputProvider_.SelectEnter()
+			|| monsterMenuManager.GetSkillActionCommandParts().MouseLeftButtonTriggerActive()) {
 			//SE
 			monsterMenuManager.GetInputSoundProvider().SelectEnter();
 
@@ -136,12 +145,15 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 			nowSkillActionCommandExecuteStateProvider_.state_ = MonsterMenuSceneSkillActionCommandExecute.Swap;
 			monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
 		}
-		else if (sceneMgr.inputProvider_.SelectBack()) {
+		else if (sceneMgr.inputProvider_.SelectBack()
+			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
 			monsterMenuManager.GetSkillActionCommandParts().gameObject.SetActive(false);
 
 			//スキルの行動の選択肢の初期化
 			nowSkillActionCommandExecuteStateProvider_.state_ = MonsterMenuSceneSkillActionCommandExecute.Swap;
 			monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
+
+			monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderActive();
 
 			return MonsterMenuSceneProcess.SkillSelect;
 		}

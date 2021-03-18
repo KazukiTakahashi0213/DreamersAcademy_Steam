@@ -39,7 +39,7 @@ public class BugMenuManager : MonoBehaviour, ISceneManager {
 
 		//文字の初期化
 		for (int i = 0; i < commandParts_.GetCommandWindowTextsCount(); ++i) {
-			commandParts_.GetCommandWindowTexts(i).text = "ーー";
+			commandParts_.CommandWindowChoiceTextChange(i, "ーー");
 		}
 
 		//アップカーソルの初期化

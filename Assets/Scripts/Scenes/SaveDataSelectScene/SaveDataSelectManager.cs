@@ -19,7 +19,7 @@ public class SaveDataSelectManager : MonoBehaviour, ISceneManager {
 		inputSoundProvider_.state_ = SaveDataSceneInputSoundState.Normal;
 
 		//初期化
-		dataSelectInfoSprite_.gameObject.SetActive(false);
+		dataSelectInfoSprite_.sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics(GraphicsPathSupervisor.GetInstance().GetPathGameStartInfo());
 
 		commandParts_.SelectReset(new Vector3(3.32f, 0.81f, -4));
 
@@ -44,9 +44,23 @@ public class SaveDataSelectManager : MonoBehaviour, ISceneManager {
 			sceneMgr.inputProvider_ = new KeyBoardNormalTriggerInputProvider();
 		}
 
-		if (sceneMgr.inputProvider_.UpSelect()) {
+		//カーソルが動いていたら
+		int commandSelectNumber = commandParts_.CommandSelectForNumber(new Vector3(), new Vector3(0, 1.9f, 0));
+		if(commandSelectNumber > -1) {
+			//説明の画像
+			if (commandSelectNumber == 0) dataSelectInfoSprite_.sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics(GraphicsPathSupervisor.GetInstance().GetPathGameStartInfo());
+			if (commandSelectNumber == 1) dataSelectInfoSprite_.sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics(GraphicsPathSupervisor.GetInstance().GetPathGameContinueInfo());
+
+			//SE
+			inputSoundProvider_.UpSelect();
+
+		}
+		else if (sceneMgr.inputProvider_.UpSelect()) {
 			//カーソルが動かせたら
 			if(commandParts_.CommandSelectUp(new Vector3(0, 1.9f, 0))) {
+				//説明の画像
+				dataSelectInfoSprite_.sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics(GraphicsPathSupervisor.GetInstance().GetPathGameStartInfo());
+
 				//SE
 				inputSoundProvider_.UpSelect();
 			}
@@ -54,14 +68,15 @@ public class SaveDataSelectManager : MonoBehaviour, ISceneManager {
 		else if (sceneMgr.inputProvider_.DownSelect()) {
 			//カーソルが動かせたら
 			if (commandParts_.CommandSelectDown(new Vector3(0, -1.9f, 0))) {
+				//説明の画像
+				dataSelectInfoSprite_.sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics(GraphicsPathSupervisor.GetInstance().GetPathGameContinueInfo());
+
 				//SE
 				inputSoundProvider_.DownSelect();
 			}
 		}
-		else if (sceneMgr.inputProvider_.SelectEnter()) {
-			//SE
-			inputSoundProvider_.SelectEnter();
-
+		else if (sceneMgr.inputProvider_.SelectEnter()
+			|| commandParts_.MouseLeftButtonTriggerActive()) {
 			//データの初期化
 			PlayerTrainerData.ReleaseInstance();
 			EnemyTrainerData.ReleaseInstance();
@@ -69,14 +84,14 @@ public class SaveDataSelectManager : MonoBehaviour, ISceneManager {
 			if (commandParts_.SelectNumber() == 0) {
 				Debug.Log("はじめから");
 
+				//操作の変更
 				sceneMgr.inputProvider_ = new InactiveInputProvider();
 
-				//説明の画像
-				dataSelectInfoSprite_.sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics(GraphicsPathSupervisor.GetInstance().GetPathGameStartInfo());
-				dataSelectInfoSprite_.gameObject.SetActive(true);
+				//SE
+				inputSoundProvider_.SelectEnter();
 
 				//ウェイト
-				eventMgr.EventWaitSet(sceneMgr.GetEventWaitTime() * 1.5f);
+				eventMgr.EventWaitSet(sceneMgr.GetEventWaitTime());
 
 				//フェードアウト
 				eventMgr.EventSpriteRendererSet(
@@ -98,12 +113,11 @@ public class SaveDataSelectManager : MonoBehaviour, ISceneManager {
 					//操作の変更
 					sceneMgr.inputProvider_ = new InactiveInputProvider();
 
-					//説明の画像
-					dataSelectInfoSprite_.sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics(GraphicsPathSupervisor.GetInstance().GetPathGameContinueInfo());
-					dataSelectInfoSprite_.gameObject.SetActive(true);
+					//SE
+					inputSoundProvider_.SelectEnter();
 
 					//ウェイト
-					eventMgr.EventWaitSet(sceneMgr.GetEventWaitTime() * 1.5f);
+					eventMgr.EventWaitSet(sceneMgr.GetEventWaitTime());
 
 					//フェードアウト
 					eventMgr.EventSpriteRendererSet(

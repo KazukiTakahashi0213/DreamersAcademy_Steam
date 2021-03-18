@@ -207,7 +207,7 @@ public class PlayerBattleData : BTrainerBattleData {
 			}
 
 			//ステータスインフォへの反映
-			manager.GetEnemyStatusInfoParts().MonsterStatusInfoSetEventSet(md);
+			manager.GetPlayerStatusInfoParts().MonsterStatusInfoSetEventSet(md);
 
 			//攻撃技の反映
 			manager.GetAttackCommandParts().MonsterDataReflect(md, EnemyBattleData.GetInstance().GetMonsterDatas(0));

@@ -25,7 +25,7 @@ public class BugMenuSceneNormalProcessSkillSelect : BBugMenuSceneProcessState {
 				if (bugMenuManager.GetCommandParts().SelectNumber() == 0) {
 					//技の名前を更新する
 					for (int i = skillSelectNum_, j = 0; i < skillSelectNum_ + bugMenuManager.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
-						bugMenuManager.GetCommandParts().GetCommandWindowTexts(j).text = "　" + playerData.GetSkillDatas(i).skillName_;
+						bugMenuManager.GetCommandParts().CommandWindowChoiceTextChange(j, "　" + playerData.GetSkillDatas(i).skillName_);
 
 						++j;
 					}
@@ -61,7 +61,7 @@ public class BugMenuSceneNormalProcessSkillSelect : BBugMenuSceneProcessState {
 				if (bugMenuManager.GetCommandParts().SelectNumber() == bugMenuManager.GetCommandParts().GetCommandWindowTextsCount()-1) {
 					//技の名前を更新する
 					for (int i = skillSelectNum_ - bugMenuManager.GetCommandParts().GetCommandWindowTextsCount() + 1, j = 0; i < skillSelectNum_ + 1; ++i) {
-						bugMenuManager.GetCommandParts().GetCommandWindowTexts(j).text = "　" + playerData.GetSkillDatas(i).skillName_;
+						bugMenuManager.GetCommandParts().CommandWindowChoiceTextChange(j, "　" + playerData.GetSkillDatas(i).skillName_);
 
 						++j;
 					}

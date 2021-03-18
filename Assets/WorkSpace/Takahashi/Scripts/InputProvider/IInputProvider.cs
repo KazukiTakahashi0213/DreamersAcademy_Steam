@@ -11,4 +11,8 @@ public interface IInputProvider {
 	bool SelectBack();
 	bool SelectNovelWindowActive();
 	bool SelectMenu();
+	bool SelectMouseLeftButton();
+	bool SelectMouseRightButton();
+	GameObject[] MouseRayHitGameObjects();
+	float MouseWheelValue();
 }

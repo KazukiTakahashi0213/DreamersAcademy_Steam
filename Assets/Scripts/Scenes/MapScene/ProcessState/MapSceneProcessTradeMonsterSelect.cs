@@ -10,23 +10,35 @@ public class MapSceneProcessTradeMonsterSelect : BMapSceneProcessState {
 
 		AllEventManager.GetInstance().EventUpdate();
 
-		if (allSceneMgr.inputProvider_.UpSelect()) {
+		//カーソルが動いていたら
+		int commandSelectNumber = mapManager.GetTradeMonsterSelectCommandParts().CommandSelectForNumber(new Vector3(), new Vector3(0, 0.55f, 0));
+		if (commandSelectNumber > -1) {
+			//SE
+			mapManager.GetInputSoundProvider().UpSelect();
+		}
+		else if (allSceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
 			if (mapManager.GetTradeMonsterSelectCommandParts().CommandSelectUp(new Vector3(0, 0.55f, 0))) {
-
+				//SE
+				mapManager.GetInputSoundProvider().UpSelect();
 			}
 		}
 		else if (allSceneMgr.inputProvider_.DownSelect()) {
 			//選択肢が動かせたら
 			if (mapManager.GetTradeMonsterSelectCommandParts().CommandSelectDown(new Vector3(0, -0.55f, 0))) {
-
+				//SE
+				mapManager.GetInputSoundProvider().DownSelect();
 			}
 		}
 		else if (allSceneMgr.inputProvider_.RightSelect()) {
 		}
 		else if (allSceneMgr.inputProvider_.LeftSelect()) {
 		}
-		else if (allSceneMgr.inputProvider_.SelectEnter()) {
+		else if (allSceneMgr.inputProvider_.SelectEnter()
+			|| mapManager.GetTradeMonsterSelectCommandParts().MouseLeftButtonTriggerActive()) {
+			//SE
+			mapManager.GetInputSoundProvider().SelectEnter();
+
 			if (mapManager.GetTradeMonsterSelectCommandParts().SelectNumber() != mapManager.GetTradeMonsterSelectCommandParts().GetCommandWindowTextsCount() - 1) {
 				//追加するモンスターのデータ
 				IMonsterData addMonster = EnemyTrainerData.GetInstance().GetMonsterDatas(mapManager.GetTradeMonsterSelectCommandParts().SelectNumber());

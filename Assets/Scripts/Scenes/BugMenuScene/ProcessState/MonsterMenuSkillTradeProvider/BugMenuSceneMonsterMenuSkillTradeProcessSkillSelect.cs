@@ -25,7 +25,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 				if (bugMenuManager.GetCommandParts().SelectNumber() == 0) {
 					//技の名前を更新する
 					for (int i = skillSelectNum_, j = 0; i < skillSelectNum_ + bugMenuManager.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
-						bugMenuManager.GetCommandParts().GetCommandWindowTexts(j).text = "　" + bugMenuManager.GetSkillTradeActiveSkills(i).skillName_;
+						bugMenuManager.GetCommandParts().CommandWindowChoiceTextChange(j, "　" + bugMenuManager.GetSkillTradeActiveSkills(i).skillName_);
 
 						++j;
 					}
@@ -61,7 +61,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 				if (bugMenuManager.GetCommandParts().SelectNumber() == bugMenuManager.GetCommandParts().GetCommandWindowTextsCount()-1) {
 					//技の名前を更新する
 					for (int i = skillSelectNum_ - bugMenuManager.GetCommandParts().GetCommandWindowTextsCount() + 1, j = 0; i < skillSelectNum_ + 1; ++i) {
-						bugMenuManager.GetCommandParts().GetCommandWindowTexts(j).text = "　" + bugMenuManager.GetSkillTradeActiveSkills(i).skillName_;
+						bugMenuManager.GetCommandParts().CommandWindowChoiceTextChange(j, "　" + bugMenuManager.GetSkillTradeActiveSkills(i).skillName_);
 
 						++j;
 					}

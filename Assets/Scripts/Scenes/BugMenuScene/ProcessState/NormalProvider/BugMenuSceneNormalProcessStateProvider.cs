@@ -16,7 +16,7 @@ public class BugMenuSceneNormalProcessStateProvider : BBugMenuSceneProcessStateP
 		//技の名前の反映
 		for (int i = 0; i < bugMenuManager.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
 			if (i < playerTrainerData.GetSkillDatasCount()) {
-				bugMenuManager.GetCommandParts().GetCommandWindowTexts(i).text = "　" + playerTrainerData.GetSkillDatas(i).skillName_;
+				bugMenuManager.GetCommandParts().CommandWindowChoiceTextChange(i, "　" + playerTrainerData.GetSkillDatas(i).skillName_);
 			}
 		}
 

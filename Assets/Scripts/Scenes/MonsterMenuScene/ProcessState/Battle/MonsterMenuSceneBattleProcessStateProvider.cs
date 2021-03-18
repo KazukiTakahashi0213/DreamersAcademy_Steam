@@ -14,7 +14,7 @@ public class MonsterMenuSceneBattleProcessStateProvider : BMonsterMenuSceneProce
 	public override void init(MonsterMenuManager monsterMenuManager) {
 		PlayerBattleData playerData = PlayerBattleData.GetInstance();
 
-		monsterMenuManager.GetMonsterActionCommandParts().GetCommandWindowTexts(0).text = "　こうかん";
+		monsterMenuManager.GetMonsterActionCommandParts().CommandWindowChoiceTextChange(0, "　こうかん");
 
 		//StatusInfosPartsのモンスター情報の変更
 		for (int i = 0; i < playerData.GetMonsterDatasLength() / 2; ++i) {
@@ -37,7 +37,7 @@ public class MonsterMenuSceneBattleProcessStateProvider : BMonsterMenuSceneProce
 
 		//モンスターの技の名前の反映
 		for (int i = 0; i < monsterMenuManager.GetSkillCommandParts().GetCommandWindowTextsCount(); ++i) {
-			monsterMenuManager.GetSkillCommandParts().GetCommandWindowTexts(i).text = "　" + playerData.GetMonsterDatas(0).GetSkillDatas(i).skillName_;
+			monsterMenuManager.GetSkillCommandParts().CommandWindowChoiceTextChange(i, "　" + playerData.GetMonsterDatas(0).GetSkillDatas(i).skillName_);
 		}
 	}
 }

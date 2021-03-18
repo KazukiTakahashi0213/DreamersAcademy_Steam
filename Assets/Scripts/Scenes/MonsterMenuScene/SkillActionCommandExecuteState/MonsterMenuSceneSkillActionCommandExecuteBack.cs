@@ -6,6 +6,8 @@ public class MonsterMenuSceneSkillActionCommandExecuteBack : BMonsterMenuSceneSk
 	public override void Execute(MonsterMenuManager monsterMenuManager) {
 		monsterMenuManager.GetSkillActionCommandParts().gameObject.SetActive(false);
 
+		monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderActive();
+
 		monsterMenuManager.GetNowProcessState().state_ = MonsterMenuSceneProcess.SkillSelect;
 	}
 }

@@ -21,7 +21,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessStateProvider : BBugMenuSce
 		//技の名前の反映
 		for (int i = 0; i < bugMenuManager.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
 			if (i < bugMenuManager.GetSkillTradeActiveSkillsCount()) {
-				bugMenuManager.GetCommandParts().GetCommandWindowTexts(i).text = "　" + bugMenuManager.GetSkillTradeActiveSkills(i).skillName_;
+				bugMenuManager.GetCommandParts().CommandWindowChoiceTextChange(i, "　" + bugMenuManager.GetSkillTradeActiveSkills(i).skillName_);
 			}
 		}
 

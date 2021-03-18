@@ -113,6 +113,30 @@ namespace t13 {
 			      UnityEngine.Application.Quit();
 			#endif
 		}
-	}
 
+		static public GameObject[] MouseRayHitGameObjects() {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+			RaycastHit[] raycast = Physics.RaycastAll(ray.origin, ray.direction);
+			GameObject[] retGameObjects = new GameObject[raycast.Length];
+
+			for (int i = 0; i < raycast.Length; ++i) {
+				retGameObjects[i] = raycast[i].transform.parent.gameObject;
+			}
+
+			return retGameObjects;
+		}
+		static public GameObject[] MouseRayHit2DGameObjects() {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+			RaycastHit2D[] raycast = Physics2D.RaycastAll(ray.origin, ray.direction);
+			GameObject[] retGameObjects = new GameObject[raycast.Length];
+
+			for(int i = 0;i < raycast.Length; ++i) {
+				retGameObjects[i] = raycast[i].transform.parent.gameObject;
+			}
+
+			return retGameObjects;
+		}
+	}
 }

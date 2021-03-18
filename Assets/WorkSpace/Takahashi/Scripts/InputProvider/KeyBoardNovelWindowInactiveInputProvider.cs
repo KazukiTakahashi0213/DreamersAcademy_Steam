@@ -27,4 +27,16 @@ public class KeyBoardNovelWindowInactiveInputProvider : IInputProvider{
 	public bool SelectMenu() {
 		return false;
 	}
+	public bool SelectMouseLeftButton() {
+		return false;
+	}
+	public bool SelectMouseRightButton() {
+		return false;
+	}
+	public GameObject[] MouseRayHitGameObjects() {
+		return new GameObject[0];
+	}
+	public float MouseWheelValue() {
+		return 0;
+	}
 }

@@ -10,7 +10,8 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 
 		eventMgr.EventUpdate();
 
-		if (sceneMgr.inputProvider_.UpSelect()) {
+		if (sceneMgr.inputProvider_.UpSelect()
+			|| sceneMgr.inputProvider_.MouseWheelValue() > 0) {
 			//SE
 			monsterMenuManager.GetInputSoundProvider().UpSelect();
 
@@ -29,7 +30,7 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 
 			//モンスターの技の名前の反映
 			for (int i = 0; i < monsterMenuManager.GetSkillCommandParts().GetCommandWindowTextsCount(); ++i) {
-				monsterMenuManager.GetSkillCommandParts().GetCommandWindowTexts(i).text = "　" + playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(i).skillName_;
+				monsterMenuManager.GetSkillCommandParts().CommandWindowChoiceTextChange(i, "　" + playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(i).skillName_);
 			}
 
 			//最後のステータスインフォパーツに反映
@@ -50,7 +51,8 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 
 			sceneMgr.inputProvider_ = new InactiveInputProvider();
 		}
-		else if (sceneMgr.inputProvider_.DownSelect()) {
+		else if (sceneMgr.inputProvider_.DownSelect()
+			|| sceneMgr.inputProvider_.MouseWheelValue() < 0) {
 			//SE
 			monsterMenuManager.GetInputSoundProvider().DownSelect();
 
@@ -69,7 +71,7 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 
 			//モンスターの技の名前の反映
 			for (int i = 0; i < monsterMenuManager.GetSkillCommandParts().GetCommandWindowTextsCount(); ++i) {
-				monsterMenuManager.GetSkillCommandParts().GetCommandWindowTexts(i).text = "　" + playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(i).skillName_;
+				monsterMenuManager.GetSkillCommandParts().CommandWindowChoiceTextChange(i, "　" + playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(i).skillName_);
 			}
 
 			//最初のステータスインフォパーツに反映
@@ -94,7 +96,8 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 		}
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 		}
-		else if (sceneMgr.inputProvider_.SelectEnter()) {
+		else if (sceneMgr.inputProvider_.SelectEnter()
+			|| sceneMgr.inputProvider_.SelectMouseLeftButton()) {
 			//None以外だったら
 			if (playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).tribesData_.monsterNumber_ != (int)MonsterTribesDataNumber.None) {
 				//SE
@@ -108,7 +111,8 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 				return MonsterMenuSceneProcess.MonsterActionSelect;
 			}
 		}
-		else if (sceneMgr.inputProvider_.SelectBack()) {
+		else if (sceneMgr.inputProvider_.SelectBack()
+			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
 			if (playerData.GetMonsterDatas(0).battleActive_) {
 				sceneMgr.inputProvider_ = new InactiveInputProvider();
 

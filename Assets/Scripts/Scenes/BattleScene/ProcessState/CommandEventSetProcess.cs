@@ -15,9 +15,9 @@ public class CommandEventSetProcess : IProcessState {
 	public IProcessState Update(BattleManager mgr) {
 		////DPの演出のイベント
 		//mgr.PlayerEnemyStatusInfoPartsDPEffect();
-		//
-		////ウェイト
-		//AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
+		
+		//ウェイト
+		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
 		//パワーアップしていたら
 		if (PlayerBattleData.GetInstance().dreamSyncronize_ == true) {
@@ -26,7 +26,7 @@ public class CommandEventSetProcess : IProcessState {
 			PlayerBattleData.GetInstance().dreamSyncronize_ = false;
 
 			//ゆめの文字色の変更
-			mgr.GetCommandCommandParts().GetCommandWindowTexts(1).color = new Color32(50, 50, 50, 255);
+			mgr.GetCommandCommandParts().CommandWindowChoiceColorChange(1, new Color32(50, 50, 50, 255));
 
 			//DPの演出のイベント
 			mgr.StatusInfoPartsDPEffectEventSet(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts());

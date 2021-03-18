@@ -10,7 +10,16 @@ public class MonsterMenuSceneBattleProcessSkillSelect : BMonsterMenuSceneProcess
 
 		eventMgr.EventUpdate();
 
-		if (sceneMgr.inputProvider_.UpSelect()) {
+		//カーソルが動いていたら
+		int commandSelectNumber = monsterMenuManager.GetSkillCommandParts().CommandSelectForNumber(new Vector3(6.08f, 0, 0), new Vector3(0, 1.72f, 0));
+		if (commandSelectNumber > -1) {
+			//SE
+			monsterMenuManager.GetInputSoundProvider().UpSelect();
+
+			//技の情報の反映
+			monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()));
+		}
+		else if (sceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
 			if (monsterMenuManager.GetSkillCommandParts().CommandSelectUp(new Vector3(0, 1.72f, 0))) {
 				//SE
@@ -51,9 +60,12 @@ public class MonsterMenuSceneBattleProcessSkillSelect : BMonsterMenuSceneProcess
 			}
 		}
 		else if (sceneMgr.inputProvider_.SelectEnter()) {
+
 		}
-		else if (sceneMgr.inputProvider_.SelectBack()) {
+		else if (sceneMgr.inputProvider_.SelectBack()
+			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
 			monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
+			monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
 
 			monsterMenuManager.GetParameterInfoFrameParts().gameObject.SetActive(true);
 			monsterMenuManager.GetSkillInfoFrameParts().gameObject.SetActive(false);

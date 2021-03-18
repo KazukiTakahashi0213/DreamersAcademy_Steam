@@ -107,7 +107,19 @@ public class CommandSelectProcess : IProcessState {
 			sceneMgr.inputProvider_ = new KeyBoardNormalTriggerInputProvider();
 		}
 
-		if (sceneMgr.inputProvider_.UpSelect()) {
+		//カーソルが動いていたら
+		int commandSelectNumber = mgr.GetCommandCommandParts().CommandSelectForNumber(new Vector3(4.0f, 0, 0), new Vector3(0, 0.78f, 0));
+		if (commandSelectNumber > -1) {
+			//SE
+			mgr.GetInputSoundProvider().UpSelect();
+
+			executeProvider_.state_ = (BattleSceneCommandExecuteState)mgr.GetCommandCommandParts().SelectNumber() + 1;
+
+			//どくのダメージ処理
+			mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+
+		}
+		else if (sceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
 			if (mgr.GetCommandCommandParts().CommandSelectUp(new Vector3(0, 0.78f, 0))) {
 				//SE
@@ -155,7 +167,8 @@ public class CommandSelectProcess : IProcessState {
 				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
 			}
 		}
-		else if (sceneMgr.inputProvider_.SelectEnter()) {
+		else if (sceneMgr.inputProvider_.SelectEnter()
+			|| mgr.GetCommandCommandParts().MouseLeftButtonTriggerActive()) {
 			return executeProvider_.Execute(mgr);
 		}
 		else if (sceneMgr.inputProvider_.SelectNovelWindowActive()) {

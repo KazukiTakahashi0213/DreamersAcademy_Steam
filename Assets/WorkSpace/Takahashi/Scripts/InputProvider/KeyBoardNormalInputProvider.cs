@@ -27,4 +27,16 @@ public class KeyBoardNormalInputProvider : IInputProvider {
 	public bool SelectMenu() {
 		return Input.GetKeyDown(KeyCode.Space);
 	}
+	public bool SelectMouseLeftButton() {
+		return Input.GetMouseButtonDown(0);
+	}
+	public bool SelectMouseRightButton() {
+		return Input.GetMouseButtonDown(1);
+	}
+	public GameObject[] MouseRayHitGameObjects() {
+		return t13.UnityUtil.MouseRayHit2DGameObjects();
+	}
+	public float MouseWheelValue() {
+		return Input.GetAxis("Mouse ScrollWheel");
+	}
 }

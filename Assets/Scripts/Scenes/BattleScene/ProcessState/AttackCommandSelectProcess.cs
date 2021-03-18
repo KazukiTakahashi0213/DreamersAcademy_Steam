@@ -86,7 +86,18 @@ public class AttackCommandSelectProcess : IProcessState {
 			allSceneMgr.inputProvider_ = new KeyBoardNormalTriggerInputProvider();
 		}
 
-		if (allSceneMgr.inputProvider_.UpSelect()) {
+		//カーソルが動いていたら
+		int commandSelectNumber = mgr.GetAttackCommandParts().GetCommandParts().CommandSelectForNumber(new Vector3(5.56f, 0, 0), new Vector3(0, 0.83f, 0));
+		if (commandSelectNumber > -1) {
+			//SE
+			mgr.GetInputSoundProvider().UpSelect();
+
+			mgr.AttackCommandSkillInfoTextSet(mgr.GetAttackCommandParts().GetCommandParts().SelectNumber());
+
+			//どくのダメージ処理
+			mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
+		}
+		else if (allSceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
 			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectUp(new Vector3(0, 0.83f, 0))) {
 				//SE
@@ -134,7 +145,8 @@ public class AttackCommandSelectProcess : IProcessState {
 				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
 			}
 		}
-		else if (allSceneMgr.inputProvider_.SelectEnter()) {
+		else if (allSceneMgr.inputProvider_.SelectEnter()
+			|| mgr.GetAttackCommandParts().GetCommandParts().MouseLeftButtonTriggerActive()) {
 			mgr.playerSelectSkillNumber_ = mgr.GetAttackCommandParts().GetCommandParts().SelectNumber();
 
 			ISkillData playerSkillData = PlayerBattleData.GetInstance().GetMonsterDatas(0).GetSkillDatas(mgr.playerSelectSkillNumber_);
@@ -162,7 +174,8 @@ public class AttackCommandSelectProcess : IProcessState {
 				return mgr.nowProcessState().NextProcess();
 			}
 		}
-		else if (allSceneMgr.inputProvider_.SelectBack()) {
+		else if (allSceneMgr.inputProvider_.SelectBack()
+			|| allSceneMgr.inputProvider_.SelectMouseRightButton()) {
 			//こんらん状態なら
 			if (PlayerBattleData.GetInstance().GetMonsterDatas(0).battleData_.firstAbnormalState_.state_ == AbnormalType.Confusion
 				|| PlayerBattleData.GetInstance().GetMonsterDatas(0).battleData_.secondAbnormalState_.state_ == AbnormalType.Confusion) {

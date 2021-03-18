@@ -18,6 +18,7 @@ public class MonsterMenuManager : MonoBehaviour, ISceneManager {
 		monsterActionCommandParts_.gameObject.SetActive(false);
 
 		//技の選択肢の初期化
+		skillCommandParts_.commandWindowChoicesColliderInactive();
 
 		//BulletPartsの初期化
 		t13.UnityUtil.ObjectPosMove(bulletParts_.GetEventStatusInfosParts(0).gameObject, new Vector3(bulletParts_.GetEventStatusInfosParts(0).gameObject.transform.localPosition.x, 3.5f, 5));

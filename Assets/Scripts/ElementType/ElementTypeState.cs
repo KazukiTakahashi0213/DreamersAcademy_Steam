@@ -50,7 +50,6 @@ public class ElementTypeState {
 	static private bool SkillTradeCheckHoly(ElementTypeState mine, ElementType elementType) {
 		if (elementType == ElementType.Holy) return true;
 		if (elementType == ElementType.Fire) return true;
-		if (elementType == ElementType.Water) return true;
 		if (elementType == ElementType.Tree) return true;
 
 		return false;
@@ -59,7 +58,6 @@ public class ElementTypeState {
 	//Dark
 	static private bool SkillTradeCheckDark(ElementTypeState mine, ElementType elementType) {
 		if (elementType == ElementType.Dark) return true;
-		if (elementType == ElementType.Fire) return true;
 		if (elementType == ElementType.Water) return true;
 		if (elementType == ElementType.Tree) return true;
 

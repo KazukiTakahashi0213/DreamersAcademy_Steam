@@ -40,7 +40,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		InactiveUiAttackCommand();
 
 		//ゆめの文字の色の変更
-		commandCommandParts_.GetCommandWindowTexts(1).color = new Color32(50, 50, 50, 255);
+		commandCommandParts_.CommandWindowChoiceColorChange(1, new Color32(50, 50, 50, 255));
 
 		//プレイヤー、エネミーの画像の設定
 		playerParts_.GetEventSprite().GetSpriteRenderer().sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics("Player/PlayerMonsterSet0");

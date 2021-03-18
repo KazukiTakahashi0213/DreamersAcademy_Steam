@@ -13,7 +13,15 @@ public class MapSceneProcessMenuSelect : BMapSceneProcessState {
 
 		AllEventManager.GetInstance().EventUpdate();
 
-		if (sceneMgr.inputProvider_.UpSelect()) {
+		//カーソルが動いていたら
+		int commandSelectNumber = mapManager.GetCommandParts().CommandSelectForNumber(new Vector3(), new Vector3(0, 0.55f, 0));
+		if (commandSelectNumber > -1) {
+			//SE
+			mapManager.GetInputSoundProvider().UpSelect();
+
+			commandSelectProvider_.state_ = (MapSceneMenuSelectCommandSelect)mapManager.GetCommandParts().SelectNumber();
+		}
+		else if (sceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
 			if (mapManager.GetCommandParts().CommandSelectUp(new Vector3(0, 0.55f, 0))) {
 				//SE
@@ -35,7 +43,8 @@ public class MapSceneProcessMenuSelect : BMapSceneProcessState {
 		}
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 		}
-		else if (sceneMgr.inputProvider_.SelectEnter()) {
+		else if (sceneMgr.inputProvider_.SelectEnter()
+			|| mapManager.GetCommandParts().MouseLeftButtonTriggerActive()) {
 			//SE
 			mapManager.GetInputSoundProvider().SelectEnter();
 
@@ -43,7 +52,8 @@ public class MapSceneProcessMenuSelect : BMapSceneProcessState {
 
 			commandSelectProvider_.state_ = MapSceneMenuSelectCommandSelect.None;
 		}
-		else if (sceneMgr.inputProvider_.SelectBack()) {
+		else if (sceneMgr.inputProvider_.SelectBack()
+			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
 			//選択肢の初期化
 			mapManager.GetCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
 
