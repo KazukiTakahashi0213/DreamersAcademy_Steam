@@ -25,28 +25,28 @@ public class EffectValueTypeHitPointHeal : BEffectValueType {
 
 		//DPの変動
 		//PlayerBattleData.GetInstance().dreamPoint_ += playerSkillData.upDpValue_;
-		int attackElementSimillarRsult = defenseMonsterData.ElementSimillarCheckerForValue(attackSkillData.elementType_);
-		if (attackElementSimillarRsult == 3) {
-			attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBestSimillar());
-		}
-		else if (attackElementSimillarRsult == 2) {
-			attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNormalSimillar());
-		}
-		else if (attackElementSimillarRsult == 1) {
-			attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBadSimillar());
-		}
-		else if (attackElementSimillarRsult == 0) {
-			attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNotSimillar());
-		}
-
-		//ウェイト
-		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
-
-		//DPの演出のイベント
-		mgr.StatusInfoPartsDPEffectEventSet(attackTrainerBattleData, attackStatusInfoParts);
-
-		//ウェイト
-		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
+		//int attackElementSimillarRsult = defenseMonsterData.ElementSimillarCheckerForValue(attackSkillData.elementType_);
+		//if (attackElementSimillarRsult == 3) {
+		//	attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBestSimillar());
+		//}
+		//else if (attackElementSimillarRsult == 2) {
+		//	attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNormalSimillar());
+		//}
+		//else if (attackElementSimillarRsult == 1) {
+		//	attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBadSimillar());
+		//}
+		//else if (attackElementSimillarRsult == 0) {
+		//	attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNotSimillar());
+		//}
+		//
+		////ウェイト
+		//AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
+		//
+		////DPの演出のイベント
+		//mgr.StatusInfoPartsDPEffectEventSet(attackTrainerBattleData, attackStatusInfoParts);
+		//
+		////ウェイト
+		//AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
 		//技のアニメーション
 		attackSkillData.EffectAnimetionEventSet(attackEffectParts);

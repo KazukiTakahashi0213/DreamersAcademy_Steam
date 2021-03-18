@@ -16,6 +16,8 @@ public enum MonsterTribesDataNumber {
 	, Bakutaa
 	, Rabinobia
 	, Handreon
+	, Patirissu
+	, Raibareon
 	, Max
 }
 

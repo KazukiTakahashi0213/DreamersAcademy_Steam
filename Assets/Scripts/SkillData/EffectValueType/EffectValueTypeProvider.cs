@@ -7,6 +7,7 @@ public enum EffectValueTypeState {
 	, Support
 	, HitPointDamage
 	, HitPointHeal
+	, DreamPointDrain
 }
 
 public class EffectValueTypeProvider {
@@ -15,6 +16,7 @@ public class EffectValueTypeProvider {
 		states_.Add(new EffectValueTypeSupport());
 		states_.Add(new EffectValueTypeHitPointDamage());
 		states_.Add(new EffectValueTypeHitPointHeal());
+		states_.Add(new EffectValueTypeDreamPointDrain());
 	}
 
 	public EffectValueTypeState state_ = EffectValueTypeState.None;
