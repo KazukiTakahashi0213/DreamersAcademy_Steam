@@ -3,8 +3,8 @@
 		"jobName_":			"がくせい",
 		"texName_":			"Man",
 		
-		"attackRate_":  "50",
-		"tradeRate_":   "50",
+		"attackRate_":  "80",
+		"tradeRate_":   "20",
 
 		"monsterDatas_": [
 			{"monsterName_": "ソルシャーク", "skillNames_": ["リキッドアビス", "すいりゅうざん", "スピリットネス", "ガードセット"]},
