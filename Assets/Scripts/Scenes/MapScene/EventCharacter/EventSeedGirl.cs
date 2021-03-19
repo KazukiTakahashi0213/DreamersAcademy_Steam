@@ -50,9 +50,9 @@ public class EventSeedGirl : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
 		//技の取得
-		//for(int i = 1;i < 29; ++i) {
-		//	playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
-		//}
+		for(int i = 13;i < 26; ++i) {
+			playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
+		}
 
 		//BGMの再生
 		AllSceneManager.GetInstance().GetPublicAudioParts().GetBGMAudioSource().clip = ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Map());

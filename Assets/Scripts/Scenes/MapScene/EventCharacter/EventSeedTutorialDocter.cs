@@ -113,9 +113,9 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
 		//技の取得
-		//for(int i = 1;i < 25; ++i) {
-		//	playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
-		//}
+		for(int i = 1;i < 13; ++i) {
+			playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
+		}
 		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)43));
 		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)44));
 		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)45));
@@ -188,9 +188,9 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
 		//技の取得
-		//for (int i = 1; i < 29; ++i) {
-		//	playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
-		//}
+		for (int i = 1; i < 13; ++i) {
+			playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
+		}
 		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)43));
 		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)44));
 		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)45));
