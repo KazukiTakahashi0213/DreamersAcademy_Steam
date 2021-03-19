@@ -8,7 +8,7 @@ public class OpeningProcess : IProcessState {
 	}
 
 	public IProcessState NextProcess() {
-		return new CommandSelectProcess();
+		return new StartCommandSelectProcess();
 	}
 
 	public IProcessState Update(BattleManager mgr) {

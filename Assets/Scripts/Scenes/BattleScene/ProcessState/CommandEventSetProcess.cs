@@ -207,7 +207,7 @@ public class CommandEventSetProcess : IProcessState {
 				);
 		}
 		//素早さで行動順を決める
-		else if (enemyMonsterData.RealSpeed() < playerMonsterData.RealSpeed()) {
+		else if ((enemyMonsterData.RealSpeed() * enemyMonsterData.battleData_.RealSpeedParameterRank()) < (playerMonsterData.RealSpeed() * playerMonsterData.battleData_.RealSpeedParameterRank())) {
 			//プレイヤーの戦闘処理
 			SkillResultSet(
 				mgr
@@ -237,8 +237,8 @@ public class CommandEventSetProcess : IProcessState {
 				, enemyMonsterData, enemySkillData, playerMonsterData
 				);
 		}
-		else if (enemyMonsterData.RealSpeed() == playerMonsterData.RealSpeed()) {
-			if (AllSceneManager.GetInstance().GetRandom().Next(0, 2) == 0) {
+		else if ((enemyMonsterData.RealSpeed() * enemyMonsterData.battleData_.RealSpeedParameterRank()) == (playerMonsterData.RealSpeed() * playerMonsterData.battleData_.RealSpeedParameterRank())) {
+			if (AllSceneManager.GetInstance().GetRandom().Next(0, 2) < 1) {
 				//プレイヤーの戦闘処理
 				SkillResultSet(
 					mgr

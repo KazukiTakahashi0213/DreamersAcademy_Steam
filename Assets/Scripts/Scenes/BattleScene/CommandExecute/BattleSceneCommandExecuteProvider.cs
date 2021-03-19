@@ -5,8 +5,8 @@ using UnityEngine;
 public enum BattleSceneCommandExecuteState {
     None
     , Attack
-    , MonsterTrade
     , Dream
+    , MonsterTrade
     , Escape
     , Max
 }
@@ -15,8 +15,8 @@ public class BattleSceneCommandExecuteProvider {
 	public BattleSceneCommandExecuteProvider(BattleSceneCommandExecuteState setState) {
 		states_.Add(new BattleSceneCommandExecuteNone());
 		states_.Add(new BattleSceneCommandExecuteAttack());
-		states_.Add(new BattleSceneCommandExecuteMonsterTrade());
 		states_.Add(new BattleSceneCommandExecuteDream());
+		states_.Add(new BattleSceneCommandExecuteMonsterTrade());
 		states_.Add(new BattleSceneCommandExecuteEscape());
 
 		state_ = setState;

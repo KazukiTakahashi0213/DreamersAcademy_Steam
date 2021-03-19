@@ -13,7 +13,8 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 
 		eventMgr.EventUpdate();
 
-		if (sceneMgr.inputProvider_.UpSelect()) {
+		if (sceneMgr.inputProvider_.UpSelect()
+			|| sceneMgr.inputProvider_.MouseWheelValue() > 0) {
 			//表示する技がまだあったら
 			if (skillSelectNum_ > 0) {
 				//SE
@@ -49,7 +50,8 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 				bugMenuManager.GetInfoFrameParts().SkillInfoReflect(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_));
 			}
 		}
-		else if (sceneMgr.inputProvider_.DownSelect()) {
+		else if (sceneMgr.inputProvider_.DownSelect()
+			|| sceneMgr.inputProvider_.MouseWheelValue() < 0) {
 			//表示する技がまだあったら
 			if (skillSelectNum_ < bugMenuManager.GetSkillTradeActiveSkillsCount() - 1) {
 				//SE
@@ -89,7 +91,8 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 		}
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 		}
-		else if (sceneMgr.inputProvider_.SelectEnter()) {
+		else if (sceneMgr.inputProvider_.SelectEnter()
+			|| sceneMgr.inputProvider_.SelectMouseLeftButton()) {
 			//技を習得できるか
 			if (playerData.GetMonsterDatas(MonsterMenuManager.skillTradeSelectMonsterNumber_).SkillTradeCheck(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_).elementType_.state_)) {
 				//SE
@@ -114,7 +117,8 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 				eventMgr.SceneChangeEventSet(SceneState.MonsterMenu, SceneChangeMode.Continue);
 			}
 		}
-		else if (sceneMgr.inputProvider_.SelectBack()) {
+		else if (sceneMgr.inputProvider_.SelectBack()
+			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
 			MonsterMenuManager.skillTradeActive_ = true;
 			MonsterMenuManager.skillTradeSkillData_ = null;
 

@@ -13,7 +13,8 @@ public class BugMenuSceneNormalProcessSkillSelect : BBugMenuSceneProcessState {
 
 		eventMgr.EventUpdate();
 
-		if (sceneMgr.inputProvider_.UpSelect()) {
+		if (sceneMgr.inputProvider_.UpSelect()
+			|| sceneMgr.inputProvider_.MouseWheelValue() > 0) {
 			//表示する技がまだあったら
 			if (skillSelectNum_ > 0) {
 				//SE
@@ -49,7 +50,8 @@ public class BugMenuSceneNormalProcessSkillSelect : BBugMenuSceneProcessState {
 				bugMenuManager.GetInfoFrameParts().SkillInfoReflect(playerData.GetSkillDatas(skillSelectNum_));
 			}
 		}
-		else if (sceneMgr.inputProvider_.DownSelect()) {
+		else if (sceneMgr.inputProvider_.DownSelect()
+			|| sceneMgr.inputProvider_.MouseWheelValue() < 0) {
 			//表示する技がまだあったら
 			if (skillSelectNum_ < playerData.GetHaveSkillSize()-1) {
 				//SE
@@ -91,7 +93,8 @@ public class BugMenuSceneNormalProcessSkillSelect : BBugMenuSceneProcessState {
 		}
 		else if (sceneMgr.inputProvider_.SelectEnter()) {
 		}
-		else if (sceneMgr.inputProvider_.SelectBack()) {
+		else if (sceneMgr.inputProvider_.SelectBack()
+			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
 			sceneMgr.inputProvider_ = new InactiveInputProvider();
 
 			//フェードアウト
