@@ -20,7 +20,7 @@
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "1", "value_": "1"}
+			{"addParameterRank_": "0", "value_": "0"}
 		],
 		"addOtherParameterRanks_": [
 			{"addParameterRank_": "2", "value_": "-1"}
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "自:こうげきランク+1\n相:ぼうぎょランク-1"
+		"effectInfo_": "水で生み出したトラが噛みつく\n相手の防御力ダウン"
 }
