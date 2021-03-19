@@ -41,18 +41,18 @@ public class AttackCommandSelectProcess : IProcessState {
 				AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
 
 				//dpが100以上だったら
-				if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
-					AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText()
-						, "ゆめたちが　\n"
-						+ "きょうめいしている・・・");
-					AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
-					AllEventManager.GetInstance().AllUpdateEventExecute();
-				}
-				else {
-					AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), PlayerBattleData.GetInstance().GetMonsterDatas(0).uniqueName_ + "は　どうする？");
-					AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
-					AllEventManager.GetInstance().AllUpdateEventExecute();
-				}
+				//if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
+				//	AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText()
+				//		, "ゆめたちが　\n"
+				//		+ "きょうめいしている・・・");
+				//	AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
+				//	AllEventManager.GetInstance().AllUpdateEventExecute();
+				//}
+				//else {
+				//	AllEventManager.GetInstance().EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), PlayerBattleData.GetInstance().GetMonsterDatas(0).uniqueName_ + "は　どうする？");
+				//	AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
+				//	AllEventManager.GetInstance().AllUpdateEventExecute();
+				//}
 
 				AllEventManager.GetInstance().EventStatusInfoPartsSet(mgr.GetPlayerStatusInfoParts(), new Color32(0, 0, 0, 0));
 				AllEventManager.GetInstance().StatusInfoPartsUpdateExecuteSet(StatusInfoPartsEventManagerExecute.IdleMoveStart);
