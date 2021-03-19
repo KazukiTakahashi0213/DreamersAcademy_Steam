@@ -1,7 +1,7 @@
 ﻿{
-		"skillName_":										"ふりるがわざ",
+		"skillName_":										"すいりゅうざん",
 		
-		"effectValue_":										"90",
+		"effectValue_":										"100",
 		"optionEffectTriggerRateValue_":	"100",
 		"successRateValue_":							"100",
 		"upDpValue_":											"10",
@@ -9,12 +9,12 @@
 		"playPoint_":											"20",
 
 		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
-		"elementType_":										"3",
+		"elementType_":										"2",
 
 		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal","DreamPointDrain"],
 		"effectValueType_":								"2",
 		"triggerPriority_":								"0",
-		"criticalParameterRank_":					"0",
+		"criticalParameterRank_":					"3",
 
 		"effectName_":										"TaiatariEffect",
 		
@@ -31,8 +31,8 @@
 			{"addAbnormal_": "0"}
 		],
 		"addOtherAbnormals_": [
-			{"addAbnormal_": "2"}
+			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "ーー\nーー"
+		"effectInfo_": "急所に当たりやすい"
 }

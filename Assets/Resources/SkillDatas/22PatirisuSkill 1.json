@@ -1,7 +1,7 @@
 ﻿{
-		"skillName_":										"ばうぽりわざ",
+		"skillName_":										"ナッツケーキ",
 		
-		"effectValue_":										"60",
+		"effectValue_":										"100",
 		"optionEffectTriggerRateValue_":	"100",
 		"successRateValue_":							"100",
 		"upDpValue_":											"10",
@@ -12,7 +12,7 @@
 		"elementType_":										"2",
 
 		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal","DreamPointDrain"],
-		"effectValueType_":								"2",
+		"effectValueType_":								"3",
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 
@@ -20,10 +20,10 @@
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "0", "value_": "0"}
+			{"addParameterRank_": "3", "value_": "-1"}
 		],
 		"addOtherParameterRanks_": [
-			{"addParameterRank_": "1", "value_": "-2"}
+			{"addParameterRank_": "0", "value_": "0"}
 		],
 
 		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "ーー\nーー"
+		"effectInfo_": "自:HP100回復\n自:すばやさランク-1"
 }

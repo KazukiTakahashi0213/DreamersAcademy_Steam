@@ -1,8 +1,8 @@
 ﻿{
-		"skillName_":										"はんどれわざ",
+		"skillName_":										"ドラムンベース",
 		
 		"effectValue_":										"80",
-		"optionEffectTriggerRateValue_":	"30",
+		"optionEffectTriggerRateValue_":	"100",
 		"successRateValue_":							"100",
 		"upDpValue_":											"10",
 
@@ -20,7 +20,7 @@
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "0", "value_": "0"}
+			{"addParameterRank_": "1", "value_": "2"}
 		],
 		"addOtherParameterRanks_": [
 			{"addParameterRank_": "0", "value_": "0"}
@@ -28,11 +28,11 @@
 
 		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],
 		"addSelfAbnormals_": [
-			{"addAbnormal_": "5"}
+			{"addAbnormal_": "0"}
 		],
 		"addOtherAbnormals_": [
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "ーー\nーー"
+		"effectInfo_": "攻撃後\n自:こうげきランク+2"
 }

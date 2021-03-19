@@ -1,5 +1,5 @@
 ﻿{
-		"skillName_":										"ぱてぃりわざ",
+		"skillName_":										"アクアタイガー",
 		
 		"effectValue_":										"100",
 		"optionEffectTriggerRateValue_":	"100",
@@ -12,7 +12,7 @@
 		"elementType_":										"2",
 
 		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal","DreamPointDrain"],
-		"effectValueType_":								"3",
+		"effectValueType_":								"2",
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 
@@ -20,10 +20,10 @@
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "0", "value_": "0"}
+			{"addParameterRank_": "1", "value_": "1"}
 		],
 		"addOtherParameterRanks_": [
-			{"addParameterRank_": "0", "value_": "0"}
+			{"addParameterRank_": "2", "value_": "-1"}
 		],
 
 		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "ーー\nーー"
+		"effectInfo_": "自:こうげきランク+1\n相:ぼうぎょランク-1"
 }
