@@ -3,11 +3,11 @@
 		"jobName_":			"はかせ",
 		"texName_":			"Victer0",
 		
-		"attackRate_":  "50",
-		"tradeRate_":   "50",
+		"attackRate_":  "80",
+		"tradeRate_":   "20",
 
 		"monsterDatas_": [
-			{"monsterName_": "バウポリス", "skillNames_": ["ファイアソード", "すいめんぎり", "グローツリー", "てんへのひかり"]},
-			{"monsterName_": "フリルマ", "skillNames_": ["ファイアソード", "すいめんぎり", "グローツリー", "てんへのひかり"]}
+			{"monsterName_": "バウポリス", "skillNames_": ["ヒートブレス", "ブルーブラスト", "リーフシュート", "プラズマカノン"]},
+			{"monsterName_": "プリルマ", "skillNames_": ["ヒートブレス", "ブルーブラスト", "リーフシュート", "プラズマカノン"]}
 		]
 }

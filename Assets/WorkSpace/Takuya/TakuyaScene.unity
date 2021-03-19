@@ -316,7 +316,7 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNames_.Array.data[3]
-      value: "\u3084\u308B\u304D\u30C0\u30A6\u30F3"
+      value: "\u30B9\u30D4\u30EA\u30C3\u30C8\u30CD\u30B9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -366,7 +366,7 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNames_.Array.data[3]
-      value: "\u3052\u3093\u304D\u30C0\u30A6\u30F3"
+      value: "\u30AC\u30FC\u30C9\u30BB\u30C3\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -381,12 +381,12 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[1].skillDataNames_.Array.data[2]
-      value: "\u3084\u308B\u304D\u30C0\u30A6\u30F3"
+      value: "\u30B9\u30D4\u30EA\u30C3\u30C8\u30CD\u30B9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[1].skillDataNames_.Array.data[3]
-      value: "\u3052\u3093\u304D\u30C0\u30A6\u30F3"
+      value: "\u30AC\u30FC\u30C9\u30BB\u30C3\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -401,12 +401,12 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[2].skillDataNames_.Array.data[2]
-      value: "\u3084\u308B\u304D\u30C0\u30A6\u30F3"
+      value: "\u30B9\u30D4\u30EA\u30C3\u30C8\u30CD\u30B9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[2].skillDataNames_.Array.data[3]
-      value: "\u3052\u3093\u304D\u30C0\u30A6\u30F3"
+      value: "\u30AC\u30FC\u30C9\u30BB\u30C3\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
