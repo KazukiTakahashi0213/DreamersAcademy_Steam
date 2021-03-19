@@ -1,26 +1,26 @@
 ﻿{
-		"skillName_":										"てんへのひかり",
+		"skillName_":										"リキッドアビス",
 		
-		"effectValue_":										"70",
+		"effectValue_":										"120",
 		"optionEffectTriggerRateValue_":	"0",
-		"successRateValue_":							"100",
+		"successRateValue_":							"85",
 		"upDpValue_":											"10",
 
 		"playPoint_":											"20",
 
 		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
-		"elementType_":										"4",
+		"elementType_":										"2",
 
-		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal"],
+		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal","DreamPointDrain"],
 		"effectValueType_":								"2",
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 
 		"effectName_":										"TaiatariEffect",
 		
-		"//AddParameterRank": ["None","Attack","Defense","SpecialAttack","SpecialDefense","Speed","AvoidRate","HitRate"],
+		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "0", "value_": "0"}
+			{"addParameterRank_": "2", "value_": "-2"}
 		],
 		"addOtherParameterRanks_": [
 			{"addParameterRank_": "0", "value_": "0"}
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "ーー\nーー"
+		"effectInfo_": "攻撃後\n自:ぼうぎょランク-2"
 }

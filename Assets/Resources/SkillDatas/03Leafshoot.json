@@ -1,29 +1,29 @@
 ﻿{
-		"skillName_":										"げんきダウン",
+		"skillName_":										"リーフシュート",
 		
-		"effectValue_":										"30",
-		"optionEffectTriggerRateValue_":	"100",
+		"effectValue_":										"70",
+		"optionEffectTriggerRateValue_":	"0",
 		"successRateValue_":							"100",
-		"upDpValue_":											"-10",
+		"upDpValue_":											"10",
 
-		"playPoint_":											"0",
+		"playPoint_":											"20",
 
 		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
-		"elementType_":										"5",
+		"elementType_":										"3",
 
 		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal","DreamPointDrain"],
 		"effectValueType_":								"2",
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 
-		"effectName_":										"NoneEffect",
+		"effectName_":										"TaiatariEffect",
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
 			{"addParameterRank_": "0", "value_": "0"}
 		],
 		"addOtherParameterRanks_": [
-			{"addParameterRank_": "2", "value_": "-1"}
+			{"addParameterRank_": "0", "value_": "0"}
 		],
 
 		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "相手のぼうぎょを\n1段階さげる"
+		"effectInfo_": "くさのちからで\n相手をこうげきする"
 }
