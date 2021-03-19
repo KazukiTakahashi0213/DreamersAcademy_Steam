@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectValueTypeDreamPointDrain : BEffectValueType {
-	public override bool EffectValueEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
+	public override bool EffectValueEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, DreamPointInfoParts attackDreamPointInfoParts, DreamPointInfoParts defenseDreamPointInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
 		//攻撃の成功判定
 		//技の命中率×命中補正値M×ランク補正
 		bool skillSuccess = AllSceneManager.GetInstance().GetRandom().Next(0, 100) < (int)(attackSkillData.successRateValue_ * (4096 / 4096));
@@ -30,13 +30,13 @@ public class EffectValueTypeDreamPointDrain : BEffectValueType {
 		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
 		//DPの演出のイベント
-		mgr.StatusInfoPartsDPEffectEventSet(defenseTrainerBattleData, defenseStatusInfoParts);
+		defenseDreamPointInfoParts.DPEffectEventSet(defenseTrainerBattleData.GetDreamPoint());
 
 		//ウェイト
 		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
 		//DPの演出のイベント
-		mgr.StatusInfoPartsDPEffectEventSet(attackTrainerBattleData, attackStatusInfoParts);
+		attackDreamPointInfoParts.DPEffectEventSet(attackTrainerBattleData.GetDreamPoint());
 
 		//ウェイト
 		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());

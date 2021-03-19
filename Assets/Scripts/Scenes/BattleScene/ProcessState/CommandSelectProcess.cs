@@ -30,6 +30,9 @@ public class CommandSelectProcess : IProcessState {
 				mgr.GetPlayerStatusInfoParts().ProcessIdleEnd();
 				mgr.GetPlayerMonsterParts().ProcessIdleEnd();
 
+				//ウィンドウの表示
+				mgr.GetNovelWindowParts().gameObject.SetActive(true);
+
 				//フェードイン
 				eventMgr.EventSpriteRendererSet(
 					sceneMgr.GetPublicFrontScreen().GetEventScreenSprite()

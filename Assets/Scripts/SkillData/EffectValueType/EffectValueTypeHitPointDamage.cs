@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectValueTypeHitPointDamage : BEffectValueType {
-	public override bool EffectValueEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
+	public override bool EffectValueEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, DreamPointInfoParts attackDreamPointInfoParts, DreamPointInfoParts defenseDreamPointInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
 		//ランク補正の計算
 		float monsterHitRateValue = 0;
 		{
@@ -73,7 +73,7 @@ public class EffectValueTypeHitPointDamage : BEffectValueType {
 		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
 		//DPの演出のイベント
-		mgr.StatusInfoPartsDPEffectEventSet(attackTrainerBattleData, attackStatusInfoParts);
+		attackDreamPointInfoParts.DPEffectEventSet(attackTrainerBattleData.GetDreamPoint());
 
 		//ウェイト
 		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
@@ -167,7 +167,7 @@ public class EffectValueTypeHitPointDamage : BEffectValueType {
 			}
 
 			//DPの演出のイベント
-			mgr.StatusInfoPartsDPEffectEventSet(defenseTrainerBattleData, defenseStatusInfoParts);
+			defenseDreamPointInfoParts.DPEffectEventSet(defenseTrainerBattleData.GetDreamPoint());
 
 			//ウェイト
 			AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());

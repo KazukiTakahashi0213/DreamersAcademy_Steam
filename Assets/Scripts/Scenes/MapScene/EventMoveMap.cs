@@ -151,7 +151,7 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 1.0f));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.4f);
+		allEventMgr.AllUpdateEventExecute(0.3f);
 
 		//非表示
 		allEventMgr.EventSpriteRendererSet(
@@ -159,7 +159,7 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 0));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.3f);
+		allEventMgr.AllUpdateEventExecute(0.2f);
 
 		//表示
 		allEventMgr.EventSpriteRendererSet(
@@ -167,7 +167,7 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 1.0f));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.4f);
+		allEventMgr.AllUpdateEventExecute(0.3f);
 
 		//非表示
 		allEventMgr.EventSpriteRendererSet(
@@ -175,7 +175,7 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 0));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.3f);
+		allEventMgr.AllUpdateEventExecute(0.2f);
 
 		//表示
 		allEventMgr.EventSpriteRendererSet(
@@ -183,10 +183,10 @@ public class EventMoveMap : ObjectMoveMap {
 			, null
 			, new Color(1, 1, 1, 1.0f));
 		allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		allEventMgr.AllUpdateEventExecute(0.8f);
+		allEventMgr.AllUpdateEventExecute(0.7f);
 
 		//ウェイト
-		allEventMgr.EventWaitSet(0.8f);
+		allEventMgr.EventWaitSet(0.7f);
 
 		//黒
 		allEventMgr.EventSpriteRendererSet(

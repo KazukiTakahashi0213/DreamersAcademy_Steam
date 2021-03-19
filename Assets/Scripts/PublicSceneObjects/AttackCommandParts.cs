@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackCommandParts : MonoBehaviour {
 	[SerializeField] CommandParts commandParts_ = null;
 	[SerializeField] CommandWindowParts skillInfoParts_ = null;
+	[SerializeField] List<SpriteRenderer> skillFrameSprites_ = new List<SpriteRenderer>(); 
 
 	public CommandParts GetCommandParts() { return commandParts_; }
 	public CommandWindowParts GetSkillInfoParts() { return skillInfoParts_; }
@@ -26,6 +27,11 @@ public class AttackCommandParts : MonoBehaviour {
 		//}
 		for (int i = 0; i < commandParts_.GetCommandWindowTextsCount(); ++i) {
 			commandParts_.CommandWindowChoiceColorChange(i, monsterData.GetSkillDatas(i).elementType_.GetColor());
+		}
+
+		//技のフレームの変更
+		for (int i = 0; i < skillFrameSprites_.Count; ++i) {
+			skillFrameSprites_[i].sprite = monsterData.GetSkillDatas(i).elementType_.GetSkillFrameSprite();
 		}
 	}
 }

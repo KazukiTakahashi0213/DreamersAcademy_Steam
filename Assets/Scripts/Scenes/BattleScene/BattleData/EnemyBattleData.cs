@@ -86,6 +86,11 @@ public class EnemyBattleData : BTrainerBattleData {
 		AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
 
 		if (battleActiveMonsterSize_ == 0) {
+			//DPゲージの登場
+			AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetPlayerDreamPointInfoParts().GetUpdateGameObject());
+			AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetEnemyDreamPointInfoParts().GetUpdateGameObject());
+			AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
+
 			//BGMの再生
 			AllEventManager.GetInstance().BGMAudioClipChangeEventSet(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Win()));
 			AllEventManager.GetInstance().BGMAudioPlayEventSet();

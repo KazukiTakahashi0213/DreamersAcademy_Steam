@@ -21,16 +21,19 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		enemyParts_.transform.localPosition = new Vector3(-13.5f, 3.0f, 5);
 
 		//エネミー、プレイヤーのステータスインフォの初期化
-		playerStatusInfoParts_.transform.localPosition = new Vector3(13.5f, -1.25f, 5);
-		enemyStatusInfoParts_.transform.localPosition = new Vector3(-13.5f, 3.4f, 5);
-		playerStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().fillAmount = 0;
-		enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().fillAmount = 0;
+		playerStatusInfoParts_.transform.localPosition = new Vector3(-13.5f, -4.2f, 4);
+		enemyStatusInfoParts_.transform.localPosition = new Vector3(-13.5f, 3.4f, 4);
+		playerDreamPointInfoParts_.GaugeReset();
+		enemyDreamPointInfoParts_.GaugeReset();
 		playerStatusInfoParts_.ProcessIdleEnd();
 		playerMonsterParts_.ProcessIdleEnd();
 
 		//エネミー、プレイヤーのモンスターの非表示
 		playerMonsterParts_.gameObject.SetActive(false);
 		enemyMonsterParts_.gameObject.SetActive(false);
+
+		//ウィンドウの初期化
+		novelWindowParts_.gameObject.SetActive(false);
 
 		//睡眠スクリーンの初期化
 		sleepScreenParts_.GetEventScreenSprite().GetSpriteRenderer().color = new Color(sleepScreenParts_.GetEventScreenSprite().GetSpriteRenderer().color.r, sleepScreenParts_.GetEventScreenSprite().GetSpriteRenderer().color.g, sleepScreenParts_.GetEventScreenSprite().GetSpriteRenderer().color.b, 0);
@@ -45,7 +48,6 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		//プレイヤー、エネミーの画像の設定
 		playerParts_.GetEventSprite().GetSpriteRenderer().sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics("Player/PlayerMonsterSet0");
 		enemyParts_.GetMonsterSprite().sprite = EnemyTrainerData.GetInstance().GetSprite();
-
 
 		//エネミーモンスターの読み込み
 		{
@@ -126,6 +128,9 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	[SerializeField] private MagazineParts enemyMagazineParts_ = null;
 	[SerializeField] private EventSpriteRenderer dreamEffectScreenEventSprite_ = null;
 	[SerializeField] private DreamEffectParts dreamEffectParts_ = null;
+	[SerializeField] private DreamPointInfoParts playerDreamPointInfoParts_ = null;
+	[SerializeField] private DreamPointInfoParts enemyDreamPointInfoParts_ = null;
+	[SerializeField] private SpriteRenderer dreamCommandSprite_ = null;
 
 	public MonsterParts GetEnemyMonsterParts() { return enemyMonsterParts_; }
 	public MonsterParts GetPlayerMonsterParts() { return playerMonsterParts_; }
@@ -145,6 +150,9 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	public MagazineParts GetEnemyMagazineParts() { return enemyMagazineParts_; }
 	public EventSpriteRenderer GetDreamEffectScreenEventSprite() { return dreamEffectScreenEventSprite_; }
 	public DreamEffectParts GetDreamEffectParts() { return dreamEffectParts_; }
+	public DreamPointInfoParts GetPlayerDreamPointInfoParts() { return playerDreamPointInfoParts_; }
+	public DreamPointInfoParts GetEnemyDreamPointInfoParts() { return enemyDreamPointInfoParts_; }
+	public SpriteRenderer GetDreamCommandSprite() { return dreamCommandSprite_; }
 
 	public void AttackCommandSkillInfoTextSet(int number) {
 		IMonsterData monsterData = PlayerBattleData.GetInstance().GetMonsterDatas(0);
@@ -226,6 +234,9 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 				InactiveUiAttackCommand();
 				InactiveUiCommand();
 
+				//ウィンドウの表示
+				novelWindowParts_.gameObject.SetActive(true);
+
 				//ウェイト
 				AllEventManager.GetInstance().EventWaitSet(eventWaitTime_);
 
@@ -276,6 +287,9 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 				//UIの非表示
 				InactiveUiAttackCommand();
 				InactiveUiCommand();
+
+				//ウィンドウの表示
+				novelWindowParts_.gameObject.SetActive(true);
 
 				//ウェイト
 				AllEventManager.GetInstance().EventWaitSet(eventWaitTime_);
@@ -495,100 +509,6 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	public float GetEventContextUpdateTime() { return eventContextUpdateTime_ * AllSceneManager.GetInstance().GetBattleEffectSpeed(); }
 	public float GetEventWaitTime() { return eventWaitTime_ * AllSceneManager.GetInstance().GetBattleEffectSpeed(); }
 
-	public void PlayerEnemyStatusInfoPartsDPEffect() {
-		for (int i = 0; i < 2; ++i) {
-			//プレイヤーのステータスインフォのDPの点滅演出
-			AllEventManager.GetInstance().UpdateImageSet(
-				playerStatusInfoParts_.GetDPGaugeMeterUpdateImage()
-				, new Color(playerStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.r, playerStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.g, playerStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.b, 0.3f)
-				);
-
-			//エネミーのステータスインフォのDPの点滅演出
-			AllEventManager.GetInstance().UpdateImageSet(
-				enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage()
-				, new Color(enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.r, enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.g, enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.b, 0.3f)
-				);
-
-			AllEventManager.GetInstance().UpdateImagesUpdateExecuteSet(UpdateImageEventManagerExecute.ChangeColor);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
-
-			//ウェイト
-			AllEventManager.GetInstance().EventWaitSet(0.1f);
-
-			//プレイヤーのステータスインフォのDPの点滅演出
-			AllEventManager.GetInstance().UpdateImageSet(
-				playerStatusInfoParts_.GetDPGaugeMeterUpdateImage()
-				, new Color(playerStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.r, playerStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.g, playerStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.b, 1)
-				);
-
-			//エネミーのステータスインフォのDPの点滅演出
-			AllEventManager.GetInstance().UpdateImageSet(
-				enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage()
-				, new Color(enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.r, enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.g, enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage().GetImage().color.b, 1)
-				);
-
-			AllEventManager.GetInstance().UpdateImagesUpdateExecuteSet(UpdateImageEventManagerExecute.ChangeColor);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
-
-			//ウェイト
-			AllEventManager.GetInstance().EventWaitSet(0.1f);
-		}
-
-		//プレイヤーのステータスインフォのDPの演出
-		float playerEndFillAmount = t13.Utility.ValueForPercentage(100, PlayerBattleData.GetInstance().GetDreamPoint(), 1);
-		AllEventManager.GetInstance().UpdateImageSet(
-			playerStatusInfoParts_.GetDPGaugeMeterUpdateImage()
-			, new Color32()
-			, playerEndFillAmount
-			);
-		//エネミーのステータスインフォのDPの演出
-		float enemyEndFillAmount = t13.Utility.ValueForPercentage(100, EnemyBattleData.GetInstance().GetDreamPoint(), 1);
-		AllEventManager.GetInstance().UpdateImageSet(
-			enemyStatusInfoParts_.GetDPGaugeMeterUpdateImage()
-			, new Color32()
-			, enemyEndFillAmount
-			);
-
-		AllEventManager.GetInstance().UpdateImagesUpdateExecuteSet(UpdateImageEventManagerExecute.FillAmountUpdate);
-		AllEventManager.GetInstance().AllUpdateEventExecute(1.0f);
-	}
-
-	public void StatusInfoPartsDPEffectEventSet(BTrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts) {
-		for (int i = 0; i < 2; ++i) {
-			//ステータスインフォのDPの点滅演出
-			AllEventManager.GetInstance().UpdateImageSet(
-				statusInfoParts.GetDPGaugeMeterUpdateImage()
-				, new Color(statusInfoParts.GetDPGaugeMeterUpdateImage().GetImage().color.r, statusInfoParts.GetDPGaugeMeterUpdateImage().GetImage().color.g, statusInfoParts.GetDPGaugeMeterUpdateImage().GetImage().color.b, 0.3f)
-				);
-			AllEventManager.GetInstance().UpdateImagesUpdateExecuteSet(UpdateImageEventManagerExecute.ChangeColor);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
-
-			//ウェイト
-			AllEventManager.GetInstance().EventWaitSet(0.1f);
-
-			//ステータスインフォのDPの点滅演出
-			AllEventManager.GetInstance().UpdateImageSet(
-				statusInfoParts.GetDPGaugeMeterUpdateImage()
-				, new Color(statusInfoParts.GetDPGaugeMeterUpdateImage().GetImage().color.r, statusInfoParts.GetDPGaugeMeterUpdateImage().GetImage().color.g, statusInfoParts.GetDPGaugeMeterUpdateImage().GetImage().color.b, 1)
-				);
-			AllEventManager.GetInstance().UpdateImagesUpdateExecuteSet(UpdateImageEventManagerExecute.ChangeColor);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
-
-			//ウェイト
-			AllEventManager.GetInstance().EventWaitSet(0.1f);
-		}
-
-		float endFillAmount = t13.Utility.ValueForPercentage(100, trainerBattleData.GetDreamPoint(), 1);
-		AllEventManager.GetInstance().UpdateImageSet(
-			statusInfoParts.GetDPGaugeMeterUpdateImage()
-			, new Color32()
-			, endFillAmount
-			);
-
-		AllEventManager.GetInstance().UpdateImagesUpdateExecuteSet(UpdateImageEventManagerExecute.FillAmountUpdate);
-		AllEventManager.GetInstance().AllUpdateEventExecute(1.0f);
-	}
-
 	void OpeningEventSet() {
 		novelWindowParts_.GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		novelWindowParts_.GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
@@ -608,6 +528,10 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 		//ウェイト
 		AllEventManager.GetInstance().EventWaitSet(eventWaitTime_ / 2);
+
+		//ウィンドウの表示
+		AllEventManager.GetInstance().UpdateGameObjectSet(novelWindowParts_.GetUpdateGameObject());
+		AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
 
 		//プレイヤーのマガジンの出現
 		AllEventManager.GetInstance().EventSpriteRendererSet(
@@ -738,6 +662,10 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		AllEventManager.GetInstance().UpdateGameObjectUpdateExecuteSet(UpdateGameObjectEventManagerExecute.PosMove);
 		AllEventManager.GetInstance().AllUpdateEventExecute(0.4f);
 
+		//エネミーのDPゲージの登場
+		AllEventManager.GetInstance().UpdateGameObjectSet(enemyDreamPointInfoParts_.GetUpdateGameObject());
+		AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
+
 		//ウェイト
 		AllEventManager.GetInstance().EventWaitSet(eventWaitTime_);
 
@@ -807,23 +735,25 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
 
 		//プレイヤーモンスターのインフォメーションの入場
-		AllEventManager.GetInstance().UpdateGameObjectSet(playerStatusInfoParts_.GetEventGameObject(), new Vector3(4.0f, playerStatusInfoParts_.GetEventGameObject().transform.position.y, playerStatusInfoParts_.GetEventGameObject().transform.position.z));
+		AllEventManager.GetInstance().UpdateGameObjectSet(playerStatusInfoParts_.GetEventGameObject(), new Vector3(-6.12f, playerStatusInfoParts_.GetEventGameObject().transform.position.y, playerStatusInfoParts_.GetEventGameObject().transform.position.z));
 		AllEventManager.GetInstance().UpdateGameObjectUpdateExecuteSet(UpdateGameObjectEventManagerExecute.PosMove);
 		AllEventManager.GetInstance().AllUpdateEventExecute(0.4f);
+
+		//プレイヤーのDPゲージの登場
+		AllEventManager.GetInstance().UpdateGameObjectSet(playerDreamPointInfoParts_.GetUpdateGameObject());
+		AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
+
 		//ウェイト
 		AllEventManager.GetInstance().EventWaitSet(eventWaitTime_);
-		{
-			//文字列の設定
-			string playerFirstMonsterName = PlayerBattleData.GetInstance().GetMonsterDatas(0).tribesData_.monsterName_;
-			string context = playerFirstMonsterName + "は　どうする？";
 
-			AllEventManager.GetInstance().EventTextSet(novelWindowParts_.GetNovelWindowEventText(), context);
-			AllEventManager.GetInstance().EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
-			AllEventManager.GetInstance().AllUpdateEventExecute();
-		}
+		//ウィンドウの非表示
+		AllEventManager.GetInstance().UpdateGameObjectSet(novelWindowParts_.GetUpdateGameObject());
+		AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(false);
+
 		//コマンドの選択肢とカーソルの出現
 		AllEventManager.GetInstance().UpdateGameObjectSet(commandCommandParts_.GetEventGameObject());
 		AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
+
 		//イベントの最後
 		AllEventManager.GetInstance().EventFinishSet();
 	}

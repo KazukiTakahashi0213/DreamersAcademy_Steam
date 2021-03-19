@@ -37,6 +37,9 @@ public class CommandEventExecuteProcess : IProcessState {
 
 		if (AllEventManager.GetInstance().EventUpdate()
 			&& PlayerBattleData.GetInstance().GetMonsterDatas(0).battleActive_) {
+			//ウィンドウの非表示
+			mgr.GetNovelWindowParts().gameObject.SetActive(false);
+
 			mgr.GetPlayerStatusInfoParts().ProcessIdleStart();
 			mgr.GetPlayerMonsterParts().ProcessIdleStart();
 			mgr.ActiveUiCommand();

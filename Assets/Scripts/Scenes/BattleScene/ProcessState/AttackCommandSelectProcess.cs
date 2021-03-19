@@ -24,6 +24,9 @@ public class AttackCommandSelectProcess : IProcessState {
 				mgr.GetPlayerStatusInfoParts().ProcessIdleEnd();
 				mgr.GetPlayerMonsterParts().ProcessIdleEnd();
 
+				//ウィンドウの表示
+				mgr.GetNovelWindowParts().gameObject.SetActive(true);
+
 				//イベントの最後
 				AllEventManager.GetInstance().EventFinishSet();
 
@@ -164,6 +167,9 @@ public class AttackCommandSelectProcess : IProcessState {
 
 				//コマンドUIの非表示
 				mgr.InactiveUiAttackCommand();
+
+				//ウィンドウの表示
+				mgr.GetNovelWindowParts().gameObject.SetActive(true);
 
 				//ppの消費
 				//playerSkillData.nowPlayPoint_ -= 1;
