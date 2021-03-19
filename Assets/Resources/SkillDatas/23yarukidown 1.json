@@ -1,0 +1,38 @@
+﻿{
+		"skillName_":										"やるきダウン",
+		
+		"effectValue_":										"0",
+		"optionEffectTriggerRateValue_":	"100",
+		"successRateValue_":							"0",
+		"upDpValue_":											"0",
+
+		"playPoint_":											"0",
+
+		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
+		"elementType_":										"0",
+
+		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal"],
+		"effectValueType_":								"1",
+		"triggerPriority_":								"0",
+		"criticalParameterRank_":					"0",
+
+		"effectName_":										"NoneEffect",
+		
+		"//AddParameterRank": ["None","Attack","Defense","SpecialAttack","SpecialDefense","Speed","AvoidRate","HitRate"],
+		"addSelfParameterRanks_": [
+			{"addParameterRank_": "0", "value_": "0"}
+		],
+		"addOtherParameterRanks_": [
+			{"addParameterRank_": "1", "value_": "-1"}
+		],
+
+		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],
+		"addSelfAbnormals_": [
+			{"addAbnormal_": "0"}
+		],
+		"addOtherAbnormals_": [
+			{"addAbnormal_": "0"}
+		],
+
+		"effectInfo_": "相手のこうげきを1段階さげる"
+}
