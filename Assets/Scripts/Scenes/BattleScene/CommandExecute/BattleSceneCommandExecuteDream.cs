@@ -14,14 +14,14 @@ public class BattleSceneCommandExecuteDream : BBattleSceneCommandExecute {
 
 			if (PlayerBattleData.GetInstance().dreamSyncronize_ == false) {
 				//ゆめの文字色の変更
-				battleManager.GetCommandCommandParts().CommandWindowChoiceColorChange(1, new Color32(94, 120, 255, 255));
+				battleManager.GetDreamCommandSprite().color = new Color32(94, 120, 255, 255);
 
 				//パワーアップするか否かのフラグの設定
 				PlayerBattleData.GetInstance().dreamSyncronize_ = true;
 			}
 			else {
 				//ゆめの文字色の変更
-				battleManager.GetCommandCommandParts().CommandWindowChoiceColorChange(1, new Color32(50, 50, 50, 255));
+				battleManager.GetDreamCommandSprite().color = new Color32(255, 255, 255, 255);
 
 				//パワーアップするか否かのフラグの設定
 				PlayerBattleData.GetInstance().dreamSyncronize_ = false;

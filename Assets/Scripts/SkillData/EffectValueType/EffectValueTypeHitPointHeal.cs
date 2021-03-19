@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectValueTypeHitPointHeal : BEffectValueType {
-	public override bool EffectValueEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
+	public override bool EffectValueEventSet(BattleManager mgr, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, DreamPointInfoParts attackDreamPointInfoParts, DreamPointInfoParts defenseDreamPointInfoParts, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
 		//攻撃の成功判定
 		//技の命中率×命中補正値M×ランク補正
 		bool skillSuccess = AllSceneManager.GetInstance().GetRandom().Next(0, 100) < (int)(attackSkillData.successRateValue_ * (4096 / 4096));
@@ -22,31 +22,6 @@ public class EffectValueTypeHitPointHeal : BEffectValueType {
 		//ヒットポイントの変動
 		attackMonsterData.nowHitPoint_ += (int)attackSkillData.effectValue_;
 		if (attackMonsterData.nowHitPoint_ > attackMonsterData.RealHitPoint()) attackMonsterData.nowHitPoint_ = attackMonsterData.RealHitPoint();
-
-		//DPの変動
-		//PlayerBattleData.GetInstance().dreamPoint_ += playerSkillData.upDpValue_;
-		//int attackElementSimillarRsult = defenseMonsterData.ElementSimillarCheckerForValue(attackSkillData.elementType_);
-		//if (attackElementSimillarRsult == 3) {
-		//	attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBestSimillar());
-		//}
-		//else if (attackElementSimillarRsult == 2) {
-		//	attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNormalSimillar());
-		//}
-		//else if (attackElementSimillarRsult == 1) {
-		//	attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueBadSimillar());
-		//}
-		//else if (attackElementSimillarRsult == 0) {
-		//	attackTrainerBattleData.DreamPointAddValue(AllSceneManager.GetInstance().GetUpDPValueNotSimillar());
-		//}
-		//
-		////ウェイト
-		//AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
-		//
-		////DPの演出のイベント
-		//mgr.StatusInfoPartsDPEffectEventSet(attackTrainerBattleData, attackStatusInfoParts);
-		//
-		////ウェイト
-		//AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
 		//技のアニメーション
 		attackSkillData.EffectAnimetionEventSet(attackEffectParts);

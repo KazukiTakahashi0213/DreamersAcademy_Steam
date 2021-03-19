@@ -63,7 +63,7 @@ public class PlayerBattleData : BTrainerBattleData {
 		//AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
 
 		//モンスターのステータスインフォの退場
-		AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetPlayerStatusInfoParts().GetEventGameObject(), new Vector3(13.5f, manager.GetPlayerStatusInfoParts().transform.position.y, manager.GetPlayerStatusInfoParts().transform.position.z));
+		AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetPlayerStatusInfoParts().GetEventGameObject(), new Vector3(-13.5f, manager.GetPlayerStatusInfoParts().transform.position.y, manager.GetPlayerStatusInfoParts().transform.position.z));
 		AllEventManager.GetInstance().UpdateGameObjectUpdateExecuteSet(UpdateGameObjectEventManagerExecute.PosMove);
 		AllEventManager.GetInstance().AllUpdateEventExecute(0.2f);
 
@@ -76,6 +76,11 @@ public class PlayerBattleData : BTrainerBattleData {
 		AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
 
 		if (battleActiveMonsterSize_ == 0) {
+			//DPゲージの登場
+			AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetPlayerDreamPointInfoParts().GetUpdateGameObject());
+			AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetEnemyDreamPointInfoParts().GetUpdateGameObject());
+			AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
+
 			//BGMの再生
 			AllEventManager.GetInstance().BGMAudioClipChangeEventSet(ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Lose()));
 			AllEventManager.GetInstance().BGMAudioPlayEventSet();
@@ -159,7 +164,7 @@ public class PlayerBattleData : BTrainerBattleData {
 
 				AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
 
-				AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetPlayerStatusInfoParts().GetEventGameObject(), new Vector3(13.5f, manager.GetPlayerStatusInfoParts().transform.position.y, manager.GetPlayerStatusInfoParts().transform.position.z));
+				AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetPlayerStatusInfoParts().GetEventGameObject(), new Vector3(-13.5f, manager.GetPlayerStatusInfoParts().transform.position.y, manager.GetPlayerStatusInfoParts().transform.position.z));
 				AllEventManager.GetInstance().UpdateGameObjectUpdateExecuteSet(UpdateGameObjectEventManagerExecute.PosMove);
 				AllEventManager.GetInstance().AllUpdateEventExecute(0.2f);
 			}
@@ -230,7 +235,7 @@ public class PlayerBattleData : BTrainerBattleData {
 
 			AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
 
-			AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetPlayerStatusInfoParts().GetEventGameObject(), new Vector3(4.0f, manager.GetPlayerStatusInfoParts().transform.position.y, manager.GetPlayerStatusInfoParts().transform.position.z));
+			AllEventManager.GetInstance().UpdateGameObjectSet(manager.GetPlayerStatusInfoParts().GetEventGameObject(), new Vector3(-6.12f, manager.GetPlayerStatusInfoParts().transform.position.y, manager.GetPlayerStatusInfoParts().transform.position.z));
 			AllEventManager.GetInstance().UpdateGameObjectUpdateExecuteSet(UpdateGameObjectEventManagerExecute.PosMove);
 			AllEventManager.GetInstance().AllUpdateEventExecute(0.2f);
 		}

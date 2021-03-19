@@ -15,7 +15,10 @@ public class CommandEventSetProcess : IProcessState {
 	public IProcessState Update(BattleManager mgr) {
 		////DPの演出のイベント
 		//mgr.PlayerEnemyStatusInfoPartsDPEffect();
-		
+
+		//ウィンドウの表示
+		mgr.GetNovelWindowParts().gameObject.SetActive(true);
+
 		//ウェイト
 		AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
 
@@ -26,10 +29,10 @@ public class CommandEventSetProcess : IProcessState {
 			PlayerBattleData.GetInstance().dreamSyncronize_ = false;
 
 			//ゆめの文字色の変更
-			mgr.GetCommandCommandParts().CommandWindowChoiceColorChange(1, new Color32(50, 50, 50, 255));
+			mgr.GetDreamCommandSprite().color = new Color32(255, 255, 255, 255);
 
 			//DPの演出のイベント
-			mgr.StatusInfoPartsDPEffectEventSet(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts());
+			mgr.GetPlayerDreamPointInfoParts().DPEffectEventSet(PlayerBattleData.GetInstance().GetDreamPoint());
 
 			//ウェイト
 			AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
@@ -85,7 +88,7 @@ public class CommandEventSetProcess : IProcessState {
 			EnemyBattleData.GetInstance().dreamSyncronize_ = false;
 
 			//DPの演出のイベント
-			mgr.StatusInfoPartsDPEffectEventSet(EnemyBattleData.GetInstance(), mgr.GetEnemyStatusInfoParts());
+			mgr.GetEnemyDreamPointInfoParts().DPEffectEventSet(EnemyBattleData.GetInstance().GetDreamPoint());
 
 			//ウェイト
 			AllEventManager.GetInstance().EventWaitSet(mgr.GetEventWaitTime());
@@ -152,6 +155,8 @@ public class CommandEventSetProcess : IProcessState {
 				, mgr.GetEnemyMonsterParts()
 				, mgr.GetPlayerStatusInfoParts()
 				, mgr.GetEnemyStatusInfoParts()
+				, mgr.GetPlayerDreamPointInfoParts()
+				, mgr.GetEnemyDreamPointInfoParts()
 				, PlayerBattleData.GetInstance()
 				, EnemyBattleData.GetInstance()
 				, playerMonsterData, playerSkillData, enemyMonsterData
@@ -164,6 +169,8 @@ public class CommandEventSetProcess : IProcessState {
 				, mgr.GetPlayerMonsterParts()
 				, mgr.GetEnemyStatusInfoParts()
 				, mgr.GetPlayerStatusInfoParts()
+				, mgr.GetEnemyDreamPointInfoParts()
+				, mgr.GetPlayerDreamPointInfoParts()
 				, EnemyBattleData.GetInstance()
 				, PlayerBattleData.GetInstance()
 				, enemyMonsterData, enemySkillData, playerMonsterData
@@ -178,6 +185,8 @@ public class CommandEventSetProcess : IProcessState {
 				, mgr.GetPlayerMonsterParts()
 				, mgr.GetEnemyStatusInfoParts()
 				, mgr.GetPlayerStatusInfoParts()
+				, mgr.GetEnemyDreamPointInfoParts()
+				, mgr.GetPlayerDreamPointInfoParts()
 				, EnemyBattleData.GetInstance()
 				, PlayerBattleData.GetInstance()
 				, enemyMonsterData, enemySkillData, playerMonsterData
@@ -190,6 +199,8 @@ public class CommandEventSetProcess : IProcessState {
 				, mgr.GetEnemyMonsterParts()
 				, mgr.GetPlayerStatusInfoParts()
 				, mgr.GetEnemyStatusInfoParts()
+				, mgr.GetPlayerDreamPointInfoParts()
+				, mgr.GetEnemyDreamPointInfoParts()
 				, PlayerBattleData.GetInstance()
 				, EnemyBattleData.GetInstance()
 				, playerMonsterData, playerSkillData, enemyMonsterData
@@ -205,6 +216,8 @@ public class CommandEventSetProcess : IProcessState {
 				, mgr.GetEnemyMonsterParts()
 				, mgr.GetPlayerStatusInfoParts()
 				, mgr.GetEnemyStatusInfoParts()
+				, mgr.GetPlayerDreamPointInfoParts()
+				, mgr.GetEnemyDreamPointInfoParts()
 				, PlayerBattleData.GetInstance()
 				, EnemyBattleData.GetInstance()
 				, playerMonsterData, playerSkillData, enemyMonsterData
@@ -217,6 +230,8 @@ public class CommandEventSetProcess : IProcessState {
 				, mgr.GetPlayerMonsterParts()
 				, mgr.GetEnemyStatusInfoParts()
 				, mgr.GetPlayerStatusInfoParts()
+				, mgr.GetEnemyDreamPointInfoParts()
+				, mgr.GetPlayerDreamPointInfoParts()
 				, EnemyBattleData.GetInstance()
 				, PlayerBattleData.GetInstance()
 				, enemyMonsterData, enemySkillData, playerMonsterData
@@ -232,6 +247,8 @@ public class CommandEventSetProcess : IProcessState {
 					, mgr.GetEnemyMonsterParts()
 					, mgr.GetPlayerStatusInfoParts()
 					, mgr.GetEnemyStatusInfoParts()
+					, mgr.GetPlayerDreamPointInfoParts()
+					, mgr.GetEnemyDreamPointInfoParts()
 					, PlayerBattleData.GetInstance()
 					, EnemyBattleData.GetInstance()
 					, playerMonsterData, playerSkillData, enemyMonsterData
@@ -244,6 +261,8 @@ public class CommandEventSetProcess : IProcessState {
 					, mgr.GetPlayerMonsterParts()
 					, mgr.GetEnemyStatusInfoParts()
 					, mgr.GetPlayerStatusInfoParts()
+					, mgr.GetEnemyDreamPointInfoParts()
+					, mgr.GetPlayerDreamPointInfoParts()
 					, EnemyBattleData.GetInstance()
 					, PlayerBattleData.GetInstance()
 					, enemyMonsterData, enemySkillData, playerMonsterData
@@ -258,6 +277,8 @@ public class CommandEventSetProcess : IProcessState {
 					, mgr.GetPlayerMonsterParts()
 					, mgr.GetEnemyStatusInfoParts()
 					, mgr.GetPlayerStatusInfoParts()
+					, mgr.GetEnemyDreamPointInfoParts()
+					, mgr.GetPlayerDreamPointInfoParts()
 					, EnemyBattleData.GetInstance()
 					, PlayerBattleData.GetInstance()
 					, enemyMonsterData, enemySkillData, playerMonsterData
@@ -270,6 +291,8 @@ public class CommandEventSetProcess : IProcessState {
 					, mgr.GetEnemyMonsterParts()
 					, mgr.GetPlayerStatusInfoParts()
 					, mgr.GetEnemyStatusInfoParts()
+					, mgr.GetPlayerDreamPointInfoParts()
+					, mgr.GetEnemyDreamPointInfoParts()
 					, PlayerBattleData.GetInstance()
 					, EnemyBattleData.GetInstance()
 					, playerMonsterData, playerSkillData, enemyMonsterData
@@ -285,6 +308,8 @@ public class CommandEventSetProcess : IProcessState {
 				, mgr.GetPlayerMonsterParts()
 				, mgr.GetEnemyStatusInfoParts()
 				, mgr.GetPlayerStatusInfoParts()
+				, mgr.GetEnemyDreamPointInfoParts()
+				, mgr.GetPlayerDreamPointInfoParts()
 				, EnemyBattleData.GetInstance()
 				, PlayerBattleData.GetInstance()
 				, enemyMonsterData, enemySkillData, playerMonsterData
@@ -297,6 +322,8 @@ public class CommandEventSetProcess : IProcessState {
 				, mgr.GetEnemyMonsterParts()
 				, mgr.GetPlayerStatusInfoParts()
 				, mgr.GetEnemyStatusInfoParts()
+				, mgr.GetPlayerDreamPointInfoParts()
+				, mgr.GetEnemyDreamPointInfoParts()
 				, PlayerBattleData.GetInstance()
 				, EnemyBattleData.GetInstance()
 				, playerMonsterData, playerSkillData, enemyMonsterData
@@ -321,7 +348,7 @@ public class CommandEventSetProcess : IProcessState {
 	}
 
 
-	private void SkillResultSet(BattleManager mgr, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
+	private void SkillResultSet(BattleManager mgr, EffectParts attackEffectParts, EffectParts defenseEffectParts, MonsterParts defenseMonsterParts, StatusInfoParts attackStatusInfoParts, StatusInfoParts defenseStatusInfoParts, DreamPointInfoParts attackDreamPointInfoParts, DreamPointInfoParts defenseDreamPointInfoParts, BTrainerBattleData attackTrainerBattleData, BTrainerBattleData defenseTrainerBattleData, IMonsterData attackMonsterData, ISkillData attackSkillData, IMonsterData defenseMonsterData) {
 		//ダウンしていたら
 		if (!attackMonsterData.battleActive_) return;
 
@@ -354,6 +381,8 @@ public class CommandEventSetProcess : IProcessState {
 			, defenseMonsterParts
 			, attackStatusInfoParts
 			, defenseStatusInfoParts
+			, attackDreamPointInfoParts
+			, defenseDreamPointInfoParts
 			, attackMonsterData, attackSkillData, defenseMonsterData
 			);
 		//技が当たっていなかったら

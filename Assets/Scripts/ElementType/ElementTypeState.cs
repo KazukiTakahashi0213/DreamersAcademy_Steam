@@ -84,6 +84,16 @@ public class ElementTypeState {
 	};
 	public Color32 GetColor() { return colors_[(int)state_]; }
 
+	private Sprite[] skillFrameSprite_ = new Sprite[(int)ElementType.Max] {
+		null
+		, ResourcesGraphicsLoader.GetInstance().GetGraphics("BattleScene/BattleSkillFrameFire")
+		, ResourcesGraphicsLoader.GetInstance().GetGraphics("BattleScene/BattleSkillFrameWater")
+		, ResourcesGraphicsLoader.GetInstance().GetGraphics("BattleScene/BattleSkillFrameGrass")
+		, ResourcesGraphicsLoader.GetInstance().GetGraphics("BattleScene/BattleSkillFrameShine")
+		, ResourcesGraphicsLoader.GetInstance().GetGraphics("BattleScene/BattleSkillFrameDark")
+	};
+	public Sprite GetSkillFrameSprite() { return skillFrameSprite_[(int)state_]; }
+
 	private delegate bool SkillTradeCheckFunc(ElementTypeState mine, ElementType elementType);
 	private SkillTradeCheckFunc[] skillTradeChecks_ = new SkillTradeCheckFunc[(int)ElementType.Max] {
 		SkillTradeCheckNone
