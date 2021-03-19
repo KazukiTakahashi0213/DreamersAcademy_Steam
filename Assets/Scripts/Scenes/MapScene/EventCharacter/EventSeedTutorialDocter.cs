@@ -31,10 +31,10 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Handreon), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData("ファイアソード"));
-				md.SkillAdd(new SkillData("すいめんぎり"));
-				md.SkillAdd(new SkillData("グローツリー"));
-				md.SkillAdd(new SkillData("てんへのひかり"));
+				md.SkillAdd(new SkillData("ヒートブレス"));
+				md.SkillAdd(new SkillData("ブレイヴハート"));
+				md.SkillAdd(new SkillData("スピリットネス"));
+				md.SkillAdd(new SkillData("ガードセット"));
 				//プレイヤーの手持ちに追加
 				playerTrainerData.MonsterAdd(md);
 			}
@@ -42,10 +42,10 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Bauporisu), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData("ファイアソード"));
-				md.SkillAdd(new SkillData("すいめんぎり"));
-				md.SkillAdd(new SkillData("グローツリー"));
-				md.SkillAdd(new SkillData("てんへのひかり"));
+				md.SkillAdd(new SkillData("ブルーブラスト"));
+				md.SkillAdd(new SkillData("たいほじゅつ"));
+				md.SkillAdd(new SkillData("スピリットネス"));
+				md.SkillAdd(new SkillData("ガードセット"));
 				//プレイヤーの手持ちに追加
 				playerTrainerData.MonsterAdd(md);
 			}
@@ -53,10 +53,10 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Furiruma), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData("ファイアソード"));
-				md.SkillAdd(new SkillData("すいめんぎり"));
-				md.SkillAdd(new SkillData("グローツリー"));
-				md.SkillAdd(new SkillData("てんへのひかり"));
+				md.SkillAdd(new SkillData("リーフシュート"));
+				md.SkillAdd(new SkillData("プリズムソング"));
+				md.SkillAdd(new SkillData("スピリットネス"));
+				md.SkillAdd(new SkillData("ガードセット"));
 				//プレイヤーの手持ちに追加
 				playerTrainerData.MonsterAdd(md);
 			}
@@ -113,7 +113,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
 		//技の取得
-		//for(int i = 1;i < 29; ++i) {
+		//for(int i = 1;i < 25; ++i) {
 		//	playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
 		//}
 		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)43));
