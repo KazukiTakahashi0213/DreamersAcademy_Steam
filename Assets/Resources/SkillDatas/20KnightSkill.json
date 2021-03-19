@@ -20,7 +20,7 @@
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "2", "value_": "2"}
+			{"addParameterRank_": "2", "value_": "3"}
 		],
 		"addOtherParameterRanks_": [
 			{"addParameterRank_": "0", "value_": "0"}
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "攻撃後\n自:ぼうぎょランク+2"
+		"effectInfo_": "攻撃後\n自:ぼうぎょランク+3"
 }

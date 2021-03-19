@@ -2,7 +2,7 @@
 		"skillName_":										"プリズムソング",
 		
 		"effectValue_":										"70",
-		"optionEffectTriggerRateValue_":	"50",
+		"optionEffectTriggerRateValue_":	"100",
 		"successRateValue_":							"100",
 		"upDpValue_":											"10",
 
@@ -23,7 +23,7 @@
 			{"addParameterRank_": "0", "value_": "0"}
 		],
 		"addOtherParameterRanks_": [
-			{"addParameterRank_": "0", "value_": "0"}
+			{"addParameterRank_": "5", "value_": "-1"}
 		],
 
 		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],

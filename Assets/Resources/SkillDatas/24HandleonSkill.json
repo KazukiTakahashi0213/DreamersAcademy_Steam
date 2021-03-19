@@ -12,7 +12,7 @@
 		"elementType_":										"1",
 
 		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal","DreamPointDrain"],
-		"effectValueType_":								"4",
+		"effectValueType_":								"2",
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 
