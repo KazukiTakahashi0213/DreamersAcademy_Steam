@@ -181,16 +181,16 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		commandCommandParts_.SelectReset(new Vector3(0.4f, 2.48f, -4));
 
 		//dpが100以上だったら
-		if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
-			novelWindowParts_.GetNovelWindowText().text =
-				"ゆめたちが　\n"
-				+ "きょうめいしている・・・";
-		}
-		else {
-			string playerFirstMonsterName = PlayerBattleData.GetInstance().GetMonsterDatas(0).tribesData_.monsterName_;
-			string context_ = playerFirstMonsterName + "は　どうする？";
-			novelWindowParts_.GetNovelWindowText().text = context_;
-		}
+		//if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
+		//	novelWindowParts_.GetNovelWindowText().text =
+		//		"ゆめたちが　\n"
+		//		+ "きょうめいしている・・・";
+		//}
+		//else {
+		//	string playerFirstMonsterName = PlayerBattleData.GetInstance().GetMonsterDatas(0).tribesData_.monsterName_;
+		//	string context_ = playerFirstMonsterName + "は　どうする？";
+		//	novelWindowParts_.GetNovelWindowText().text = context_;
+		//}
 	}
 	public void ActiveUiAttackCommand() {
 		attackCommandParts_.gameObject.SetActive(true);

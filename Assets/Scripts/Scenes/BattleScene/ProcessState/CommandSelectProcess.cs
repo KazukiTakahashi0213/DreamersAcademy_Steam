@@ -64,18 +64,18 @@ public class CommandSelectProcess : IProcessState {
 				eventMgr.UpdateGameObjectsActiveSetExecute(true);
 
 				//dpが100以上だったら
-				if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
-					eventMgr.EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText()
-						, "ゆめたちが　\n"
-						+ "きょうめいしている・・・");
-					eventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
-					eventMgr.AllUpdateEventExecute();
-				}
-				else {
-					eventMgr.EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), PlayerBattleData.GetInstance().GetMonsterDatas(0).uniqueName_ + "は　どうする？");
-					eventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
-					eventMgr.AllUpdateEventExecute();
-				}
+				//if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
+				//	eventMgr.EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText()
+				//		, "ゆめたちが　\n"
+				//		+ "きょうめいしている・・・");
+				//	eventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
+				//	eventMgr.AllUpdateEventExecute();
+				//}
+				//else {
+				//	eventMgr.EventTextSet(mgr.GetNovelWindowParts().GetNovelWindowEventText(), PlayerBattleData.GetInstance().GetMonsterDatas(0).uniqueName_ + "は　どうする？");
+				//	eventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
+				//	eventMgr.AllUpdateEventExecute();
+				//}
 
 				eventMgr.EventStatusInfoPartsSet(mgr.GetPlayerStatusInfoParts(), new Color32(0, 0, 0, 0));
 				eventMgr.StatusInfoPartsUpdateExecuteSet(StatusInfoPartsEventManagerExecute.IdleMoveStart);
