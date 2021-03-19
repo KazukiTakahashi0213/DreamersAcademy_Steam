@@ -25,9 +25,9 @@ public class AttackCommandParts : MonoBehaviour {
 		//	else if (simillarResult == 2) commandParts_.GetCommandWindowTexts(i).color = new Color32(50, 50, 50, 255);
 		//	else if (simillarResult == 3) commandParts_.GetCommandWindowTexts(i).color = new Color32(207, 52, 112, 255);
 		//}
-		for (int i = 0; i < commandParts_.GetCommandWindowTextsCount(); ++i) {
-			commandParts_.CommandWindowChoiceColorChange(i, monsterData.GetSkillDatas(i).elementType_.GetColor());
-		}
+		//for (int i = 0; i < commandParts_.GetCommandWindowTextsCount(); ++i) {
+		//	commandParts_.CommandWindowChoiceColorChange(i, monsterData.GetSkillDatas(i).elementType_.GetColor());
+		//}
 
 		//技のフレームの変更
 		for (int i = 0; i < skillFrameSprites_.Count; ++i) {

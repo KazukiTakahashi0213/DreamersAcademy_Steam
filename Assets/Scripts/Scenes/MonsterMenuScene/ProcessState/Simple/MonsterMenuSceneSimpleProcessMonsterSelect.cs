@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProcessState {
+public class MonsterMenuSceneSimpleProcessMonsterSelect : BMonsterMenuSceneProcessState {
 	public override MonsterMenuSceneProcess Update(MonsterMenuManager monsterMenuManager) {
 		AllSceneManager sceneMgr = AllSceneManager.GetInstance();
 		AllEventManager eventMgr = AllEventManager.GetInstance();
@@ -38,14 +38,14 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize() - 1).MonsterStatusInfoSet(playerData.GetMonsterDatas(referMonsterNumber));
 
 			//状態異常の表示、非表示
-			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-2).GetFirstAbnormalStateInfoParts().gameObject.SetActive(true);
-			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-2).GetSecondAbnormalStateInfoParts().gameObject.SetActive(true);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize() - 2).GetFirstAbnormalStateInfoParts().gameObject.SetActive(true);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize() - 2).GetSecondAbnormalStateInfoParts().gameObject.SetActive(true);
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(0).GetFirstAbnormalStateInfoParts().gameObject.SetActive(false);
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(0).GetSecondAbnormalStateInfoParts().gameObject.SetActive(false);
 
 			//タイプの表示、非表示
-			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-2).GetFirstElementInfoParts().gameObject.SetActive(true);
-			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-2).GetSecondElementInfoParts().gameObject.SetActive(true);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize() - 2).GetFirstElementInfoParts().gameObject.SetActive(true);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize() - 2).GetSecondElementInfoParts().gameObject.SetActive(true);
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(0).GetFirstElementInfoParts().gameObject.SetActive(false);
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(0).GetSecondElementInfoParts().gameObject.SetActive(false);
 
@@ -81,14 +81,14 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 			//状態異常の表示、非表示
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(1).GetFirstAbnormalStateInfoParts().gameObject.SetActive(true);
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(1).GetSecondAbnormalStateInfoParts().gameObject.SetActive(true);
-			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-1).GetFirstAbnormalStateInfoParts().gameObject.SetActive(false);
-			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-1).GetSecondAbnormalStateInfoParts().gameObject.SetActive(false);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize() - 1).GetFirstAbnormalStateInfoParts().gameObject.SetActive(false);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize() - 1).GetSecondAbnormalStateInfoParts().gameObject.SetActive(false);
 
 			//タイプの表示、非表示
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(1).GetFirstElementInfoParts().gameObject.SetActive(true);
 			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(1).GetSecondElementInfoParts().gameObject.SetActive(true);
-			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-1).GetFirstElementInfoParts().gameObject.SetActive(false);
-			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize()-1).GetSecondElementInfoParts().gameObject.SetActive(false);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize() - 1).GetFirstElementInfoParts().gameObject.SetActive(false);
+			monsterMenuManager.GetBulletParts().GetEventStatusInfosParts(monsterMenuManager.GetBulletParts().GetEventStatusInfosPartsSize() - 1).GetSecondElementInfoParts().gameObject.SetActive(false);
 
 			sceneMgr.inputProvider_ = new InactiveInputProvider();
 		}
@@ -103,35 +103,41 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 				//SE
 				monsterMenuManager.GetInputSoundProvider().SelectEnter();
 
-				monsterMenuManager.GetMonsterActionCommandParts().gameObject.SetActive(true);
+				//技の情報の反映
+				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(PlayerBattleData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(0));
+
+				//技の選択肢の初期化
+				monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderActive();
+
+				monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(true);
 
 				//操作の変更
 				AllSceneManager.GetInstance().inputProvider_ = new KeyBoardNormalTriggerInputProvider();
 
-				return MonsterMenuSceneProcess.MonsterActionSelect;
+				return MonsterMenuSceneProcess.SkillSelect;
 			}
 		}
-		//else if (sceneMgr.inputProvider_.SelectBack()
-		//	|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
-		//	if (playerData.GetMonsterDatas(0).battleActive_) {
-		//		sceneMgr.inputProvider_ = new InactiveInputProvider();
-		//
-		//		playerData.changeMonsterNumber_ = 0;
-		//		playerData.changeMonsterActive_ = true;
-		//
-		//		//フェードアウト
-		//		eventMgr.EventSpriteRendererSet(
-		//			sceneMgr.GetPublicFrontScreen().GetEventScreenSprite()
-		//			, null
-		//			, new Color(sceneMgr.GetPublicFrontScreen().GetEventScreenSprite().GetSpriteRenderer().color.r, sceneMgr.GetPublicFrontScreen().GetEventScreenSprite().GetSpriteRenderer().color.g, sceneMgr.GetPublicFrontScreen().GetEventScreenSprite().GetSpriteRenderer().color.b, 255)
-		//			);
-		//		eventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
-		//		eventMgr.AllUpdateEventExecute(0.4f);
-		//
-		//		//シーンの切り替え
-		//		eventMgr.SceneChangeEventSet(SceneState.Battle, SceneChangeMode.Continue);
-		//	}
-		//}
+		else if (sceneMgr.inputProvider_.SelectBack()
+			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			if (playerData.GetMonsterDatas(0).battleActive_) {
+				sceneMgr.inputProvider_ = new InactiveInputProvider();
+
+				playerData.changeMonsterNumber_ = 0;
+				playerData.changeMonsterActive_ = true;
+
+				//フェードアウト
+				eventMgr.EventSpriteRendererSet(
+					sceneMgr.GetPublicFrontScreen().GetEventScreenSprite()
+					, null
+					, new Color(sceneMgr.GetPublicFrontScreen().GetEventScreenSprite().GetSpriteRenderer().color.r, sceneMgr.GetPublicFrontScreen().GetEventScreenSprite().GetSpriteRenderer().color.g, sceneMgr.GetPublicFrontScreen().GetEventScreenSprite().GetSpriteRenderer().color.b, 255)
+					);
+				eventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
+				eventMgr.AllUpdateEventExecute(0.4f);
+
+				//シーンの切り替え
+				eventMgr.SceneChangeEventSet(SceneState.Battle, SceneChangeMode.Continue);
+			}
+		}
 
 		return monsterMenuManager.GetNowProcessState().state_;
 	}

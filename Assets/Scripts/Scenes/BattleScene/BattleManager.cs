@@ -113,6 +113,8 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	[SerializeField] private NovelWindowParts novelWindowParts_ = null;
 	[SerializeField] private CommandParts commandCommandParts_ = null;
 	[SerializeField] private AttackCommandParts attackCommandParts_ = null;
+	[SerializeField] private CommandParts startCommandParts_ = null;
+	[SerializeField] private CommandParts monsterTradeSelectCommandParts_ = null;
 	[SerializeField] private MonsterParts playerMonsterParts_ = null;
 	[SerializeField] private MonsterParts enemyMonsterParts_ = null;
 	[SerializeField] private PlayerParts playerParts_ = null;
@@ -141,6 +143,8 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	public NovelWindowParts GetNovelWindowParts() { return novelWindowParts_; }
 	public CommandParts GetCommandCommandParts() { return commandCommandParts_; }
 	public AttackCommandParts GetAttackCommandParts() { return attackCommandParts_; }
+	public CommandParts GetStartCommandParts() { return startCommandParts_; }
+	public CommandParts GetMonsterTradeSelectCommandParts() { return monsterTradeSelectCommandParts_; }
 	public AudioParts GetPlayerAudioParts() { return playerAudioParts_; }
 	public AudioParts GetEnemyAudioParts() { return enemyAudioParts_; }
 	public PlayerParts GetPlayerParts() { return playerParts_; }
@@ -197,6 +201,16 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 
 		playerSelectSkillNumber_ = 0;
 	}
+	public void ActiveUiStartCommand() {
+		startCommandParts_.gameObject.SetActive(true);
+
+		startCommandParts_.SelectReset(new Vector3(0.4f, 2.48f, -4));
+	}
+	public void ActiveUiMonsterTradeSelectCommand() {
+		monsterTradeSelectCommandParts_.gameObject.SetActive(true);
+
+		monsterTradeSelectCommandParts_.SelectReset(new Vector3(-1.73f, 0.94f, -4));
+	}
 	public void InactiveUiCommand() {
 		novelWindowParts_.GetNovelWindowText().text = "　";
 
@@ -206,6 +220,16 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		novelWindowParts_.GetNovelWindowText().text = "　";
 
 		attackCommandParts_.gameObject.SetActive(false);
+	}
+	public void InactiveUiStartCommand() {
+		novelWindowParts_.GetNovelWindowText().text = "　";
+
+		startCommandParts_.gameObject.SetActive(false);
+	}
+	public void InactiveUiMonsterTradeSelectCommand() {
+		novelWindowParts_.GetNovelWindowText().text = "　";
+
+		monsterTradeSelectCommandParts_.gameObject.SetActive(false);
 	}
 
 	public void PoisonDamageProcess(BTrainerBattleData trainerBattleData, StatusInfoParts statusInfoParts, MonsterParts monsterParts) {
@@ -751,7 +775,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(false);
 
 		//コマンドの選択肢とカーソルの出現
-		AllEventManager.GetInstance().UpdateGameObjectSet(commandCommandParts_.GetEventGameObject());
+		AllEventManager.GetInstance().UpdateGameObjectSet(startCommandParts_.GetEventGameObject());
 		AllEventManager.GetInstance().UpdateGameObjectsActiveSetExecute(true);
 
 		//イベントの最後

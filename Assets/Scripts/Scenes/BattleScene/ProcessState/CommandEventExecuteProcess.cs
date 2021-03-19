@@ -8,7 +8,7 @@ public class CommandEventExecuteProcess : IProcessState {
 	}
 
 	public IProcessState NextProcess() {
-		return new CommandSelectProcess();
+		return new StartCommandSelectProcess();
 	}
 
 	public IProcessState Update(BattleManager mgr) {
@@ -42,7 +42,7 @@ public class CommandEventExecuteProcess : IProcessState {
 
 			mgr.GetPlayerStatusInfoParts().ProcessIdleStart();
 			mgr.GetPlayerMonsterParts().ProcessIdleStart();
-			mgr.ActiveUiCommand();
+			mgr.ActiveUiStartCommand();
 			sceneMgr.inputProvider_ = new KeyBoardNormalTriggerInputProvider();
 
 			//攻撃技の反映
