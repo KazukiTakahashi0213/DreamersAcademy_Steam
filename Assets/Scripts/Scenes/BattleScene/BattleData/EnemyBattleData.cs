@@ -328,6 +328,7 @@ public class EnemyBattleData : BTrainerBattleData {
 		AllEventManager.GetInstance().EventWaitSet(manager.GetEventWaitTime());
 
 		changeMonsterNumber_ = 0;
+		changeMonsterSkillNumber_ = 0;
 	}
 
 	public bool ThinkingTimeEnd() {
@@ -346,7 +347,7 @@ public class EnemyBattleData : BTrainerBattleData {
 		if (monsterDatas_[0].battleData_.HaveAbnormalType(AbnormalType.Confusion)) addRegulationTime += 2.0f;
 
 		//思考時間が終わっていなかったら
-		if (thikingEnd_ == false) {
+		if (!thikingEnd_) {
 			//時間のカウント
 			if (thikingTimeCounter_.measure(Time.deltaTime, THINKING_TIME_REGURATION + addRegulationTime)) {
 				//思考時間の終了

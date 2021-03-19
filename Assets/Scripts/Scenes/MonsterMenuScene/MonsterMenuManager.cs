@@ -110,6 +110,8 @@ public class MonsterMenuManager : MonoBehaviour, ISceneManager {
 
 	public int selectMonsterNumber_ = 0;
 
+	public bool monsterTradeSelectSkill_ = false;
+
 	//入れ替え
 	public bool swapActive_ = false;
 	public int swapSelectNumber_ = 0;

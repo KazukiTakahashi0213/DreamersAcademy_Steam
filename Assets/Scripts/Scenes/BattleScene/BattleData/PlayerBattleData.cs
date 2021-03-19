@@ -136,6 +136,8 @@ public class PlayerBattleData : BTrainerBattleData {
 		if (changeMonsterNumber_ > 0) {
 			IMonsterData md = monsterDatas_[changeMonsterNumber_];
 
+			manager.playerSelectSkillNumber_ = changeMonsterSkillNumber_;
+
 			//先頭のパラメーターをリセット
 			monsterDatas_[0].battleData_.RankReset();
 
@@ -241,6 +243,7 @@ public class PlayerBattleData : BTrainerBattleData {
 		allSceneMgr.inputProvider_ = new InactiveInputProvider();
 
 		changeMonsterNumber_ = 0;
+		changeMonsterSkillNumber_ = 0;
 	}
 
 	//シングルトン

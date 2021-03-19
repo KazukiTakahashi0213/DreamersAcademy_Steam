@@ -59,11 +59,45 @@ public class MonsterMenuSceneBattleProcessSkillSelect : BMonsterMenuSceneProcess
 				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(monsterMenuManager.GetSkillCommandParts().SelectNumber()));
 			}
 		}
-		else if (sceneMgr.inputProvider_.SelectEnter()) {
+		else if (sceneMgr.inputProvider_.SelectEnter()
+			|| monsterMenuManager.GetSkillCommandParts().MouseLeftButtonTriggerActive()) {
+			//モンスターの交換中なら
+			if (monsterMenuManager.monsterTradeSelectSkill_) {
+				monsterMenuManager.monsterTradeSelectSkill_ = false;
 
+				PlayerBattleData.GetInstance().changeMonsterNumber_ = monsterMenuManager.selectMonsterNumber_;
+				PlayerBattleData.GetInstance().changeMonsterSkillNumber_ = monsterMenuManager.GetSkillCommandParts().SelectNumber();
+				PlayerBattleData.GetInstance().changeMonsterActive_ = true;
+
+				monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
+				monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
+
+				monsterMenuManager.GetParameterInfoFrameParts().gameObject.SetActive(true);
+				monsterMenuManager.GetSkillInfoFrameParts().gameObject.SetActive(false);
+
+				//操作の変更
+				sceneMgr.inputProvider_ = new InactiveInputProvider();
+
+				//技の選択肢の初期化
+				monsterMenuManager.GetSkillCommandParts().SelectReset(new Vector3(-5.29f, 0.82f, 2));
+
+				//フェードアウト
+				eventMgr.EventSpriteRendererSet(
+					sceneMgr.GetPublicFrontScreen().GetEventScreenSprite()
+					, null
+					, new Color(sceneMgr.GetPublicFrontScreen().GetEventScreenSprite().GetSpriteRenderer().color.r, sceneMgr.GetPublicFrontScreen().GetEventScreenSprite().GetSpriteRenderer().color.g, sceneMgr.GetPublicFrontScreen().GetEventScreenSprite().GetSpriteRenderer().color.b, 255)
+					);
+				eventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
+				eventMgr.AllUpdateEventExecute(0.4f);
+
+				//シーンの切り替え
+				eventMgr.SceneChangeEventSet(SceneState.Battle, SceneChangeMode.Continue);
+			}
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
 			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			monsterMenuManager.monsterTradeSelectSkill_ = false;
+
 			monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
 			monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
 

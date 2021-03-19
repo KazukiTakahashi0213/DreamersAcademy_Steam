@@ -326,7 +326,7 @@ public class CommandEventSetProcess : IProcessState {
 		if (!attackMonsterData.battleActive_) return;
 
 		//交換されていたら
-		if (attackTrainerBattleData.changeMonsterActive_) return;
+		//if (attackTrainerBattleData.changeMonsterActive_) return;
 
 		//ねむりターンの消費
 		mgr.SleepProcessUse(attackTrainerBattleData, attackStatusInfoParts);

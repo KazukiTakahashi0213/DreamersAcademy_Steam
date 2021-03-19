@@ -21,6 +21,8 @@ public class BTrainerBattleData {
 	public bool changeMonsterActive_ = false;
 	//交換する手持ちの番号
 	public int changeMonsterNumber_ = 0;
+	//交換するモンスターの技の番号
+	public int changeMonsterSkillNumber_ = 0;
 
 	virtual public void MonsterAdd(IMonsterData addMonster) { }
 
