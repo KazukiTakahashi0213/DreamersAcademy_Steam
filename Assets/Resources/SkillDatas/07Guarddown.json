@@ -16,7 +16,7 @@
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 
-		"effectName_":										"NoneEffect",
+		"effectName_":										"difencedown",
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [

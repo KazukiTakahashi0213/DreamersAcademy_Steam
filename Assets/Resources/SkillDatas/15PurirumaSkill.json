@@ -16,7 +16,7 @@
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 
-		"effectName_":										"TaiatariEffect",
+		"effectName_":										"purirumaskill",
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "4"}
 		],
 
-		"effectInfo_": "攻撃時\n自:かいひランク+1\n状態異常付与\n相:こんらん100%"
+		"effectInfo_": "攻撃時\n相手:命中ランク-1\n状態異常付与\n相:こんらん100%"
 }

@@ -1,5 +1,5 @@
 ﻿{
-		"skillName_":										"ヒートブレス",
+		"skillName_":										"ヒートプレス",
 		
 		"effectValue_":										"70",
 		"optionEffectTriggerRateValue_":	"0",
@@ -16,7 +16,7 @@
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 
-		"effectName_":										"TaiatariEffect",
+		"effectName_":										"heatpress",
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [

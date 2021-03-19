@@ -1,5 +1,5 @@
 ﻿{
-		"skillName_":										"ブレイヴハート",
+		"skillName_":										"ブレイヴキック",
 		
 		"effectValue_":										"100",
 		"optionEffectTriggerRateValue_":	"50",
@@ -16,7 +16,7 @@
 		"triggerPriority_":								"0",
 		"criticalParameterRank_":					"0",
 
-		"effectName_":										"TaiatariEffect",
+		"effectName_":										"handleonskill",
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [

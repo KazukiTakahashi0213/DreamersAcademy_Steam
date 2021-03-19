@@ -31,8 +31,8 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 				//データの生成
 				IMonsterData md = new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.Handreon), 0, 50);
 				//技の取得
-				md.SkillAdd(new SkillData("ヒートブレス"));
-				md.SkillAdd(new SkillData("ブレイヴハート"));
+				md.SkillAdd(new SkillData("ヒートプレス"));
+				md.SkillAdd(new SkillData("ブレイヴキック"));
 				md.SkillAdd(new SkillData("スピリットネス"));
 				md.SkillAdd(new SkillData("ガードセット"));
 				//プレイヤーの手持ちに追加
