@@ -271,7 +271,7 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].monsterTribesDataNumber_
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -306,42 +306,42 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNames_.Array.data[0]
-      value: "\u30D5\u30A1\u30A4\u30A2\u30BD\u30FC\u30C9"
+      value: "\u30D2\u30FC\u30C8\u30D6\u30EC\u30B9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNames_.Array.data[1]
-      value: "\u3059\u3044\u3081\u3093\u304E\u308A"
+      value: "\u30D6\u30EB\u30FC\u30D6\u30E9\u30B9\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNames_.Array.data[2]
-      value: "\u30B0\u30ED\u30FC\u30C4\u30EA\u30FC"
+      value: "\u30EA\u30FC\u30D5\u30B7\u30E5\u30FC\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNames_.Array.data[3]
-      value: "\u30D6\u30E9\u30C3\u30AF\u30AF\u30ED\u30FC"
+      value: "\u30D7\u30E9\u30BA\u30DE\u30AB\u30CE\u30F3"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[1].skillDataNames_.Array.data[0]
-      value: "\u30D5\u30A1\u30A4\u30A2\u30BD\u30FC\u30C9"
+      value: "\u30D2\u30FC\u30C8\u30D6\u30EC\u30B9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[1].skillDataNames_.Array.data[1]
-      value: "\u3059\u3044\u3081\u3093\u304E\u308A"
+      value: "\u30D6\u30EB\u30FC\u30D6\u30E9\u30B9\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[1].skillDataNames_.Array.data[2]
-      value: "\u30B0\u30ED\u30FC\u30C4\u30EA\u30FC"
+      value: "\u30EA\u30FC\u30D5\u30B7\u30E5\u30FC\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[1].skillDataNames_.Array.data[3]
-      value: "\u30D6\u30E9\u30C3\u30AF\u30AF\u30ED\u30FC"
+      value: "\u30D7\u30E9\u30BA\u30DE\u30AB\u30CE\u30F3"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -351,42 +351,42 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNames_.Array.data[0]
-      value: "\u30D5\u30A1\u30A4\u30A2\u30BD\u30FC\u30C9"
+      value: "\u30D2\u30FC\u30C8\u30D6\u30EC\u30B9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNames_.Array.data[1]
-      value: "\u3059\u3044\u3081\u3093\u304E\u308A"
+      value: "\u30D6\u30EB\u30FC\u30D6\u30E9\u30B9\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNames_.Array.data[2]
-      value: "\u30B0\u30ED\u30FC\u30C4\u30EA\u30FC"
+      value: "\u30EA\u30FC\u30D5\u30B7\u30E5\u30FC\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNames_.Array.data[3]
-      value: "\u30D6\u30E9\u30C3\u30AF\u30AF\u30ED\u30FC"
+      value: "\u30D7\u30E9\u30BA\u30DE\u30AB\u30CE\u30F3"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[1].skillDataNames_.Array.data[0]
-      value: "\u30D5\u30A1\u30A4\u30A2\u30BD\u30FC\u30C9"
+      value: "\u30D2\u30FC\u30C8\u30D6\u30EC\u30B9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[1].skillDataNames_.Array.data[1]
-      value: "\u3059\u3044\u3081\u3093\u304E\u308A"
+      value: "\u30D6\u30EB\u30FC\u30D6\u30E9\u30B9\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[1].skillDataNames_.Array.data[2]
-      value: "\u30B0\u30ED\u30FC\u30C4\u30EA\u30FC"
+      value: "\u30EA\u30FC\u30D5\u30B7\u30E5\u30FC\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[1].skillDataNames_.Array.data[3]
-      value: "\u30D6\u30E9\u30C3\u30AF\u30AF\u30ED\u30FC"
+      value: "\u30D7\u30E9\u30BA\u30DE\u30AB\u30CE\u30F3"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}

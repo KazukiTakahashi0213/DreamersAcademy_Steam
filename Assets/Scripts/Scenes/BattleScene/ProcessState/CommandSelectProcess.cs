@@ -111,7 +111,7 @@ public class CommandSelectProcess : IProcessState {
 		}
 
 		//カーソルが動いていたら
-		int commandSelectNumber = mgr.GetCommandCommandParts().CommandSelectForNumber(new Vector3(4.0f, 0, 0), new Vector3(0, 0.78f, 0));
+		int commandSelectNumber = mgr.GetCommandCommandParts().CommandSelectForNumber(new Vector3(), new Vector3(0, 1.32f, 0));
 		if (commandSelectNumber > -1) {
 			//SE
 			mgr.GetInputSoundProvider().UpSelect();
@@ -124,7 +124,7 @@ public class CommandSelectProcess : IProcessState {
 		}
 		else if (sceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
-			if (mgr.GetCommandCommandParts().CommandSelectUp(new Vector3(0, 0.78f, 0))) {
+			if (mgr.GetCommandCommandParts().CommandSelectUp(new Vector3(0, 1.33f, 0))) {
 				//SE
 				mgr.GetInputSoundProvider().UpSelect();
 
@@ -136,7 +136,7 @@ public class CommandSelectProcess : IProcessState {
 		}
 		else if (sceneMgr.inputProvider_.DownSelect()) {
 			//選択肢が動かせたら
-			if (mgr.GetCommandCommandParts().CommandSelectDown(new Vector3(0, -0.78f, 0))) {
+			if (mgr.GetCommandCommandParts().CommandSelectDown(new Vector3(0, -1.33f, 0))) {
 				//SE
 				mgr.GetInputSoundProvider().DownSelect();
 
@@ -147,28 +147,10 @@ public class CommandSelectProcess : IProcessState {
 			}
 		}
 		else if (sceneMgr.inputProvider_.RightSelect()) {
-			//選択肢が動かせたら
-			if (mgr.GetCommandCommandParts().CommandSelectRight(new Vector3(4.0f, 0, 0))) {
-				//SE
-				mgr.GetInputSoundProvider().RightSelect();
 
-				executeProvider_.state_ = (BattleSceneCommandExecuteState)mgr.GetCommandCommandParts().SelectNumber()+1;
-
-				//どくのダメージ処理
-				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
-			}
 		}
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
-			//選択肢が動かせたら
-			if (mgr.GetCommandCommandParts().CommandSelectLeft(new Vector3(-4.0f, 0, 0))) {
-				//SE
-				mgr.GetInputSoundProvider().LeftSelect();
 
-				executeProvider_.state_ = (BattleSceneCommandExecuteState)mgr.GetCommandCommandParts().SelectNumber()+1;
-
-				//どくのダメージ処理
-				mgr.PoisonDamageProcess(PlayerBattleData.GetInstance(), mgr.GetPlayerStatusInfoParts(), mgr.GetPlayerMonsterParts());
-			}
 		}
 		else if (sceneMgr.inputProvider_.SelectEnter()
 			|| mgr.GetCommandCommandParts().MouseLeftButtonTriggerActive()) {

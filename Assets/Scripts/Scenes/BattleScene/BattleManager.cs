@@ -43,7 +43,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		InactiveUiAttackCommand();
 
 		//ゆめの文字の色の変更
-		commandCommandParts_.CommandWindowChoiceColorChange(1, new Color32(50, 50, 50, 255));
+		dreamCommandSprite_.color = new Color32(255, 255, 255, 255);
 
 		//プレイヤー、エネミーの画像の設定
 		playerParts_.GetEventSprite().GetSpriteRenderer().sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics("Player/PlayerMonsterSet0");
@@ -174,7 +174,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	public void ActiveUiCommand() {
 		commandCommandParts_.gameObject.SetActive(true);
 
-		commandCommandParts_.SelectReset(new Vector3(-3.35f, 0.43f, -4));
+		commandCommandParts_.SelectReset(new Vector3(0.4f, 2.48f, -4));
 
 		//dpが100以上だったら
 		if (PlayerBattleData.GetInstance().GetDreamPoint() >= 100) {
@@ -191,7 +191,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 	public void ActiveUiAttackCommand() {
 		attackCommandParts_.gameObject.SetActive(true);
 
-		attackCommandParts_.GetCommandParts().SelectReset(new Vector3(1.66f, -2.17f, -4.0f));
+		attackCommandParts_.GetCommandParts().SelectReset(new Vector3(6.77f, -1.57f, -4.0f));
 
 		AttackCommandSkillInfoTextSet(0);
 

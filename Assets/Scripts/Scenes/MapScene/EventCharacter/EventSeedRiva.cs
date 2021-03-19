@@ -49,6 +49,11 @@ public class EventSeedRiva : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
+		//技の取得
+		//for(int i = 1;i < 29; ++i) {
+		//	playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
+		//}
+
 		//BGMの再生
 		AllSceneManager.GetInstance().GetPublicAudioParts().GetBGMAudioSource().clip = ResourcesSoundsLoader.GetInstance().GetSounds(SoundsPathSupervisor.GetInstance().GetPathDreamers_Map());
 		AllSceneManager.GetInstance().GetPublicAudioParts().GetBGMAudioSource().Play();

@@ -72,9 +72,6 @@ public class MonsterMenuSceneBattleProcessSkillSelect : BMonsterMenuSceneProcess
 				monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
 				monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
 
-				monsterMenuManager.GetParameterInfoFrameParts().gameObject.SetActive(true);
-				monsterMenuManager.GetSkillInfoFrameParts().gameObject.SetActive(false);
-
 				//操作の変更
 				sceneMgr.inputProvider_ = new InactiveInputProvider();
 
@@ -101,8 +98,7 @@ public class MonsterMenuSceneBattleProcessSkillSelect : BMonsterMenuSceneProcess
 			monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
 			monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
 
-			monsterMenuManager.GetParameterInfoFrameParts().gameObject.SetActive(true);
-			monsterMenuManager.GetSkillInfoFrameParts().gameObject.SetActive(false);
+			monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReset();
 
 			//操作の変更
 			AllSceneManager.GetInstance().inputProvider_ = new KeyBoardNormalInputProvider();

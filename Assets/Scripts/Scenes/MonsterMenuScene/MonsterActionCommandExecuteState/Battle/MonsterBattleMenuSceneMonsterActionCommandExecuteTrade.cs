@@ -13,12 +13,6 @@ public class MonsterBattleMenuSceneMonsterActionCommandExecuteTrade : BMonsterBa
 			PlayerBattleData.GetInstance().changeMonsterSkillNumber_ = monsterMenuManager.GetSkillCommandParts().SelectNumber();
 			PlayerBattleData.GetInstance().changeMonsterActive_ = true;
 
-			monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
-			monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
-
-			monsterMenuManager.GetParameterInfoFrameParts().gameObject.SetActive(true);
-			monsterMenuManager.GetSkillInfoFrameParts().gameObject.SetActive(false);
-
 			//操作の変更
 			sceneMgr.inputProvider_ = new InactiveInputProvider();
 
@@ -44,9 +38,6 @@ public class MonsterBattleMenuSceneMonsterActionCommandExecuteTrade : BMonsterBa
 				monsterMenuManager.GetMonsterActionCommandParts().gameObject.SetActive(false);
 
 				monsterMenuManager.GetNowProcessState().state_ = MonsterMenuSceneProcess.SkillSelect;
-
-				monsterMenuManager.GetParameterInfoFrameParts().gameObject.SetActive(false);
-				monsterMenuManager.GetSkillInfoFrameParts().gameObject.SetActive(true);
 
 				//技の情報の反映
 				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(PlayerBattleData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(0));

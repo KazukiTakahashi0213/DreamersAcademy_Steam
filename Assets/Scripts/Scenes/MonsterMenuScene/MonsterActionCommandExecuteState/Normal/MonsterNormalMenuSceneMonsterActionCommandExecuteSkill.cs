@@ -8,9 +8,6 @@ public class MonsterNormalMenuSceneMonsterActionCommandExecuteSkill : BMonsterNo
 
 		monsterMenuManager.GetNowProcessState().state_ = MonsterMenuSceneProcess.SkillSelect;
 
-		monsterMenuManager.GetParameterInfoFrameParts().gameObject.SetActive(false);
-		monsterMenuManager.GetSkillInfoFrameParts().gameObject.SetActive(true);
-
 		//技の情報の反映
 		monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(PlayerTrainerData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(0));
 
