@@ -54,6 +54,9 @@ public class MonsterMenuManager : MonoBehaviour, ISceneManager {
 		bulletParts_.GetEventStatusInfosParts(bulletParts_.GetEventStatusInfosPartsSize() - 1).GetFirstElementInfoParts().gameObject.SetActive(false);
 		bulletParts_.GetEventStatusInfosParts(bulletParts_.GetEventStatusInfosPartsSize() - 1).GetSecondElementInfoParts().gameObject.SetActive(false);
 
+		//スキル情報の初期化
+		skillInfoFrameParts_.SkillInfoReset();
+
 		//初期化
 		nowProcessState_.init(this);
 

@@ -90,7 +90,7 @@ public class AttackCommandSelectProcess : IProcessState {
 		}
 
 		//カーソルが動いていたら
-		int commandSelectNumber = mgr.GetAttackCommandParts().GetCommandParts().CommandSelectForNumber(new Vector3(5.56f, 0, 0), new Vector3(0, 0.83f, 0));
+		int commandSelectNumber = mgr.GetAttackCommandParts().GetCommandParts().CommandSelectForNumber(new Vector3(3.56f, 0, 0), new Vector3(0, 1.42f, 0));
 		if (commandSelectNumber > -1) {
 			//SE
 			mgr.GetInputSoundProvider().UpSelect();
@@ -102,7 +102,7 @@ public class AttackCommandSelectProcess : IProcessState {
 		}
 		else if (allSceneMgr.inputProvider_.UpSelect()) {
 			//選択肢が動かせたら
-			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectUp(new Vector3(0, 0.83f, 0))) {
+			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectUp(new Vector3(0, 1.42f, 0))) {
 				//SE
 				mgr.GetInputSoundProvider().UpSelect();
 
@@ -114,7 +114,7 @@ public class AttackCommandSelectProcess : IProcessState {
 		}
 		else if (allSceneMgr.inputProvider_.DownSelect()) {
 			//選択肢が動かせたら
-			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectDown(new Vector3(0, -0.83f, 0))) {
+			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectDown(new Vector3(0, -1.42f, 0))) {
 				//SE
 				mgr.GetInputSoundProvider().DownSelect();
 
@@ -126,7 +126,7 @@ public class AttackCommandSelectProcess : IProcessState {
 		}
 		else if (allSceneMgr.inputProvider_.RightSelect()) {
 			//選択肢が動かせたら
-			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectRight(new Vector3(5.56f, 0, 0))) {
+			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectRight(new Vector3(3.56f, 0, 0))) {
 				//SE
 				mgr.GetInputSoundProvider().RightSelect();
 
@@ -138,7 +138,7 @@ public class AttackCommandSelectProcess : IProcessState {
 		}
 		else if (allSceneMgr.inputProvider_.LeftSelect()) {
 			//選択肢が動かせたら
-			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectLeft(new Vector3(-5.56f, 0, 0))) {
+			if (mgr.GetAttackCommandParts().GetCommandParts().CommandSelectLeft(new Vector3(-3.56f, 0, 0))) {
 				//SE
 				mgr.GetInputSoundProvider().LeftSelect();
 

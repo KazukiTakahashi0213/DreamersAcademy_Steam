@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ParameterInfoFrameParts : MonoBehaviour {
 	[SerializeField] private SpriteRenderer parameterInfoFrameSprite_ = null;
+	[SerializeField] private SpriteRenderer monsterSprite_ = null;
 	[SerializeField] private List<MonsterParameterBarParts> monsterParameterBarsParts_ = null;
 	[SerializeField] private Text monsterTypeInfoText_ = null;
 
@@ -28,5 +29,13 @@ public class ParameterInfoFrameParts : MonoBehaviour {
 		monsterParameterBarsParts_[1].ParameterReflect(referMonsterData.RealAttack());
 		monsterParameterBarsParts_[2].ParameterReflect(referMonsterData.RealDefense());
 		monsterParameterBarsParts_[3].ParameterReflect(referMonsterData.RealSpeed());
+
+		//モンスターの画像の反映
+		if (referMonsterData.battleData_.HaveAbnormalType(AbnormalType.Hero)) {
+			monsterSprite_.sprite = referMonsterData.tribesData_.frontDreamTex_;
+		}
+		else {
+			monsterSprite_.sprite = referMonsterData.tribesData_.frontTex_;
+		}
 	}
 }

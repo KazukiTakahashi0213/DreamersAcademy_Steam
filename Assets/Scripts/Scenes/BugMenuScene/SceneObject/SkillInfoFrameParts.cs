@@ -24,4 +24,17 @@ public class SkillInfoFrameParts : MonoBehaviour{
 
 		texts_[1].text = referSkillData.effectInfo_;
 	}
+	public void SkillInfoReset() {
+		//string playPointContext = t13.Utility.HarfSizeForFullSize(referSkillData.nowPlayPoint_.ToString()) + "／" + t13.Utility.HarfSizeForFullSize(referSkillData.playPoint_.ToString());
+
+		texts_[0].text =
+			//"PP　　　　" + playPointContext + "\n"
+			"わざタイプ／" + "ーー" + "\n"
+			+ "いりょく　　" + "ーー" + "\n"
+			+ "めいちゅう　" + "ーー" + "\n"
+			//+ "アップ" + t13.Utility.HarfSizeForFullSize("DP") + "　" + t13.Utility.HarfSizeForFullSize(referSkillData.upDpValue_.ToString())
+			;
+
+		texts_[1].text = "ーー";
+	}
 }
