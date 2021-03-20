@@ -45,7 +45,7 @@ public class KeyBoardSelectInactiveTriggerInputProvider : IInputProvider {
 		return false;
 	}
 	public bool SelectMouseLeftTrigger() {
-		return false;
+		return Input.GetMouseButtonDown(0);
 	}
 	public bool SelectMouseRightTrigger() {
 		return false;

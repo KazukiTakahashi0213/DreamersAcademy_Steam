@@ -45,7 +45,8 @@ public class MapSceneProcessEventExecute : BMapSceneProcessState {
 		}
 		else if (allSceneMgr.inputProvider_.LeftSelect()) {
 		}
-		else if (allSceneMgr.inputProvider_.SelectEnter()) {
+		else if (allSceneMgr.inputProvider_.SelectEnter()
+			|| allSceneMgr.inputProvider_.SelectMouseLeftTrigger()) {
 			allEventMgr.EventTriggerNext();
 		}
 		else if (allSceneMgr.inputProvider_.SelectBack()) {

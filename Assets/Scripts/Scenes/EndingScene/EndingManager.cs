@@ -103,7 +103,8 @@ public class EndingManager : MonoBehaviour, ISceneManager {
 		}
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 		}
-		else if (sceneMgr.inputProvider_.SelectEnter()) {
+		else if (sceneMgr.inputProvider_.SelectEnter()
+			|| sceneMgr.inputProvider_.SelectMouseLeftTrigger()) {
 			eventMgr.EventTriggerNext();
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()) {
