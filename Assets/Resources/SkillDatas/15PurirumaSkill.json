@@ -1,7 +1,7 @@
 ﻿{
 		"skillName_":										"プリズムソング",
 		
-		"effectValue_":										"70",
+		"effectValue_":										"60",
 		"optionEffectTriggerRateValue_":	"100",
 		"successRateValue_":							"100",
 		"upDpValue_":											"10",
@@ -31,8 +31,8 @@
 			{"addAbnormal_": "0"}
 		],
 		"addOtherAbnormals_": [
-			{"addAbnormal_": "4"}
+			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "美しい歌声で相手を魅了する\n相手を必ずこんらんさせる"
+		"effectInfo_": "美しい歌声で相手を魅了する\n相手の命中ダウン"
 }

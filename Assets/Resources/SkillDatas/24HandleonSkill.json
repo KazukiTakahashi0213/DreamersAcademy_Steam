@@ -14,7 +14,7 @@
 		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal","DreamPointDrain"],
 		"effectValueType_":								"2",
 		"triggerPriority_":								"0",
-		"criticalParameterRank_":					"1",
+		"criticalParameterRank_":					"2",
 
 		"effectName_":										"handleonskill",
 		

@@ -20,7 +20,7 @@
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "1", "value_": "-2"}
+			{"addParameterRank_": "1", "value_": "-1"}
 		],
 		"addOtherParameterRanks_": [
 			{"addParameterRank_": "0", "value_": "0"}
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "3"}
 		],
 
-		"effectInfo_": "太陽の光で攻撃し眠りに誘う\n反動で自分の攻撃力大ダウン"
+		"effectInfo_": "太陽の光で攻撃し眠りに誘う\n反動で自分の攻撃力ダウン"
 }

@@ -1,8 +1,8 @@
 ﻿{
 		"skillName_":										"リキッドアビス",
 		
-		"effectValue_":										"120",
-		"optionEffectTriggerRateValue_":	"0",
+		"effectValue_":										"110",
+		"optionEffectTriggerRateValue_":	"30",
 		"successRateValue_":							"85",
 		"upDpValue_":											"10",
 
@@ -20,7 +20,7 @@
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "2", "value_": "-2"}
+			{"addParameterRank_": "1", "value_": "-1"}
 		],
 		"addOtherParameterRanks_": [
 			{"addParameterRank_": "0", "value_": "0"}
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "相手を海の底に沈める\n反動で自分の防御力大ダウン"
+		"effectInfo_": "相手を海の底に沈める\n反動で自分の攻撃力ダウン"
 }

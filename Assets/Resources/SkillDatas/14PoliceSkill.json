@@ -23,7 +23,7 @@
 			{"addParameterRank_": "0", "value_": "0"}
 		],
 		"addOtherParameterRanks_": [
-			{"addParameterRank_": "1", "value_": "-2"}
+			{"addParameterRank_": "1", "value_": "-1"}
 		],
 
 		"//AddAbnormal": ["None","Burns","Poison","Sleep","Confusion","Hero"],
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "相手の動きを拘束し無力化する\n相手の攻撃力大ダウン"
+		"effectInfo_": "相手の動きを拘束し無力化する\n相手の攻撃力ダウン"
 }

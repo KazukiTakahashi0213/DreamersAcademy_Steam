@@ -1,7 +1,7 @@
 ﻿{
 		"skillName_":										"ホーリーナイト",
 		
-		"effectValue_":										"70",
+		"effectValue_":										"60",
 		"optionEffectTriggerRateValue_":	"100",
 		"successRateValue_":							"100",
 		"upDpValue_":											"10",
@@ -20,7 +20,7 @@
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "2", "value_": "2"}
+			{"addParameterRank_": "2", "value_": "1"}
 		],
 		"addOtherParameterRanks_": [
 			{"addParameterRank_": "0", "value_": "0"}
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "雷の大剣で相手を貫く\n自身の防御力大アップ"
+		"effectInfo_": "雷の大剣で相手を貫く\n自身の防御力アップ"
 }
