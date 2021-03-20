@@ -35,7 +35,7 @@ public class TitleManager : MonoBehaviour, ISceneManager {
 	public void SceneUpdate() {
 		AllEventManager.GetInstance().EventUpdate();
 
-		if (Input.anyKeyDown) {
+		if (AllSceneManager.GetInstance().inputProvider_.AnyKeyTrigger()) {
 			AllEventManager eventMgr = AllEventManager.GetInstance();
 			AllSceneManager sceneMgr = AllSceneManager.GetInstance();
 

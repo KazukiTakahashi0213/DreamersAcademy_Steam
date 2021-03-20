@@ -155,7 +155,6 @@ MonoBehaviour:
   secondAbnormalStateInfoParts_: {fileID: 3602377831578142536}
   firstElementInfoParts_: {fileID: 7302284282707937196}
   secondElementInfoParts_: {fileID: 2839764680195962588}
-  dpGaugeMeterUpdateImage_: {fileID: 0}
   eventGameObject_: {fileID: 5192767894417079234}
   idleTimeRegulation_: 0.5
   entryPosY_: 0
@@ -598,12 +597,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 55
+    m_Font: {fileID: 12800000, guid: 5db70da76841ede4186e39891b972c30, type: 3}
+    m_FontSize: 46
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 55
+    m_MinSize: 0
+    m_MaxSize: 100
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -847,7 +846,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5db70da76841ede4186e39891b972c30, type: 3}
     m_FontSize: 95
     m_FontStyle: 1
     m_BestFit: 0
@@ -1387,7 +1386,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5db70da76841ede4186e39891b972c30, type: 3}
     m_FontSize: 95
     m_FontStyle: 1
     m_BestFit: 0
@@ -1479,12 +1478,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 55
+    m_Font: {fileID: 12800000, guid: 5db70da76841ede4186e39891b972c30, type: 3}
+    m_FontSize: 46
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 75
+    m_MinSize: 4
+    m_MaxSize: 300
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1

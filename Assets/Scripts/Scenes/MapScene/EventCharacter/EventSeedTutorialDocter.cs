@@ -65,7 +65,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("TutorialDocter/BattleStart1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//ウェイト
@@ -75,7 +75,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("TutorialDocter/BattleStart2");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//ウェイト
@@ -84,7 +84,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("TutorialDocter/BattleStart3");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//ウェイト
@@ -93,7 +93,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("TutorialDocter/BattleStart4");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//BGMの再生
@@ -151,7 +151,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("TutorialDocter/BattleVictory1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//フェードアウト
@@ -226,7 +226,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("TutorialDocter/BattleLose1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//フェードアウト
@@ -265,7 +265,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("TutorialDocter/BattleAfter1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//イベントの最後

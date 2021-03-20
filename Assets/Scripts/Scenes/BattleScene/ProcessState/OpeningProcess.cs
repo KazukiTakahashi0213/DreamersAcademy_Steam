@@ -29,7 +29,8 @@ public class OpeningProcess : IProcessState {
 		}
 		else if (allSceneMgr.inputProvider_.LeftSelect()) {
 		}
-		else if (allSceneMgr.inputProvider_.SelectEnter()) {
+		else if (allSceneMgr.inputProvider_.SelectEnter()
+			|| allSceneMgr.inputProvider_.SelectMouseLeftTrigger()) {
 			AllEventManager.GetInstance().EventTriggerNext();
 		}
 		else if (allSceneMgr.inputProvider_.SelectNovelWindowActive()) {

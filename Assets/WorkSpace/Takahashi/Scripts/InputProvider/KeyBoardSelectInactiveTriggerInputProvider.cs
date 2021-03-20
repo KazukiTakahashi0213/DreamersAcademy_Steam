@@ -45,7 +45,7 @@ public class KeyBoardSelectInactiveTriggerInputProvider : IInputProvider {
 		return false;
 	}
 	public bool SelectMouseLeftTrigger() {
-		return false;
+		return Input.GetMouseButtonDown(0);
 	}
 	public bool SelectMouseRightTrigger() {
 		return false;
@@ -55,5 +55,23 @@ public class KeyBoardSelectInactiveTriggerInputProvider : IInputProvider {
 	}
 	public float MouseWheelValue() {
 		return 0;
+	}
+
+	public bool AnyKeyTrigger() {
+		if (UpSelect()
+			|| DownSelect()
+			|| RightSelect()
+			|| LeftSelect()
+			|| SelectEnter()
+			|| SelectBack()
+			|| SelectNovelWindowActive()
+			|| SelectMenu()
+			|| SelectMouseLeftTrigger()
+			|| SelectMouseRightTrigger()
+			) {
+			return true;
+		}
+
+		return false;
 	}
 }

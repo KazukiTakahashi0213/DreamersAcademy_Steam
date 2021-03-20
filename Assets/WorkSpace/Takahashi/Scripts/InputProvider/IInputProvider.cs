@@ -18,4 +18,6 @@ public interface IInputProvider {
 	bool SelectMouseRightTrigger();
 	GameObject[] MouseRayHitGameObjects();
 	float MouseWheelValue();
+
+	bool AnyKeyTrigger();
 }

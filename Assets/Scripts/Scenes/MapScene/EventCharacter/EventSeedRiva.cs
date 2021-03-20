@@ -30,7 +30,7 @@ public class EventSeedRiva : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Riva/BattleStart1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//BGMの再生
@@ -86,7 +86,7 @@ public class EventSeedRiva : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Riva/BattleVictory1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 		//イベントの最後
 		allEventMgr.EventFinishSet();
@@ -113,7 +113,7 @@ public class EventSeedRiva : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Riva/BattleLose1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 		//フェードアウト
 		allEventMgr.EventSpriteRendererSet(
@@ -151,7 +151,7 @@ public class EventSeedRiva : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Riva/BattleAfter1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//イベントの最後
@@ -169,7 +169,7 @@ public class EventSeedRiva : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Riva/TradeSuccess1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 	}
 	private static void TradeAfter(EventMoveMap eventMoveMap, MapManager mapManager) {
@@ -187,7 +187,7 @@ public class EventSeedRiva : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Riva/TradeAfter1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//フェードアウト
