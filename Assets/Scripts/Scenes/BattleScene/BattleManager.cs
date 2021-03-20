@@ -38,6 +38,12 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		//コマンドパーツの初期化
 		InactiveUiCommand();
 		InactiveUiAttackCommand();
+		InactiveUiStartCommand();
+		InactiveUiMonsterTradeSelectCommand();
+		commandCommandParts_.SelectReset(new Vector3(0.4f, 2.48f, -4));
+		attackCommandParts_.GetCommandParts().SelectReset(new Vector3(6.77f, -1.57f, -4.0f));
+		startCommandParts_.SelectReset(new Vector3(0.4f, 2.48f, -4));
+		monsterTradeSelectCommandParts_.SelectReset(new Vector3(-1.73f, 0.94f, -4));
 
 		//ゆめの文字の色の変更
 		dreamCommandSprite_.color = new Color32(255, 255, 255, 255);
