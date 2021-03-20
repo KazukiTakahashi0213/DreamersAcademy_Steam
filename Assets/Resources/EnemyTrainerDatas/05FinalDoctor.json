@@ -3,8 +3,8 @@
 		"jobName_":			"ドクター",
 		"texName_":			"FinalVicter",
 		
-		"attackRate_":  "50",
-		"tradeRate_":   "50",
+		"attackRate_":  "65",
+		"tradeRate_":   "35",
 
 		"monsterDatas_": [
 			{"monsterName_": "ライバレオン", "skillNames_": ["リキッドアビス", "アクアタイガー", "すいりゅうざん", "ハニーシリンジ"]},

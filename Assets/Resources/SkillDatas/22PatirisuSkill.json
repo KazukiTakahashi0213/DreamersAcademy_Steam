@@ -1,7 +1,7 @@
 ﻿{
 		"skillName_":										"ナッツケーキ",
 		
-		"effectValue_":										"100",
+		"effectValue_":										"70",
 		"optionEffectTriggerRateValue_":	"100",
 		"successRateValue_":							"100",
 		"upDpValue_":											"10",
@@ -9,7 +9,7 @@
 		"playPoint_":											"20",
 
 		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
-		"elementType_":										"2",
+		"elementType_":										"4",
 
 		"//EffectValueType": ["None","Support","HitPointDamage","HitPointHeal","DreamPointDrain"],
 		"effectValueType_":								"3",
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "甘いナッツケーキでHP100回復\n反動で自分のすばやさダウン"
+		"effectInfo_": "甘いナッツケーキでHP70回復\n反動で自分のすばやさダウン"
 }

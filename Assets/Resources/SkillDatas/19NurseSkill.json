@@ -20,7 +20,7 @@
 		
 		"//AddParameterRank": ["None","Attack","Defense","Speed","AvoidRate","HitRate"],
 		"addSelfParameterRanks_": [
-			{"addParameterRank_": "1", "value_": "1"}
+			{"addParameterRank_": "1", "value_": "2"}
 		],
 
 		"addOtherParameterRanks_": [
@@ -35,5 +35,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "特製の蜂蜜でHPを20回復\n自分の攻撃力アップ"
+		"effectInfo_": "特製の蜂蜜でHPを20回復\n自分の攻撃力大アップ"
 }

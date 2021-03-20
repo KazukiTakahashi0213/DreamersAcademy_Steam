@@ -2,13 +2,13 @@
 		"monsterName_":						"ナイトベア",
 
 		"tribesHitPoint_":				"180",
-		"tribesAttack_":					"70",
-		"tribesDefense_":					"160",
-		"tribesSpeed_":						"60",
+		"tribesAttack_":					"75",
+		"tribesDefense_":					"140",
+		"tribesSpeed_":						"75",
 
 		"tribesDreamAttack_":			"1.1",
-		"tribesDreamDefense_":		"1.5",
-		"tribesDreamSpeed_":			"1.1",
+		"tribesDreamDefense_":		"1.4",
+		"tribesDreamSpeed_":			"1.2",
 
 		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
 		"firstElement_":					"4",
