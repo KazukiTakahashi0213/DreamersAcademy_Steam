@@ -30,7 +30,7 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("FinalDocter/BattleStart1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//BGMの再生
@@ -63,7 +63,7 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("FinalDocter/BattleVictory1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//フェードアウト
@@ -106,7 +106,7 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("FinalDocter/BattleLose1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//プレイヤーデータの初期化
@@ -127,6 +127,9 @@ public class EventSeedFinalDocter : MonoBehaviour {
 
 		//イベントの最後
 		//シーンの切り替え
-		allEventMgr.SceneChangeEventSet(SceneState.Title, SceneChangeMode.Change);
+		//allEventMgr.SceneChangeEventSet(SceneState.Title, SceneChangeMode.Change);
+
+		//ゲームの終了
+		t13.UnityUtil.GameQuit();
 	}
 }

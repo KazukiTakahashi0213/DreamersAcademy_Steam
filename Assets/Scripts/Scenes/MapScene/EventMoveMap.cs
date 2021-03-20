@@ -59,13 +59,30 @@ public class EventMoveMap : ObjectMoveMap {
 		allEventMgr.EventFinishSet();
 	}
 
-	static public void NovelEvent(NovelWindowParts novelWindowParts, string context) {
+	static public void NovelEvent(NovelWindowParts novelWindowParts, string context, EventSpriteRenderer characterSprite = null) {
 		AllEventManager allEventMgr = AllEventManager.GetInstance();
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
 
 		//ウィンドウの表示
 		allEventMgr.UpdateGameObjectSet(novelWindowParts.GetUpdateGameObject());
 		allEventMgr.UpdateGameObjectsActiveSetExecute(true);
+
+		if (characterSprite) {
+			//スプライトの変更
+			characterSprite.GetSpriteRenderer().sprite = EnemyTrainerData.GetInstance().GetSprite();
+
+			//キャラクターの表示
+			allEventMgr.EventSpriteRendererSet(
+				characterSprite
+				, null
+				, new Color32(255, 255, 255, 255)
+				); ;
+			allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
+			allEventMgr.AllUpdateEventExecute(0.3f);
+
+			//ウェイト
+			allEventMgr.EventWaitSet(allSceneMgr.GetEventWaitTime());
+		}
 
 		List<string> contexts = t13.Utility.ContextSlice(context, "\r\n\r\n");
 
@@ -96,6 +113,17 @@ public class EventMoveMap : ObjectMoveMap {
 		allEventMgr.EventTextSet(novelWindowParts.GetNovelWindowEventText(), "");
 		allEventMgr.EventTextsUpdateExecuteSet(EventTextEventManagerExecute.CharaUpdate);
 		allEventMgr.AllUpdateEventExecute();
+
+		if (characterSprite) {
+			//キャラクターの非表示
+			allEventMgr.EventSpriteRendererSet(
+				characterSprite
+				, null
+				, new Color32(255, 255, 255, 0)
+				); ;
+			allEventMgr.EventSpriteRenderersUpdateExecuteSet(EventSpriteRendererEventManagerExecute.ChangeColor);
+			allEventMgr.AllUpdateEventExecute();
+		}
 
 		//ウィンドウの非表示
 		allEventMgr.UpdateGameObjectSet(novelWindowParts.GetUpdateGameObject());

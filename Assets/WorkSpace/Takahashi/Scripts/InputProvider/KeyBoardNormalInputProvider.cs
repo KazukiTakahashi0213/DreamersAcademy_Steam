@@ -4,16 +4,40 @@ using UnityEngine;
 
 public class KeyBoardNormalInputProvider : IInputProvider {
 	public bool UpSelect() {
-		return Input.GetKey(KeyCode.UpArrow);
+		if (Input.GetKey(KeyCode.UpArrow)
+			|| Input.GetKey(KeyCode.W)
+			) {
+			return true;
+		}
+
+		return false;
 	}
 	public bool DownSelect() {
-		return Input.GetKey(KeyCode.DownArrow);
+		if (Input.GetKey(KeyCode.DownArrow)
+			|| Input.GetKey(KeyCode.S)
+			) {
+			return true;
+		}
+
+		return false;
 	}
 	public bool RightSelect() {
-		return Input.GetKey(KeyCode.RightArrow);
+		if (Input.GetKey(KeyCode.RightArrow)
+			|| Input.GetKey(KeyCode.D)
+			) {
+			return true;
+		}
+
+		return false;
 	}
 	public bool LeftSelect() {
-		return Input.GetKey(KeyCode.LeftArrow);
+		if (Input.GetKey(KeyCode.LeftArrow)
+			|| Input.GetKey(KeyCode.A)
+			) {
+			return true;
+		}
+
+		return false;
 	}
 	public bool LeftSelectMouseButton() {
 		GameObject[] hitGameObjects = MouseRayHitGameObjects();
@@ -71,5 +95,23 @@ public class KeyBoardNormalInputProvider : IInputProvider {
 	}
 	public float MouseWheelValue() {
 		return Input.GetAxis("Mouse ScrollWheel");
+	}
+
+	public bool AnyKeyTrigger() {
+		if (UpSelect()
+			|| DownSelect()
+			|| RightSelect()
+			|| LeftSelect()
+			|| SelectEnter()
+			|| SelectBack()
+			|| SelectNovelWindowActive()
+			|| SelectMenu()
+			|| SelectMouseLeftTrigger()
+			|| SelectMouseRightTrigger()
+			) {
+			return true;
+		}
+
+		return false;
 	}
 }

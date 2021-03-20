@@ -30,7 +30,7 @@ public class EventSeedMan : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Man/BattleStart1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//BGMの再生
@@ -91,7 +91,7 @@ public class EventSeedMan : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Man/BattleVictory1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 		//イベントの最後
 		allEventMgr.EventFinishSet();
@@ -118,7 +118,7 @@ public class EventSeedMan : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Man/BattleLose1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 		//フェードアウト
 		allEventMgr.EventSpriteRendererSet(
@@ -156,7 +156,7 @@ public class EventSeedMan : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Man/BattleAfter1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//イベントの最後
@@ -174,7 +174,7 @@ public class EventSeedMan : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Man/TradeSuccess1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 	}
 	private static void TradeAfter(EventMoveMap eventMoveMap, MapManager mapManager) {
@@ -192,7 +192,7 @@ public class EventSeedMan : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Man/TradeAfter1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//フェードアウト

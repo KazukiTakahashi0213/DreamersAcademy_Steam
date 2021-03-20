@@ -56,4 +56,22 @@ public class KeyBoardSelectInactiveTriggerInputProvider : IInputProvider {
 	public float MouseWheelValue() {
 		return 0;
 	}
+
+	public bool AnyKeyTrigger() {
+		if (UpSelect()
+			|| DownSelect()
+			|| RightSelect()
+			|| LeftSelect()
+			|| SelectEnter()
+			|| SelectBack()
+			|| SelectNovelWindowActive()
+			|| SelectMenu()
+			|| SelectMouseLeftTrigger()
+			|| SelectMouseRightTrigger()
+			) {
+			return true;
+		}
+
+		return false;
+	}
 }

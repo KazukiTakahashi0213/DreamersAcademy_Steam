@@ -30,7 +30,7 @@ public class EventSeedGirl : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Girl/BattleStart1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//BGMの再生
@@ -92,7 +92,7 @@ public class EventSeedGirl : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Girl/BattleVictory1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 		//イベントの最後
 		allEventMgr.EventFinishSet();
@@ -119,7 +119,7 @@ public class EventSeedGirl : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Girl/BattleLose1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 		//フェードアウト
 		allEventMgr.EventSpriteRendererSet(
@@ -157,7 +157,7 @@ public class EventSeedGirl : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Girl/BattleAfter1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//イベントの最後
@@ -175,7 +175,7 @@ public class EventSeedGirl : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Girl/TradeSuccess1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 	}
 	private static void TradeAfter(EventMoveMap eventMoveMap, MapManager mapManager) {
@@ -193,7 +193,7 @@ public class EventSeedGirl : MonoBehaviour {
 		//ノベル処理
 		{
 			string context = ResourcesTextsLoader.GetInstance().GetTexts("Girl/TradeAfter1");
-			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context);
+			EventMoveMap.NovelEvent(mapManager.GetNovelWindowParts(), context, mapManager.GetCharacterEventSprite());
 		}
 
 		//フェードアウト

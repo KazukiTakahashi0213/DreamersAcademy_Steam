@@ -190,8 +190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 178, y: 50}
+  m_AnchoredPosition: {x: -0.03603, y: -0.1}
+  m_SizeDelta: {x: 177.92792, y: 52.336754}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1360341419828430190
 CanvasRenderer:
@@ -221,7 +221,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5db70da76841ede4186e39891b972c30, type: 3}
     m_FontSize: 35
     m_FontStyle: 1
     m_BestFit: 0
@@ -281,4 +281,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choiceText_: {fileID: 4065391463766148522}
   choiceCollider_: {fileID: 3912769452490130504}
-  choiceNumber_: 0
+  choiceHorizontalNumber_: 0
+  choiceVerticalNumber_: 0

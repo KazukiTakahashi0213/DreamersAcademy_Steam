@@ -20,6 +20,7 @@ public class MapManager : MonoBehaviour, ISceneManager {
 	[SerializeField] private CommandParts commandParts_ = null;
 	[SerializeField] private List<FloorObjectsParts> floorObjects_ = null;
 	[SerializeField] private CommandParts tradeMonsterSelectCommandParts_ = null;
+	[SerializeField] private EventSpriteRenderer CharacterEventSprite_ = null;
 
 	public MapSceneProcessProvider GetProcessProvider() { return processProvider_; }
 	public MapSceneInputSoundProvider GetInputSoundProvider() { return inputSoundProvider_; }
@@ -31,6 +32,7 @@ public class MapManager : MonoBehaviour, ISceneManager {
 	public CommandParts GetCommandParts() { return commandParts_; }
 	public FloorObjectsParts GetFloorObjects() { return floorObjects_[PlayerTrainerData.GetInstance().nowMapFloor_]; }
 	public CommandParts GetTradeMonsterSelectCommandParts() { return tradeMonsterSelectCommandParts_; }
+	public EventSpriteRenderer GetCharacterEventSprite() { return CharacterEventSprite_; }
 
 	public void SceneStart() {
 		AllSceneManager allSceneMgr = AllSceneManager.GetInstance();
