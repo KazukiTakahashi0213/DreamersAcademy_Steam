@@ -226,7 +226,7 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: nowSceneState_
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -251,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[0].monsterTribesDataNumber_
-      value: 13
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -291,7 +291,7 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNames_.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -306,17 +306,17 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNames_.Array.data[0]
-      value: "\u30D2\u30FC\u30C8\u30D6\u30EC\u30B9"
+      value: "\u30D2\u30FC\u30C8\u30D7\u30EC\u30B9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNames_.Array.data[1]
-      value: "\u30D6\u30EB\u30FC\u30D6\u30E9\u30B9\u30C8"
+      value: "\u30EA\u30FC\u30D5\u30B7\u30E5\u30FC\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startEnemyMonsterDatas_.Array.data[0].skillDataNames_.Array.data[2]
-      value: "\u30EA\u30FC\u30D5\u30B7\u30E5\u30FC\u30C8"
+      value: "\u30D6\u30EB\u30FC\u30D6\u30E9\u30B9\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
@@ -351,17 +351,17 @@ PrefabInstance:
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNames_.Array.data[0]
-      value: "\u30D2\u30FC\u30C8\u30D6\u30EC\u30B9"
+      value: "\u30D2\u30FC\u30C8\u30D7\u30EC\u30B9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNames_.Array.data[1]
-      value: "\u30D6\u30EB\u30FC\u30D6\u30E9\u30B9\u30C8"
+      value: "\u30EA\u30FC\u30D5\u30B7\u30E5\u30FC\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: startPlayerMonsterDatas_.Array.data[0].skillDataNames_.Array.data[2]
-      value: "\u30EA\u30FC\u30D5\u30B7\u30E5\u30FC\u30C8"
+      value: "\u30D6\u30EB\u30FC\u30D6\u30E9\u30B9\u30C8"
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
