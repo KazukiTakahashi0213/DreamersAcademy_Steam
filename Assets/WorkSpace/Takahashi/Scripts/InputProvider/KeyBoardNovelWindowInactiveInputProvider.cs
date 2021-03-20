@@ -15,10 +15,19 @@ public class KeyBoardNovelWindowInactiveInputProvider : IInputProvider{
 	public bool LeftSelect() {
 		return false;
 	}
+	public bool LeftSelectMouseButton() {
+		return false;
+	}
+	public bool RightSelectMouseButton() {
+		return false;
+	}
 	public bool SelectEnter() {
 		return false;
 	}
 	public bool SelectBack() {
+		return false;
+	}
+	public bool SelectBackMouseButton() {
 		return false;
 	}
 	public bool SelectNovelWindowActive() {
@@ -27,10 +36,10 @@ public class KeyBoardNovelWindowInactiveInputProvider : IInputProvider{
 	public bool SelectMenu() {
 		return false;
 	}
-	public bool SelectMouseLeftButton() {
+	public bool SelectMouseLeftTrigger() {
 		return false;
 	}
-	public bool SelectMouseRightButton() {
+	public bool SelectMouseRightTrigger() {
 		return false;
 	}
 	public GameObject[] MouseRayHitGameObjects() {

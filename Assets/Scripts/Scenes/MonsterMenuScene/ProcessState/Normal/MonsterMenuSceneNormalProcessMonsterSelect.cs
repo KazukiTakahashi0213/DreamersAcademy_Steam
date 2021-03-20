@@ -111,7 +111,7 @@ public class MonsterMenuSceneNormalProcessMonsterSelect : BMonsterMenuSceneProce
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 		}
 		else if (sceneMgr.inputProvider_.SelectEnter()
-			|| sceneMgr.inputProvider_.SelectMouseLeftButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseLeftTrigger()) {
 			//None以外だったら
 			if(playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).tribesData_.monsterNumber_ != (int)MonsterTribesDataNumber.None) {
 				//SE
@@ -167,7 +167,7 @@ public class MonsterMenuSceneNormalProcessMonsterSelect : BMonsterMenuSceneProce
 			}
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
-			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			//スワップ中じゃなかったら
 			if (!monsterMenuManager.swapActive_) {
 				sceneMgr.inputProvider_ = new InactiveInputProvider();

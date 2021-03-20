@@ -146,7 +146,7 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 			monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
-			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			monsterMenuManager.GetSkillActionCommandParts().gameObject.SetActive(false);
 
 			//スキルの行動の選択肢の初期化

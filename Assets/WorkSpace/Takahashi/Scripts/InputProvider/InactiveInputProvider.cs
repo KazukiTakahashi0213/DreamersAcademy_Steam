@@ -15,6 +15,12 @@ public class InactiveInputProvider : IInputProvider {
 	public bool LeftSelect() {
 		return false;
 	}
+	public bool RightSelectMouseButton() {
+		return false;
+	}
+	public bool LeftSelectMouseButton() {
+		return false;
+	}
 	public bool SelectEnter() {
 		return false;
 	}
@@ -27,10 +33,13 @@ public class InactiveInputProvider : IInputProvider {
 	public bool SelectMenu() {
 		return false;
 	}
-	public bool SelectMouseLeftButton() {
+	public bool SelectBackMouseButton() {
 		return false;
 	}
-	public bool SelectMouseRightButton() {
+	public bool SelectMouseLeftTrigger() {
+		return false;
+	}
+	public bool SelectMouseRightTrigger() {
 		return false;
 	}
 	public GameObject[] MouseRayHitGameObjects() {

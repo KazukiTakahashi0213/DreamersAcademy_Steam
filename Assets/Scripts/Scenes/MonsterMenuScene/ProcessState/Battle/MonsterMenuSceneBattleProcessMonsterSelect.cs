@@ -97,7 +97,7 @@ public class MonsterMenuSceneBattleProcessMonsterSelect : BMonsterMenuSceneProce
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 		}
 		else if (sceneMgr.inputProvider_.SelectEnter()
-			|| sceneMgr.inputProvider_.SelectMouseLeftButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseLeftTrigger()) {
 			//None以外だったら
 			if (playerData.GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).tribesData_.monsterNumber_ != (int)MonsterTribesDataNumber.None) {
 				//SE

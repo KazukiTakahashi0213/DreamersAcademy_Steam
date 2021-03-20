@@ -97,7 +97,7 @@ public class MonsterMenuSceneNormalProcessSkillSelect : BMonsterMenuSceneProcess
 			}
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
-			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			//スワップ中じゃなかったら
 			if (!monsterMenuManager.swapActive_) {
 				monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);

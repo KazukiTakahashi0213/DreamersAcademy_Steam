@@ -15,6 +15,12 @@ public class KeyBoardSelectInactiveTriggerInputProvider : IInputProvider {
 	public bool LeftSelect() {
 		return false;
 	}
+	public bool LeftSelectMouseButton() {
+		return false;
+	}
+	public bool RightSelectMouseButton() {
+		return false;
+	}
 	public bool SelectEnter() {
 		return Input.GetKeyDown(KeyCode.Z);
 	}
@@ -27,10 +33,21 @@ public class KeyBoardSelectInactiveTriggerInputProvider : IInputProvider {
 	public bool SelectMenu() {
 		return Input.GetKeyDown(KeyCode.Space);
 	}
-	public bool SelectMouseLeftButton() {
+	public bool SelectBackMouseButton() {
+		GameObject[] hitGameObjects = MouseRayHitGameObjects();
+
+		for (int i = 0; i < hitGameObjects.Length; ++i) {
+			if (hitGameObjects[i].CompareTag("BackButton")) {
+				if (SelectMouseLeftTrigger()) return true;
+			}
+		}
+
 		return false;
 	}
-	public bool SelectMouseRightButton() {
+	public bool SelectMouseLeftTrigger() {
+		return false;
+	}
+	public bool SelectMouseRightTrigger() {
 		return false;
 	}
 	public GameObject[] MouseRayHitGameObjects() {

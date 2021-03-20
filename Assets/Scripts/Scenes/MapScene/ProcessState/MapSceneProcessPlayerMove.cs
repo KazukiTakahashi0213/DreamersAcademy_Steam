@@ -76,7 +76,7 @@ public class MapSceneProcessPlayerMove : BMapSceneProcessState {
 		else if (allSceneMgr.inputProvider_.SelectNovelWindowActive()) {
 		}
 		else if (allSceneMgr.inputProvider_.SelectMenu()
-			|| allSceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| allSceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			//SE
 			mapManager.GetInputSoundProvider().SelectMenu();
 

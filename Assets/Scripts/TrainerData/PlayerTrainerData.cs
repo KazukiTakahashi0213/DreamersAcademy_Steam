@@ -74,6 +74,9 @@ public class PlayerTrainerData {
 	//クリアしている階層
 	public int clearMapFloor_ = 0;
 
+	//チュートリアルをクリアしているか
+	public bool clearTutorial_ = false;
+
 	//シングルトン
 	private PlayerTrainerData() {
 		skillDatas_.Add(new SkillData(SkillDataNumber.None));

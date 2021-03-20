@@ -92,7 +92,7 @@ public class MonsterMenuSceneBattleProcessSkillSelect : BMonsterMenuSceneProcess
 			}
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
-			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			monsterMenuManager.monsterTradeSelectSkill_ = false;
 
 			monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);

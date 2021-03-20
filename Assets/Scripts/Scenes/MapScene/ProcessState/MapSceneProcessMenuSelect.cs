@@ -53,7 +53,7 @@ public class MapSceneProcessMenuSelect : BMapSceneProcessState {
 			commandSelectProvider_.state_ = MapSceneMenuSelectCommandSelect.None;
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
-			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			//選択肢の初期化
 			mapManager.GetCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
 

@@ -94,7 +94,7 @@ public class BugMenuSceneNormalProcessSkillSelect : BBugMenuSceneProcessState {
 		else if (sceneMgr.inputProvider_.SelectEnter()) {
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
-			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			sceneMgr.inputProvider_ = new InactiveInputProvider();
 
 			//フェードアウト

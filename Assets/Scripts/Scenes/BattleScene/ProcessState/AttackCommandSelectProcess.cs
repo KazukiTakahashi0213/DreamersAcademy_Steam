@@ -181,7 +181,7 @@ public class AttackCommandSelectProcess : IProcessState {
 			}
 		}
 		else if (allSceneMgr.inputProvider_.SelectBack()
-			|| allSceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| allSceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			//こんらん状態なら
 			if (PlayerBattleData.GetInstance().GetMonsterDatas(0).battleData_.firstAbnormalState_.state_ == AbnormalType.Confusion
 				|| PlayerBattleData.GetInstance().GetMonsterDatas(0).battleData_.secondAbnormalState_.state_ == AbnormalType.Confusion) {

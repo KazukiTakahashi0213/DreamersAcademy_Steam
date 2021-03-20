@@ -92,7 +92,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 		}
 		else if (sceneMgr.inputProvider_.SelectEnter()
-			|| sceneMgr.inputProvider_.SelectMouseLeftButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseLeftTrigger()) {
 			//技を習得できるか
 			if (playerData.GetMonsterDatas(MonsterMenuManager.skillTradeSelectMonsterNumber_).SkillTradeCheck(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_).elementType_.state_)) {
 				//SE
@@ -118,7 +118,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 			}
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
-			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			MonsterMenuManager.skillTradeActive_ = true;
 			MonsterMenuManager.skillTradeSkillData_ = null;
 

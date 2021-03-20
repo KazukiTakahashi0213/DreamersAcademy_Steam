@@ -15,6 +15,28 @@ public class KeyBoardNormalTriggerInputProvider : IInputProvider {
 	public bool LeftSelect() {
 		return Input.GetKeyDown(KeyCode.LeftArrow);
 	}
+	public bool LeftSelectMouseButton() {
+		GameObject[] hitGameObjects = MouseRayHitGameObjects();
+
+		for (int i = 0; i < hitGameObjects.Length; ++i) {
+			if (hitGameObjects[i].CompareTag("LeftButton")) {
+				if (SelectMouseLeftTrigger()) return true;
+			}
+		}
+
+		return false;
+	}
+	public bool RightSelectMouseButton() {
+		GameObject[] hitGameObjects = MouseRayHitGameObjects();
+
+		for (int i = 0; i < hitGameObjects.Length; ++i) {
+			if (hitGameObjects[i].CompareTag("RightButton")) {
+				if (SelectMouseLeftTrigger()) return true;
+			}
+		}
+
+		return false;
+	}
 	public bool SelectEnter() {
 		return Input.GetKeyDown(KeyCode.Z);
 	}
@@ -27,10 +49,21 @@ public class KeyBoardNormalTriggerInputProvider : IInputProvider {
 	public bool SelectMenu() {
 		return Input.GetKeyDown(KeyCode.Space);
 	}
-	public bool SelectMouseLeftButton() {
+	public bool SelectBackMouseButton() {
+		GameObject[] hitGameObjects = MouseRayHitGameObjects();
+
+		for (int i = 0; i < hitGameObjects.Length; ++i) {
+			if (hitGameObjects[i].CompareTag("BackButton")) {
+				if (SelectMouseLeftTrigger()) return true;
+			}
+		}
+
+		return false;
+	}
+	public bool SelectMouseLeftTrigger() {
 		return Input.GetMouseButtonDown(0);
 	}
-	public bool SelectMouseRightButton() {
+	public bool SelectMouseRightTrigger() {
 		return Input.GetMouseButtonDown(1);
 	}
 	public GameObject[] MouseRayHitGameObjects() {

@@ -9,6 +9,9 @@ TagManager:
   - Map
   - Event
   - CommandChoice
+  - BackButton
+  - RightButton
+  - LeftButton
   layers:
   - Default
   - TransparentFX

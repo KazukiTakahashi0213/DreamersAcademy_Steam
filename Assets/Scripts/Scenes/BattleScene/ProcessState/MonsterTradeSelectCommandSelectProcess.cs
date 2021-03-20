@@ -89,7 +89,7 @@ public class MonsterTradeSelectCommandSelectProcess : IProcessState {
 			return executeProvider_.Execute(mgr);
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
-			|| sceneMgr.inputProvider_.SelectMouseRightButton()) {
+			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
 			mgr.InactiveUiMonsterTradeSelectCommand();
 			mgr.ActiveUiStartCommand();
 

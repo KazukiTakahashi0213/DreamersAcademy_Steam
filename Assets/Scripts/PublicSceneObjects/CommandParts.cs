@@ -159,6 +159,6 @@ public class CommandParts : MonoBehaviour {
 	private bool choicePartsHit_ = false;
 	
 	public bool MouseLeftButtonTriggerActive() {
-		return AllSceneManager.GetInstance().inputProvider_.SelectMouseLeftButton() && choicePartsHit_;
+		return AllSceneManager.GetInstance().inputProvider_.SelectMouseLeftTrigger() && choicePartsHit_;
 	}
 }

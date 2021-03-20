@@ -14,6 +14,7 @@ public class GameSaveData {
 	public int nowMapFloor_;
 	public int clearTimes_;
 	public int clearMapFloor_;
+	public bool clearTutorial_;
 }
 
 public class SaveDataTrasfer {
@@ -53,6 +54,9 @@ public class SaveDataTrasfer {
 		save.nowMapFloor_ = playerData.nowMapFloor_;
 		save.clearTimes_ = playerData.clearTimes_;
 		save.clearMapFloor_ = playerData.clearMapFloor_;
+
+		//チュートリアルのデータ
+		save.clearTutorial_ = playerData.clearTutorial_;
 
 		using (FileStream fs = new FileStream(SavePath, FileMode.Create, FileAccess.Write)) {
 			BinaryFormatter bf = new BinaryFormatter();
@@ -95,6 +99,9 @@ public class SaveDataTrasfer {
 		save.nowMapFloor_ = 0;
 		save.clearTimes_ = playerData.clearTimes_ + 1;
 		save.clearMapFloor_ = 0;
+
+		//チュートリアルのデータ
+		save.clearTutorial_ = playerData.clearTutorial_;
 
 		using (FileStream fs = new FileStream(SavePath, FileMode.Create, FileAccess.Write)) {
 			BinaryFormatter bf = new BinaryFormatter();
@@ -156,6 +163,9 @@ public class SaveDataTrasfer {
 		playerData.nowMapFloor_ = load.nowMapFloor_;
 		playerData.clearTimes_ = load.clearTimes_;
 		playerData.clearMapFloor_ = load.clearMapFloor_;
+
+		//チュートリアルのデータ
+		playerData.clearTutorial_ = load.clearTutorial_;
 
 		return true;
 	}
