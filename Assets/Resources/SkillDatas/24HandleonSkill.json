@@ -3,7 +3,7 @@
 		
 		"effectValue_":										"110",
 		"optionEffectTriggerRateValue_":	"100",
-		"successRateValue_":							"100",
+		"successRateValue_":							"90",
 		"upDpValue_":											"10",
 
 		"playPoint_":											"20",

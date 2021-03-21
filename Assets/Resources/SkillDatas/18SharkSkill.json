@@ -3,7 +3,7 @@
 		
 		"effectValue_":										"100",
 		"optionEffectTriggerRateValue_":	"100",
-		"successRateValue_":							"100",
+		"successRateValue_":							"95",
 		"upDpValue_":											"10",
 
 		"playPoint_":											"20",
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "鋭い水の剣で切りつける\nクリティカル発生率が非常に高い"
+		"effectInfo_": "鋭い水の剣で切りつける\nきゅうしょに非常に当たりやすい"
 }

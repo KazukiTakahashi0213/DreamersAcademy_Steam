@@ -1,7 +1,7 @@
 ﻿{
 		"skillName_":										"ムーンブライド",
 		
-		"effectValue_":										"45",
+		"effectValue_":										"50",
 		"optionEffectTriggerRateValue_":	"100",
 		"successRateValue_":							"100",
 		"upDpValue_":											"10",
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "月の光で祝福を受けHP45回復\n自分の防御力アップ"
+		"effectInfo_": "月の光で祝福を受けHP50回復\n自分の防御力アップ"
 }

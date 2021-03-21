@@ -12,7 +12,7 @@
 
 		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
 		"firstElement_":					"1",
-		"secondElement_":					"0",
+		"secondElement_":					"5",
 
 		"texName_":								"Maikon"
 }

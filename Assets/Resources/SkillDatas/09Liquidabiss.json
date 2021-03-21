@@ -1,9 +1,9 @@
 ﻿{
 		"skillName_":										"リキッドアビス",
 		
-		"effectValue_":										"110",
+		"effectValue_":										"120",
 		"optionEffectTriggerRateValue_":	"30",
-		"successRateValue_":							"85",
+		"successRateValue_":							"80",
 		"upDpValue_":											"10",
 
 		"playPoint_":											"20",

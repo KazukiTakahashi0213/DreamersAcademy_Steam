@@ -27,29 +27,31 @@ public class ElementTypeState {
 	//Fire
 	static private bool SkillTradeCheckFire(ElementTypeState mine, ElementType elementType) {
 		if (elementType == ElementType.Fire) return true;
+        if (elementType == ElementType.Dark) return true;
 
-		return false;
+        return false;
 	}
 
 	//Water
 	static private bool SkillTradeCheckWater(ElementTypeState mine, ElementType elementType) {
 		if (elementType == ElementType.Water) return true;
+        if (elementType == ElementType.Dark) return true;
 
-		return false;
+        return false;
 	}
 
 	//Tree
 	static private bool SkillTradeCheckTree(ElementTypeState mine, ElementType elementType) {
 		if (elementType == ElementType.Tree) return true;
-		if (elementType == ElementType.Fire) return true;
+        if (elementType == ElementType.Dark) return true;
 
-		return false;
+        return false;
 	}
 
 	//Holy
 	static private bool SkillTradeCheckHoly(ElementTypeState mine, ElementType elementType) {
 		if (elementType == ElementType.Holy) return true;
-		if (elementType == ElementType.Fire) return true;
+		if (elementType == ElementType.Water) return true;
 		if (elementType == ElementType.Tree) return true;
 
 		return false;
@@ -58,7 +60,7 @@ public class ElementTypeState {
 	//Dark
 	static private bool SkillTradeCheckDark(ElementTypeState mine, ElementType elementType) {
 		if (elementType == ElementType.Dark) return true;
-		if (elementType == ElementType.Water) return true;
+		if (elementType == ElementType.Fire) return true;
 		if (elementType == ElementType.Tree) return true;
 
 		return false;

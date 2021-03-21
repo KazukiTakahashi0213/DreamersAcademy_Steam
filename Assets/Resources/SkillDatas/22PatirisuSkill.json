@@ -1,7 +1,7 @@
 ﻿{
 		"skillName_":										"ナッツケーキ",
 		
-		"effectValue_":										"70",
+		"effectValue_":										"75",
 		"optionEffectTriggerRateValue_":	"100",
 		"successRateValue_":							"100",
 		"upDpValue_":											"10",
@@ -34,5 +34,5 @@
 			{"addAbnormal_": "0"}
 		],
 
-		"effectInfo_": "甘いナッツケーキでHP70回復\n反動で自分のすばやさダウン"
+		"effectInfo_": "甘いナッツケーキでHP75回復\n反動で自分のすばやさダウン"
 }

@@ -2,9 +2,9 @@
 		"monsterName_":						"ナイトベア",
 
 		"tribesHitPoint_":				"180",
-		"tribesAttack_":					"75",
-		"tribesDefense_":					"140",
-		"tribesSpeed_":						"75",
+		"tribesAttack_":					"70",
+		"tribesDefense_":					"150",
+		"tribesSpeed_":						"70",
 
 		"tribesDreamAttack_":			"1.1",
 		"tribesDreamDefense_":		"1.4",
@@ -12,7 +12,7 @@
 
 		"//ElementType": ["None","Fire","Water","Tree","Holy","Dark"],
 		"firstElement_":					"4",
-		"secondElement_":					"0",
+		"secondElement_":					"1",
 
 		"texName_":						  	"Naitobea"
 }
