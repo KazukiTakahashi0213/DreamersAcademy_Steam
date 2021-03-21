@@ -2,8 +2,8 @@
 		"monsterName_":						"ハンドレオン",
 
 		"tribesHitPoint_":				"100",
-		"tribesAttack_":					"160",
-		"tribesDefense_":					"90",
+		"tribesAttack_":					"150",
+		"tribesDefense_":					"100",
 		"tribesSpeed_":						"120",
 
 		"tribesDreamAttack_":			"1.5",
