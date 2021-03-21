@@ -16,6 +16,9 @@ public class EndingManager : MonoBehaviour, ISceneManager {
 		novelWindowParts_.GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().blinkTimeRegulation_ = 0.5f;
 		novelWindowParts_.GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
+		//初期化
+		novelWindowParts_.GetNovelWindowEventText().GetText().text = "";
+
 		//BGMの停止
 		AllSceneManager.GetInstance().GetPublicAudioParts().GetBGMAudioSource().volume = 0;
 

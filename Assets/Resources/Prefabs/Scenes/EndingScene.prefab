@@ -398,9 +398,34 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4863947491668571092, guid: c0552a27dea67a647bd6bf2d70c21e5c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863947491668571092, guid: c0552a27dea67a647bd6bf2d70c21e5c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863947491668571092, guid: c0552a27dea67a647bd6bf2d70c21e5c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863947492024364291, guid: c0552a27dea67a647bd6bf2d70c21e5c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.68
+      objectReference: {fileID: 0}
     - target: {fileID: 4863947492688146666, guid: c0552a27dea67a647bd6bf2d70c21e5c,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593702658182639857, guid: c0552a27dea67a647bd6bf2d70c21e5c,
+        type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7799746477047540981, guid: c0552a27dea67a647bd6bf2d70c21e5c,

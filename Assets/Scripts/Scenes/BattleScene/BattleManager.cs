@@ -52,11 +52,22 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		playerParts_.GetEventSprite().GetSpriteRenderer().sprite = ResourcesGraphicsLoader.GetInstance().GetGraphics("Player/PlayerMonsterSet0");
 		enemyParts_.GetMonsterSprite().sprite = EnemyTrainerData.GetInstance().GetSprite();
 
+		//ドリームポイントゲージの初期化
+		playerDreamPointInfoParts_.gameObject.SetActive(false);
+		enemyDreamPointInfoParts_.gameObject.SetActive(false);
+
 		//エネミーモンスターの読み込み
 		{
 			//エネミーのモンスターの読み込み
-			for(int i = 0;i < EnemyTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
-				EnemyBattleData.GetInstance().MonsterAdd(EnemyTrainerData.GetInstance().GetMonsterDatas(i));
+			if (EnemyTrainerData.GetInstance().GetHaveMonsterSize() < 4) {
+				for (int i = 0; i < EnemyTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
+					EnemyBattleData.GetInstance().MonsterAdd(EnemyTrainerData.GetInstance().GetMonsterDatas(i));
+				}
+			}
+			else {
+				for (int i = 0; i < 3; ++i) {
+					EnemyBattleData.GetInstance().MonsterAdd(EnemyTrainerData.GetInstance().GetMonsterDatas(i));
+				}
 			}
 
 			//エネミーの先頭のモンスターの取得
@@ -72,8 +83,15 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 		//プレイヤーモンスターの読み込み
 		{
 			//プレイヤーのモンスターの読み込み
-			for (int i = 0; i < PlayerTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
-				PlayerBattleData.GetInstance().MonsterAdd(PlayerTrainerData.GetInstance().GetMonsterDatas(i));
+			if (PlayerTrainerData.GetInstance().GetHaveMonsterSize() < 4) {
+				for (int i = 0; i < PlayerTrainerData.GetInstance().GetHaveMonsterSize(); ++i) {
+					PlayerBattleData.GetInstance().MonsterAdd(PlayerTrainerData.GetInstance().GetMonsterDatas(i));
+				}
+			}
+			else {
+				for (int i = 0; i < 3; ++i) {
+					PlayerBattleData.GetInstance().MonsterAdd(PlayerTrainerData.GetInstance().GetMonsterDatas(i));
+				}
 			}
 
 			//プレイヤーの先頭のモンスターの取得
@@ -367,7 +385,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 			|| PlayerBattleData.GetInstance().GetMonsterDatas(0).battleData_.secondAbnormalState_.state_ == AbnormalType.Confusion) {
 			if (confusionCounter_.measure(Time.deltaTime, CONFUSION_TIME)) {
 				if (attackCommandParts_.GetCommandParts().SelectNumber() == 0) {
-					attackCommandParts_.GetCommandParts().CommandSelectRight(new Vector3(5.56f, 0, 0));
+					attackCommandParts_.GetCommandParts().CommandSelectRight(new Vector3(3.56f, 0, 0));
 
 					//SE
 					inputSoundProvider_.RightSelect();
@@ -376,7 +394,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 					PoisonDamageProcess(PlayerBattleData.GetInstance(), playerStatusInfoParts_, playerMonsterParts_);
 				}
 				else if (attackCommandParts_.GetCommandParts().SelectNumber() == 1) {
-					attackCommandParts_.GetCommandParts().CommandSelectDown(new Vector3(0, -0.83f, 0));
+					attackCommandParts_.GetCommandParts().CommandSelectDown(new Vector3(0, -1.42f, 0));
 
 					//SE
 					inputSoundProvider_.DownSelect();
@@ -385,7 +403,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 					PoisonDamageProcess(PlayerBattleData.GetInstance(), playerStatusInfoParts_, playerMonsterParts_);
 				}
 				else if (attackCommandParts_.GetCommandParts().SelectNumber() == 2) {
-					attackCommandParts_.GetCommandParts().CommandSelectUp(new Vector3(0, 0.83f, 0));
+					attackCommandParts_.GetCommandParts().CommandSelectUp(new Vector3(0, 1.42f, 0));
 
 					//SE
 					inputSoundProvider_.UpSelect();
@@ -394,7 +412,7 @@ public class BattleManager : MonoBehaviour, ISceneManager {
 					PoisonDamageProcess(PlayerBattleData.GetInstance(), playerStatusInfoParts_, playerMonsterParts_);
 				}
 				else if (attackCommandParts_.GetCommandParts().SelectNumber() == 3) {
-					attackCommandParts_.GetCommandParts().CommandSelectLeft(new Vector3(-5.56f, 0, 0));
+					attackCommandParts_.GetCommandParts().CommandSelectLeft(new Vector3(-3.56f, 0, 0));
 
 					//SE
 					inputSoundProvider_.LeftSelect();
