@@ -28,7 +28,14 @@ public class EnemyCommandSelectProcess : IProcessState {
 
 			//エネミーの行動の決定
 			if(commandRandomResult < EnemyTrainerData.GetInstance().GetAttackRate()) {
-
+				//dpが100以上だったら
+				if (EnemyBattleData.GetInstance().GetDreamPoint() >= 100) {
+					//先頭がパワーアップしていなかったら
+					if (!EnemyBattleData.GetInstance().GetMonsterDatas(0).battleData_.HaveAbnormalType(AbnormalType.Hero)) {
+						//パワーアップするか否かのフラグの設定
+						EnemyBattleData.GetInstance().dreamSyncronize_ = true;
+					}
+				}
 			}
 			else if(commandRandomResult < EnemyTrainerData.GetInstance().GetAttackRate() + EnemyTrainerData.GetInstance().GetTradeRate()) {
 				//タイプ相性の測定
@@ -136,19 +143,6 @@ public class EnemyCommandSelectProcess : IProcessState {
 			if (AllSceneManager.GetInstance().GetRandom().Next(0, 10) < 3) {
 				mgr.enemySelectSkillNumber_ = AllSceneManager.GetInstance().GetRandom().Next(0, skillNumbers.Length);
 			}
-
-			//dpが100以上だったら
-			if (EnemyBattleData.GetInstance().GetDreamPoint() >= 100) {
-				//先頭がパワーアップしていなかったら
-				if (!EnemyBattleData.GetInstance().GetMonsterDatas(0).battleData_.HaveAbnormalType(AbnormalType.Hero)) {
-					//パワーアップするか否かのフラグの設定
-					EnemyBattleData.GetInstance().dreamSyncronize_ = true;
-				}
-			}
-
-			//ppの消費
-			//ISkillData enemySkillData = enemyMD.GetSkillDatas(mgr.enemySelectSkillNumber_);
-			//enemySkillData.nowPlayPoint_ -= 1;
 
 			eventEnd_ = false;
 

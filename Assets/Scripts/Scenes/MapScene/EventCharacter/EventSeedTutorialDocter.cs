@@ -113,7 +113,7 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 		mapManager.GetNovelWindowParts().GetNovelBlinkIconParts().GetNovelBlinkIconEventSprite().GetBlinkState().state_ = UpdateSpriteRendererProcessBlink.In;
 
 		//技の取得
-		for(int i = 1;i < 13; ++i) {
+		for (int i = 1;i < 13; ++i) {
 			playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)i));
 		}
 		//playerTrainerData.SkillAdd(new SkillData((SkillDataNumber)43));
@@ -177,6 +177,9 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 
 		//イベントの最後
 		allEventMgr.EventFinishSet();
+
+		//エネミーデータの初期化
+		EnemyTrainerData.ReleaseInstance();
 	}
 	private static void BattleLose(EventMoveMap eventMoveMap, MapManager mapManager) {
 		AllEventManager allEventMgr = AllEventManager.GetInstance();
@@ -252,6 +255,9 @@ public class EventSeedTutorialDocter : MonoBehaviour {
 
 		//イベントの最後
 		allEventMgr.EventFinishSet();
+
+		//エネミーデータの初期化
+		EnemyTrainerData.ReleaseInstance();
 	}
 	private static void BattleAfter(EventMoveMap eventMoveMap, MapManager mapManager) {
 		AllEventManager allEventMgr = AllEventManager.GetInstance();

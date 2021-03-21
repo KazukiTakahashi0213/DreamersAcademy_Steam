@@ -83,6 +83,9 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		else {
 			allEventMgr.SceneChangeEventSet(SceneState.Ending, SceneChangeMode.Change);
 		}
+
+		//エネミーデータの初期化
+		EnemyTrainerData.ReleaseInstance();
 	}
 	private static void BattleLose(EventMoveMap eventMoveMap, MapManager mapManager) {
 		AllEventManager allEventMgr = AllEventManager.GetInstance();
@@ -128,6 +131,9 @@ public class EventSeedFinalDocter : MonoBehaviour {
 		//イベントの最後
 		//シーンの切り替え
 		//allEventMgr.SceneChangeEventSet(SceneState.Title, SceneChangeMode.Change);
+
+		//エネミーデータの初期化
+		EnemyTrainerData.ReleaseInstance();
 
 		//ゲームの終了
 		t13.UnityUtil.GameQuit();

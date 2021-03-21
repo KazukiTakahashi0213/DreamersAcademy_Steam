@@ -50,7 +50,7 @@ public class MonsterMenuSceneNormalProcessMonsterActionSelect : BMonsterMenuScen
 
 			//モンスターの行動の選択肢の初期化
 			nowMonsterActionCommandExecuteStateProvider_.state_ = MonsterNormalMenuSceneMonsterActionCommandExecute.Swap;
-			monsterMenuManager.GetMonsterActionCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
+			monsterMenuManager.GetMonsterActionCommandParts().SelectReset(new Vector3(-0.65f, 0.85f, -4));
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
 			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
@@ -61,7 +61,7 @@ public class MonsterMenuSceneNormalProcessMonsterActionSelect : BMonsterMenuScen
 
 			//モンスターの行動の選択肢の初期化
 			nowMonsterActionCommandExecuteStateProvider_.state_ = MonsterNormalMenuSceneMonsterActionCommandExecute.Swap;
-			monsterMenuManager.GetMonsterActionCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
+			monsterMenuManager.GetMonsterActionCommandParts().SelectReset(new Vector3(-0.65f, 0.85f, -4));
 
 			return MonsterMenuSceneProcess.MonsterSelect;
 		}

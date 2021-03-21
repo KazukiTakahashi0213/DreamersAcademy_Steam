@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class BattleSceneStartCommandExecuteAttack : BBattleSceneStartCommandExecute {
 	public override IProcessState Execute(BattleManager battleManager) {
-		//SE
-		battleManager.GetInputSoundProvider().SelectEnter();
+		//戦えるモンスターが１体だったら
+		if (PlayerBattleData.GetInstance().GetBattleActiveMonsterSize() == 1) {
+			//SE
+			battleManager.GetInputSoundProvider().SelectEnter();
 
-		battleManager.InactiveUiStartCommand();
-		battleManager.ActiveUiMonsterTradeSelectCommand();
+			battleManager.InactiveUiStartCommand();
+			battleManager.ActiveUiCommand();
 
-		return battleManager.nowProcessState().NextProcess();
+			return new CommandSelectProcess();
+		}
+		else {
+			//SE
+			battleManager.GetInputSoundProvider().SelectEnter();
+
+			battleManager.InactiveUiStartCommand();
+			battleManager.ActiveUiMonsterTradeSelectCommand();
+
+			return battleManager.nowProcessState().NextProcess();
+		}
 	}
 }

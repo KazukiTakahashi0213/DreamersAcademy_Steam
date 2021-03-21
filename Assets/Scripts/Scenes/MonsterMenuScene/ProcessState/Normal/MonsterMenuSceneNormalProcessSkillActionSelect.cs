@@ -34,7 +34,7 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 
 				//スキルの行動の選択肢の初期化
 				nowSkillActionCommandExecuteStateProvider_.state_ = MonsterMenuSceneSkillActionCommandExecute.Swap;
-				monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
+				monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.65f, 0.85f, -4));
 
 				string context = "１..." + "\r\n\r\n"
 					+ "２の..." + "\r\n\r\n"
@@ -143,7 +143,7 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 
 			//スキルの行動の選択肢の初期化
 			nowSkillActionCommandExecuteStateProvider_.state_ = MonsterMenuSceneSkillActionCommandExecute.Swap;
-			monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
+			monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.65f, 0.85f, -4));
 		}
 		else if (sceneMgr.inputProvider_.SelectBack()
 			|| sceneMgr.inputProvider_.SelectMouseRightTrigger()) {
@@ -151,7 +151,7 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 
 			//スキルの行動の選択肢の初期化
 			nowSkillActionCommandExecuteStateProvider_.state_ = MonsterMenuSceneSkillActionCommandExecute.Swap;
-			monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
+			monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.65f, 0.85f, -4));
 
 			monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderActive();
 

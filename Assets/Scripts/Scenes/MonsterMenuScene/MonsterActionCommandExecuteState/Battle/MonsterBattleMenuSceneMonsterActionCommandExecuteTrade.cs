@@ -32,8 +32,10 @@ public class MonsterBattleMenuSceneMonsterActionCommandExecuteTrade : BMonsterBa
 			eventMgr.SceneChangeEventSet(SceneState.Battle, SceneChangeMode.Continue);
 		}
 		else {
+			//モンスターが戦えて、Noneではなくて、先頭ではなかったら
 			if (PlayerBattleData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).battleActive_
-				&& PlayerBattleData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).tribesData_.monsterNumber_ != (int)MonsterTribesDataNumber.None) {
+				&& PlayerBattleData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).tribesData_.monsterNumber_ != (int)MonsterTribesDataNumber.None
+				&& monsterMenuManager.selectMonsterNumber_ != 0) {
 
 				monsterMenuManager.GetMonsterActionCommandParts().gameObject.SetActive(false);
 

@@ -28,9 +28,6 @@ public class PlayerBattleData : BTrainerBattleData {
 		, new MonsterData(new MonsterTribesData(MonsterTribesDataNumber.None), 0, 50)
 	};
 
-	//戦えるモンスターの数
-	private int battleActiveMonsterSize_ = 0;
-
 	//パワーアップするか否かのフラグ
 	public bool dreamSyncronize_ = false;
 
@@ -122,7 +119,6 @@ public class PlayerBattleData : BTrainerBattleData {
 
 			//データの初期化
 			PlayerBattleData.ReleaseInstance();
-			EnemyTrainerData.ReleaseInstance();
 			EnemyBattleData.ReleaseInstance();
 
 			return;

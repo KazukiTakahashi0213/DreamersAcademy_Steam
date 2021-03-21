@@ -80,6 +80,8 @@ public class EventSeedGirl : MonoBehaviour {
 		//クリア階層の増加
 		playerTrainerData.clearMapFloor_ += 1;
 
+		//エネミーデータの初期化
+		EnemyTrainerData.ReleaseInstance();
 		//エネミーの設定
 		enemyTrainerData.SetTrainerData(ResourcesEnemyTrainerDatasLoader.GetInstance().GetEnemyTrainerDatas(2));
 
@@ -144,6 +146,9 @@ public class EventSeedGirl : MonoBehaviour {
 
 		//イベントの最後
 		allEventMgr.EventFinishSet();
+
+		//エネミーデータの初期化
+		EnemyTrainerData.ReleaseInstance();
 	}
 	private static void BattleAfter(EventMoveMap eventMoveMap, MapManager mapManager) {
 		AllEventManager allEventMgr = AllEventManager.GetInstance();
@@ -219,5 +224,8 @@ public class EventSeedGirl : MonoBehaviour {
 
 		//イベントの最後
 		allEventMgr.EventFinishSet();
+
+		//エネミーデータの初期化
+		EnemyTrainerData.ReleaseInstance();
 	}
 }
