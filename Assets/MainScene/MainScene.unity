@@ -205,18 +205,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
+      propertyPath: battleEffectSpeed_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
+        type: 3}
       propertyPath: upDPValueBadSimillar_
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: upDPValueBestSimillar_
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9007738462391688558, guid: f7c49514c66393243ac2269e57de50e3,
         type: 3}
       propertyPath: upDPValueNormalSimillar_
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7c49514c66393243ac2269e57de50e3, type: 3}
