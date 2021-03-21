@@ -153,7 +153,7 @@ public class MonsterMenuSceneNormalProcessSkillActionSelect : BMonsterMenuSceneP
 			nowSkillActionCommandExecuteStateProvider_.state_ = MonsterMenuSceneSkillActionCommandExecute.Swap;
 			monsterMenuManager.GetSkillActionCommandParts().SelectReset(new Vector3(-0.6f, 0.85f, -4));
 
-			monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderActive();
+			monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderActive();
 
 			return MonsterMenuSceneProcess.SkillSelect;
 		}

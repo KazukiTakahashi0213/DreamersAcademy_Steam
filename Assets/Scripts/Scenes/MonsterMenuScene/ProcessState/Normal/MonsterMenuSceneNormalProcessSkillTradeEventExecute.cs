@@ -8,6 +8,9 @@ public class MonsterMenuSceneNormalProcessSkillTradeEventExecute : BMonsterMenuS
 		AllEventManager eventMgr = AllEventManager.GetInstance();
 
 		if (eventMgr.EventUpdate()) {
+			//技の選択肢の有効化
+			monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderActive();
+
 			return MonsterMenuSceneProcess.SkillSelect;
 		}
 

@@ -43,7 +43,7 @@ public class MonsterBattleMenuSceneMonsterActionCommandExecuteTrade : BMonsterBa
 				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReflect(PlayerBattleData.GetInstance().GetMonsterDatas(monsterMenuManager.selectMonsterNumber_).GetSkillDatas(0));
 
 				//技の選択肢の初期化
-				monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderActive();
+				monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderActive();
 
 				monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(true);
 

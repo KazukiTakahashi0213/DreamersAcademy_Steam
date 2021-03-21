@@ -22,12 +22,12 @@ public class CommandParts : MonoBehaviour {
 		commandWindowChoicesParts_[value].ChoiceColorChange(changeColor);
 	}
 
-	public void commandWindowChoicesColliderActive() {
+	public void CommandWindowChoicesColliderActive() {
 		for(int i = 0;i < commandWindowChoicesParts_.Count; ++i) {
 			commandWindowChoicesParts_[i].ColliderActiveSet(true);
 		}
 	}
-	public void commandWindowChoicesColliderInactive() {
+	public void CommandWindowChoicesColliderInactive() {
 		for (int i = 0; i < commandWindowChoicesParts_.Count; ++i) {
 			commandWindowChoicesParts_[i].ColliderActiveSet(false);
 		}

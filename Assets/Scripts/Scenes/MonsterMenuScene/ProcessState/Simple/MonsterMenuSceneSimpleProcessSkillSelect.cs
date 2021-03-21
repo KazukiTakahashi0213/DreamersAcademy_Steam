@@ -68,7 +68,7 @@ public class MonsterMenuSceneSimpleProcessSkillSelect : BMonsterMenuSceneProcess
 			monsterMenuManager.monsterTradeSelectSkill_ = false;
 
 			monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
-			monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
+			monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderInactive();
 
 			monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReset();
 

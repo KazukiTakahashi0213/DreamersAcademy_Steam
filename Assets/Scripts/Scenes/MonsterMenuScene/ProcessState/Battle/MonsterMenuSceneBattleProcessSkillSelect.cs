@@ -70,7 +70,7 @@ public class MonsterMenuSceneBattleProcessSkillSelect : BMonsterMenuSceneProcess
 				PlayerBattleData.GetInstance().changeMonsterActive_ = true;
 
 				monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
-				monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
+				monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderInactive();
 
 				//操作の変更
 				sceneMgr.inputProvider_ = new InactiveInputProvider();
@@ -96,7 +96,7 @@ public class MonsterMenuSceneBattleProcessSkillSelect : BMonsterMenuSceneProcess
 			monsterMenuManager.monsterTradeSelectSkill_ = false;
 
 			monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
-			monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
+			monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderInactive();
 
 			monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReset();
 

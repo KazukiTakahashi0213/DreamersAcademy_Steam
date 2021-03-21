@@ -13,7 +13,7 @@ public class MonsterMenuSceneSkillActionCommandExecuteSwap : BMonsterMenuSceneSk
 
 		monsterMenuManager.GetSkillActionCommandParts().gameObject.SetActive(false);
 
-		monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderActive();
+		monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderActive();
 
 		monsterMenuManager.GetNowProcessState().state_ = MonsterMenuSceneProcess.SkillSelect;
 	}

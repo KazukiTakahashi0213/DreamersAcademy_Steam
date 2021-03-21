@@ -90,7 +90,7 @@ public class MonsterMenuSceneNormalProcessSkillSelect : BMonsterMenuSceneProcess
 				else {
 					monsterMenuManager.GetSkillActionCommandParts().gameObject.SetActive(true);
 
-					monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
+					monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderInactive();
 
 					return MonsterMenuSceneProcess.SkillActionSelect;
 				}
@@ -101,7 +101,7 @@ public class MonsterMenuSceneNormalProcessSkillSelect : BMonsterMenuSceneProcess
 			//スワップ中じゃなかったら
 			if (!monsterMenuManager.swapActive_) {
 				monsterMenuManager.GetSkillCommandParts().GetCursorParts().gameObject.SetActive(false);
-				monsterMenuManager.GetSkillCommandParts().commandWindowChoicesColliderInactive();
+				monsterMenuManager.GetSkillCommandParts().CommandWindowChoicesColliderInactive();
 
 				monsterMenuManager.GetSkillInfoFrameParts().SkillInfoReset();
 

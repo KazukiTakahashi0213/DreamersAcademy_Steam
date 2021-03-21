@@ -81,7 +81,7 @@ public class ElementTypeState {
 		, new Color32(255, 66, 66, 255)
 		, new Color32(66, 195, 255, 255)
 		, new Color32(129, 255, 66, 255)
-		, new Color32(255, 255, 209, 255)
+		, new Color32(234, 227, 87, 255)
 		, new Color32(63, 63, 63, 255)
 	};
 	public Color32 GetColor() { return colors_[(int)state_]; }

@@ -47,7 +47,7 @@ public class BugMenuManager : MonoBehaviour, ISceneManager {
 
 		//選択肢の初期化
 		commandParts_.SelectReset(new Vector3(-7.7f, 1.23f, -1));
-		commandParts_.commandWindowChoicesColliderInactive();
+		commandParts_.CommandWindowChoicesColliderInactive();
 
 		//初期化
 		processProvider_.init(this);
