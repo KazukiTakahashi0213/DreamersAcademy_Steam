@@ -39,11 +39,22 @@ public class KeyBoardNormalInputProvider : IInputProvider {
 
 		return false;
 	}
-	public bool LeftSelectMouseButton() {
+	public bool UpSelectMouseButton() {
 		GameObject[] hitGameObjects = MouseRayHitGameObjects();
 
-		for(int i = 0;i < hitGameObjects.Length; ++i) {
-			if (hitGameObjects[i].CompareTag("LeftButton")) {
+		for (int i = 0; i < hitGameObjects.Length; ++i) {
+			if (hitGameObjects[i].CompareTag("UpButton")) {
+				if (SelectMouseLeftTrigger()) return true;
+			}
+		}
+
+		return false;
+	}
+	public bool DownSelectMouseButton() {
+		GameObject[] hitGameObjects = MouseRayHitGameObjects();
+
+		for (int i = 0; i < hitGameObjects.Length; ++i) {
+			if (hitGameObjects[i].CompareTag("DownButton")) {
 				if (SelectMouseLeftTrigger()) return true;
 			}
 		}
@@ -55,6 +66,17 @@ public class KeyBoardNormalInputProvider : IInputProvider {
 
 		for (int i = 0; i < hitGameObjects.Length; ++i) {
 			if (hitGameObjects[i].CompareTag("RightButton")) {
+				if (SelectMouseLeftTrigger()) return true;
+			}
+		}
+
+		return false;
+	}
+	public bool LeftSelectMouseButton() {
+		GameObject[] hitGameObjects = MouseRayHitGameObjects();
+
+		for (int i = 0; i < hitGameObjects.Length; ++i) {
+			if (hitGameObjects[i].CompareTag("LeftButton")) {
 				if (SelectMouseLeftTrigger()) return true;
 			}
 		}

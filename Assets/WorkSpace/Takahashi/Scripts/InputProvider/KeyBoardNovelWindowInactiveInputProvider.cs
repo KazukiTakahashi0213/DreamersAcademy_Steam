@@ -15,10 +15,16 @@ public class KeyBoardNovelWindowInactiveInputProvider : IInputProvider{
 	public bool LeftSelect() {
 		return false;
 	}
-	public bool LeftSelectMouseButton() {
+	public bool UpSelectMouseButton() {
+		return false;
+	}
+	public bool DownSelectMouseButton() {
 		return false;
 	}
 	public bool RightSelectMouseButton() {
+		return false;
+	}
+	public bool LeftSelectMouseButton() {
 		return false;
 	}
 	public bool SelectEnter() {

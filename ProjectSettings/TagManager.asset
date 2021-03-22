@@ -12,6 +12,8 @@ TagManager:
   - BackButton
   - RightButton
   - LeftButton
+  - UpButton
+  - DownButton
   layers:
   - Default
   - TransparentFX

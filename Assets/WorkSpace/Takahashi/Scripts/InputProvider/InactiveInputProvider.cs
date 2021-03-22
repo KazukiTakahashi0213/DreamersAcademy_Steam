@@ -15,6 +15,12 @@ public class InactiveInputProvider : IInputProvider {
 	public bool LeftSelect() {
 		return false;
 	}
+	public bool UpSelectMouseButton() {
+		return false;
+	}
+	public bool DownSelectMouseButton() {
+		return false;
+	}
 	public bool RightSelectMouseButton() {
 		return false;
 	}

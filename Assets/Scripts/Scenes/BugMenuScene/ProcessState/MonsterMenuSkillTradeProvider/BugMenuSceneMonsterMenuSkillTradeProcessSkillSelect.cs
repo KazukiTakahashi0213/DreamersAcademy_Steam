@@ -13,8 +13,19 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 
 		eventMgr.EventUpdate();
 
-		if (sceneMgr.inputProvider_.UpSelect()
-			|| sceneMgr.inputProvider_.MouseWheelValue() > 0) {
+		//カーソルが動いていたら
+		int commandSelectNumberArchive = bugMenuManager.GetCommandParts().SelectNumber();
+		int commandSelectNumber = bugMenuManager.GetCommandParts().CommandSelectForNumber(new Vector3(), new Vector3(0, 1.0f, 0));
+		if (commandSelectNumber > -1) {
+			//SE
+			bugMenuManager.GetInputSoundProvider().UpSelect();
+
+			skillSelectNum_ -= commandSelectNumberArchive - bugMenuManager.GetCommandParts().SelectNumber();
+
+			//技の情報の反映
+			bugMenuManager.GetInfoFrameParts().SkillInfoReflect(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_));
+		}
+		else if (sceneMgr.inputProvider_.UpSelect()) {
 			//表示する技がまだあったら
 			if (skillSelectNum_ > 0) {
 				//SE
@@ -50,8 +61,7 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 				bugMenuManager.GetInfoFrameParts().SkillInfoReflect(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_));
 			}
 		}
-		else if (sceneMgr.inputProvider_.DownSelect()
-			|| sceneMgr.inputProvider_.MouseWheelValue() < 0) {
+		else if (sceneMgr.inputProvider_.DownSelect()) {
 			//表示する技がまだあったら
 			if (skillSelectNum_ < bugMenuManager.GetSkillTradeActiveSkillsCount() - 1) {
 				//SE
@@ -91,8 +101,58 @@ public class BugMenuSceneMonsterMenuSkillTradeProcessSkillSelect : BBugMenuScene
 		}
 		else if (sceneMgr.inputProvider_.LeftSelect()) {
 		}
+		else if (sceneMgr.inputProvider_.UpSelectMouseButton()) {
+			//表示する技がまだあったら
+			if (skillSelectNum_ > 0) {
+				//SE
+				bugMenuManager.GetInputSoundProvider().UpSelect();
+
+				--skillSelectNum_;
+
+				//技の名前を更新する
+				for (int i = 0; i < bugMenuManager.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
+					bugMenuManager.GetCommandParts().CommandWindowChoiceTextChange(i, "　" + bugMenuManager.GetSkillTradeActiveSkills(i + (skillSelectNum_ - bugMenuManager.GetCommandParts().SelectNumber())).skillName_);
+				}
+
+				//downCursorの表示
+				bugMenuManager.GetDownCursor().gameObject.SetActive(true);
+
+				if (skillSelectNum_ - bugMenuManager.GetCommandParts().SelectNumber() == 0) {
+					//upCursorの非表示
+					bugMenuManager.GetUpCursor().gameObject.SetActive(false);
+				}
+
+				//技の情報の反映
+				bugMenuManager.GetInfoFrameParts().SkillInfoReflect(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_));
+			}
+		}
+		else if (sceneMgr.inputProvider_.DownSelectMouseButton()) {
+			//表示する技がまだあったら
+			if (skillSelectNum_ > 0) {
+				//SE
+				bugMenuManager.GetInputSoundProvider().DownSelect();
+
+				++skillSelectNum_;
+
+				//技の名前を更新する
+				for (int i = 0; i < bugMenuManager.GetCommandParts().GetCommandWindowTextsCount(); ++i) {
+					bugMenuManager.GetCommandParts().CommandWindowChoiceTextChange(i, "　" + bugMenuManager.GetSkillTradeActiveSkills(i + (skillSelectNum_ - bugMenuManager.GetCommandParts().SelectNumber())).skillName_);
+				}
+
+				//upCursorの表示
+				bugMenuManager.GetUpCursor().gameObject.SetActive(true);
+
+				if (skillSelectNum_ - bugMenuManager.GetCommandParts().SelectNumber() + bugMenuManager.GetCommandParts().GetCommandWindowTextsCount()-1 == bugMenuManager.GetSkillTradeActiveSkillsCount()-1) {
+					//downCursorの非表示
+					bugMenuManager.GetDownCursor().gameObject.SetActive(false);
+				}
+
+				//技の情報の反映
+				bugMenuManager.GetInfoFrameParts().SkillInfoReflect(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_));
+			}
+		}
 		else if (sceneMgr.inputProvider_.SelectEnter()
-			|| sceneMgr.inputProvider_.SelectMouseLeftTrigger()) {
+			|| bugMenuManager.GetCommandParts().MouseLeftButtonTriggerActive()) {
 			//技を習得できるか
 			if (playerData.GetMonsterDatas(MonsterMenuManager.skillTradeSelectMonsterNumber_).SkillTradeCheck(bugMenuManager.GetSkillTradeActiveSkills(skillSelectNum_).elementType_.state_)) {
 				//SE

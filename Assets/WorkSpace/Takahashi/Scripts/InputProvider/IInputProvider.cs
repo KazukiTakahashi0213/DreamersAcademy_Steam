@@ -7,6 +7,8 @@ public interface IInputProvider {
 	bool DownSelect();
 	bool RightSelect();
 	bool LeftSelect();
+	bool UpSelectMouseButton();
+	bool DownSelectMouseButton();
 	bool RightSelectMouseButton();
 	bool LeftSelectMouseButton();
 	bool SelectEnter();
