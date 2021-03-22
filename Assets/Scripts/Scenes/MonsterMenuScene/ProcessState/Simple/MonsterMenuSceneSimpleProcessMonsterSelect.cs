@@ -96,7 +96,7 @@ public class MonsterMenuSceneSimpleProcessMonsterSelect : BMonsterMenuSceneProce
 		if (sceneMgr.inputProvider_.UpSelect()
 			|| sceneMgr.inputProvider_.MouseWheelValue() > 0) {
 			//状態の保存
-			menuSelectState_ = 1;
+			menuSelectState_ = 0;
 
 			//SE
 			monsterMenuManager.GetInputSoundProvider().UpSelect();
